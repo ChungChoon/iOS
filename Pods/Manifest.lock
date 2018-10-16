@@ -1,0 +1,71 @@
+PODS:
+  - Alamofire (4.7.3)
+  - BigInt (3.1.0):
+    - SipHash (~> 1.2)
+  - CryptoSwift (0.12.0)
+  - ObjectMapper (3.3.0)
+  - PromiseKit (6.5.2):
+    - PromiseKit/CorePromise (= 6.5.2)
+    - PromiseKit/Foundation (= 6.5.2)
+    - PromiseKit/UIKit (= 6.5.2)
+  - PromiseKit/CorePromise (6.5.2)
+  - PromiseKit/Foundation (6.5.2):
+    - PromiseKit/CorePromise
+  - PromiseKit/UIKit (6.5.2):
+    - PromiseKit/CorePromise
+  - Result (4.0.0)
+  - scrypt (2.0):
+    - CryptoSwift (~> 0.11)
+  - secp256k1_swift (1.0.3)
+  - SipHash (1.2.2)
+  - SwiftRLP (1.0.1):
+    - BigInt (~> 3.1)
+  - SwiftyJSON (4.2.0)
+  - web3swift (1.1.10):
+    - BigInt (~> 3.1)
+    - CryptoSwift (~> 0.11)
+    - PromiseKit (~> 6.3)
+    - Result (~> 4.0)
+    - scrypt (~> 2.0)
+    - secp256k1_swift (~> 1.0.3)
+    - SwiftRLP (~> 1.0.1)
+
+DEPENDENCIES:
+  - Alamofire
+  - BigInt
+  - ObjectMapper
+  - SwiftyJSON
+  - web3swift
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - Alamofire
+    - BigInt
+    - CryptoSwift
+    - ObjectMapper
+    - PromiseKit
+    - Result
+    - scrypt
+    - secp256k1_swift
+    - SipHash
+    - SwiftRLP
+    - SwiftyJSON
+    - web3swift
+
+SPEC CHECKSUMS:
+  Alamofire: c7287b6e5d7da964a70935e5db17046b7fde6568
+  BigInt: 76b5dfdfa3e2e478d4ffdf161aeede5502e2742f
+  CryptoSwift: 1c07ca50843dd48bc54e6ea53d7a4dba3b645716
+  ObjectMapper: b612bf8c8e99c4dc0bb6013a51f7c27966ed5da9
+  PromiseKit: 27c1601bfb73405871b805bcb8cf7e55c4dad3db
+  Result: 7645bb3f50c2ce726dd0ff2fa7b6f42bbe6c3713
+  scrypt: 3fe5b1a3b0976f97cd87488673a8f7c65708cc84
+  secp256k1_swift: 4fc5c4b2d2c6d21ee8ccb868cdc92da12f38bed9
+  SipHash: fad90a4683e420c52ef28063063dbbce248ea6d4
+  SwiftRLP: 9de2c9512a9a6bf0909cd84cc143a7ff1aff7820
+  SwiftyJSON: c4bcba26dd9ec7a027fc8eade48e2c911f229e96
+  web3swift: 843dd5295d2ae755e6f80e9e0bdabe2868a5c7d8
+
+PODFILE CHECKSUM: 28ae0bc0d37f954ee1adcdb62afc9cf218f8bbfb
+
+COCOAPODS: 1.5.3

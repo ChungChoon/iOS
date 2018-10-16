@@ -1,0 +1,6 @@
+framework module Pods_ChungChul_iOSTests {
+  umbrella header "Pods-ChungChul_iOSTests-umbrella.h"
+
+  export *
+  module * { export * }
+}
