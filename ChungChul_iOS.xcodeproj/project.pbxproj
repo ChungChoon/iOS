@@ -10,12 +10,29 @@
 		709E18E3F890A1E90BB6B5B1 /* Pods_ChungChul_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E11251E557BA8035A3186A2 /* Pods_ChungChul_iOS.framework */; };
 		79845B9F0C21FF5D26EA8C56 /* Pods_ChungChul_iOSTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39F17AA51548F522AF78F77D /* Pods_ChungChul_iOSTests.framework */; };
 		BC87E00221751C4700B7322E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC87E00121751C4700B7322E /* AppDelegate.swift */; };
-		BC87E00421751C4700B7322E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC87E00321751C4700B7322E /* ViewController.swift */; };
+		BC87E00421751C4700B7322E /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC87E00321751C4700B7322E /* MainVC.swift */; };
 		BC87E00721751C4700B7322E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BC87E00521751C4700B7322E /* Main.storyboard */; };
 		BC87E00A21751C4700B7322E /* ChungChul_iOS.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BC87E00821751C4700B7322E /* ChungChul_iOS.xcdatamodeld */; };
 		BC87E00C21751C4900B7322E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BC87E00B21751C4900B7322E /* Assets.xcassets */; };
 		BC87E00F21751C4900B7322E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BC87E00D21751C4900B7322E /* LaunchScreen.storyboard */; };
 		BC87E01A21751C4900B7322E /* ChungChul_iOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC87E01921751C4900B7322E /* ChungChul_iOSTests.swift */; };
+		BCB9D82B217E47D700D86908 /* NotoSansCJKkr-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = BCB9D824217E47D200D86908 /* NotoSansCJKkr-Regular.otf */; };
+		BCB9D82C217E47D700D86908 /* NotoSansCJKkr-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = BCB9D825217E47D300D86908 /* NotoSansCJKkr-Medium.otf */; };
+		BCB9D82D217E47D700D86908 /* NotoSansCJKkr-Thin.otf in Resources */ = {isa = PBXBuildFile; fileRef = BCB9D826217E47D400D86908 /* NotoSansCJKkr-Thin.otf */; };
+		BCB9D82E217E47D700D86908 /* NotoSansCJKkr-DemiLight.otf in Resources */ = {isa = PBXBuildFile; fileRef = BCB9D827217E47D500D86908 /* NotoSansCJKkr-DemiLight.otf */; };
+		BCB9D82F217E47D700D86908 /* NotoSansCJKkr-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = BCB9D828217E47D500D86908 /* NotoSansCJKkr-Light.otf */; };
+		BCB9D830217E47D700D86908 /* NotoSansCJKkr-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = BCB9D829217E47D600D86908 /* NotoSansCJKkr-Bold.otf */; };
+		BCB9D831217E47D700D86908 /* NotoSansCJKkr-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = BCB9D82A217E47D700D86908 /* NotoSansCJKkr-Black.otf */; };
+		BCB9D834217F05AD00D86908 /* PopularLectureTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCB9D833217F05AD00D86908 /* PopularLectureTVCell.swift */; };
+		BCB9D836217F05CB00D86908 /* PopularLectureCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCB9D835217F05CB00D86908 /* PopularLectureCVCell.swift */; };
+		BCB9D838217F310900D86908 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCB9D837217F310900D86908 /* Extension.swift */; };
+		BCB9D83D217F528500D86908 /* LectureListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCB9D83B217F528500D86908 /* LectureListCell.swift */; };
+		BCB9D83E217F528500D86908 /* LectureListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCB9D83C217F528500D86908 /* LectureListCell.xib */; };
+		BCB9D840217F64A700D86908 /* TypeListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCB9D83F217F64A700D86908 /* TypeListVC.swift */; };
+		BCB9D843217F913300D86908 /* MyLectureVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCB9D842217F913300D86908 /* MyLectureVC.swift */; };
+		BCB9D846217F91FB00D86908 /* MyLectureTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCB9D844217F91FB00D86908 /* MyLectureTVCell.swift */; };
+		BCB9D847217F91FB00D86908 /* MyLectureTVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCB9D845217F91FB00D86908 /* MyLectureTVCell.xib */; };
+		BCB9D849217FA14400D86908 /* OnOffLineTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCB9D848217FA14400D86908 /* OnOffLineTVCell.swift */; };
 		BCD7D7AA21764878003238BB /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BCD7D7A921764878003238BB /* Login.storyboard */; };
 		BCD7D7AD21764A2C003238BB /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD7D7AC21764A2C003238BB /* LoginVC.swift */; };
 		BCD7D7B021764DAA003238BB /* SignUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD7D7AF21764DAA003238BB /* SignUpVC.swift */; };
@@ -40,7 +57,7 @@
 		AEFA295204D5F357C42AEEB1 /* Pods-ChungChul_iOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChungChul_iOSTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ChungChul_iOSTests/Pods-ChungChul_iOSTests.release.xcconfig"; sourceTree = "<group>"; };
 		BC87DFFE21751C4700B7322E /* ChungChul_iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChungChul_iOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC87E00121751C4700B7322E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		BC87E00321751C4700B7322E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		BC87E00321751C4700B7322E /* MainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
 		BC87E00621751C4700B7322E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		BC87E00921751C4700B7322E /* ChungChul_iOS.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ChungChul_iOS.xcdatamodel; sourceTree = "<group>"; };
 		BC87E00B21751C4900B7322E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -49,6 +66,23 @@
 		BC87E01521751C4900B7322E /* ChungChul_iOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ChungChul_iOSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC87E01921751C4900B7322E /* ChungChul_iOSTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChungChul_iOSTests.swift; sourceTree = "<group>"; };
 		BC87E01B21751C4900B7322E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BCB9D824217E47D200D86908 /* NotoSansCJKkr-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansCJKkr-Regular.otf"; sourceTree = "<group>"; };
+		BCB9D825217E47D300D86908 /* NotoSansCJKkr-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansCJKkr-Medium.otf"; sourceTree = "<group>"; };
+		BCB9D826217E47D400D86908 /* NotoSansCJKkr-Thin.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansCJKkr-Thin.otf"; sourceTree = "<group>"; };
+		BCB9D827217E47D500D86908 /* NotoSansCJKkr-DemiLight.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansCJKkr-DemiLight.otf"; sourceTree = "<group>"; };
+		BCB9D828217E47D500D86908 /* NotoSansCJKkr-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansCJKkr-Light.otf"; sourceTree = "<group>"; };
+		BCB9D829217E47D600D86908 /* NotoSansCJKkr-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansCJKkr-Bold.otf"; sourceTree = "<group>"; };
+		BCB9D82A217E47D700D86908 /* NotoSansCJKkr-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansCJKkr-Black.otf"; sourceTree = "<group>"; };
+		BCB9D833217F05AD00D86908 /* PopularLectureTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularLectureTVCell.swift; sourceTree = "<group>"; };
+		BCB9D835217F05CB00D86908 /* PopularLectureCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularLectureCVCell.swift; sourceTree = "<group>"; };
+		BCB9D837217F310900D86908 /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
+		BCB9D83B217F528500D86908 /* LectureListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LectureListCell.swift; sourceTree = "<group>"; };
+		BCB9D83C217F528500D86908 /* LectureListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LectureListCell.xib; sourceTree = "<group>"; };
+		BCB9D83F217F64A700D86908 /* TypeListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeListVC.swift; sourceTree = "<group>"; };
+		BCB9D842217F913300D86908 /* MyLectureVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyLectureVC.swift; sourceTree = "<group>"; };
+		BCB9D844217F91FB00D86908 /* MyLectureTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyLectureTVCell.swift; sourceTree = "<group>"; };
+		BCB9D845217F91FB00D86908 /* MyLectureTVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyLectureTVCell.xib; sourceTree = "<group>"; };
+		BCB9D848217FA14400D86908 /* OnOffLineTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnOffLineTVCell.swift; sourceTree = "<group>"; };
 		BCD7D7A921764878003238BB /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		BCD7D7AC21764A2C003238BB /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
 		BCD7D7AF21764DAA003238BB /* SignUpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpVC.swift; sourceTree = "<group>"; };
@@ -117,7 +151,9 @@
 		BC87E00021751C4700B7322E /* ChungChul_iOS */ = {
 			isa = PBXGroup;
 			children = (
+				BCB9D832217E47DB00D86908 /* Font */,
 				BC87E00121751C4700B7322E /* AppDelegate.swift */,
+				BCB9D837217F310900D86908 /* Extension.swift */,
 				BC87E00B21751C4900B7322E /* Assets.xcassets */,
 				BC87E01021751C4900B7322E /* Info.plist */,
 				BCD7D7A62176481F003238BB /* Model */,
@@ -135,6 +171,31 @@
 				BC87E01B21751C4900B7322E /* Info.plist */,
 			);
 			path = ChungChul_iOSTests;
+			sourceTree = "<group>";
+		};
+		BCB9D832217E47DB00D86908 /* Font */ = {
+			isa = PBXGroup;
+			children = (
+				BCB9D82A217E47D700D86908 /* NotoSansCJKkr-Black.otf */,
+				BCB9D829217E47D600D86908 /* NotoSansCJKkr-Bold.otf */,
+				BCB9D827217E47D500D86908 /* NotoSansCJKkr-DemiLight.otf */,
+				BCB9D828217E47D500D86908 /* NotoSansCJKkr-Light.otf */,
+				BCB9D825217E47D300D86908 /* NotoSansCJKkr-Medium.otf */,
+				BCB9D824217E47D200D86908 /* NotoSansCJKkr-Regular.otf */,
+				BCB9D826217E47D400D86908 /* NotoSansCJKkr-Thin.otf */,
+			);
+			path = Font;
+			sourceTree = "<group>";
+		};
+		BCB9D841217F911700D86908 /* MyLecture */ = {
+			isa = PBXGroup;
+			children = (
+				BCB9D842217F913300D86908 /* MyLectureVC.swift */,
+				BCB9D848217FA14400D86908 /* OnOffLineTVCell.swift */,
+				BCB9D844217F91FB00D86908 /* MyLectureTVCell.swift */,
+				BCB9D845217F91FB00D86908 /* MyLectureTVCell.xib */,
+			);
+			path = MyLecture;
 			sourceTree = "<group>";
 		};
 		BCD7D7A62176481F003238BB /* Model */ = {
@@ -159,6 +220,7 @@
 			children = (
 				BCD7D7AB21764A17003238BB /* Login */,
 				BCD7D7AE21764A3A003238BB /* Main */,
+				BCB9D841217F911700D86908 /* MyLecture */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -175,7 +237,12 @@
 		BCD7D7AE21764A3A003238BB /* Main */ = {
 			isa = PBXGroup;
 			children = (
-				BC87E00321751C4700B7322E /* ViewController.swift */,
+				BC87E00321751C4700B7322E /* MainVC.swift */,
+				BCB9D833217F05AD00D86908 /* PopularLectureTVCell.swift */,
+				BCB9D835217F05CB00D86908 /* PopularLectureCVCell.swift */,
+				BCB9D83B217F528500D86908 /* LectureListCell.swift */,
+				BCB9D83C217F528500D86908 /* LectureListCell.xib */,
+				BCB9D83F217F64A700D86908 /* TypeListVC.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -265,9 +332,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				BCD7D7AA21764878003238BB /* Login.storyboard in Resources */,
+				BCB9D847217F91FB00D86908 /* MyLectureTVCell.xib in Resources */,
+				BCB9D830217E47D700D86908 /* NotoSansCJKkr-Bold.otf in Resources */,
+				BCB9D831217E47D700D86908 /* NotoSansCJKkr-Black.otf in Resources */,
+				BCB9D82C217E47D700D86908 /* NotoSansCJKkr-Medium.otf in Resources */,
+				BCB9D83E217F528500D86908 /* LectureListCell.xib in Resources */,
+				BCB9D82B217E47D700D86908 /* NotoSansCJKkr-Regular.otf in Resources */,
 				BC87E00F21751C4900B7322E /* LaunchScreen.storyboard in Resources */,
 				BC87E00C21751C4900B7322E /* Assets.xcassets in Resources */,
+				BCB9D82F217E47D700D86908 /* NotoSansCJKkr-Light.otf in Resources */,
+				BCB9D82E217E47D700D86908 /* NotoSansCJKkr-DemiLight.otf in Resources */,
 				BC87E00721751C4700B7322E /* Main.storyboard in Resources */,
+				BCB9D82D217E47D700D86908 /* NotoSansCJKkr-Thin.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -376,11 +452,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BC87E00421751C4700B7322E /* ViewController.swift in Sources */,
+				BCB9D846217F91FB00D86908 /* MyLectureTVCell.swift in Sources */,
+				BCB9D834217F05AD00D86908 /* PopularLectureTVCell.swift in Sources */,
+				BCB9D843217F913300D86908 /* MyLectureVC.swift in Sources */,
+				BC87E00421751C4700B7322E /* MainVC.swift in Sources */,
+				BCB9D840217F64A700D86908 /* TypeListVC.swift in Sources */,
+				BCB9D83D217F528500D86908 /* LectureListCell.swift in Sources */,
+				BCB9D849217FA14400D86908 /* OnOffLineTVCell.swift in Sources */,
 				BC87E00221751C4700B7322E /* AppDelegate.swift in Sources */,
+				BCB9D836217F05CB00D86908 /* PopularLectureCVCell.swift in Sources */,
 				BCD7D7AD21764A2C003238BB /* LoginVC.swift in Sources */,
 				BCD7D7B021764DAA003238BB /* SignUpVC.swift in Sources */,
 				BC87E00A21751C4700B7322E /* ChungChul_iOS.xcdatamodeld in Sources */,
+				BCB9D838217F310900D86908 /* Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
