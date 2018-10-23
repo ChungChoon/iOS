@@ -49,7 +49,12 @@ class TypeListVC: UIViewController {
 
 extension TypeListVC {
     
+    @objc func saveButtonAction(){
+        self.dismiss(animated: true, completion: nil)
+    }
+    
     func buttonUISetting(){
+        saveButton.addTarget(self, action: #selector(saveButtonAction), for: .touchUpInside)
         var index: Int = 0
         for button in uiSettingButton {
             button.layer.masksToBounds = true

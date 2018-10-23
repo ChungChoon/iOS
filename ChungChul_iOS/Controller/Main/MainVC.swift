@@ -12,6 +12,7 @@ class MainVC: UIViewController {
     
     @IBOutlet var lectureTableView: UITableView!
     
+    var titleTapGestureRecognizer: UITapGestureRecognizer!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,11 +22,24 @@ class MainVC: UIViewController {
         lectureTableView.allowsSelection = false
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        titleTapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(titleTapAction(_:)))
+        self.navigationController?.navigationBar.addGestureRecognizer(titleTapGestureRecognizer)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(true)
+        self.navigationController?.navigationBar.removeGestureRecognizer(titleTapGestureRecognizer)
+    }
 
 }
 
 extension MainVC {
-    
+    @objc func titleTapAction(_ theObject: AnyObject) {
+        guard let typeListVC = self.storyboard?.instantiateViewController(withIdentifier: "TypeListVC") else {return}
+        self.present(typeListVC, animated: true, completion: nil)
+    }
 }
 
 extension MainVC: UITableViewDelegate, UITableViewDataSource {
