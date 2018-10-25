@@ -11,6 +11,9 @@ import UIKit
 class DetailVC: UIViewController {
 
     @IBOutlet var detailTableView: UITableView!
+    @IBOutlet var applyButton: UIButton!
+    
+    var aaa = ["123", "2323" , "32323", "1111"]
     
     let headerView: HeaderView = {
         let v = HeaderView()
@@ -41,21 +44,50 @@ extension DetailVC {
 
 extension DetailVC: UITableViewDelegate, UITableViewDataSource {
     
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 5
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 20
+        return 1
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = UITableViewCell()
-        cell.textLabel?.text = "테스트"
+        switch indexPath.section {
+        case 0:
+            let cell = detailTableView.dequeueReusableCell(withIdentifier: "InformationTVCell") as! InformationTVCell
+            return cell
+        case 1:
+            let cell = detailTableView.dequeueReusableCell(withIdentifier: "IntroduceTVCell") as! IntroduceTVCell
+            return cell
+        case 2:
+            let cell = detailTableView.dequeueReusableCell(withIdentifier: "PlanTVCell") as! PlanTVCell
+            
+            
+            
+            return cell
+        case 3:
+            let cell = detailTableView.dequeueReusableCell(withIdentifier: "TeacherTVCell") as! TeacherTVCell
+            return cell
+        case 4:
+            let cell = detailTableView.dequeueReusableCell(withIdentifier: "CommentTVCell") as! CommentTVCell
+            return cell
+        default:
+            let cell = UITableViewCell()
+            return cell
+        }
         
-        return cell
+    }
+    
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableView.automaticDimension
     }
 
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let y = 274 - (scrollView.contentOffset.y + 274)
-        let height = min(max(y, 60), 400)
+        let height = min(max(y, 64), 600)
         headerView.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: height)
         
     }

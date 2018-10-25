@@ -9,6 +9,11 @@
 /* Begin PBXBuildFile section */
 		709E18E3F890A1E90BB6B5B1 /* Pods_ChungChul_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E11251E557BA8035A3186A2 /* Pods_ChungChul_iOS.framework */; };
 		79845B9F0C21FF5D26EA8C56 /* Pods_ChungChul_iOSTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39F17AA51548F522AF78F77D /* Pods_ChungChul_iOSTests.framework */; };
+		BC6A21952182081D007B751B /* InformationTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6A21942182081D007B751B /* InformationTVCell.swift */; };
+		BC6A21972182082C007B751B /* IntroduceTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6A21962182082C007B751B /* IntroduceTVCell.swift */; };
+		BC6A219921820838007B751B /* PlanTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6A219821820838007B751B /* PlanTVCell.swift */; };
+		BC6A219B2182084A007B751B /* TeacherTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6A219A2182084A007B751B /* TeacherTVCell.swift */; };
+		BC6A219D21820856007B751B /* CommentTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6A219C21820856007B751B /* CommentTVCell.swift */; };
 		BC87E00221751C4700B7322E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC87E00121751C4700B7322E /* AppDelegate.swift */; };
 		BC87E00421751C4700B7322E /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC87E00321751C4700B7322E /* MainVC.swift */; };
 		BC87E00721751C4700B7322E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BC87E00521751C4700B7322E /* Main.storyboard */; };
@@ -60,6 +65,11 @@
 		583F9579DFABFDEBCF01B3E5 /* Pods-ChungChul_iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChungChul_iOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-ChungChul_iOS/Pods-ChungChul_iOS.release.xcconfig"; sourceTree = "<group>"; };
 		8E11251E557BA8035A3186A2 /* Pods_ChungChul_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ChungChul_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AEFA295204D5F357C42AEEB1 /* Pods-ChungChul_iOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChungChul_iOSTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ChungChul_iOSTests/Pods-ChungChul_iOSTests.release.xcconfig"; sourceTree = "<group>"; };
+		BC6A21942182081D007B751B /* InformationTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationTVCell.swift; sourceTree = "<group>"; };
+		BC6A21962182082C007B751B /* IntroduceTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroduceTVCell.swift; sourceTree = "<group>"; };
+		BC6A219821820838007B751B /* PlanTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanTVCell.swift; sourceTree = "<group>"; };
+		BC6A219A2182084A007B751B /* TeacherTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeacherTVCell.swift; sourceTree = "<group>"; };
+		BC6A219C21820856007B751B /* CommentTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentTVCell.swift; sourceTree = "<group>"; };
 		BC87DFFE21751C4700B7322E /* ChungChul_iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChungChul_iOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC87E00121751C4700B7322E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BC87E00321751C4700B7322E /* MainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
@@ -138,6 +148,18 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		BC6A2193218207FE007B751B /* TableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				BC6A21942182081D007B751B /* InformationTVCell.swift */,
+				BC6A21962182082C007B751B /* IntroduceTVCell.swift */,
+				BC6A219821820838007B751B /* PlanTVCell.swift */,
+				BC6A219A2182084A007B751B /* TeacherTVCell.swift */,
+				BC6A219C21820856007B751B /* CommentTVCell.swift */,
+			);
+			path = TableViewCell;
+			sourceTree = "<group>";
+		};
 		BC87DFF521751C4600B7322E = {
 			isa = PBXGroup;
 			children = (
@@ -211,6 +233,7 @@
 		BCB9D84E2181B67B00D86908 /* Detail */ = {
 			isa = PBXGroup;
 			children = (
+				BC6A2193218207FE007B751B /* TableViewCell */,
 				BCB9D84F2181B69800D86908 /* DetailVC.swift */,
 				BCB9D8512181D81000D86908 /* HeaderView.xib */,
 				BCB9D8532181D9DA00D86908 /* HeaderView.swift */,
@@ -477,7 +500,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BC6A219B2182084A007B751B /* TeacherTVCell.swift in Sources */,
 				BCB9D846217F91FB00D86908 /* MyLectureTVCell.swift in Sources */,
+				BC6A219D21820856007B751B /* CommentTVCell.swift in Sources */,
 				BCB9D834217F05AD00D86908 /* PopularLectureTVCell.swift in Sources */,
 				BCB9D843217F913300D86908 /* MyLectureVC.swift in Sources */,
 				BC87E00421751C4700B7322E /* MainVC.swift in Sources */,
@@ -486,12 +511,15 @@
 				BCB9D83D217F528500D86908 /* LectureListCell.swift in Sources */,
 				BCB9D849217FA14400D86908 /* OnOffLineTVCell.swift in Sources */,
 				BCB9D84C21815C2E00D86908 /* LectureListCVCell.swift in Sources */,
+				BC6A21972182082C007B751B /* IntroduceTVCell.swift in Sources */,
 				BC87E00221751C4700B7322E /* AppDelegate.swift in Sources */,
 				BCB9D836217F05CB00D86908 /* PopularLectureCVCell.swift in Sources */,
 				BCD7D7AD21764A2C003238BB /* LoginVC.swift in Sources */,
 				BCD7D7B021764DAA003238BB /* SignUpVC.swift in Sources */,
 				BC87E00A21751C4700B7322E /* ChungChul_iOS.xcdatamodeld in Sources */,
 				BCB9D838217F310900D86908 /* Extension.swift in Sources */,
+				BC6A219921820838007B751B /* PlanTVCell.swift in Sources */,
+				BC6A21952182081D007B751B /* InformationTVCell.swift in Sources */,
 				BCB9D8542181D9DA00D86908 /* HeaderView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
