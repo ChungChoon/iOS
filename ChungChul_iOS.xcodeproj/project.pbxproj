@@ -33,6 +33,11 @@
 		BCB9D846217F91FB00D86908 /* MyLectureTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCB9D844217F91FB00D86908 /* MyLectureTVCell.swift */; };
 		BCB9D847217F91FB00D86908 /* MyLectureTVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCB9D845217F91FB00D86908 /* MyLectureTVCell.xib */; };
 		BCB9D849217FA14400D86908 /* OnOffLineTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCB9D848217FA14400D86908 /* OnOffLineTVCell.swift */; };
+		BCB9D84C21815C2E00D86908 /* LectureListCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCB9D84A21815C2E00D86908 /* LectureListCVCell.swift */; };
+		BCB9D84D21815C2E00D86908 /* LectureListCVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCB9D84B21815C2E00D86908 /* LectureListCVCell.xib */; };
+		BCB9D8502181B69800D86908 /* DetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCB9D84F2181B69800D86908 /* DetailVC.swift */; };
+		BCB9D8522181D81000D86908 /* HeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCB9D8512181D81000D86908 /* HeaderView.xib */; };
+		BCB9D8542181D9DA00D86908 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCB9D8532181D9DA00D86908 /* HeaderView.swift */; };
 		BCD7D7AA21764878003238BB /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BCD7D7A921764878003238BB /* Login.storyboard */; };
 		BCD7D7AD21764A2C003238BB /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD7D7AC21764A2C003238BB /* LoginVC.swift */; };
 		BCD7D7B021764DAA003238BB /* SignUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD7D7AF21764DAA003238BB /* SignUpVC.swift */; };
@@ -83,6 +88,11 @@
 		BCB9D844217F91FB00D86908 /* MyLectureTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyLectureTVCell.swift; sourceTree = "<group>"; };
 		BCB9D845217F91FB00D86908 /* MyLectureTVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyLectureTVCell.xib; sourceTree = "<group>"; };
 		BCB9D848217FA14400D86908 /* OnOffLineTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnOffLineTVCell.swift; sourceTree = "<group>"; };
+		BCB9D84A21815C2E00D86908 /* LectureListCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LectureListCVCell.swift; sourceTree = "<group>"; };
+		BCB9D84B21815C2E00D86908 /* LectureListCVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LectureListCVCell.xib; sourceTree = "<group>"; };
+		BCB9D84F2181B69800D86908 /* DetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailVC.swift; sourceTree = "<group>"; };
+		BCB9D8512181D81000D86908 /* HeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HeaderView.xib; sourceTree = "<group>"; };
+		BCB9D8532181D9DA00D86908 /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		BCD7D7A921764878003238BB /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		BCD7D7AC21764A2C003238BB /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
 		BCD7D7AF21764DAA003238BB /* SignUpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpVC.swift; sourceTree = "<group>"; };
@@ -198,6 +208,16 @@
 			path = MyLecture;
 			sourceTree = "<group>";
 		};
+		BCB9D84E2181B67B00D86908 /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				BCB9D84F2181B69800D86908 /* DetailVC.swift */,
+				BCB9D8512181D81000D86908 /* HeaderView.xib */,
+				BCB9D8532181D9DA00D86908 /* HeaderView.swift */,
+			);
+			path = Detail;
+			sourceTree = "<group>";
+		};
 		BCD7D7A62176481F003238BB /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -240,9 +260,12 @@
 				BC87E00321751C4700B7322E /* MainVC.swift */,
 				BCB9D833217F05AD00D86908 /* PopularLectureTVCell.swift */,
 				BCB9D835217F05CB00D86908 /* PopularLectureCVCell.swift */,
+				BCB9D83F217F64A700D86908 /* TypeListVC.swift */,
 				BCB9D83B217F528500D86908 /* LectureListCell.swift */,
 				BCB9D83C217F528500D86908 /* LectureListCell.xib */,
-				BCB9D83F217F64A700D86908 /* TypeListVC.swift */,
+				BCB9D84A21815C2E00D86908 /* LectureListCVCell.swift */,
+				BCB9D84B21815C2E00D86908 /* LectureListCVCell.xib */,
+				BCB9D84E2181B67B00D86908 /* Detail */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -334,8 +357,10 @@
 				BCD7D7AA21764878003238BB /* Login.storyboard in Resources */,
 				BCB9D847217F91FB00D86908 /* MyLectureTVCell.xib in Resources */,
 				BCB9D830217E47D700D86908 /* NotoSansCJKkr-Bold.otf in Resources */,
+				BCB9D84D21815C2E00D86908 /* LectureListCVCell.xib in Resources */,
 				BCB9D831217E47D700D86908 /* NotoSansCJKkr-Black.otf in Resources */,
 				BCB9D82C217E47D700D86908 /* NotoSansCJKkr-Medium.otf in Resources */,
+				BCB9D8522181D81000D86908 /* HeaderView.xib in Resources */,
 				BCB9D83E217F528500D86908 /* LectureListCell.xib in Resources */,
 				BCB9D82B217E47D700D86908 /* NotoSansCJKkr-Regular.otf in Resources */,
 				BC87E00F21751C4900B7322E /* LaunchScreen.storyboard in Resources */,
@@ -457,14 +482,17 @@
 				BCB9D843217F913300D86908 /* MyLectureVC.swift in Sources */,
 				BC87E00421751C4700B7322E /* MainVC.swift in Sources */,
 				BCB9D840217F64A700D86908 /* TypeListVC.swift in Sources */,
+				BCB9D8502181B69800D86908 /* DetailVC.swift in Sources */,
 				BCB9D83D217F528500D86908 /* LectureListCell.swift in Sources */,
 				BCB9D849217FA14400D86908 /* OnOffLineTVCell.swift in Sources */,
+				BCB9D84C21815C2E00D86908 /* LectureListCVCell.swift in Sources */,
 				BC87E00221751C4700B7322E /* AppDelegate.swift in Sources */,
 				BCB9D836217F05CB00D86908 /* PopularLectureCVCell.swift in Sources */,
 				BCD7D7AD21764A2C003238BB /* LoginVC.swift in Sources */,
 				BCD7D7B021764DAA003238BB /* SignUpVC.swift in Sources */,
 				BC87E00A21751C4700B7322E /* ChungChul_iOS.xcdatamodeld in Sources */,
 				BCB9D838217F310900D86908 /* Extension.swift in Sources */,
+				BCB9D8542181D9DA00D86908 /* HeaderView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

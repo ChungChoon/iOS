@@ -20,6 +20,8 @@ class MainVC: UIViewController {
         lectureTableView.delegate = self
         lectureTableView.dataSource = self
         lectureTableView.allowsSelection = false
+        let nibLectureList = UINib(nibName: "LectureListCell", bundle: nil)
+        lectureTableView.register(nibLectureList, forCellReuseIdentifier: "LectureListCell")
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -44,15 +46,30 @@ extension MainVC {
 
 extension MainVC: UITableViewDelegate, UITableViewDataSource {
     
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 2
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        if section == 0{
+            return 1
+        } else {
+            return 2
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = lectureTableView.dequeueReusableCell(withIdentifier: "PopularLectureTVCell", for: indexPath)
-        cell.separatorInset = UIEdgeInsets(top: 0, left: UIScreen.main.bounds.width, bottom: 0, right: 0)
-        return cell
+        if indexPath.section == 0 {
+            let cell = lectureTableView.dequeueReusableCell(withIdentifier: "PopularLectureTVCell", for: indexPath)
+            cell.separatorInset = UIEdgeInsets(top: 0, left: UIScreen.main.bounds.width, bottom: 0, right: 0)
+            return cell
+        } else {
+            let cell = lectureTableView.dequeueReusableCell(withIdentifier: "LectureListCell", for: indexPath)
+            cell.separatorInset = UIEdgeInsets(top: 0, left: UIScreen.main.bounds.width, bottom: 0, right: 0)
+            return cell
+        }
+        
         
     }
     

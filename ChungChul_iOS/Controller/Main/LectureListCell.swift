@@ -10,9 +10,17 @@ import UIKit
 
 class LectureListCell: UITableViewCell {
 
+    @IBOutlet var sectionLabel: UILabel!
+    @IBOutlet var lectureListCollectionView: UICollectionView!
+    
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        let nibLectureList = UINib(nibName: "LectureListCVCell", bundle: nil)
+        lectureListCollectionView.register(nibLectureList, forCellWithReuseIdentifier: "LectureListCVCell")
+
+        setCollectionViewDataSourceDelegate(dataSourceDelegate: self, forRow: 0)
+        
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -20,5 +28,30 @@ class LectureListCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
+    
+    func setCollectionViewDataSourceDelegate<D: UICollectionViewDelegate & UICollectionViewDataSource> (dataSourceDelegate: D, forRow row: Int) {
+        lectureListCollectionView.delegate = dataSourceDelegate
+        lectureListCollectionView.dataSource = dataSourceDelegate
+        lectureListCollectionView.tag = row
+        
+        lectureListCollectionView.reloadData()
+    }
+    
+}
+
+extension LectureListCell: UICollectionViewDelegate, UICollectionViewDataSource {
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 10
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "LectureListCVCell", for: indexPath) as! LectureListCVCell
+        cell.lectureImageView.backgroundColor = #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1)
+        cell.layer.cornerRadius = 6
+
+        return cell
+    }
+    
     
 }
