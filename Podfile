@@ -12,6 +12,8 @@ target 'ChungChul_iOS' do
     pod 'Alamofire'
     pod 'SwiftyJSON'
     pod 'ObjectMapper'
+    pod 'AlamofireObjectMapper'
+    pod 'IQKeyboardManagerSwift'
 
 
   target 'ChungChul_iOSTests' do

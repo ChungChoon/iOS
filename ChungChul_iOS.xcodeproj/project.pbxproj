@@ -18,6 +18,12 @@
 		BC6A21A221830549007B751B /* TabBarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6A21A121830549007B751B /* TabBarVC.swift */; };
 		BC6F28E521833A0200B64524 /* StudentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6F28E421833A0200B64524 /* StudentVC.swift */; };
 		BC6F28E721833A0D00B64524 /* TeacherVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6F28E621833A0D00B64524 /* TeacherVC.swift */; };
+		BC6F28EA218341A500B64524 /* NetworkModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6F28E9218341A500B64524 /* NetworkModel.swift */; };
+		BC6F28EC218341BB00B64524 /* NetworkCallback.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6F28EB218341BB00B64524 /* NetworkCallback.swift */; };
+		BC6F28EE21834AE500B64524 /* SignUpStudentDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6F28ED21834AE500B64524 /* SignUpStudentDataModel.swift */; };
+		BC6F28F1218353EE00B64524 /* JoinModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6F28F0218353EE00B64524 /* JoinModel.swift */; };
+		BC6F28F321835AA500B64524 /* DuplicateEmailDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6F28F221835AA500B64524 /* DuplicateEmailDataModel.swift */; };
+		BC6F28F52183845900B64524 /* SignInVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6F28F42183845900B64524 /* SignInVC.swift */; };
 		BC87E00221751C4700B7322E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC87E00121751C4700B7322E /* AppDelegate.swift */; };
 		BC87E00421751C4700B7322E /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC87E00321751C4700B7322E /* MainVC.swift */; };
 		BC87E00721751C4700B7322E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BC87E00521751C4700B7322E /* Main.storyboard */; };
@@ -78,6 +84,12 @@
 		BC6A21A121830549007B751B /* TabBarVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarVC.swift; sourceTree = "<group>"; };
 		BC6F28E421833A0200B64524 /* StudentVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentVC.swift; sourceTree = "<group>"; };
 		BC6F28E621833A0D00B64524 /* TeacherVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeacherVC.swift; sourceTree = "<group>"; };
+		BC6F28E9218341A500B64524 /* NetworkModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkModel.swift; sourceTree = "<group>"; };
+		BC6F28EB218341BB00B64524 /* NetworkCallback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkCallback.swift; sourceTree = "<group>"; };
+		BC6F28ED21834AE500B64524 /* SignUpStudentDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpStudentDataModel.swift; sourceTree = "<group>"; };
+		BC6F28F0218353EE00B64524 /* JoinModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinModel.swift; sourceTree = "<group>"; };
+		BC6F28F221835AA500B64524 /* DuplicateEmailDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DuplicateEmailDataModel.swift; sourceTree = "<group>"; };
+		BC6F28F42183845900B64524 /* SignInVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInVC.swift; sourceTree = "<group>"; };
 		BC87DFFE21751C4700B7322E /* ChungChul_iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChungChul_iOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC87E00121751C4700B7322E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BC87E00321751C4700B7322E /* MainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
@@ -176,6 +188,24 @@
 			path = More;
 			sourceTree = "<group>";
 		};
+		BC6F28E82183419000B64524 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				BC6F28EF218353DA00B64524 /* Login */,
+				BC6F28E9218341A500B64524 /* NetworkModel.swift */,
+				BC6F28EB218341BB00B64524 /* NetworkCallback.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		BC6F28EF218353DA00B64524 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				BC6F28F0218353EE00B64524 /* JoinModel.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
 		BC87DFF521751C4600B7322E = {
 			isa = PBXGroup;
 			children = (
@@ -204,6 +234,7 @@
 				BCB9D837217F310900D86908 /* Extension.swift */,
 				BC87E00B21751C4900B7322E /* Assets.xcassets */,
 				BC87E01021751C4900B7322E /* Info.plist */,
+				BC6F28E82183419000B64524 /* Network */,
 				BCD7D7A62176481F003238BB /* Model */,
 				BCD7D7A721764826003238BB /* View */,
 				BCD7D7A82176482E003238BB /* Controller */,
@@ -260,6 +291,8 @@
 		BCD7D7A62176481F003238BB /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				BC6F28ED21834AE500B64524 /* SignUpStudentDataModel.swift */,
+				BC6F28F221835AA500B64524 /* DuplicateEmailDataModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -289,6 +322,7 @@
 			isa = PBXGroup;
 			children = (
 				BCD7D7AC21764A2C003238BB /* LoginVC.swift */,
+				BC6F28F42183845900B64524 /* SignInVC.swift */,
 				BCD7D7AF21764DAA003238BB /* SignUpVC.swift */,
 				BC6F28E421833A0200B64524 /* StudentVC.swift */,
 				BC6F28E621833A0D00B64524 /* TeacherVC.swift */,
@@ -479,8 +513,10 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-ChungChul_iOS/Pods-ChungChul_iOS-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/AlamofireObjectMapper/AlamofireObjectMapper.framework",
 				"${BUILT_PRODUCTS_DIR}/BigInt/BigInt.framework",
 				"${BUILT_PRODUCTS_DIR}/CryptoSwift/CryptoSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/ObjectMapper/ObjectMapper.framework",
 				"${BUILT_PRODUCTS_DIR}/PromiseKit/PromiseKit.framework",
 				"${BUILT_PRODUCTS_DIR}/Result/Result.framework",
@@ -496,8 +532,10 @@
 			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireObjectMapper.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BigInt.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CryptoSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManagerSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjectMapper.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PromiseKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Result.framework",
@@ -525,22 +563,28 @@
 				BC6F28E521833A0200B64524 /* StudentVC.swift in Sources */,
 				BC6A219D21820856007B751B /* CommentTVCell.swift in Sources */,
 				BC6A21A02182C4DB007B751B /* MoreVC.swift in Sources */,
+				BC6F28EC218341BB00B64524 /* NetworkCallback.swift in Sources */,
 				BCB9D834217F05AD00D86908 /* PopularLectureTVCell.swift in Sources */,
 				BCB9D843217F913300D86908 /* MyLectureVC.swift in Sources */,
 				BC87E00421751C4700B7322E /* MainVC.swift in Sources */,
 				BCB9D840217F64A700D86908 /* TypeListVC.swift in Sources */,
 				BCB9D8502181B69800D86908 /* DetailVC.swift in Sources */,
+				BC6F28EE21834AE500B64524 /* SignUpStudentDataModel.swift in Sources */,
 				BCB9D83D217F528500D86908 /* LectureListCell.swift in Sources */,
 				BCB9D849217FA14400D86908 /* OnOffLineTVCell.swift in Sources */,
 				BCB9D84C21815C2E00D86908 /* LectureListCVCell.swift in Sources */,
 				BC6A21972182082C007B751B /* IntroduceTVCell.swift in Sources */,
 				BC87E00221751C4700B7322E /* AppDelegate.swift in Sources */,
 				BCB9D836217F05CB00D86908 /* PopularLectureCVCell.swift in Sources */,
+				BC6F28F321835AA500B64524 /* DuplicateEmailDataModel.swift in Sources */,
+				BC6F28EA218341A500B64524 /* NetworkModel.swift in Sources */,
 				BCD7D7AD21764A2C003238BB /* LoginVC.swift in Sources */,
+				BC6F28F52183845900B64524 /* SignInVC.swift in Sources */,
 				BCD7D7B021764DAA003238BB /* SignUpVC.swift in Sources */,
 				BC87E00A21751C4700B7322E /* ChungChul_iOS.xcdatamodeld in Sources */,
 				BCB9D838217F310900D86908 /* Extension.swift in Sources */,
 				BC6A219921820838007B751B /* PlanTVCell.swift in Sources */,
+				BC6F28F1218353EE00B64524 /* JoinModel.swift in Sources */,
 				BC6A21A221830549007B751B /* TabBarVC.swift in Sources */,
 				BC6F28E721833A0D00B64524 /* TeacherVC.swift in Sources */,
 				BC6A21952182081D007B751B /* InformationTVCell.swift in Sources */,

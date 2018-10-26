@@ -9,6 +9,17 @@
 import Foundation
 import UIKit
 
+extension UITextField {
+    
+    //MARK: TextField UnderLine Make
+    func addBorderBottom(height: CGFloat, color: UIColor) {
+        let border = CALayer()
+        border.frame = CGRect(x: 0, y: self.frame.height-height+5, width: self.frame.width, height: height)
+        border.backgroundColor = color.cgColor
+        self.layer.addSublayer(border)
+    }
+}
+
 extension UIViewController : UITextFieldDelegate, UIScrollViewDelegate{
     
     override open func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
