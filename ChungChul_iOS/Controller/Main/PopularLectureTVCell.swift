@@ -19,6 +19,9 @@ class PopularLectureTVCell: UITableViewCell {
     let itemHeight = CGFloat(290)
     var itemWidth = CGFloat(0)
     
+    private var shadowLayer: CAShapeLayer!
+    private var cornerRadius: CGFloat = 10
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         
@@ -49,6 +52,22 @@ class PopularLectureTVCell: UITableViewCell {
         
         popularLectureCollectionView.reloadData()
     }
+    
+    func shadowRadiusView(_ shadowView: UIView){
+        if shadowLayer == nil {
+            print("2")
+            shadowLayer = CAShapeLayer()
+            
+            shadowLayer.path = UIBezierPath(roundedRect: bounds, cornerRadius: cornerRadius).cgPath
+            shadowLayer.shadowColor = UIColor.black.cgColor
+            shadowLayer.shadowPath = shadowLayer.path
+            shadowLayer.shadowOffset = CGSize(width: 3.0, height: 3.0)
+            shadowLayer.shadowOpacity = 0.2
+            shadowLayer.shadowRadius = 3
+            
+            shadowView.layer.insertSublayer(shadowLayer, at: 0)
+        }
+    }
 
 }
 
@@ -60,12 +79,11 @@ extension PopularLectureTVCell: UICollectionViewDelegate, UICollectionViewDataSo
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PopularLectureCVCell", for: indexPath) as! PopularLectureCVCell
-        cell.layer.masksToBounds = true
-        cell.layer.cornerRadius = 6
-        
+
+       shadowRadiusView(cell)
         return cell
     }
-    
+
     func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
         
         let pageWidth = Float(itemWidth + itemSpacing)

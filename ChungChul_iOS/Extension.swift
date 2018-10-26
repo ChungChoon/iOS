@@ -56,17 +56,25 @@ extension UIViewController : UITextFieldDelegate, UIScrollViewDelegate{
 
 extension UIView {
     
+    func typeImageViewSetting(_ button: UIButton){
+        button.layer.masksToBounds = true
+        button.layer.cornerRadius = 10
+        button.layer.borderWidth = 1
+        button.layer.borderColor = #colorLiteral(red: 0.3176470588, green: 0.4509803922, blue: 0.8941176471, alpha: 1)
+        button.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+        button.setTitleColor(#colorLiteral(red: 0.3176470588, green: 0.4509803922, blue: 0.8941176471, alpha: 1), for: .normal)
+    }
+    
     // OUTPUT 1
-    func dropShadow(scale: Bool = true) {
-        layer.masksToBounds = false
+    func dropShadow() {
+        // set the corner radius
+        layer.cornerRadius = 6.0
+        layer.masksToBounds = true
+        // set the shadow properties
         layer.shadowColor = UIColor.black.cgColor
-        layer.shadowOpacity = 0.5
-        layer.shadowOffset = CGSize(width: -1, height: 1)
-        layer.shadowRadius = 1
-        
-        layer.shadowPath = UIBezierPath(rect: bounds).cgPath
-        layer.shouldRasterize = true
-        layer.rasterizationScale = scale ? UIScreen.main.scale : 1
+        layer.shadowOffset = CGSize(width: 0, height: 3.0)
+        layer.shadowOpacity = 0.2
+        layer.shadowRadius = 6.0
     }
     
     // OUTPUT 2
@@ -76,7 +84,7 @@ extension UIView {
         layer.shadowOpacity = opacity
         layer.shadowOffset = offSet
         layer.shadowRadius = radius
-        
+        layer.cornerRadius = 6
         layer.shadowPath = UIBezierPath(rect: self.bounds).cgPath
         layer.shouldRasterize = true
         layer.rasterizationScale = scale ? UIScreen.main.scale : 1

@@ -14,6 +14,10 @@
 		BC6A219921820838007B751B /* PlanTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6A219821820838007B751B /* PlanTVCell.swift */; };
 		BC6A219B2182084A007B751B /* TeacherTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6A219A2182084A007B751B /* TeacherTVCell.swift */; };
 		BC6A219D21820856007B751B /* CommentTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6A219C21820856007B751B /* CommentTVCell.swift */; };
+		BC6A21A02182C4DB007B751B /* MoreVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6A219F2182C4DB007B751B /* MoreVC.swift */; };
+		BC6A21A221830549007B751B /* TabBarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6A21A121830549007B751B /* TabBarVC.swift */; };
+		BC6F28E521833A0200B64524 /* StudentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6F28E421833A0200B64524 /* StudentVC.swift */; };
+		BC6F28E721833A0D00B64524 /* TeacherVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6F28E621833A0D00B64524 /* TeacherVC.swift */; };
 		BC87E00221751C4700B7322E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC87E00121751C4700B7322E /* AppDelegate.swift */; };
 		BC87E00421751C4700B7322E /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC87E00321751C4700B7322E /* MainVC.swift */; };
 		BC87E00721751C4700B7322E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BC87E00521751C4700B7322E /* Main.storyboard */; };
@@ -70,6 +74,10 @@
 		BC6A219821820838007B751B /* PlanTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanTVCell.swift; sourceTree = "<group>"; };
 		BC6A219A2182084A007B751B /* TeacherTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeacherTVCell.swift; sourceTree = "<group>"; };
 		BC6A219C21820856007B751B /* CommentTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentTVCell.swift; sourceTree = "<group>"; };
+		BC6A219F2182C4DB007B751B /* MoreVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MoreVC.swift; path = ChungChul_iOS/Controller/More/MoreVC.swift; sourceTree = SOURCE_ROOT; };
+		BC6A21A121830549007B751B /* TabBarVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarVC.swift; sourceTree = "<group>"; };
+		BC6F28E421833A0200B64524 /* StudentVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentVC.swift; sourceTree = "<group>"; };
+		BC6F28E621833A0D00B64524 /* TeacherVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeacherVC.swift; sourceTree = "<group>"; };
 		BC87DFFE21751C4700B7322E /* ChungChul_iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChungChul_iOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC87E00121751C4700B7322E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BC87E00321751C4700B7322E /* MainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
@@ -158,6 +166,14 @@
 				BC6A219C21820856007B751B /* CommentTVCell.swift */,
 			);
 			path = TableViewCell;
+			sourceTree = "<group>";
+		};
+		BC6A219E2182C4B3007B751B /* More */ = {
+			isa = PBXGroup;
+			children = (
+				BC6A219F2182C4DB007B751B /* MoreVC.swift */,
+			);
+			path = More;
 			sourceTree = "<group>";
 		};
 		BC87DFF521751C4600B7322E = {
@@ -261,6 +277,7 @@
 		BCD7D7A82176482E003238BB /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				BC6A219E2182C4B3007B751B /* More */,
 				BCD7D7AB21764A17003238BB /* Login */,
 				BCD7D7AE21764A3A003238BB /* Main */,
 				BCB9D841217F911700D86908 /* MyLecture */,
@@ -273,6 +290,8 @@
 			children = (
 				BCD7D7AC21764A2C003238BB /* LoginVC.swift */,
 				BCD7D7AF21764DAA003238BB /* SignUpVC.swift */,
+				BC6F28E421833A0200B64524 /* StudentVC.swift */,
+				BC6F28E621833A0D00B64524 /* TeacherVC.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -280,6 +299,7 @@
 		BCD7D7AE21764A3A003238BB /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				BC6A21A121830549007B751B /* TabBarVC.swift */,
 				BC87E00321751C4700B7322E /* MainVC.swift */,
 				BCB9D833217F05AD00D86908 /* PopularLectureTVCell.swift */,
 				BCB9D835217F05CB00D86908 /* PopularLectureCVCell.swift */,
@@ -502,7 +522,9 @@
 			files = (
 				BC6A219B2182084A007B751B /* TeacherTVCell.swift in Sources */,
 				BCB9D846217F91FB00D86908 /* MyLectureTVCell.swift in Sources */,
+				BC6F28E521833A0200B64524 /* StudentVC.swift in Sources */,
 				BC6A219D21820856007B751B /* CommentTVCell.swift in Sources */,
+				BC6A21A02182C4DB007B751B /* MoreVC.swift in Sources */,
 				BCB9D834217F05AD00D86908 /* PopularLectureTVCell.swift in Sources */,
 				BCB9D843217F913300D86908 /* MyLectureVC.swift in Sources */,
 				BC87E00421751C4700B7322E /* MainVC.swift in Sources */,
@@ -519,6 +541,8 @@
 				BC87E00A21751C4700B7322E /* ChungChul_iOS.xcdatamodeld in Sources */,
 				BCB9D838217F310900D86908 /* Extension.swift in Sources */,
 				BC6A219921820838007B751B /* PlanTVCell.swift in Sources */,
+				BC6A21A221830549007B751B /* TabBarVC.swift in Sources */,
+				BC6F28E721833A0D00B64524 /* TeacherVC.swift in Sources */,
 				BC6A21952182081D007B751B /* InformationTVCell.swift in Sources */,
 				BCB9D8542181D9DA00D86908 /* HeaderView.swift in Sources */,
 			);
@@ -693,7 +717,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.godpp.ChungChul-iOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -712,7 +736,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.godpp.ChungChul-iOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

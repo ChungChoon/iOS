@@ -10,7 +10,7 @@ import UIKit
 
 class PopularLectureCVCell: UICollectionViewCell {
     
-    @IBOutlet var typeImageView: UIImageView!
+    @IBOutlet var typeImageButton: UIButton!
     @IBOutlet var lectureTitleLabel: UILabel!
     @IBOutlet var lectureAddressLabel: UILabel!
     @IBOutlet var lectureNumberOfTimeLabel: UILabel!
@@ -21,6 +21,13 @@ class PopularLectureCVCell: UICollectionViewCell {
     @IBOutlet var farmNameLabel: UILabel!
     @IBOutlet var teacherNameLabel: UILabel!
     @IBOutlet var purchaseButton: UIButton!
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        
+        typeImageViewSetting(typeImageButton)
+    }
+    
 
 }
 

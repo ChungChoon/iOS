@@ -10,21 +10,25 @@ import UIKit
 
 class SignUpVC: UIViewController {
 
+    @IBOutlet var studentJoinButton: UIButton!
+    @IBOutlet var teacherJoinButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        studentJoinButton.addTarget(self, action: #selector(studentJoinButtonAction), for: .touchUpInside)
+        teacherJoinButton.addTarget(self, action: #selector(teacherJoinButtonAction), for: .touchUpInside)
+    }
+
+}
+
+extension SignUpVC {
+    
+    @objc func studentJoinButtonAction() {
+        
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    @objc func teacherJoinButtonAction() {
+        
     }
-    */
-
 }
