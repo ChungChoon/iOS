@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import web3swift
 
 class StudentVC: UIViewController, NetworkCallback {
 
@@ -26,6 +27,8 @@ class StudentVC: UIViewController, NetworkCallback {
     
     var genderArray = ["남자", "여자"]
     var sex = 1
+    
+    var privateKeyPath : KeystoreManager?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,10 +56,14 @@ class StudentVC: UIViewController, NetworkCallback {
     func networkResult(resultData: Any, code: String) {
         print(code)
         if code == "Success To Sign Up" {
+            let main = UIStoryboard(name: "Main", bundle: nil)
+            let tabBarVC = main.instantiateViewController(withIdentifier: "TabBarVC") as! TabBarVC
+            UIApplication.shared.keyWindow?.rootViewController = tabBarVC
             
         } else if code == "Null Value" {
-            
+            simpleAlert(title: "회원가입 오류", msg: "오류가 났다!")
         } else if code == "Internal Server Error" {
+            simpleAlert(title: "회원가입 오류", msg: "오류가 났다!")
             
         }
         
@@ -193,9 +200,38 @@ extension StudentVC {
         let name = gsno(nameLabel.text)
         let hp = gsno(phoneNumberLabel.text)
         let birth = gsno(birthLabel.text)
+        var wallet = ""
+        var privateKey = ""
+        do{
+            let userDir = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
+            let keystoreManager = KeystoreManager.managerForPath(userDir + "/keystore")
+            var ks: BIP32Keystore?
+            if (keystoreManager?.addresses?.count == 0) {
+                let password = passwordTextField.text!
+                let mnemonic = try! BIP39.generateMnemonics(bitsOfEntropy: 256)!
+                let keystore = try! BIP32Keystore(mnemonics: mnemonic, password: password, mnemonicsPassword: String((password).reversed()))
+                ks = keystore
+                let keydata = try JSONEncoder().encode(ks?.keystoreParams)
+                FileManager.default.createFile(atPath: userDir + "/keystore"+"/key.json", contents: keydata, attributes: nil)
+                
+                print(userDir)
+                wallet = gsno(ks?.addresses![0].address)
+                let path = userDir+"/keystore/"
+                privateKeyPath =  KeystoreManager.managerForPath(path, scanForHDwallets: true, suffix: "json")
+                let key = try privateKeyPath?.UNSAFE_getPrivateKeyData(password: password, account: ((privateKeyPath?.addresses?.first)!))
+                print("pkey",key?.toHexString())
+                wallet = gsno(ks?.addresses![0].address)
+                privateKey = gsno(key?.toHexString())
+                
+                let model = JoinModel(self)
+                model.joinStudentModel(mail: mail, passwd: passwd, name: name, sex: sex, hp: hp, birth: birth, private_key: privateKey, wallet: wallet)
+            } else {
+                ks = keystoreManager?.walletForAddress((keystoreManager?.addresses![0])!) as? BIP32Keystore
+            }
+        } catch {
+            print(error.localizedDescription)
+        }
         
-        let model = JoinModel(self)
-        model.joinStudentModel(mail: mail, passwd: passwd, name: name, sex: sex, hp: hp, birth: birth, private_key: "", wallet: "")
     }
     
     @objc func datePickerValueChanged(sender:UIDatePicker) {

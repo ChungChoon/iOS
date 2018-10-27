@@ -7,12 +7,12 @@
 //
 
 import UIKit
+import web3swift
 
 class LoginVC: UIViewController {
 
     @IBOutlet var loginbutton: UIButton!
     @IBOutlet var joinButton: UIButton!
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
