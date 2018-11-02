@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import web3swift
 
-class SignInVC: UIViewController {
+class SignInVC: UIViewController, NetworkCallback {
     
     @IBOutlet var emailTextField: UITextField!
     @IBOutlet var passwordTextField: UITextField!
@@ -17,6 +18,7 @@ class SignInVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         borderTextField()
+        doneButton.addTarget(self, action: #selector(doneButtonAction), for: .touchUpInside)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -28,6 +30,22 @@ class SignInVC: UIViewController {
         super.viewWillDisappear(true)
         self.title = " "
     }
+    
+    func networkResult(resultData: Any, code: String) {
+        if code == "Success To Sign In" {
+            let main = UIStoryboard(name: "Main", bundle: nil)
+            let tabBarVC = main.instantiateViewController(withIdentifier: "TabBarVC") as! TabBarVC
+            UIApplication.shared.keyWindow?.rootViewController = tabBarVC
+            
+        } else if code == "Fail To Sign In" {
+            let msg = resultData as! String
+            simpleAlert(title: "로그인 오류", msg: msg)
+        }
+    }
+    
+    func networkFailed() {
+        simpleAlert(title: "네트워크 오류", msg: "인터넷 연결을 확인하세요.")
+    }
 }
 
 extension SignInVC {
@@ -38,7 +56,8 @@ extension SignInVC {
     }
     
     @objc func doneButtonAction(){
-        
+        let model = LoginModel(self)
+        model.loginModel(email: gsno(emailTextField.text), password: gsno(passwordTextField.text))
     }
     
 }

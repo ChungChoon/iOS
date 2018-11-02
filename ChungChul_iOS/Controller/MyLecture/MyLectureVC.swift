@@ -18,8 +18,10 @@ class MyLectureVC: UIViewController {
         myLectureTableView.delegate = self
         myLectureTableView.dataSource = self
         myLectureTableView.register(nibMyLecture, forCellReuseIdentifier: "MyLectureTVCell")
-        myLectureTableView.allowsSelection = false
+        myLectureTableView.allowsSelection = true
     }
+    
+
     
 }
 
@@ -33,7 +35,7 @@ extension MyLectureVC: UITableViewDelegate, UITableViewDataSource {
         if section == 0{
             return 1
         } else {
-            return 10
+            return 1
         }
     }
     
@@ -45,10 +47,15 @@ extension MyLectureVC: UITableViewDelegate, UITableViewDataSource {
             return cell
         } else {
             let cell = myLectureTableView.dequeueReusableCell(withIdentifier: "MyLectureTVCell", for: indexPath) as! MyLectureTVCell
-            
             return cell
         }
-        return UITableViewCell()
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        let aa = self.storyboard?.instantiateViewController(withIdentifier: "VoteVC") as! VoteVC
+//        self.present(aa, animated: true, completion: nil)
+//        let cell = myLectureTableView.dequeueReusableCell(withIdentifier: "MyLectureTVCell", for: indexPath) as! MyLectureTVCell
+//        cell.voteButton.removeFromSuperview()
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

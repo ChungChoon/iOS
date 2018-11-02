@@ -24,10 +24,12 @@ class MyLectureTVCell: UITableViewCell {
     @IBOutlet var voteButton: UIButton!
     @IBOutlet var bottmView: UIView!
     
-
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        voteButton.layer.masksToBounds = true
+        voteButton.layer.cornerRadius = 15
+        voteButton.layer.borderColor = #colorLiteral(red: 0.388343066, green: 0.5422144532, blue: 0.9160783887, alpha: 1)
+        voteButton.layer.borderWidth = 1.0
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

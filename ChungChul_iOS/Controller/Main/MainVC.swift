@@ -8,21 +8,36 @@
 
 import UIKit
 
-class MainVC: UIViewController {
+extension Notification.Name{
+    static let gotoDetail = Notification.Name("gotoDetail")
+    static let gotoMain = Notification.Name("gotoMain")
+}
+
+class MainVC: UIViewController, NetworkCallback {
     
     @IBOutlet var lectureTableView: UITableView!
     
     var titleTapGestureRecognizer: UITapGestureRecognizer!
+    
+    var resposeData: HomeDataModel?
+    var popularData: [PopularDataVO]?
+
+    var row : Int = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        lectureTableView.delegate = self
-        lectureTableView.dataSource = self
+        lectureTableView.tableFooterView = UIView(frame: CGRect.zero)
+        lectureTableView.tableHeaderView = UIView(frame: CGRect.zero)
+        let model = LectureModel(self)
+        model.totalLectureCall(token: gsno(UserDefaults.standard.string(forKey: "token")))
+
         lectureTableView.allowsSelection = false
         let nibLectureList = UINib(nibName: "LectureListCell", bundle: nil)
         lectureTableView.register(nibLectureList, forCellReuseIdentifier: "LectureListCell")
         navigationBarSetting()
+        
+        NotificationCenter.default.addObserver(self,selector: #selector(gotoDetail(notification:)),name: .gotoDetail,object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(gotoMain(notification:)), name: .gotoMain, object: nil)
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -40,7 +55,33 @@ class MainVC: UIViewController {
         super.viewWillDisappear(true)
         self.navigationController?.navigationBar.removeGestureRecognizer(titleTapGestureRecognizer)
     }
+    
+    func networkResult(resultData: Any, code: String) {
+        if code == "Success To Get Information"{
+            resposeData = resultData as? HomeDataModel
+            popularData = resposeData?.popular
+            lectureTableView.delegate = self
+            lectureTableView.dataSource = self
+            lectureTableView.reloadData()
+        } else {
+            simpleAlert(title: "오류", msg: "개발자에게 문의하세요.")
+        }
+    }
+    
+    func networkFailed() {
+        simpleAlert(title: "네트워크 오류", msg: "인터넷 연결을 확인하세요.")
+    }
 
+    @objc func gotoDetail(notification: NSNotification){
+        row = gino(notification.userInfo!["row"] as? Int)
+        let detailVC = self.storyboard?.instantiateViewController(withIdentifier: "DetailVC") as! DetailVC
+        detailVC.data = popularData![row]
+        self.present(detailVC, animated: false, completion: nil)
+    }
+    
+    @objc func gotoMain(notification: NSNotification){
+
+    }
 }
 
 extension MainVC {
@@ -67,21 +108,26 @@ extension MainVC: UITableViewDelegate, UITableViewDataSource {
         if section == 0{
             return 1
         } else {
-            return 2
+            return 1
         }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         if indexPath.section == 0 {
-            let cell = lectureTableView.dequeueReusableCell(withIdentifier: "PopularLectureTVCell", for: indexPath)
+            let cell = lectureTableView.dequeueReusableCell(withIdentifier: "PopularLectureTVCell", for: indexPath) as! PopularLectureTVCell
             cell.separatorInset = UIEdgeInsets(top: 0, left: UIScreen.main.bounds.width, bottom: 0, right: 0)
+            if popularData != nil {
+                cell.popularData = popularData
+            }
+            return cell
             
-            return cell
         } else {
-            let cell = lectureTableView.dequeueReusableCell(withIdentifier: "LectureListCell", for: indexPath)
+            let cell = lectureTableView.dequeueReusableCell(withIdentifier: "LectureListCell", for: indexPath) as! LectureListCell
+            cell.sectionLabel.text = "작물 재배 실습 교육"
             cell.separatorInset = UIEdgeInsets(top: 0, left: UIScreen.main.bounds.width, bottom: 0, right: 0)
             return cell
+            
         }
         
         

@@ -9,6 +9,12 @@
 /* Begin PBXBuildFile section */
 		709E18E3F890A1E90BB6B5B1 /* Pods_ChungChul_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E11251E557BA8035A3186A2 /* Pods_ChungChul_iOS.framework */; };
 		79845B9F0C21FF5D26EA8C56 /* Pods_ChungChul_iOSTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39F17AA51548F522AF78F77D /* Pods_ChungChul_iOSTests.framework */; };
+		BC474D37218AD21600CE1043 /* EvaluationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC474D36218AD21600CE1043 /* EvaluationVC.swift */; };
+		BC474D39218AF70400CE1043 /* RatingXIB.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC474D38218AF70400CE1043 /* RatingXIB.xib */; };
+		BC474D3B218AF85300CE1043 /* RatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC474D3A218AF85300CE1043 /* RatingView.swift */; };
+		BC474D3E218AFA6200CE1043 /* TotalEvaluationTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC474D3D218AFA6200CE1043 /* TotalEvaluationTVCell.swift */; };
+		BC474D40218B722D00CE1043 /* EvaluationListTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC474D3F218B722D00CE1043 /* EvaluationListTVCell.swift */; };
+		BC474D42218B725500CE1043 /* DescriptionTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC474D41218B725500CE1043 /* DescriptionTVCell.swift */; };
 		BC6A21952182081D007B751B /* InformationTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6A21942182081D007B751B /* InformationTVCell.swift */; };
 		BC6A21972182082C007B751B /* IntroduceTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6A21962182082C007B751B /* IntroduceTVCell.swift */; };
 		BC6A219921820838007B751B /* PlanTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6A219821820838007B751B /* PlanTVCell.swift */; };
@@ -24,6 +30,15 @@
 		BC6F28F1218353EE00B64524 /* JoinModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6F28F0218353EE00B64524 /* JoinModel.swift */; };
 		BC6F28F321835AA500B64524 /* DuplicateEmailDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6F28F221835AA500B64524 /* DuplicateEmailDataModel.swift */; };
 		BC6F28F52183845900B64524 /* SignInVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6F28F42183845900B64524 /* SignInVC.swift */; };
+		BC6F28F72183F7C100B64524 /* LoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6F28F62183F7C100B64524 /* LoginModel.swift */; };
+		BC6F28F92183F88800B64524 /* LoginDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6F28F82183F88800B64524 /* LoginDataModel.swift */; };
+		BC6F28FB2183F8D900B64524 /* LoginDataVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6F28FA2183F8D900B64524 /* LoginDataVO.swift */; };
+		BC6F28FD218410EC00B64524 /* LectureModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6F28FC218410EC00B64524 /* LectureModel.swift */; };
+		BC6F290121844C7200B64524 /* HomeDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6F290021844C7200B64524 /* HomeDataModel.swift */; };
+		BC6F290321844CA000B64524 /* PopularDataVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6F290221844CA000B64524 /* PopularDataVO.swift */; };
+		BC6F290521844CB900B64524 /* OfflineDataVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6F290421844CB900B64524 /* OfflineDataVO.swift */; };
+		BC6F290721844CC900B64524 /* OnlineDataVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6F290621844CC900B64524 /* OnlineDataVO.swift */; };
+		BC6F2909218494B400B64524 /* DetailVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6F2908218494B400B64524 /* DetailVO.swift */; };
 		BC87E00221751C4700B7322E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC87E00121751C4700B7322E /* AppDelegate.swift */; };
 		BC87E00421751C4700B7322E /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC87E00321751C4700B7322E /* MainVC.swift */; };
 		BC87E00721751C4700B7322E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BC87E00521751C4700B7322E /* Main.storyboard */; };
@@ -75,6 +90,12 @@
 		583F9579DFABFDEBCF01B3E5 /* Pods-ChungChul_iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChungChul_iOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-ChungChul_iOS/Pods-ChungChul_iOS.release.xcconfig"; sourceTree = "<group>"; };
 		8E11251E557BA8035A3186A2 /* Pods_ChungChul_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ChungChul_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AEFA295204D5F357C42AEEB1 /* Pods-ChungChul_iOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChungChul_iOSTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ChungChul_iOSTests/Pods-ChungChul_iOSTests.release.xcconfig"; sourceTree = "<group>"; };
+		BC474D36218AD21600CE1043 /* EvaluationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EvaluationVC.swift; sourceTree = "<group>"; };
+		BC474D38218AF70400CE1043 /* RatingXIB.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RatingXIB.xib; sourceTree = "<group>"; };
+		BC474D3A218AF85300CE1043 /* RatingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingView.swift; sourceTree = "<group>"; };
+		BC474D3D218AFA6200CE1043 /* TotalEvaluationTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TotalEvaluationTVCell.swift; sourceTree = "<group>"; };
+		BC474D3F218B722D00CE1043 /* EvaluationListTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EvaluationListTVCell.swift; sourceTree = "<group>"; };
+		BC474D41218B725500CE1043 /* DescriptionTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionTVCell.swift; sourceTree = "<group>"; };
 		BC6A21942182081D007B751B /* InformationTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationTVCell.swift; sourceTree = "<group>"; };
 		BC6A21962182082C007B751B /* IntroduceTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroduceTVCell.swift; sourceTree = "<group>"; };
 		BC6A219821820838007B751B /* PlanTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanTVCell.swift; sourceTree = "<group>"; };
@@ -90,6 +111,15 @@
 		BC6F28F0218353EE00B64524 /* JoinModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinModel.swift; sourceTree = "<group>"; };
 		BC6F28F221835AA500B64524 /* DuplicateEmailDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DuplicateEmailDataModel.swift; sourceTree = "<group>"; };
 		BC6F28F42183845900B64524 /* SignInVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInVC.swift; sourceTree = "<group>"; };
+		BC6F28F62183F7C100B64524 /* LoginModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginModel.swift; sourceTree = "<group>"; };
+		BC6F28F82183F88800B64524 /* LoginDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginDataModel.swift; sourceTree = "<group>"; };
+		BC6F28FA2183F8D900B64524 /* LoginDataVO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginDataVO.swift; sourceTree = "<group>"; };
+		BC6F28FC218410EC00B64524 /* LectureModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LectureModel.swift; sourceTree = "<group>"; };
+		BC6F290021844C7200B64524 /* HomeDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeDataModel.swift; sourceTree = "<group>"; };
+		BC6F290221844CA000B64524 /* PopularDataVO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularDataVO.swift; sourceTree = "<group>"; };
+		BC6F290421844CB900B64524 /* OfflineDataVO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfflineDataVO.swift; sourceTree = "<group>"; };
+		BC6F290621844CC900B64524 /* OnlineDataVO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnlineDataVO.swift; sourceTree = "<group>"; };
+		BC6F2908218494B400B64524 /* DetailVO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailVO.swift; sourceTree = "<group>"; };
 		BC87DFFE21751C4700B7322E /* ChungChul_iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChungChul_iOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC87E00121751C4700B7322E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BC87E00321751C4700B7322E /* MainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
@@ -168,6 +198,35 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		BC474D3C218AFA3300CE1043 /* EvaluationTVCell */ = {
+			isa = PBXGroup;
+			children = (
+				BC474D3D218AFA6200CE1043 /* TotalEvaluationTVCell.swift */,
+				BC474D3F218B722D00CE1043 /* EvaluationListTVCell.swift */,
+				BC474D41218B725500CE1043 /* DescriptionTVCell.swift */,
+			);
+			path = EvaluationTVCell;
+			sourceTree = "<group>";
+		};
+		BC474D43218B727400CE1043 /* XIB */ = {
+			isa = PBXGroup;
+			children = (
+				BC474D38218AF70400CE1043 /* RatingXIB.xib */,
+				BCB9D83C217F528500D86908 /* LectureListCell.xib */,
+				BCB9D84B21815C2E00D86908 /* LectureListCVCell.xib */,
+				BCB9D845217F91FB00D86908 /* MyLectureTVCell.xib */,
+			);
+			path = XIB;
+			sourceTree = "<group>";
+		};
+		BC474D44218B728600CE1043 /* CustomView */ = {
+			isa = PBXGroup;
+			children = (
+				BC474D3A218AF85300CE1043 /* RatingView.swift */,
+			);
+			path = CustomView;
+			sourceTree = "<group>";
+		};
 		BC6A2193218207FE007B751B /* TableViewCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -202,6 +261,8 @@
 			isa = PBXGroup;
 			children = (
 				BC6F28F0218353EE00B64524 /* JoinModel.swift */,
+				BC6F28F62183F7C100B64524 /* LoginModel.swift */,
+				BC6F28FC218410EC00B64524 /* LectureModel.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -272,7 +333,8 @@
 				BCB9D842217F913300D86908 /* MyLectureVC.swift */,
 				BCB9D848217FA14400D86908 /* OnOffLineTVCell.swift */,
 				BCB9D844217F91FB00D86908 /* MyLectureTVCell.swift */,
-				BCB9D845217F91FB00D86908 /* MyLectureTVCell.xib */,
+				BC474D36218AD21600CE1043 /* EvaluationVC.swift */,
+				BC474D3C218AFA3300CE1043 /* EvaluationTVCell */,
 			);
 			path = MyLecture;
 			sourceTree = "<group>";
@@ -293,6 +355,13 @@
 			children = (
 				BC6F28ED21834AE500B64524 /* SignUpStudentDataModel.swift */,
 				BC6F28F221835AA500B64524 /* DuplicateEmailDataModel.swift */,
+				BC6F28F82183F88800B64524 /* LoginDataModel.swift */,
+				BC6F28FA2183F8D900B64524 /* LoginDataVO.swift */,
+				BC6F290021844C7200B64524 /* HomeDataModel.swift */,
+				BC6F290221844CA000B64524 /* PopularDataVO.swift */,
+				BC6F290421844CB900B64524 /* OfflineDataVO.swift */,
+				BC6F290621844CC900B64524 /* OnlineDataVO.swift */,
+				BC6F2908218494B400B64524 /* DetailVO.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -303,6 +372,8 @@
 				BC87E00D21751C4900B7322E /* LaunchScreen.storyboard */,
 				BCD7D7A921764878003238BB /* Login.storyboard */,
 				BC87E00521751C4700B7322E /* Main.storyboard */,
+				BC474D43218B727400CE1043 /* XIB */,
+				BC474D44218B728600CE1043 /* CustomView */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -339,9 +410,7 @@
 				BCB9D835217F05CB00D86908 /* PopularLectureCVCell.swift */,
 				BCB9D83F217F64A700D86908 /* TypeListVC.swift */,
 				BCB9D83B217F528500D86908 /* LectureListCell.swift */,
-				BCB9D83C217F528500D86908 /* LectureListCell.xib */,
 				BCB9D84A21815C2E00D86908 /* LectureListCVCell.swift */,
-				BCB9D84B21815C2E00D86908 /* LectureListCVCell.xib */,
 				BCB9D84E2181B67B00D86908 /* Detail */,
 			);
 			path = Main;
@@ -446,6 +515,7 @@
 				BCB9D82E217E47D700D86908 /* NotoSansCJKkr-DemiLight.otf in Resources */,
 				BC87E00721751C4700B7322E /* Main.storyboard in Resources */,
 				BCB9D82D217E47D700D86908 /* NotoSansCJKkr-Thin.otf in Resources */,
+				BC474D39218AF70400CE1043 /* RatingXIB.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -563,24 +633,37 @@
 				BC6F28E521833A0200B64524 /* StudentVC.swift in Sources */,
 				BC6A219D21820856007B751B /* CommentTVCell.swift in Sources */,
 				BC6A21A02182C4DB007B751B /* MoreVC.swift in Sources */,
+				BC474D42218B725500CE1043 /* DescriptionTVCell.swift in Sources */,
 				BC6F28EC218341BB00B64524 /* NetworkCallback.swift in Sources */,
 				BCB9D834217F05AD00D86908 /* PopularLectureTVCell.swift in Sources */,
 				BCB9D843217F913300D86908 /* MyLectureVC.swift in Sources */,
 				BC87E00421751C4700B7322E /* MainVC.swift in Sources */,
+				BC6F2909218494B400B64524 /* DetailVO.swift in Sources */,
 				BCB9D840217F64A700D86908 /* TypeListVC.swift in Sources */,
 				BCB9D8502181B69800D86908 /* DetailVC.swift in Sources */,
 				BC6F28EE21834AE500B64524 /* SignUpStudentDataModel.swift in Sources */,
+				BC6F28FB2183F8D900B64524 /* LoginDataVO.swift in Sources */,
 				BCB9D83D217F528500D86908 /* LectureListCell.swift in Sources */,
 				BCB9D849217FA14400D86908 /* OnOffLineTVCell.swift in Sources */,
 				BCB9D84C21815C2E00D86908 /* LectureListCVCell.swift in Sources */,
 				BC6A21972182082C007B751B /* IntroduceTVCell.swift in Sources */,
+				BC474D37218AD21600CE1043 /* EvaluationVC.swift in Sources */,
+				BC6F28FD218410EC00B64524 /* LectureModel.swift in Sources */,
 				BC87E00221751C4700B7322E /* AppDelegate.swift in Sources */,
 				BCB9D836217F05CB00D86908 /* PopularLectureCVCell.swift in Sources */,
 				BC6F28F321835AA500B64524 /* DuplicateEmailDataModel.swift in Sources */,
+				BC6F28F92183F88800B64524 /* LoginDataModel.swift in Sources */,
+				BC6F290321844CA000B64524 /* PopularDataVO.swift in Sources */,
 				BC6F28EA218341A500B64524 /* NetworkModel.swift in Sources */,
+				BC6F290721844CC900B64524 /* OnlineDataVO.swift in Sources */,
+				BC474D3B218AF85300CE1043 /* RatingView.swift in Sources */,
 				BCD7D7AD21764A2C003238BB /* LoginVC.swift in Sources */,
+				BC6F290121844C7200B64524 /* HomeDataModel.swift in Sources */,
+				BC6F28F72183F7C100B64524 /* LoginModel.swift in Sources */,
 				BC6F28F52183845900B64524 /* SignInVC.swift in Sources */,
+				BC6F290521844CB900B64524 /* OfflineDataVO.swift in Sources */,
 				BCD7D7B021764DAA003238BB /* SignUpVC.swift in Sources */,
+				BC474D3E218AFA6200CE1043 /* TotalEvaluationTVCell.swift in Sources */,
 				BC87E00A21751C4700B7322E /* ChungChul_iOS.xcdatamodeld in Sources */,
 				BCB9D838217F310900D86908 /* Extension.swift in Sources */,
 				BC6A219921820838007B751B /* PlanTVCell.swift in Sources */,
@@ -589,6 +672,7 @@
 				BC6F28E721833A0D00B64524 /* TeacherVC.swift in Sources */,
 				BC6A21952182081D007B751B /* InformationTVCell.swift in Sources */,
 				BCB9D8542181D9DA00D86908 /* HeaderView.swift in Sources */,
+				BC474D40218B722D00CE1043 /* EvaluationListTVCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

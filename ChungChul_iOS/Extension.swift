@@ -22,6 +22,40 @@ extension UITextField {
 
 extension UIViewController : UITextFieldDelegate, UIScrollViewDelegate{
     
+    func typeTextButtonSetting(_ sender: UIButton, _ type: Int) {
+        switch type {
+        case 3:
+            sender.setTitle("금융", for: .normal)
+        case 4:
+            sender.setTitle("법", for: .normal)
+        case 5:
+            sender.setTitle("농지", for: .normal)
+        case 6:
+            sender.setTitle("유통", for: .normal)
+        case 7:
+            sender.setTitle("마케팅", for: .normal)
+        case 8:
+            sender.setTitle("화훼", for: .normal)
+        case 9:
+            sender.setTitle("채소", for: .normal)
+        case 10:
+            sender.setTitle("과일", for: .normal)
+        case 11:
+            sender.setTitle("농기구", for: .normal)
+        default:
+            sender.setTitle("타입", for: .normal)
+        }
+    }
+    
+    func typeImageViewSetting(_ button: UIButton){
+        button.layer.masksToBounds = true
+        button.layer.cornerRadius = 10
+        button.layer.borderWidth = 1
+        button.layer.borderColor = #colorLiteral(red: 0.3176470588, green: 0.4509803922, blue: 0.8941176471, alpha: 1)
+        button.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+        button.setTitleColor(#colorLiteral(red: 0.3176470588, green: 0.4509803922, blue: 0.8941176471, alpha: 1), for: .normal)
+    }
+    
     override open func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
     }
@@ -67,14 +101,6 @@ extension UIViewController : UITextFieldDelegate, UIScrollViewDelegate{
 
 extension UIView {
     
-    func typeImageViewSetting(_ button: UIButton){
-        button.layer.masksToBounds = true
-        button.layer.cornerRadius = 10
-        button.layer.borderWidth = 1
-        button.layer.borderColor = #colorLiteral(red: 0.3176470588, green: 0.4509803922, blue: 0.8941176471, alpha: 1)
-        button.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
-        button.setTitleColor(#colorLiteral(red: 0.3176470588, green: 0.4509803922, blue: 0.8941176471, alpha: 1), for: .normal)
-    }
     
     // OUTPUT 1
     func dropShadow() {
@@ -101,3 +127,4 @@ extension UIView {
         layer.rasterizationScale = scale ? UIScreen.main.scale : 1
     }
 }
+

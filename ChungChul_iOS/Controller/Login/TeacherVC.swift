@@ -67,10 +67,10 @@ class TeacherVC: UIViewController, NetworkCallback {
     func networkResult(resultData: Any, code: String) {
         print(code)
         if code == "Success To Sign Up" {
-            let main = UIStoryboard(name: "Main", bundle: nil)
-            let tabBarVC = main.instantiateViewController(withIdentifier: "TabBarVC") as! TabBarVC
-            UIApplication.shared.keyWindow?.rootViewController = tabBarVC
-            
+//            let main = UIStoryboard(name: "Main", bundle: nil)
+//            let tabBarVC = main.instantiateViewController(withIdentifier: "TabBarVC") as! TabBarVC
+//            UIApplication.shared.keyWindow?.rootViewController = tabBarVC
+           performSegue(withIdentifier: "unwindToLogin", sender: self)
         } else if code == "Null Value" {
             simpleAlert(title: "회원가입 오류", msg: "오류가 났다!")
         } else if code == "Internal Server Error" {

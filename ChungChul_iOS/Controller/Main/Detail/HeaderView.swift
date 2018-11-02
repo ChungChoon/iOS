@@ -12,12 +12,13 @@ class HeaderView: UIView {
     
     @IBOutlet var contentView: UIView!
     @IBOutlet var backImageView: UIImageView!
-    @IBOutlet var typeImageView: UIImageView!
+    @IBOutlet var typeButton: UIButton!
     @IBOutlet var lectureTitleLabel: UILabel!
     @IBOutlet var teacherImageView: UIImageView!
     @IBOutlet var farmNameLabel: UILabel!
     @IBOutlet var teacherNameLabel: UILabel!
-
+    @IBOutlet var dismissButton: UIButton!
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         viewInit()

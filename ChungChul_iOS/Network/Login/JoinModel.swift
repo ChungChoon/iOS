@@ -76,6 +76,7 @@ class JoinModel : NetworkModel{
                         self.view.networkFailed()
                         return
                     }
+                    print(responseMessage.message)
                     if responseMessage.message == "Success To Sign Up" {
                         self.view.networkResult(resultData: "Success Sign Up", code: "Success To Sign Up")
                     }

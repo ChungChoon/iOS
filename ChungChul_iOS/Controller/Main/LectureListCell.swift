@@ -13,7 +13,6 @@ class LectureListCell: UITableViewCell {
     @IBOutlet var sectionLabel: UILabel!
     @IBOutlet var lectureListCollectionView: UICollectionView!
     
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         let nibLectureList = UINib(nibName: "LectureListCVCell", bundle: nil)
@@ -42,12 +41,11 @@ class LectureListCell: UITableViewCell {
 extension LectureListCell: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        return 4
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "LectureListCVCell", for: indexPath) as! LectureListCVCell
-        cell.lectureImageView.backgroundColor = #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1)
         cell.layer.cornerRadius = 6
 
         return cell

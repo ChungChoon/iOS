@@ -20,6 +20,7 @@ class LoginVC: UIViewController {
         loginbutton.addTarget(self, action: #selector(loginButtonAction), for: .touchUpInside)
         joinButton.addTarget(self, action: #selector(joinButtonAction), for: .touchUpInside)
     }
+    @IBAction func unwindToLogin(segue:UIStoryboardSegue) { }
 
 }
 

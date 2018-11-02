@@ -27,6 +27,7 @@ class StudentVC: UIViewController, NetworkCallback {
     
     var genderArray = ["남자", "여자"]
     var sex = 1
+    let ud = UserDefaults.standard
     
     var privateKeyPath : KeystoreManager?
     
@@ -56,10 +57,7 @@ class StudentVC: UIViewController, NetworkCallback {
     func networkResult(resultData: Any, code: String) {
         print(code)
         if code == "Success To Sign Up" {
-            let main = UIStoryboard(name: "Main", bundle: nil)
-            let tabBarVC = main.instantiateViewController(withIdentifier: "TabBarVC") as! TabBarVC
-            UIApplication.shared.keyWindow?.rootViewController = tabBarVC
-            
+            performSegue(withIdentifier: "unwindToLogin", sender: self)
         } else if code == "Null Value" {
             simpleAlert(title: "회원가입 오류", msg: "오류가 났다!")
         } else if code == "Internal Server Error" {
@@ -132,7 +130,7 @@ extension StudentVC {
     func addTarget(){
         doneButton.addTarget(self, action: #selector(doneButtonAction), for: .touchUpInside)
         emailTextField.addTarget(self, action: #selector(isValid), for: .editingChanged)
-        emailTextField.addTarget(self, action: #selector(duplicateEmail), for: .editingChanged)
+        emailTextField.addTarget(self, action: #selector(duplicateEmail), for: .editingDidEnd)
         passwordTextField.addTarget(self, action: #selector(isValid), for: .editingChanged)
         confirmTextField.addTarget(self, action: #selector(isValid), for: .editingChanged)
         confirmTextField.addTarget(self, action: #selector(passwordCompareAction), for: .editingChanged)
@@ -202,6 +200,7 @@ extension StudentVC {
         let birth = gsno(birthLabel.text)
         var wallet = ""
         var privateKey = ""
+        print("tabb")
         do{
             let userDir = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
             let keystoreManager = KeystoreManager.managerForPath(userDir + "/keystore")
@@ -222,7 +221,8 @@ extension StudentVC {
                 print("pkey",key?.toHexString())
                 wallet = gsno(ks?.addresses![0].address)
                 privateKey = gsno(key?.toHexString())
-                
+                print(path)
+                print(wallet)
                 let model = JoinModel(self)
                 model.joinStudentModel(mail: mail, passwd: passwd, name: name, sex: sex, hp: hp, birth: birth, private_key: privateKey, wallet: wallet)
             } else {
