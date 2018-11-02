@@ -58,21 +58,12 @@ class EvaluationListTVCell: UITableViewCell {
             minusButton.layer.borderColor = #colorLiteral(red: 0.2941176471, green: 0.4666666667, blue: 0.8705882353, alpha: 1)
             plusButton.titleLabel?.textColor = #colorLiteral(red: 0.2941176471, green: 0.4666666667, blue: 0.8705882353, alpha: 1)
             plusButton.layer.borderColor = #colorLiteral(red: 0.2941176471, green: 0.4666666667, blue: 0.8705882353, alpha: 1)
-            var bottomBorder = CALayer()
-            bottomBorder.backgroundColor = #colorLiteral(red: 0.2941176471, green: 0.4666666667, blue: 0.8705882353, alpha: 1)
-            bottomBorder.frame = CGRectMake(0, cell.frame.size.height - 1, cell.frame.size.width, 1)
-            cell.layer.addSublayer(bottomBorder)
-            
         } else {
             titleLabel.textColor = #colorLiteral(red: 0.4392156863, green: 0.4392156863, blue: 0.4392156863, alpha: 1)
             minusButton.titleLabel?.textColor = #colorLiteral(red: 0.4392156863, green: 0.4392156863, blue: 0.4392156863, alpha: 1)
             minusButton.layer.borderColor = #colorLiteral(red: 0.4392156863, green: 0.4392156863, blue: 0.4392156863, alpha: 1)
             plusButton.titleLabel?.textColor = #colorLiteral(red: 0.4392156863, green: 0.4392156863, blue: 0.4392156863, alpha: 1)
             plusButton.layer.borderColor = #colorLiteral(red: 0.4392156863, green: 0.4392156863, blue: 0.4392156863, alpha: 1)
-            var bottomBorder = CALayer()
-            bottomBorder.backgroundColor = #colorLiteral(red: 0.4392156863, green: 0.4392156863, blue: 0.4392156863, alpha: 1)
-            bottomBorder.frame = CGRectMake(0, cell.frame.size.height - 1, cell.frame.size.width, 1)
-            cell.layer.addSublayer(bottomBorder)
         }
     }
 
