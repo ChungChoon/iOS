@@ -22,6 +22,7 @@ class EvaluationVC: UIViewController {
         "커뮤니케이션",
         "전체적인 만족도"
         ]
+    
     let evaluationSubjectArray: [String] = [
     "강사가 수업준비에 성실하였나요?",
     "수업 내용에 대해 만족하셨나요?",

@@ -17,7 +17,7 @@ class LectureListCell: UITableViewCell {
         super.awakeFromNib()
         let nibLectureList = UINib(nibName: "LectureListCVCell", bundle: nil)
         lectureListCollectionView.register(nibLectureList, forCellWithReuseIdentifier: "LectureListCVCell")
-
+        separatorInset = UIEdgeInsets(top: 0, left: UIScreen.main.bounds.width, bottom: 0, right: 0)
         setCollectionViewDataSourceDelegate(dataSourceDelegate: self, forRow: 0)
         
     }

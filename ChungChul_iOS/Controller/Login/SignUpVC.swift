@@ -15,7 +15,8 @@ class SignUpVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        borderButton()
+        buttonBorderSetting(studentJoinButton, #colorLiteral(red: 1, green: 0.6156862745, blue: 0, alpha: 1))
+        buttonBorderSetting(teacherJoinButton, #colorLiteral(red: 0.2941176471, green: 0.4666666667, blue: 0.8705882353, alpha: 1))
         studentJoinButton.addTarget(self, action: #selector(studentJoinButtonAction), for: .touchUpInside)
         teacherJoinButton.addTarget(self, action: #selector(teacherJoinButtonAction), for: .touchUpInside)
     }
@@ -28,25 +29,15 @@ class SignUpVC: UIViewController {
         super.viewWillDisappear(true)
         self.title = " "
     }
-    
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(true)
-    }
-    
-
 }
 
 extension SignUpVC {
     
-    func borderButton(){
-        studentJoinButton.layer.borderWidth = 1.0
-        studentJoinButton.layer.borderColor = #colorLiteral(red: 1, green: 0.6156862745, blue: 0, alpha: 1)
-        studentJoinButton.layer.masksToBounds = false
-        studentJoinButton.layer.cornerRadius = 6
-        teacherJoinButton.layer.borderWidth = 1.0
-        teacherJoinButton.layer.borderColor = #colorLiteral(red: 0.2941176471, green: 0.4666666667, blue: 0.8705882353, alpha: 1)
-        teacherJoinButton.layer.masksToBounds = false
-        teacherJoinButton.layer.cornerRadius = 6
+    fileprivate func buttonBorderSetting(_ sender: UIButton, _ color: CGColor) {
+        sender.layer.borderWidth = 1.0
+        sender.layer.borderColor = color
+        sender.layer.masksToBounds = false
+        sender.layer.cornerRadius = 6
     }
     
     @objc func studentJoinButtonAction() {

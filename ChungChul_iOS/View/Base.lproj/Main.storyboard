@@ -20,7 +20,7 @@
         </array>
     </customFonts>
     <scenes>
-        <!--실습 교육 전체 ▼-->
+        <!--MainVC-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController storyboardIdentifier="MainVC" id="BYZ-38-t0r" customClass="MainVC" customModule="ChungChul_iOS" customModuleProvider="target" sceneMemberID="viewController">
@@ -45,7 +45,7 @@
                                                     <color key="textColor" red="0.29411764705882354" green="0.46666666666666667" blue="0.87058823529411766" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Jrd-be-lxG">
+                                                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Jrd-be-lxG">
                                                     <rect key="frame" x="0.0" y="25.5" width="375" height="304"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
@@ -175,7 +175,7 @@
                                                                     </view>
                                                                 </subviews>
                                                             </view>
-                                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="trailing" secondItem="s4N-Pw-HBB" secondAttribute="trailing" id="1fD-Mm-hP8"/>
                                                                 <constraint firstItem="BFz-oP-bU2" firstAttribute="top" secondItem="s4N-Pw-HBB" secondAttribute="top" constant="10" id="4mf-we-xV1"/>
@@ -197,6 +197,20 @@
                                                                 <constraint firstItem="8zK-lD-cMu" firstAttribute="trailing" secondItem="s4N-Pw-HBB" secondAttribute="trailing" id="vM6-t6-RWH"/>
                                                                 <constraint firstItem="BFz-oP-bU2" firstAttribute="leading" secondItem="s4N-Pw-HBB" secondAttribute="leading" constant="14" id="xan-ex-2tb"/>
                                                             </constraints>
+                                                            <userDefinedRuntimeAttributes>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                    <real key="value" value="6"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                                <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
+                                                                    <size key="value" width="0.0" height="1"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                                    <real key="value" value="1"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                                <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                                    <color key="value" red="0.43921568630000002" green="0.43921568630000002" blue="0.43921568630000002" alpha="0.84999999999999998" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                            </userDefinedRuntimeAttributes>
                                                             <connections>
                                                                 <outlet property="farmNameLabel" destination="wyz-Vp-gfr" id="9pw-RH-Jld"/>
                                                                 <outlet property="lectureAddressLabel" destination="bkG-se-y6I" id="Wq9-lT-aWf"/>
@@ -246,7 +260,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <navigationItem key="navigationItem" title="실습 교육 전체 ▼" id="yFt-hH-iH3"/>
+                    <navigationItem key="navigationItem" id="yFt-hH-iH3"/>
                     <connections>
                         <outlet property="lectureTableView" destination="tJo-UQ-cwx" id="k1U-Jr-9Qx"/>
                     </connections>
@@ -1394,7 +1408,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="K8q-11-qy3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4016.8000000000002" y="384.55772113943033"/>
+            <point key="canvasLocation" x="3582" y="367"/>
         </scene>
         <!--Tab BarVC-->
         <scene sceneID="gEd-wF-SVB">

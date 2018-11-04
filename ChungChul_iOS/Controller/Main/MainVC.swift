@@ -48,7 +48,6 @@ class MainVC: UIViewController, NetworkCallback {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
-        navigationBarSetting()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -86,16 +85,33 @@ class MainVC: UIViewController, NetworkCallback {
 
 extension MainVC {
     @objc func titleTapAction(_ theObject: AnyObject) {
-        guard let typeListVC = self.storyboard?.instantiateViewController(withIdentifier: "TypeListVC") else {return}
+        let typeListVC = self.storyboard?.instantiateViewController(withIdentifier: "TypeListVC") as! TypeListVC
+        typeListVC.delegate = self
         self.present(typeListVC, animated: true, completion: nil)
     }
     
     func navigationBarSetting(){
+        print("Call")
+        self.title = "실습 교육 전체"
         self.navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.font: UIFont(name: "NotoSansCJKkr-Bold", size: 24)!]
+
         self.navigationController?.navigationBar.backgroundColor = UIColor.white
         self.navigationController?.navigationBar.isTranslucent = false
         self.navigationController?.navigationBar.shadowImage = UIImage()
     }
+}
+
+extension MainVC: TypeSaveDelegate {
+    func updateType(_ typeList: [String]) {
+        print(typeList)
+        var titleText = ""
+        
+        for type in typeList {
+            titleText += type + " "
+        }
+        self.title = titleText
+    }
+    
 }
 
 extension MainVC: UITableViewDelegate, UITableViewDataSource {
@@ -116,16 +132,17 @@ extension MainVC: UITableViewDelegate, UITableViewDataSource {
         
         if indexPath.section == 0 {
             let cell = lectureTableView.dequeueReusableCell(withIdentifier: "PopularLectureTVCell", for: indexPath) as! PopularLectureTVCell
-            cell.separatorInset = UIEdgeInsets(top: 0, left: UIScreen.main.bounds.width, bottom: 0, right: 0)
+
             if popularData != nil {
                 cell.popularData = popularData
             }
+            
             return cell
             
         } else {
             let cell = lectureTableView.dequeueReusableCell(withIdentifier: "LectureListCell", for: indexPath) as! LectureListCell
             cell.sectionLabel.text = "작물 재배 실습 교육"
-            cell.separatorInset = UIEdgeInsets(top: 0, left: UIScreen.main.bounds.width, bottom: 0, right: 0)
+
             return cell
             
         }

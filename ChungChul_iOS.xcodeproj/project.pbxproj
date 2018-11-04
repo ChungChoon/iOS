@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		709E18E3F890A1E90BB6B5B1 /* Pods_ChungChul_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E11251E557BA8035A3186A2 /* Pods_ChungChul_iOS.framework */; };
 		79845B9F0C21FF5D26EA8C56 /* Pods_ChungChul_iOSTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39F17AA51548F522AF78F77D /* Pods_ChungChul_iOSTests.framework */; };
+		BC133170218ECBF700D346B4 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC13316F218ECBF700D346B4 /* UIViewExtension.swift */; };
 		BC474D37218AD21600CE1043 /* EvaluationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC474D36218AD21600CE1043 /* EvaluationVC.swift */; };
 		BC474D39218AF70400CE1043 /* RatingXIB.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC474D38218AF70400CE1043 /* RatingXIB.xib */; };
 		BC474D3B218AF85300CE1043 /* RatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC474D3A218AF85300CE1043 /* RatingView.swift */; };
@@ -69,6 +70,7 @@
 		BCB9D8502181B69800D86908 /* DetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCB9D84F2181B69800D86908 /* DetailVC.swift */; };
 		BCB9D8522181D81000D86908 /* HeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCB9D8512181D81000D86908 /* HeaderView.xib */; };
 		BCB9D8542181D9DA00D86908 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCB9D8532181D9DA00D86908 /* HeaderView.swift */; };
+		BCC456BE218F141300C3250B /* CaverSingleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCC456BD218F141300C3250B /* CaverSingleton.swift */; };
 		BCD7D7AA21764878003238BB /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BCD7D7A921764878003238BB /* Login.storyboard */; };
 		BCD7D7AD21764A2C003238BB /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD7D7AC21764A2C003238BB /* LoginVC.swift */; };
 		BCD7D7B021764DAA003238BB /* SignUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD7D7AF21764DAA003238BB /* SignUpVC.swift */; };
@@ -91,6 +93,7 @@
 		583F9579DFABFDEBCF01B3E5 /* Pods-ChungChul_iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChungChul_iOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-ChungChul_iOS/Pods-ChungChul_iOS.release.xcconfig"; sourceTree = "<group>"; };
 		8E11251E557BA8035A3186A2 /* Pods_ChungChul_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ChungChul_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AEFA295204D5F357C42AEEB1 /* Pods-ChungChul_iOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChungChul_iOSTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ChungChul_iOSTests/Pods-ChungChul_iOSTests.release.xcconfig"; sourceTree = "<group>"; };
+		BC13316F218ECBF700D346B4 /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 		BC474D36218AD21600CE1043 /* EvaluationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EvaluationVC.swift; sourceTree = "<group>"; };
 		BC474D38218AF70400CE1043 /* RatingXIB.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RatingXIB.xib; sourceTree = "<group>"; };
 		BC474D3A218AF85300CE1043 /* RatingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingView.swift; sourceTree = "<group>"; };
@@ -155,6 +158,7 @@
 		BCB9D84F2181B69800D86908 /* DetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailVC.swift; sourceTree = "<group>"; };
 		BCB9D8512181D81000D86908 /* HeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HeaderView.xib; sourceTree = "<group>"; };
 		BCB9D8532181D9DA00D86908 /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
+		BCC456BD218F141300C3250B /* CaverSingleton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaverSingleton.swift; sourceTree = "<group>"; };
 		BCD7D7A921764878003238BB /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		BCD7D7AC21764A2C003238BB /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
 		BCD7D7AF21764DAA003238BB /* SignUpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpVC.swift; sourceTree = "<group>"; };
@@ -217,6 +221,7 @@
 				BCB9D83C217F528500D86908 /* LectureListCell.xib */,
 				BCB9D84B21815C2E00D86908 /* LectureListCVCell.xib */,
 				BCB9D845217F91FB00D86908 /* MyLectureTVCell.xib */,
+				BCB9D8512181D81000D86908 /* HeaderView.xib */,
 			);
 			path = XIB;
 			sourceTree = "<group>";
@@ -225,6 +230,7 @@
 			isa = PBXGroup;
 			children = (
 				BC474D3A218AF85300CE1043 /* RatingView.swift */,
+				BCB9D8532181D9DA00D86908 /* HeaderView.swift */,
 			);
 			path = CustomView;
 			sourceTree = "<group>";
@@ -324,6 +330,7 @@
 				BCB9D832217E47DB00D86908 /* Font */,
 				BC87E00121751C4700B7322E /* AppDelegate.swift */,
 				BCB9D837217F310900D86908 /* Extension.swift */,
+				BC13316F218ECBF700D346B4 /* UIViewExtension.swift */,
 				BC87E00B21751C4900B7322E /* Assets.xcassets */,
 				BC87E01021751C4900B7322E /* Info.plist */,
 				BC6F28E82183419000B64524 /* Network */,
@@ -375,8 +382,6 @@
 			children = (
 				BC6A2193218207FE007B751B /* TableViewCell */,
 				BCB9D84F2181B69800D86908 /* DetailVC.swift */,
-				BCB9D8512181D81000D86908 /* HeaderView.xib */,
-				BCB9D8532181D9DA00D86908 /* HeaderView.swift */,
 			);
 			path = Detail;
 			sourceTree = "<group>";
@@ -419,6 +424,7 @@
 		BCD7D7AB21764A17003238BB /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				BCC456BD218F141300C3250B /* CaverSingleton.swift */,
 				BCD7D7AC21764A2C003238BB /* LoginVC.swift */,
 				BC6F28F42183845900B64524 /* SignInVC.swift */,
 				BCD7D7AF21764DAA003238BB /* SignUpVC.swift */,
@@ -661,6 +667,7 @@
 				BC6A219D21820856007B751B /* CommentTVCell.swift in Sources */,
 				BC6A21A02182C4DB007B751B /* MoreVC.swift in Sources */,
 				BC474D42218B725500CE1043 /* DescriptionTVCell.swift in Sources */,
+				BC133170218ECBF700D346B4 /* UIViewExtension.swift in Sources */,
 				BC6F28EC218341BB00B64524 /* NetworkCallback.swift in Sources */,
 				BCB9D834217F05AD00D86908 /* PopularLectureTVCell.swift in Sources */,
 				BCB9D843217F913300D86908 /* MyLectureVC.swift in Sources */,
@@ -681,6 +688,7 @@
 				BC6F28F321835AA500B64524 /* DuplicateEmailDataModel.swift in Sources */,
 				BC6F28F92183F88800B64524 /* LoginDataModel.swift in Sources */,
 				BC6F290321844CA000B64524 /* PopularDataVO.swift in Sources */,
+				BCC456BE218F141300C3250B /* CaverSingleton.swift in Sources */,
 				BC6F28EA218341A500B64524 /* NetworkModel.swift in Sources */,
 				BC6F290721844CC900B64524 /* OnlineDataVO.swift in Sources */,
 				BC474D3B218AF85300CE1043 /* RatingView.swift in Sources */,

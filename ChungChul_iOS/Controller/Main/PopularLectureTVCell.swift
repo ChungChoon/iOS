@@ -19,8 +19,6 @@ class PopularLectureTVCell: UITableViewCell {
     let itemHeight = CGFloat(290)
     var itemWidth = CGFloat(0)
     
-    var imgArray: [String] = ["img_popular1","img_popular2","img_popular3","img_popular4","img_popular2"]
-    
     var popularData : [PopularDataVO]? = nil{
         didSet{
             popularLectureCollectionView.reloadData()
@@ -37,12 +35,10 @@ class PopularLectureTVCell: UITableViewCell {
         }
     }
     
-    private var shadowLayer: CAShapeLayer!
-    private var cornerRadius: CGFloat = 10
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
+        separatorInset = UIEdgeInsets(top: 0, left: UIScreen.main.bounds.width, bottom: 0, right: 0)
         setCollectionViewDataSourceDelegate(dataSourceDelegate: self, forRow: 0)
     }
 
@@ -71,21 +67,6 @@ class PopularLectureTVCell: UITableViewCell {
         popularLectureCollectionView.reloadData()
     }
     
-    func shadowRadiusView(_ shadowView: UIView){
-        if shadowLayer == nil {
-            print("2")
-            shadowLayer = CAShapeLayer()
-            
-            shadowLayer.path = UIBezierPath(roundedRect: bounds, cornerRadius: cornerRadius).cgPath
-            shadowLayer.shadowColor = UIColor.black.cgColor
-            shadowLayer.shadowPath = shadowLayer.path
-            shadowLayer.shadowOffset = CGSize(width: 3.0, height: 3.0)
-            shadowLayer.shadowOpacity = 0.2
-            shadowLayer.shadowRadius = 3
-            
-            shadowView.layer.insertSublayer(shadowLayer, at: 0)
-        }
-    }
     
     func typeTextButtonSetting(_ sender: UIButton, _ type: Int) {
         switch type {
@@ -126,19 +107,19 @@ extension PopularLectureTVCell: UICollectionViewDelegate, UICollectionViewDataSo
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PopularLectureCVCell", for: indexPath) as! PopularLectureCVCell
+        cell.backgroundColor = UIColor.yellow
         let index = popularData![indexPath.row]
-        let startDate = index.start_date!
-        let endDate = index.end_date!
-        cell.lectureImageView.image = UIImage(named: imgArray[indexPath.row])
-//        cell.lectureTermLabel.text = dateFormatter.string(from: dateForm.date(from: index.start_date)!) + " ~ " + dateFormatter.string(from: dateForm.date(from: index.end_date)!)
-        print(dateForm.date(from: startDate))
+
+        
+
+
         cell.lectureTitleLabel.text = index.title
         cell.lectureAddressLabel.text = index.place
         cell.purchaseButton.setTitle("\(index.price!) KLAY", for: .normal)
-        //typeImageViewSetting(cell.typeImageButton)
+
         cell.farmNameLabel.text = index.farm_name
         cell.teacherNameLabel.text = index.name
-       shadowRadiusView(cell)
+
         return cell
     }
     

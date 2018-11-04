@@ -31,12 +31,32 @@ class SignInVC: UIViewController, NetworkCallback {
         self.title = " "
     }
     
+    fileprivate func isExistKeystoreFile(_ path: String) -> Bool {
+        return FileManager.default.fileExists(atPath: path)
+    }
+    
+    fileprivate func callCaverSingleton(_ mail: String) {
+        let instance: CaverSingleton = CaverSingleton.sharedInstance
+        instance.addKeystoreOnCaver(mail)
+    }
+    
     func networkResult(resultData: Any, code: String) {
         if code == "Success To Sign In" {
-            let main = UIStoryboard(name: "Main", bundle: nil)
-            let tabBarVC = main.instantiateViewController(withIdentifier: "TabBarVC") as! TabBarVC
-            UIApplication.shared.keyWindow?.rootViewController = tabBarVC
-            
+            let mail = gsno(emailTextField.text)
+            let userDir = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
+            let path = userDir+"/keystore/\(mail).json"
+
+            if isExistKeystoreFile(path) {
+                
+                callCaverSingleton(mail)
+                
+                let main = UIStoryboard(name: "Main", bundle: nil)
+                let tabBarVC = main.instantiateViewController(withIdentifier: "TabBarVC") as! TabBarVC
+                UIApplication.shared.keyWindow?.rootViewController = tabBarVC
+            } else {
+                simpleAlert(title: "지갑 오류", msg: "아이폰 내부에 지갑이 존재하지 않습니다!")
+            }
+
         } else if code == "Fail To Sign In" {
             let msg = resultData as! String
             simpleAlert(title: "로그인 오류", msg: msg)

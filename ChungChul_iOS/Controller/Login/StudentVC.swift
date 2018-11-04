@@ -200,36 +200,28 @@ extension StudentVC {
         let birth = gsno(birthLabel.text)
         var wallet = ""
         var privateKey = ""
-        print("tabb")
+
         do{
+            // Wallet Keystore 파일 생성
             let userDir = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
-            let keystoreManager = KeystoreManager.managerForPath(userDir + "/keystore")
-            var ks: BIP32Keystore?
-            if (keystoreManager?.addresses?.count == 0) {
-                let password = passwordTextField.text!
-                let mnemonic = try! BIP39.generateMnemonics(bitsOfEntropy: 256)!
-                let keystore = try! BIP32Keystore(mnemonics: mnemonic, password: password, mnemonicsPassword: String((password).reversed()))
-                ks = keystore
-                let keydata = try JSONEncoder().encode(ks?.keystoreParams)
-                FileManager.default.createFile(atPath: userDir + "/keystore"+"/key.json", contents: keydata, attributes: nil)
-                
-                print(userDir)
-                wallet = gsno(ks?.addresses![0].address)
-                let path = userDir+"/keystore/"
-                privateKeyPath =  KeystoreManager.managerForPath(path, scanForHDwallets: true, suffix: "json")
-                let key = try privateKeyPath?.UNSAFE_getPrivateKeyData(password: password, account: ((privateKeyPath?.addresses?.first)!))
-                print("pkey",key?.toHexString())
-                wallet = gsno(ks?.addresses![0].address)
-                privateKey = gsno(key?.toHexString())
-                print(path)
-                print(wallet)
-                let model = JoinModel(self)
-                model.joinStudentModel(mail: mail, passwd: passwd, name: name, sex: sex, hp: hp, birth: birth, private_key: privateKey, wallet: wallet)
-            } else {
-                ks = keystoreManager?.walletForAddress((keystoreManager?.addresses![0])!) as? BIP32Keystore
-            }
+            var keystore: EthereumKeystoreV3?
+            keystore = try! EthereumKeystoreV3(password: passwd)
+            let keydata = try! JSONEncoder().encode(keystore!.keystoreParams)
+            FileManager.default.createFile(atPath: userDir + "/keystore"+"/\(mail).json", contents: keydata, attributes: nil)
+            wallet = gsno(keystore?.getAddress()?.address)
+
+            // Private Key 추출
+            let key = try keystore?.UNSAFE_getPrivateKeyData(password: passwd, account: (keystore?.getAddress())!)
+            privateKey = gsno(key?.toHexString())
+            print(userDir)
+            print(wallet)
+            
+//                let model = JoinModel(self)
+//                model.joinStudentModel(mail: mail, passwd: passwd, name: name, sex: sex, hp: hp, birth: birth, private_key: privateKey, wallet: wallet)
+
         } catch {
             print(error.localizedDescription)
+            simpleAlert(title: "회원가입 오류", msg: "개발자에게 문의하세요.")
         }
         
     }
