@@ -1,5 +1,5 @@
 //
-//  HomeDataVO.swift
+//  OnlineDataVO.swift
 //  ChungChul_iOS
 //
 //  Created by ParkSungJoon on 27/10/2018.
@@ -8,7 +8,7 @@
 
 import ObjectMapper
 
-class PopularDataVO: Mappable {
+class OnlineDataVO: Mappable {
     
     var userPk: Int?
     var name: String?

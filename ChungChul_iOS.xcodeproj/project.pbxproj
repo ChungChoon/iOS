@@ -251,6 +251,8 @@
 			children = (
 				BC6F290021844C7200B64524 /* HomeDataModel.swift */,
 				BC6F290221844CA000B64524 /* PopularDataVO.swift */,
+				BC6F290421844CB900B64524 /* OfflineDataVO.swift */,
+				BC6F290621844CC900B64524 /* OnlineDataVO.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -287,9 +289,10 @@
 		BC6F28E82183419000B64524 /* Network */ = {
 			isa = PBXGroup;
 			children = (
-				BC6F28EF218353DA00B64524 /* Login */,
 				BC6F28E9218341A500B64524 /* NetworkModel.swift */,
 				BC6F28EB218341BB00B64524 /* NetworkCallback.swift */,
+				BC6F28EF218353DA00B64524 /* Login */,
+				BCC456BF2190AD4400C3250B /* Main */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -299,7 +302,6 @@
 			children = (
 				BC6F28F0218353EE00B64524 /* JoinModel.swift */,
 				BC6F28F62183F7C100B64524 /* LoginModel.swift */,
-				BC6F28FC218410EC00B64524 /* LectureModel.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -386,14 +388,20 @@
 			path = Detail;
 			sourceTree = "<group>";
 		};
+		BCC456BF2190AD4400C3250B /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				BC6F28FC218410EC00B64524 /* LectureModel.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
 		BCD7D7A62176481F003238BB /* Model */ = {
 			isa = PBXGroup;
 			children = (
 				BC474D49218CAB4A00CE1043 /* Login */,
 				BC474D4A218CAB5600CE1043 /* Main */,
 				BC474D4B218CAB6E00CE1043 /* MyLecture */,
-				BC6F290421844CB900B64524 /* OfflineDataVO.swift */,
-				BC6F290621844CC900B64524 /* OnlineDataVO.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";

@@ -18,7 +18,6 @@ class LectureListCVCell: UICollectionViewCell {
     @IBOutlet var lectureTitleLabel: UILabel!
     @IBOutlet var lectureAddressLabel: UILabel!
     @IBOutlet var lectureTermLabel: UILabel!
-    @IBOutlet var tempImageView: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()

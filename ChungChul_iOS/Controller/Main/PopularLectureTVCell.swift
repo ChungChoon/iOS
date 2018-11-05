@@ -117,7 +117,7 @@ extension PopularLectureTVCell: UICollectionViewDelegate, UICollectionViewDataSo
         cell.lectureAddressLabel.text = index.place
         cell.purchaseButton.setTitle("\(index.price!) KLAY", for: .normal)
 
-        cell.farmNameLabel.text = index.farm_name
+        cell.farmNameLabel.text = index.farmName
         cell.teacherNameLabel.text = index.name
 
         return cell

@@ -83,7 +83,7 @@ class DetailVC: UIViewController, NetworkCallback {
         options.value = Web3.Utils.parseToBigUInt("10", units: .eth)
 //        options.value = BigUInt(Int(gino(data?.price)) * 1000000000000000000)
         options.from = bip32keystore!.addresses![0]
-        let testParameters = [BigUInt(gino(data?.lecture_pk))] as [AnyObject]
+        let testParameters = [BigUInt(gino(data?.lecturePk))] as [AnyObject]
         let transactionResult = web3!.contract(abi, at: contractAddress, abiVersion: 2)?.method("purchaseLecture", parameters: testParameters, options: options)
         let gasEstimateResult = transactionResult!.estimateGas(options: nil)
         guard case .success(let gasEstimate) = gasEstimateResult else {return}
@@ -119,7 +119,7 @@ extension DetailVC {
         typeTextButtonSetting(headerView.typeButton, gino(data?.kind))
         headerView.lectureTitleLabel.text = gsno(data?.title)
         headerView.teacherNameLabel.text = gsno(data?.name)
-        headerView.farmNameLabel.text = gsno(data?.farm_name)
+        headerView.farmNameLabel.text = gsno(data?.farmName)
         headerView.dismissButton.addTarget(self, action: #selector(dismissButtonAction), for: .touchUpInside)
 
     }
@@ -152,7 +152,7 @@ extension DetailVC: UITableViewDelegate, UITableViewDataSource {
             cell.purchaseButton.layer.borderColor = #colorLiteral(red: 0.3616529107, green: 0.554502666, blue: 0.8968388438, alpha: 1)
             
             cell.typeLabel.text = "오프라인"
-            cell.termLabel.text = "\(gsno(data?.start_date)) ~ \(gsno(data?.end_date))"
+            cell.termLabel.text = "\(gsno(data?.startDate)) ~ \(gsno(data?.endDate))"
             cell.placeLabel.text = gsno(data?.place)
             cell.costLabel.text = "\(gino(data?.price)) KLAY"
             return cell
@@ -170,13 +170,13 @@ extension DetailVC: UITableViewDelegate, UITableViewDataSource {
         case 3:
             let cell = detailTableView.dequeueReusableCell(withIdentifier: "TeacherTVCell") as! TeacherTVCell
             
-            if gino(data?.farm_career) == 0 {
-                cell.introduceLabel.text = "농사 경력 5년 미만입니다^^"
-            } else if gino(data?.farm_career) == 1{
-                cell.introduceLabel.text = "농사 경력 10년 미만입니다^^"
-            } else {
-                cell.introduceLabel.text = "농사 경력 10년 이상입니다^^"
-            }
+//            if gino(data?.farm_career) == 0 {
+//                cell.introduceLabel.text = "농사 경력 5년 미만입니다^^"
+//            } else if gino(data?.farm_career) == 1{
+//                cell.introduceLabel.text = "농사 경력 10년 미만입니다^^"
+//            } else {
+//                cell.introduceLabel.text = "농사 경력 10년 이상입니다^^"
+//            }
             
             return cell
         case 4:

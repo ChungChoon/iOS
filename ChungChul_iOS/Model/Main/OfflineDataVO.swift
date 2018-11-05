@@ -1,5 +1,5 @@
 //
-//  HomeDataVO.swift
+//  OfflineDataVO.swift
 //  ChungChul_iOS
 //
 //  Created by ParkSungJoon on 27/10/2018.
@@ -8,7 +8,7 @@
 
 import ObjectMapper
 
-class PopularDataVO: Mappable {
+class OfflineDataVO: Mappable {
     
     var userPk: Int?
     var name: String?
@@ -50,5 +50,4 @@ class PopularDataVO: Mappable {
         price <- map["price"]
         apply <- map["apply"]
     }
-    
 }

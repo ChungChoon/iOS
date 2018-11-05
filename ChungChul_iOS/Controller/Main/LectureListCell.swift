@@ -13,6 +13,9 @@ class LectureListCell: UITableViewCell {
     @IBOutlet var sectionLabel: UILabel!
     @IBOutlet var lectureListCollectionView: UICollectionView!
     
+    var offlineData: [OfflineDataVO]?
+    var onlineData: [OnlineDataVO]?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         let nibLectureList = UINib(nibName: "LectureListCVCell", bundle: nil)
@@ -41,13 +44,29 @@ class LectureListCell: UITableViewCell {
 extension LectureListCell: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 4
+        if offlineData != nil{
+            return (offlineData?.count)!
+        } else {
+            return (onlineData?.count)!
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "LectureListCVCell", for: indexPath) as! LectureListCVCell
         cell.layer.cornerRadius = 6
-
+        if offlineData != nil{
+            let index = offlineData![indexPath.row]
+            cell.lectureTitleLabel.text = index.title!
+            cell.lectureTermLabel.text = index.startDate! + " ~ " + index.endDate!
+            cell.lectureCostLabel.text = "\(index.price!) KLAY"
+            cell.lectureAddressLabel.text = index.place!
+        } else {
+            let index = onlineData![indexPath.row]
+            cell.lectureTitleLabel.text = index.title!
+            cell.lectureTermLabel.text = index.startDate! + " ~ " + index.endDate!
+            cell.lectureCostLabel.text = "\(index.price!) KLAY"
+            cell.lectureAddressLabel.text = index.place!
+        }
         return cell
     }
     

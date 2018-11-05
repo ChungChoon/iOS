@@ -21,6 +21,8 @@ class MainVC: UIViewController, NetworkCallback {
     
     var resposeData: HomeDataModel?
     var popularData: [PopularDataVO]?
+    var offlineData: [OfflineDataVO]?
+    var onlineData: [OnlineDataVO]?
 
     var row : Int = 0
 
@@ -59,6 +61,9 @@ class MainVC: UIViewController, NetworkCallback {
         if code == "Success To Get Information"{
             resposeData = resultData as? HomeDataModel
             popularData = resposeData?.popular
+            offlineData = resposeData?.offline
+            onlineData = resposeData?.online
+            
             lectureTableView.delegate = self
             lectureTableView.dataSource = self
             lectureTableView.reloadData()
@@ -124,30 +129,36 @@ extension MainVC: UITableViewDelegate, UITableViewDataSource {
         if section == 0{
             return 1
         } else {
-            return 1
+            return 2
         }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        if indexPath.section == 0 {
+        switch indexPath.section {
+        case 0:
             let cell = lectureTableView.dequeueReusableCell(withIdentifier: "PopularLectureTVCell", for: indexPath) as! PopularLectureTVCell
-
             if popularData != nil {
                 cell.popularData = popularData
             }
-            
             return cell
-            
-        } else {
+        case 1:
             let cell = lectureTableView.dequeueReusableCell(withIdentifier: "LectureListCell", for: indexPath) as! LectureListCell
-            cell.sectionLabel.text = "작물 재배 실습 교육"
-
+            if indexPath.row == 0{
+                cell.sectionLabel.text = "오프라인 실습 교육"
+                if offlineData != nil {
+                    cell.offlineData = offlineData
+                }
+            } else {
+                cell.sectionLabel.text = "온라인 실습 교육"
+                if onlineData != nil {
+                    cell.onlineData = onlineData
+                }
+            }
             return cell
-            
+        default:
+            return UITableViewCell()
         }
-        
-        
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
