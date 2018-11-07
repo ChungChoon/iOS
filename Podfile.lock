@@ -17,22 +17,17 @@ PODS:
     - PromiseKit/CorePromise
   - PromiseKit/UIKit (6.5.2):
     - PromiseKit/CorePromise
-  - Result (4.0.0)
-  - scrypt (2.0):
-    - CryptoSwift (~> 0.11)
-  - secp256k1_swift (1.0.3)
+  - SDWebImage (4.4.2):
+    - SDWebImage/Core (= 4.4.2)
+  - SDWebImage/Core (4.4.2)
+  - secp256k1.swift (0.1.4)
   - SipHash (1.2.2)
-  - SwiftRLP (1.1):
-    - BigInt (~> 3.1)
   - SwiftyJSON (4.2.0)
-  - web3swift (1.5.1):
+  - web3swift (2.0.1):
     - BigInt (~> 3.1)
-    - CryptoSwift (~> 0.11)
-    - PromiseKit (~> 6.3)
-    - Result (~> 4.0)
-    - scrypt (~> 2.0)
-    - secp256k1_swift (~> 1.0.3)
-    - SwiftRLP (~> 1.1)
+    - CryptoSwift (~> 0.12)
+    - PromiseKit (~> 6.4)
+    - secp256k1.swift
 
 DEPENDENCIES:
   - Alamofire
@@ -40,8 +35,9 @@ DEPENDENCIES:
   - BigInt
   - IQKeyboardManagerSwift
   - ObjectMapper
+  - SDWebImage
   - SwiftyJSON
-  - web3swift
+  - web3swift (from `https://github.com/bankex/web3swift.git`)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -52,13 +48,19 @@ SPEC REPOS:
     - IQKeyboardManagerSwift
     - ObjectMapper
     - PromiseKit
-    - Result
-    - scrypt
-    - secp256k1_swift
+    - SDWebImage
+    - secp256k1.swift
     - SipHash
-    - SwiftRLP
     - SwiftyJSON
-    - web3swift
+
+EXTERNAL SOURCES:
+  web3swift:
+    :git: https://github.com/bankex/web3swift.git
+
+CHECKOUT OPTIONS:
+  web3swift:
+    :commit: 803600157a4e63f1ca7504a97127fe9a537c5bd8
+    :git: https://github.com/bankex/web3swift.git
 
 SPEC CHECKSUMS:
   Alamofire: c7287b6e5d7da964a70935e5db17046b7fde6568
@@ -68,14 +70,12 @@ SPEC CHECKSUMS:
   IQKeyboardManagerSwift: b07ccf9d8cafe993dcd6cb794eb4ba34611a0c4e
   ObjectMapper: b612bf8c8e99c4dc0bb6013a51f7c27966ed5da9
   PromiseKit: 27c1601bfb73405871b805bcb8cf7e55c4dad3db
-  Result: 7645bb3f50c2ce726dd0ff2fa7b6f42bbe6c3713
-  scrypt: 3fe5b1a3b0976f97cd87488673a8f7c65708cc84
-  secp256k1_swift: 4fc5c4b2d2c6d21ee8ccb868cdc92da12f38bed9
+  SDWebImage: 624d6e296c69b244bcede364c72ae0430ac14681
+  secp256k1.swift: a7e7a214f6db6ce5db32cc6b2b45e5c4dd633634
   SipHash: fad90a4683e420c52ef28063063dbbce248ea6d4
-  SwiftRLP: 5512899925f1a9e1c78c902ed3bf857880e814a0
   SwiftyJSON: c4bcba26dd9ec7a027fc8eade48e2c911f229e96
-  web3swift: d80d1b9a3feca16e614acec9eea47ec26310d37d
+  web3swift: 617cad1ff9c652f39fa141adc269f174bdc159e7
 
-PODFILE CHECKSUM: df5971c9ece442584d37ed6fb0c4d056ac97c1a4
+PODFILE CHECKSUM: 220c38c225f46c1f820bd4732bc6f56d4c53fb16
 
 COCOAPODS: 1.5.3

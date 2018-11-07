@@ -150,12 +150,10 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/ObjectMapper/ObjectMapper.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/PromiseKit/PromiseKit.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/Result/Result.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/SipHash/SipHash.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/SwiftRLP/SwiftRLP.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/scrypt/scrypt.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/secp256k1_swift/secp256k1_swift.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/secp256k1.swift/secp256k1.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/web3swift/web3swift.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
@@ -166,12 +164,10 @@ if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/ObjectMapper/ObjectMapper.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/PromiseKit/PromiseKit.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/Result/Result.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/SipHash/SipHash.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/SwiftRLP/SwiftRLP.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/scrypt/scrypt.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/secp256k1_swift/secp256k1_swift.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/secp256k1.swift/secp256k1.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/web3swift/web3swift.framework"
 fi
 if [ "${COCOAPODS_PARALLEL_CODE_SIGN}" == "true" ]; then

@@ -205,7 +205,7 @@ extension StudentVC {
             // Wallet Keystore 파일 생성
             let userDir = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
             var keystore: EthereumKeystoreV3?
-            keystore = try! EthereumKeystoreV3(password: passwd)
+            keystore = try! EthereumKeystoreV3(password: passwd, aesMode: "aes-128-ctr")
             let keydata = try! JSONEncoder().encode(keystore!.keystoreParams)
             FileManager.default.createFile(atPath: userDir + "/keystore"+"/\(mail).json", contents: keydata, attributes: nil)
             wallet = gsno(keystore?.getAddress()?.address)
@@ -215,9 +215,9 @@ extension StudentVC {
             privateKey = gsno(key?.toHexString())
             print(userDir)
             print(wallet)
-            
-//                let model = JoinModel(self)
-//                model.joinStudentModel(mail: mail, passwd: passwd, name: name, sex: sex, hp: hp, birth: birth, private_key: privateKey, wallet: wallet)
+            print(privateKey)
+            let model = JoinModel(self)
+            model.joinStudentModel(mail: mail, passwd: passwd, name: name, sex: sex, hp: hp, birth: birth, private_key: privateKey, wallet: wallet)
 
         } catch {
             print(error.localizedDescription)

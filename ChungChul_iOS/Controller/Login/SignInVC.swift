@@ -37,7 +37,11 @@ class SignInVC: UIViewController, NetworkCallback {
     
     fileprivate func callCaverSingleton(_ mail: String) {
         let instance: CaverSingleton = CaverSingleton.sharedInstance
-        instance.addKeystoreOnCaver(mail)
+        let keystoreManager = instance.keystoreMangaerInDevice()
+        instance.caver.addKeystoreManager(keystoreManager)
+        print(keystoreManager?.keystores.count)
+
+//        try! instance.caver.personal.unlockAccount(account: instance.klaytnAddress, password: gsno(passwordTextField.text), seconds: 1000000)
     }
     
     func networkResult(resultData: Any, code: String) {
@@ -46,10 +50,11 @@ class SignInVC: UIViewController, NetworkCallback {
             let userDir = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
             let path = userDir+"/keystore/\(mail).json"
 
+            print(path)
             if isExistKeystoreFile(path) {
                 
                 callCaverSingleton(mail)
-                
+                UserDefaults.standard.setValue(gsno(passwordTextField.text), forKey: "password")
                 let main = UIStoryboard(name: "Main", bundle: nil)
                 let tabBarVC = main.instantiateViewController(withIdentifier: "TabBarVC") as! TabBarVC
                 UIApplication.shared.keyWindow?.rootViewController = tabBarVC

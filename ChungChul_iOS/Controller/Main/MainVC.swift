@@ -19,19 +19,21 @@ class MainVC: UIViewController, NetworkCallback {
     
     var titleTapGestureRecognizer: UITapGestureRecognizer!
     
-    var resposeData: HomeDataModel?
+    var lectureListDataFromServer: HomeDataModel?
     var popularData: [PopularDataVO]?
     var offlineData: [OfflineDataVO]?
     var onlineData: [OnlineDataVO]?
+    
+    var detailLectureDataFromServer: LectureDetailData?
 
-    var row : Int = 0
+    var lecturePk : Int = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
         lectureTableView.tableFooterView = UIView(frame: CGRect.zero)
         lectureTableView.tableHeaderView = UIView(frame: CGRect.zero)
         let model = LectureModel(self)
-        model.totalLectureCall(token: gsno(UserDefaults.standard.string(forKey: "token")))
+        model.callLectureList(token: gsno(UserDefaults.standard.string(forKey: "token")))
 
         lectureTableView.allowsSelection = false
         let nibLectureList = UINib(nibName: "LectureListCell", bundle: nil)
@@ -59,14 +61,22 @@ class MainVC: UIViewController, NetworkCallback {
     
     func networkResult(resultData: Any, code: String) {
         if code == "Success To Get Information"{
-            resposeData = resultData as? HomeDataModel
-            popularData = resposeData?.popular
-            offlineData = resposeData?.offline
-            onlineData = resposeData?.online
+            lectureListDataFromServer = resultData as? HomeDataModel
+            popularData = lectureListDataFromServer?.popular
+            offlineData = lectureListDataFromServer?.offline
+            onlineData = lectureListDataFromServer?.online
             
             lectureTableView.delegate = self
             lectureTableView.dataSource = self
             lectureTableView.reloadData()
+        } else if code == "Success Get Lecture Detail"{
+            detailLectureDataFromServer = resultData as? LectureDetailData
+            print(detailLectureDataFromServer?.lectureData?.title)
+            let detailVC = self.storyboard?.instantiateViewController(withIdentifier: "DetailVC") as! DetailVC
+            detailVC.detailData = detailLectureDataFromServer?.lectureData
+            detailVC.reviewData = detailLectureDataFromServer?.reviewData
+            
+            self.present(detailVC, animated: false, completion: nil)
         } else {
             simpleAlert(title: "오류", msg: "개발자에게 문의하세요.")
         }
@@ -77,10 +87,10 @@ class MainVC: UIViewController, NetworkCallback {
     }
 
     @objc func gotoDetail(notification: NSNotification){
-        row = gino(notification.userInfo!["row"] as? Int)
-        let detailVC = self.storyboard?.instantiateViewController(withIdentifier: "DetailVC") as! DetailVC
-        detailVC.data = popularData![row]
-        self.present(detailVC, animated: false, completion: nil)
+        lecturePk = gino(notification.userInfo!["lecturePk"] as? Int)
+
+        let model = LectureModel(self)
+        model.callLectureDetail(lectureId: lecturePk, token: gsno(UserDefaults.standard.string(forKey: "token")))
     }
     
     @objc func gotoMain(notification: NSNotification){
@@ -96,7 +106,6 @@ extension MainVC {
     }
     
     func navigationBarSetting(){
-        print("Call")
         self.title = "실습 교육 전체"
         self.navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.font: UIFont(name: "NotoSansCJKkr-Bold", size: 24)!]
 

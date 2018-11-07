@@ -34,7 +34,7 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="274"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="img_detail" translatesAutoresizingMaskIntoConstraints="NO" id="0sE-7e-QlK">
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="0sE-7e-QlK">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="274"/>
                     <color key="backgroundColor" red="0.41520106792449951" green="0.3647918701171875" blue="0.36078280210494995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                 </imageView>
@@ -113,6 +113,5 @@
     <resources>
         <image name="ic_arrow_back" width="24" height="24"/>
         <image name="ic_people36" width="36" height="36"/>
-        <image name="img_detail" width="376" height="274"/>
     </resources>
 </document>

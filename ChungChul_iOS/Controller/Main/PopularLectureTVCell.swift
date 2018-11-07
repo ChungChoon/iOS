@@ -124,7 +124,9 @@ extension PopularLectureTVCell: UICollectionViewDelegate, UICollectionViewDataSo
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        NotificationCenter.default.post(name: .gotoDetail, object: nil, userInfo: ["row" : indexPath.row])
+        let index = popularData![indexPath.row]
+
+        NotificationCenter.default.post(name: .gotoDetail, object: nil, userInfo: ["lecturePk" : index.lecturePk!])
     }
 
     func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {

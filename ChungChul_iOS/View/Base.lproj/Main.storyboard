@@ -931,6 +931,9 @@
                                                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="1" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="tQy-lv-TK1">
                                                     <rect key="frame" x="0.0" y="116" width="375" height="88"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="88" id="7VY-zd-0ap"/>
+                                                    </constraints>
                                                     <prototypes>
                                                         <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CommentCell" rowHeight="88" id="e4X-Sb-kt5" customClass="CommentCell" customModule="ChungChul_iOS" customModuleProvider="target">
                                                             <rect key="frame" x="0.0" y="1" width="375" height="88"/>
@@ -943,7 +946,7 @@
                                                                         <rect key="frame" x="20" y="11.5" width="28" height="28"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="width" secondItem="tLo-y9-Foq" secondAttribute="height" multiplier="1:1" id="2FW-v7-66x"/>
-                                                                            <constraint firstAttribute="width" constant="28" id="hhQ-4m-BMf"/>
+                                                                            <constraint firstAttribute="height" constant="28" id="QDd-e3-8dg"/>
                                                                         </constraints>
                                                                     </imageView>
                                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Z74-Q4-Cuc">
@@ -998,9 +1001,9 @@
                                                 <constraint firstItem="in4-CD-8hb" firstAttribute="firstBaseline" secondItem="Fyu-KS-EHN" secondAttribute="firstBaseline" id="J7b-Ab-AMl"/>
                                                 <constraint firstItem="in4-CD-8hb" firstAttribute="leading" secondItem="e9m-zK-NCm" secondAttribute="leading" id="MTI-Ac-Jbe"/>
                                                 <constraint firstItem="in4-CD-8hb" firstAttribute="leading" secondItem="Fyu-KS-EHN" secondAttribute="trailing" constant="11" id="SnJ-wy-WX9"/>
+                                                <constraint firstItem="tQy-lv-TK1" firstAttribute="top" secondItem="Fyu-KS-EHN" secondAttribute="bottom" constant="12" id="U5j-ym-TWB"/>
                                                 <constraint firstItem="Fyu-KS-EHN" firstAttribute="leading" secondItem="kY0-cY-UBD" secondAttribute="leading" id="d3Z-db-dq4"/>
                                                 <constraint firstItem="Fyu-KS-EHN" firstAttribute="top" secondItem="kY0-cY-UBD" secondAttribute="bottom" constant="9" id="f8k-l2-SWf"/>
-                                                <constraint firstItem="tQy-lv-TK1" firstAttribute="top" secondItem="in4-CD-8hb" secondAttribute="bottom" constant="20" id="o7J-Gu-noP"/>
                                                 <constraint firstAttribute="bottom" secondItem="tQy-lv-TK1" secondAttribute="bottom" constant="18.5" id="qLb-Jj-qRW"/>
                                                 <constraint firstItem="kY0-cY-UBD" firstAttribute="leading" secondItem="FkX-LE-1bD" secondAttribute="leading" constant="20" id="tVI-V7-xi7"/>
                                                 <constraint firstItem="tQy-lv-TK1" firstAttribute="leading" secondItem="FkX-LE-1bD" secondAttribute="leading" id="x9V-dQ-RQn"/>

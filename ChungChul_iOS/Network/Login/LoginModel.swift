@@ -35,21 +35,18 @@ class LoginModel: NetworkModel {
                         return
                     }
                     if responseMessage.message == "Success To Sign In" {
-                        if let token = responseMessage.token{
+                        if let token = responseMessage.token, let data = responseMessage.data{
                             ud.setValue(token, forKey: "token")
-                            ud.synchronize()
-                            print(token)
-                        }
-                        if let data = responseMessage.data{
                             ud.setValue(data[0].name, forKey: "name")
                             ud.setValue(data[0].mail, forKey: "mail")
                             ud.setValue(data[0].img, forKey: "img")
-                            ud.setValue(data[0].private_key, forKey: "private_key")
+                            ud.setValue(data[0].wallet, forKey: "wallet")
                             ud.setValue(data[0].flag, forKey: "flag")
                             ud.setValue(data[0].birth, forKey: "birth")
                             ud.setValue(data[0].hp, forKey: "hp")
                             ud.setValue(data[0].sex, forKey: "sex")
                             ud.synchronize()
+                            print(token)
                         }
                         self.view.networkResult(resultData: "Login Success", code: "Success To Sign In")
                     }

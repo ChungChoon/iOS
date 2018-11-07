@@ -8,6 +8,7 @@
 
 import UIKit
 import web3swift
+import BigInt
 
 class MoreVC: UIViewController {
     
@@ -22,43 +23,53 @@ class MoreVC: UIViewController {
     @IBOutlet var walletAddressCopyButton: UIButton!
     @IBOutlet var privateKeyCopyButton: UIButton!
     
-    var bip32keystore:BIP32Keystore?
-    var keystoremanager:KeystoreManager?
-    var contract:web3.web3contract?
-    var web3Klaytn:web3?
-    var userAddress: String?
-    var ethAdd: EthereumAddress?
-    
+    let instance: CaverSingleton = CaverSingleton.sharedInstance
     let ud = UserDefaults.standard
+    var userKlay = BigUInt(0)
+    let loginAlertView = LoginAlertView(frame: UIApplication.shared.keyWindow!.frame)
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let userDir = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
-        let path = userDir+"/keystore/"
-        keystoremanager =  KeystoreManager.managerForPath(path, scanForHDwallets: true, suffix: "json")
-        self.web3Klaytn?.addKeystoreManager(self.keystoremanager)
-        self.bip32keystore = self.keystoremanager?.bip32keystores[0]
-        userAddress = self.bip32keystore?.addresses?.first?.address
-        borderSetting()
-        walletKlayLabel.text = "0"
-
-
-        dataSetting()
+        navigationBarSetting()
+        if ud.string(forKey: "token") == nil {
+            UIApplication.shared.keyWindow!.addSubview(loginAlertView)
+        } else {
+            borderSetting()
+            walletKlayLabel.text = "0"
+            dataSetting()
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        let web3 = Web3.new(URL(string: "http://localhost:8551")!)
-        let ethAdd = EthereumAddress(gsno(userAddress))
-        let balancebigint = web3?.eth.getBalance(address: ethAdd!).value
-        walletKlayLabel.text = gsno(Web3.Utils.formatToEthereumUnits(balancebigint ?? 0)!)
         
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(true)
+        UIApplication.shared.keyWindow!.willRemoveSubview(loginAlertView)
+    }
+    
+    func navigationBarSetting(){
+        self.title = "더보기"
+        self.navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.font: UIFont(name: "NotoSansCJKkr-Bold", size: 24)!]
+        self.navigationController?.navigationBar.backgroundColor = UIColor.white
+        self.navigationController?.navigationBar.isTranslucent = false
+        self.navigationController?.navigationBar.shadowImage = UIImage()
     }
     
     func dataSetting(){
         profileNameLabel.text = ud.string(forKey: "name")
         profileEmailLabel.text = ud.string(forKey: "mail")
-        walletAddressLabel.text = userAddress
+        
+        let caver = instance.caver
+        let userAddress = instance.userAddress
+        
+        do {
+            userKlay = try caver.eth.getBalance(address: userAddress)
+        } catch {
+            print("Get Klay Balance Fail")
+        }
     }
     
     func borderSetting() {

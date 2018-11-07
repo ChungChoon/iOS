@@ -11,7 +11,7 @@ import AlamofireObjectMapper
 
 class LectureModel: NetworkModel {
     
-    func totalLectureCall(token: String) {
+    func callLectureList(token: String) {
         
         let URL = "\(baseURL)/home"
         
@@ -25,12 +25,12 @@ class LectureModel: NetworkModel {
                 (response:DataResponse<HomeDataModel>) in
                 switch response.result {
                 case .success:
-                    guard let responseMessage = response.result.value else{
+                    guard let responseData = response.result.value else{
                         self.view.networkFailed()
                         return
                     }
-                    if responseMessage.message == "Success To Get Information" {
-                        self.view.networkResult(resultData: responseMessage, code: "Success To Get Information")
+                    if responseData.message == "Success To Get Information" {
+                        self.view.networkResult(resultData: responseData, code: "Success To Get Information")
                     }
                     
                     
@@ -41,12 +41,44 @@ class LectureModel: NetworkModel {
         }
     }
     
-    func purchaseLectureModel(token: String, lecture_id: Int) {
+    func callLectureDetail(lectureId: Int, token: String) {
+        
+        let URL = "\(baseURL)/lecture/\(lectureId)"
+        
+        Alamofire.request(
+            URL,
+            method: .get,
+            parameters: nil,
+            encoding: JSONEncoding.default,
+            headers: ["token":token]
+            ).responseObject{
+                (response:DataResponse<LectureDetailData>) in
+                switch response.result {
+                case .success:
+                    guard let responseData = response.result.value else{
+                        self.view.networkFailed()
+                        return
+                    }
+                    if responseData.message == "Success Get Lecture Detail" {
+                        self.view.networkResult(resultData: responseData, code: "Success Get Lecture Detail")
+                    }
+                    
+                    
+                case .failure(let err):
+                    print(err)
+                    self.view.networkFailed()
+                }
+        }
+    }
+    
+    func purchaseLectureModel(token: String, lecture_id: Int, price: Int, idx: Int) {
         
         let URL = "\(baseURL)/lecture/apply"
         
         let body : [String: Int] = [
-            "lecture_id": lecture_id
+            "lecture_id": lecture_id,
+            "price": price,
+            "idx": idx
         ]
         
         Alamofire.request(
@@ -59,12 +91,14 @@ class LectureModel: NetworkModel {
                 (response:DataResponse<HomeDataModel>) in
                 switch response.result {
                 case .success:
-                    guard let responseMessage = response.result.value else{
+                    guard let responseData = response.result.value else{
                         self.view.networkFailed()
                         return
                     }
-                    if responseMessage.message == "success to apply lecture" {
-                        self.view.networkResult(resultData: responseMessage, code: "success to apply lecture")
+                    if responseData.message == "success to apply lecture" {
+                        self.view.networkResult(resultData: responseData, code: "success to apply lecture")
+                    } else {
+                        self.view.networkResult(resultData: responseData.message!, code: "error")
                     }
                     
                 case .failure(let err):

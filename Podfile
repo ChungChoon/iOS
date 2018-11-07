@@ -6,14 +6,15 @@ target 'ChungChul_iOS' do
   use_frameworks!
 
   # Pods for ChungChul_iOS
-
-    pod 'web3swift'
+    use_modular_headers!
+    pod 'web3swift', :git => 'https://github.com/bankex/web3swift.git'
     pod 'BigInt'
     pod 'Alamofire'
     pod 'SwiftyJSON'
     pod 'ObjectMapper'
     pod 'AlamofireObjectMapper'
     pod 'IQKeyboardManagerSwift'
+    pod 'SDWebImage'
 
 
   target 'ChungChul_iOSTests' do

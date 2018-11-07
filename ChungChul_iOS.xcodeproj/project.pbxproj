@@ -71,6 +71,11 @@
 		BCB9D8522181D81000D86908 /* HeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCB9D8512181D81000D86908 /* HeaderView.xib */; };
 		BCB9D8542181D9DA00D86908 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCB9D8532181D9DA00D86908 /* HeaderView.swift */; };
 		BCC456BE218F141300C3250B /* CaverSingleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCC456BD218F141300C3250B /* CaverSingleton.swift */; };
+		BCC456C421918B9600C3250B /* LectureDetailData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCC456C321918B9600C3250B /* LectureDetailData.swift */; };
+		BCC456C621918BD400C3250B /* LectureDetailDataVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCC456C521918BD400C3250B /* LectureDetailDataVO.swift */; };
+		BCC456C821919A7400C3250B /* LectureReviewDataVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCC456C721919A7400C3250B /* LectureReviewDataVO.swift */; };
+		BCC456CA219334A700C3250B /* LoginAlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCC456C9219334A700C3250B /* LoginAlertView.xib */; };
+		BCC456CD219336FA00C3250B /* LoginAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCC456CC219336FA00C3250B /* LoginAlertView.swift */; };
 		BCD7D7AA21764878003238BB /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BCD7D7A921764878003238BB /* Login.storyboard */; };
 		BCD7D7AD21764A2C003238BB /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD7D7AC21764A2C003238BB /* LoginVC.swift */; };
 		BCD7D7B021764DAA003238BB /* SignUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD7D7AF21764DAA003238BB /* SignUpVC.swift */; };
@@ -159,6 +164,11 @@
 		BCB9D8512181D81000D86908 /* HeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HeaderView.xib; sourceTree = "<group>"; };
 		BCB9D8532181D9DA00D86908 /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		BCC456BD218F141300C3250B /* CaverSingleton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaverSingleton.swift; sourceTree = "<group>"; };
+		BCC456C321918B9600C3250B /* LectureDetailData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LectureDetailData.swift; sourceTree = "<group>"; };
+		BCC456C521918BD400C3250B /* LectureDetailDataVO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LectureDetailDataVO.swift; sourceTree = "<group>"; };
+		BCC456C721919A7400C3250B /* LectureReviewDataVO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LectureReviewDataVO.swift; sourceTree = "<group>"; };
+		BCC456C9219334A700C3250B /* LoginAlertView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginAlertView.xib; sourceTree = "<group>"; };
+		BCC456CC219336FA00C3250B /* LoginAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginAlertView.swift; sourceTree = "<group>"; };
 		BCD7D7A921764878003238BB /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		BCD7D7AC21764A2C003238BB /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
 		BCD7D7AF21764DAA003238BB /* SignUpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpVC.swift; sourceTree = "<group>"; };
@@ -222,6 +232,7 @@
 				BCB9D84B21815C2E00D86908 /* LectureListCVCell.xib */,
 				BCB9D845217F91FB00D86908 /* MyLectureTVCell.xib */,
 				BCB9D8512181D81000D86908 /* HeaderView.xib */,
+				BCC456C9219334A700C3250B /* LoginAlertView.xib */,
 			);
 			path = XIB;
 			sourceTree = "<group>";
@@ -231,6 +242,7 @@
 			children = (
 				BC474D3A218AF85300CE1043 /* RatingView.swift */,
 				BCB9D8532181D9DA00D86908 /* HeaderView.swift */,
+				BCC456CC219336FA00C3250B /* LoginAlertView.swift */,
 			);
 			path = CustomView;
 			sourceTree = "<group>";
@@ -382,8 +394,8 @@
 		BCB9D84E2181B67B00D86908 /* Detail */ = {
 			isa = PBXGroup;
 			children = (
-				BC6A2193218207FE007B751B /* TableViewCell */,
 				BCB9D84F2181B69800D86908 /* DetailVC.swift */,
+				BC6A2193218207FE007B751B /* TableViewCell */,
 			);
 			path = Detail;
 			sourceTree = "<group>";
@@ -396,11 +408,22 @@
 			path = Main;
 			sourceTree = "<group>";
 		};
+		BCC456C221918B6E00C3250B /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				BCC456C321918B9600C3250B /* LectureDetailData.swift */,
+				BCC456C521918BD400C3250B /* LectureDetailDataVO.swift */,
+				BCC456C721919A7400C3250B /* LectureReviewDataVO.swift */,
+			);
+			path = Detail;
+			sourceTree = "<group>";
+		};
 		BCD7D7A62176481F003238BB /* Model */ = {
 			isa = PBXGroup;
 			children = (
 				BC474D49218CAB4A00CE1043 /* Login */,
 				BC474D4A218CAB5600CE1043 /* Main */,
+				BCC456C221918B6E00C3250B /* Detail */,
 				BC474D4B218CAB6E00CE1043 /* MyLecture */,
 			);
 			path = Model;
@@ -542,6 +565,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BCD7D7AA21764878003238BB /* Login.storyboard in Resources */,
+				BCC456CA219334A700C3250B /* LoginAlertView.xib in Resources */,
 				BCB9D847217F91FB00D86908 /* MyLectureTVCell.xib in Resources */,
 				BCB9D830217E47D700D86908 /* NotoSansCJKkr-Bold.otf in Resources */,
 				BCB9D84D21815C2E00D86908 /* LectureListCVCell.xib in Resources */,
@@ -630,12 +654,10 @@
 				"${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/ObjectMapper/ObjectMapper.framework",
 				"${BUILT_PRODUCTS_DIR}/PromiseKit/PromiseKit.framework",
-				"${BUILT_PRODUCTS_DIR}/Result/Result.framework",
+				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
 				"${BUILT_PRODUCTS_DIR}/SipHash/SipHash.framework",
-				"${BUILT_PRODUCTS_DIR}/SwiftRLP/SwiftRLP.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
-				"${BUILT_PRODUCTS_DIR}/scrypt/scrypt.framework",
-				"${BUILT_PRODUCTS_DIR}/secp256k1_swift/secp256k1_swift.framework",
+				"${BUILT_PRODUCTS_DIR}/secp256k1.swift/secp256k1.framework",
 				"${BUILT_PRODUCTS_DIR}/web3swift/web3swift.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -649,12 +671,10 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManagerSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjectMapper.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PromiseKit.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Result.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SipHash.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftRLP.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/scrypt.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/secp256k1_swift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/secp256k1.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/web3swift.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -671,6 +691,7 @@
 			files = (
 				BC6A219B2182084A007B751B /* TeacherTVCell.swift in Sources */,
 				BCB9D846217F91FB00D86908 /* MyLectureTVCell.swift in Sources */,
+				BCC456C821919A7400C3250B /* LectureReviewDataVO.swift in Sources */,
 				BC6F28E521833A0200B64524 /* StudentVC.swift in Sources */,
 				BC6A219D21820856007B751B /* CommentTVCell.swift in Sources */,
 				BC6A21A02182C4DB007B751B /* MoreVC.swift in Sources */,
@@ -694,6 +715,8 @@
 				BCB9D836217F05CB00D86908 /* PopularLectureCVCell.swift in Sources */,
 				BC474D46218CAB0F00CE1043 /* MyLectureData.swift in Sources */,
 				BC6F28F321835AA500B64524 /* DuplicateEmailDataModel.swift in Sources */,
+				BCC456C421918B9600C3250B /* LectureDetailData.swift in Sources */,
+				BCC456CD219336FA00C3250B /* LoginAlertView.swift in Sources */,
 				BC6F28F92183F88800B64524 /* LoginDataModel.swift in Sources */,
 				BC6F290321844CA000B64524 /* PopularDataVO.swift in Sources */,
 				BCC456BE218F141300C3250B /* CaverSingleton.swift in Sources */,
@@ -710,6 +733,7 @@
 				BC474D3E218AFA6200CE1043 /* TotalEvaluationTVCell.swift in Sources */,
 				BC87E00A21751C4700B7322E /* ChungChul_iOS.xcdatamodeld in Sources */,
 				BCB9D838217F310900D86908 /* Extension.swift in Sources */,
+				BCC456C621918BD400C3250B /* LectureDetailDataVO.swift in Sources */,
 				BC6A219921820838007B751B /* PlanTVCell.swift in Sources */,
 				BC6F28F1218353EE00B64524 /* JoinModel.swift in Sources */,
 				BC6A21A221830549007B751B /* TabBarVC.swift in Sources */,

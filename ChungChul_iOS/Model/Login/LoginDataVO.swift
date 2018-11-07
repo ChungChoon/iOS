@@ -13,7 +13,7 @@ class LoginDataVO: Mappable {
     var mail: String?
     var name: String?
     var passwd: String?
-    var private_key: String?
+    var wallet: String?
     var birth: String?
     var sex: Int?
     var hp: String?
@@ -26,7 +26,7 @@ class LoginDataVO: Mappable {
         mail <- map["mail"]
         name <- map["name"]
         passwd <- map["passwd"]
-        private_key <- map["private_key"]
+        wallet <- map["wallet"]
         birth <- map["birth"]
         sex <- map["sex"]
         hp <- map["hp"]
