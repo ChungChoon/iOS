@@ -591,7 +591,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="1044"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="InformationTVCell" rowHeight="255" id="t8r-7W-rKE" customClass="InformationTVCell" customModule="ChungChul_iOS" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="InformationTVCell" rowHeight="255" id="t8r-7W-rKE" customClass="InformationTVCell" customModule="ChungChul_iOS" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="255"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="t8r-7W-rKE" id="gD5-dM-y0b">
@@ -748,7 +748,7 @@
                                             <outlet property="voteRateLabel" destination="km6-lg-d0H" id="gXp-SG-dMI"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="IntroduceTVCell" rowHeight="170" id="RzX-DV-aeC" customClass="IntroduceTVCell" customModule="ChungChul_iOS" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="IntroduceTVCell" rowHeight="170" id="RzX-DV-aeC" customClass="IntroduceTVCell" customModule="ChungChul_iOS" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="283" width="375" height="170"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="RzX-DV-aeC" id="d2V-1m-OzU">
@@ -794,7 +794,7 @@
                                             <outlet property="titleLabel" destination="jjl-Qk-p83" id="7TQ-3h-Uhd"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="PlanTVCell" rowHeight="114" id="iiV-GB-CpL" customClass="PlanTVCell" customModule="ChungChul_iOS" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="PlanTVCell" rowHeight="114" id="iiV-GB-CpL" customClass="PlanTVCell" customModule="ChungChul_iOS" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="453" width="375" height="114"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="iiV-GB-CpL" id="eMU-dK-llB">
@@ -862,7 +862,7 @@
                                             <outlet property="planTableView" destination="SKm-sP-19l" id="3iW-9R-ZWM"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TeacherTVCell" rowHeight="123" id="EjB-1h-Ttc" customClass="TeacherTVCell" customModule="ChungChul_iOS" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="TeacherTVCell" rowHeight="123" id="EjB-1h-Ttc" customClass="TeacherTVCell" customModule="ChungChul_iOS" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="567" width="375" height="123"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="EjB-1h-Ttc" id="XoX-fS-2Ds">
@@ -895,7 +895,7 @@
                                             <outlet property="introduceLabel" destination="oZW-VX-vYs" id="TI6-rj-XAo"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CommentTVCell" rowHeight="223" id="EMQ-BQ-8tH" customClass="CommentTVCell" customModule="ChungChul_iOS" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="CommentTVCell" rowHeight="223" id="EMQ-BQ-8tH" customClass="CommentTVCell" customModule="ChungChul_iOS" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="690" width="375" height="223"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="EMQ-BQ-8tH" id="FkX-LE-1bD">
@@ -1026,7 +1026,7 @@
                                     <constraint firstAttribute="width" secondItem="WYw-fK-Lg2" secondAttribute="height" multiplier="375:56" id="tlF-FT-dyT"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="NotoSansCJKkr-Bold" family="Noto Sans CJK KR" pointSize="16"/>
-                                <state key="normal" title="수강신청">
+                                <state key="normal">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="0.89000000000000001" colorSpace="calibratedRGB"/>
                                 </state>
                             </button>
@@ -1448,16 +1448,16 @@
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="vds-jW-knJ">
-                                                <rect key="frame" x="93" y="28.5" width="49" height="47"/>
+                                                <rect key="frame" x="93" y="28.5" width="33.5" height="47"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mir-2X-43G">
-                                                        <rect key="frame" x="0.0" y="0.0" width="49" height="27"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="이름" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mir-2X-43G">
+                                                        <rect key="frame" x="0.0" y="0.0" width="33.5" height="27"/>
                                                         <fontDescription key="fontDescription" name="NotoSansCJKkr-Bold" family="Noto Sans CJK KR" pointSize="18"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DUO-Xe-kB8">
-                                                        <rect key="frame" x="0.0" y="29" width="31" height="18"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="이메일" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DUO-Xe-kB8">
+                                                        <rect key="frame" x="0.0" y="29" width="33.5" height="18"/>
                                                         <fontDescription key="fontDescription" name="NotoSansCJKkr-Regular" family="Noto Sans CJK KR" pointSize="12"/>
                                                         <color key="textColor" red="0.4392156862745098" green="0.4392156862745098" blue="0.4392156862745098" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
@@ -1465,13 +1465,13 @@
                                                 </subviews>
                                             </stackView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xhn-XS-Vga">
-                                                <rect key="frame" x="307" y="38" width="52" height="28"/>
+                                                <rect key="frame" x="291" y="38" width="68" height="28"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="28" id="1bz-5k-IH3"/>
-                                                    <constraint firstAttribute="width" secondItem="xhn-XS-Vga" secondAttribute="height" multiplier="13:7" id="Mly-1S-fbQ"/>
+                                                    <constraint firstAttribute="width" secondItem="xhn-XS-Vga" secondAttribute="height" multiplier="17:7" id="gJT-Sa-hjE"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name="NotoSansCJKkr-Bold" family="Noto Sans CJK KR" pointSize="14"/>
-                                                <state key="normal" title="MY">
+                                                <state key="normal" title="로그아웃">
                                                     <color key="titleColor" red="0.29411764705882354" green="0.46666666666666667" blue="0.87058823529411766" alpha="1" colorSpace="calibratedRGB"/>
                                                 </state>
                                             </button>
@@ -1636,12 +1636,12 @@
                     </view>
                     <navigationItem key="navigationItem" title="더보기" id="M9B-PZ-joq"/>
                     <connections>
+                        <outlet property="logoutButton" destination="xhn-XS-Vga" id="a75-jG-p8q"/>
                         <outlet property="myWalletView" destination="Sx7-O1-PXL" id="eT8-9K-ebz"/>
                         <outlet property="privateKeyCopyButton" destination="ZYh-KI-xg6" id="Nbf-ty-zxN"/>
                         <outlet property="privateKeyLabel" destination="hWr-dc-h8U" id="UIn-13-tgf"/>
                         <outlet property="profileEmailLabel" destination="DUO-Xe-kB8" id="tVY-bx-gtN"/>
                         <outlet property="profileImageView" destination="yld-aJ-Y3x" id="zQI-2y-Xdb"/>
-                        <outlet property="profileMyButton" destination="xhn-XS-Vga" id="GAE-9A-MFO"/>
                         <outlet property="profileNameLabel" destination="Mir-2X-43G" id="qaU-ej-ark"/>
                         <outlet property="walletAddressCopyButton" destination="jM2-eJ-0xV" id="nza-ja-223"/>
                         <outlet property="walletAddressLabel" destination="b9G-Pk-Ze9" id="pry-bi-MKq"/>

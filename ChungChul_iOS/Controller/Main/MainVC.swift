@@ -71,7 +71,6 @@ class MainVC: UIViewController, NetworkCallback {
             lectureTableView.reloadData()
         } else if code == "Success Get Lecture Detail"{
             detailLectureDataFromServer = resultData as? LectureDetailData
-            print(detailLectureDataFromServer?.lectureData?.title)
             let detailVC = self.storyboard?.instantiateViewController(withIdentifier: "DetailVC") as! DetailVC
             detailVC.detailData = detailLectureDataFromServer?.lectureData
             detailVC.reviewData = detailLectureDataFromServer?.reviewData
@@ -108,7 +107,6 @@ extension MainVC {
     func navigationBarSetting(){
         self.title = "실습 교육 전체"
         self.navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.font: UIFont(name: "NotoSansCJKkr-Bold", size: 24)!]
-
         self.navigationController?.navigationBar.backgroundColor = UIColor.white
         self.navigationController?.navigationBar.isTranslucent = false
         self.navigationController?.navigationBar.shadowImage = UIImage()

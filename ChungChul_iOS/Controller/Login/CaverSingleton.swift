@@ -14,7 +14,7 @@ final class CaverSingleton {
     
     init(){}
     
-    let caver: Web3 = Web3(url: URL(string: "http://localhost:8551")!)!
+    let caver: Web3 = Web3(url: URL(string: "http://52.78.62.162:8551")!)!
     var userAddress: Address = Address("0xf694888fC6EEA44F8Cd03E9c5f18af8F61BdEbe8")
     let contractAddress = Address("0xef1491ba2a46c0e0f0a5160f261b24f60e276289")
     

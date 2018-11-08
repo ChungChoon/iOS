@@ -71,14 +71,13 @@ class LectureModel: NetworkModel {
         }
     }
     
-    func purchaseLectureModel(token: String, lecture_id: Int, price: Int, idx: Int) {
+    func purchaseLectureModel(token: String, lecture_id: Int, price: Int) {
         
         let URL = "\(baseURL)/lecture/apply"
         
         let body : [String: Int] = [
             "lecture_id": lecture_id,
-            "price": price,
-            "idx": idx
+            "price": price
         ]
         
         Alamofire.request(

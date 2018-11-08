@@ -443,10 +443,10 @@
             </objects>
             <point key="canvasLocation" x="2384.8000000000002" y="-545.57721139430294"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--InitialNC-->
         <scene sceneID="nT0-w4-xA1">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="HYb-xg-lJC" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="InitialNC" automaticallyAdjustsScrollViewInsets="NO" id="HYb-xg-lJC" customClass="InitialNC" customModule="ChungChul_iOS" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="i0l-Th-Cx7">
                         <rect key="frame" x="0.0" y="20" width="375" height="96"/>

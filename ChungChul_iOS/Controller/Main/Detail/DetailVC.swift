@@ -20,7 +20,6 @@ class DetailVC: UIViewController, NetworkCallback {
     var reviewData: [LectureReviewDataVO]?
     
     let instance: CaverSingleton = CaverSingleton.sharedInstance
-    var token: String?
     
     let headerView: HeaderView = {
         let v = HeaderView()
@@ -29,40 +28,25 @@ class DetailVC: UIViewController, NetworkCallback {
         
         return v
     }()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         detailTableView.contentInset = UIEdgeInsets(top: 274, left: 0, bottom: 0, right: 0)
         detailTableView.delegate = self
         detailTableView.dataSource = self
-        
-        token = gsno(UserDefaults.standard.string(forKey: "token"))
-        if token == nil {
-            applyButton.addTarget(self, action: #selector(loginButtonAction), for: .touchUpInside)
-        } else {
-            applyButton.addTarget(self, action: #selector(applyButtonAction), for: .touchUpInside)
-        }
+        tokenCheck()
+        checkAlreadyBuy()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        
         headerViewSetting()
-    }
-    
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(true)
-        if token == nil {
-            applyButton.removeTarget(self, action: #selector(loginButtonAction), for: .touchUpInside)
-        } else {
-            applyButton.removeTarget(self, action: #selector(applyButtonAction), for: .touchUpInside)
-        }
     }
     
     func networkResult(resultData: Any, code: String) {
         if code == "success to apply lecture"{
             applyButton.removeTarget(self, action: #selector(applyButtonAction), for: .touchUpInside)
-            applyButton.titleLabel?.text = "수강 신청 완료"
+            applyButton.setTitle("신청완료", for: .normal)
             applyButton.isEnabled = false
             print("success!")
         } else {
@@ -75,7 +59,27 @@ class DetailVC: UIViewController, NetworkCallback {
         simpleAlert(title: "네트워크 오류", msg: "인터넷 연결을 확인해주세요.")
     }
     
-    func isPurchaseLectureTransaction() -> Bool{
+    fileprivate func checkAlreadyBuy() {
+        if gino(detailData?.checkBuy) == 1{
+            applyButton.setTitle("신청완료", for: .normal)
+            applyButton.isEnabled = false
+            applyButton.backgroundColor = #colorLiteral(red: 0.6666666865, green: 0.6666666865, blue: 0.6666666865, alpha: 1)
+        }
+    }
+    
+    fileprivate func tokenCheck() {
+        if UserDefaults.standard.string(forKey: "token") == nil {
+            applyButton.setTitle("로그인이 필요합니다.", for: .normal)
+            applyButton.addTarget(self, action: #selector(loginButtonAction), for: .touchUpInside)
+            applyButton.backgroundColor = #colorLiteral(red: 1, green: 0.6348013282, blue: 0, alpha: 1)
+        } else {
+            applyButton.setTitle("수강신청", for: .normal)
+            applyButton.addTarget(self, action: #selector(applyButtonAction), for: .touchUpInside)
+            applyButton.backgroundColor = #colorLiteral(red: 0.3616529107, green: 0.554502666, blue: 0.8968388438, alpha: 1)
+        }
+    }
+    
+    fileprivate func isPurchaseLectureTransaction() -> Bool{
         do {
             let caver = instance.caver
             let ABI = instance.contractABI
@@ -124,19 +128,19 @@ class DetailVC: UIViewController, NetworkCallback {
     }
     
     @objc func loginButtonAction(){
-        
+        let loginAlertView = LoginAlertView(frame: UIApplication.shared.keyWindow!.frame)
+        UIApplication.shared.keyWindow!.addSubview(loginAlertView)
     }
     
     @objc func applyButtonAction() {
-        let token = gsno(self.token)
+        let token = gsno(UserDefaults.standard.string(forKey: "token"))
         let lectureId = gino(detailData?.lecturePk)
         let price = gino(detailData?.price)
-        let idx = gino(0)
         
         if isPurchaseLectureTransaction() { // Transaction 성공 시
             successPurchaseLectureAlertController()
             let model = LectureModel(self)
-            model.purchaseLectureModel(token: token, lecture_id: lectureId, price: price, idx: idx)
+            model.purchaseLectureModel(token: token, lecture_id: lectureId, price: price)
             
         } else { // Transaction 실패 시
             simpleAlert(title: "트랜잭션 실패", msg: "보유 클레이를 확인해주세요!")
@@ -180,7 +184,6 @@ extension DetailVC: UITableViewDelegate, UITableViewDataSource {
         switch indexPath.section {
         case 0:
             let cell = detailTableView.dequeueReusableCell(withIdentifier: "InformationTVCell") as! InformationTVCell
-            
             cell.purchaseButton.setTitle("\(gino(detailData?.price)) KLAY", for: .normal)
             cell.purchaseButton.layer.masksToBounds = true
             cell.purchaseButton.layer.cornerRadius = 15
@@ -199,15 +202,9 @@ extension DetailVC: UITableViewDelegate, UITableViewDataSource {
             return cell
         case 2:
             let cell = detailTableView.dequeueReusableCell(withIdentifier: "PlanTVCell") as! PlanTVCell
-            
-            
-            
             return cell
         case 3:
             let cell = detailTableView.dequeueReusableCell(withIdentifier: "TeacherTVCell") as! TeacherTVCell
-            
-            
-            
             return cell
         case 4:
             let cell = detailTableView.dequeueReusableCell(withIdentifier: "CommentTVCell") as! CommentTVCell
@@ -218,7 +215,6 @@ extension DetailVC: UITableViewDelegate, UITableViewDataSource {
             let cell = UITableViewCell()
             return cell
         }
-        
     }
     
     

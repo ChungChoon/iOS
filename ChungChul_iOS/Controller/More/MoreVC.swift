@@ -15,7 +15,7 @@ class MoreVC: UIViewController {
     @IBOutlet var profileImageView: UIImageView!
     @IBOutlet var profileNameLabel: UILabel!
     @IBOutlet var profileEmailLabel: UILabel!
-    @IBOutlet var profileMyButton: UIButton!
+    @IBOutlet var logoutButton: UIButton!
     @IBOutlet var myWalletView: UIView!
     @IBOutlet var walletKlayLabel: UILabel!
     @IBOutlet var walletAddressLabel: UILabel!
@@ -26,13 +26,14 @@ class MoreVC: UIViewController {
     let instance: CaverSingleton = CaverSingleton.sharedInstance
     let ud = UserDefaults.standard
     var userKlay = BigUInt(0)
-    let loginAlertView = LoginAlertView(frame: UIApplication.shared.keyWindow!.frame)
     
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationBarSetting()
+        logoutButton.addTarget(self, action: #selector(logoutButtonAction), for: .touchUpInside)
+
         if ud.string(forKey: "token") == nil {
-            UIApplication.shared.keyWindow!.addSubview(loginAlertView)
+            makeLoginAlertView()
         } else {
             borderSetting()
             walletKlayLabel.text = "0"
@@ -47,7 +48,11 @@ class MoreVC: UIViewController {
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(true)
-        UIApplication.shared.keyWindow!.willRemoveSubview(loginAlertView)
+    }
+    
+    fileprivate func makeLoginAlertView() {
+        let loginAlertView = LoginAlertView(frame: UIApplication.shared.keyWindow!.frame)
+        UIApplication.shared.keyWindow!.addSubview(loginAlertView)
     }
     
     func navigationBarSetting(){
@@ -67,6 +72,8 @@ class MoreVC: UIViewController {
         
         do {
             userKlay = try caver.eth.getBalance(address: userAddress)
+            walletKlayLabel.text = "\(userKlay.string(unitDecimals: 18))"
+            walletAddressLabel.text = "\(userAddress)"
         } catch {
             print("Get Klay Balance Fail")
         }
@@ -76,10 +83,10 @@ class MoreVC: UIViewController {
         myWalletView.layer.masksToBounds = true
         myWalletView.layer.cornerRadius = 6
         
-        profileMyButton.layer.borderWidth = 1.0
-        profileMyButton.layer.borderColor = #colorLiteral(red: 0.2941176471, green: 0.4666666667, blue: 0.8705882353, alpha: 1)
-        profileMyButton.layer.masksToBounds = true
-        profileMyButton.layer.cornerRadius = 15
+        logoutButton.layer.borderWidth = 1.0
+        logoutButton.layer.borderColor = #colorLiteral(red: 0.2941176471, green: 0.4666666667, blue: 0.8705882353, alpha: 1)
+        logoutButton.layer.masksToBounds = true
+        logoutButton.layer.cornerRadius = 15
         
         privateKeyCopyButton.layer.borderWidth = 1.0
         privateKeyCopyButton.layer.borderColor = #colorLiteral(red: 1, green: 0.6766031981, blue: 0, alpha: 1)
@@ -92,5 +99,19 @@ class MoreVC: UIViewController {
         walletAddressCopyButton.layer.cornerRadius = 15
     }
     
+    @objc func logoutButtonAction() {
+        for key in ud.dictionaryRepresentation().keys {
+            ud.removeObject(forKey: key)
+        }
+        let alertController = UIAlertController(title: "로그아웃", message: "로그아웃되었습니다.", preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default) {
+            UIAlertAction in
+            let main = UIStoryboard(name: "Main", bundle: nil)
+            let tabBarVC = main.instantiateViewController(withIdentifier: "TabBarVC") as! TabBarVC
+            UIApplication.shared.keyWindow?.rootViewController = tabBarVC
+        }
+        alertController.addAction(okAction)
+        self.present(alertController, animated: true, completion: nil)
+    }
 }
 

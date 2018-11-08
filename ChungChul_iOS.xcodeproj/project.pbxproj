@@ -76,6 +76,7 @@
 		BCC456C821919A7400C3250B /* LectureReviewDataVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCC456C721919A7400C3250B /* LectureReviewDataVO.swift */; };
 		BCC456CA219334A700C3250B /* LoginAlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCC456C9219334A700C3250B /* LoginAlertView.xib */; };
 		BCC456CD219336FA00C3250B /* LoginAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCC456CC219336FA00C3250B /* LoginAlertView.swift */; };
+		BCC456CF21935C0A00C3250B /* InitialNC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCC456CE21935C0A00C3250B /* InitialNC.swift */; };
 		BCD7D7AA21764878003238BB /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BCD7D7A921764878003238BB /* Login.storyboard */; };
 		BCD7D7AD21764A2C003238BB /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD7D7AC21764A2C003238BB /* LoginVC.swift */; };
 		BCD7D7B021764DAA003238BB /* SignUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD7D7AF21764DAA003238BB /* SignUpVC.swift */; };
@@ -169,6 +170,7 @@
 		BCC456C721919A7400C3250B /* LectureReviewDataVO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LectureReviewDataVO.swift; sourceTree = "<group>"; };
 		BCC456C9219334A700C3250B /* LoginAlertView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginAlertView.xib; sourceTree = "<group>"; };
 		BCC456CC219336FA00C3250B /* LoginAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginAlertView.swift; sourceTree = "<group>"; };
+		BCC456CE21935C0A00C3250B /* InitialNC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialNC.swift; sourceTree = "<group>"; };
 		BCD7D7A921764878003238BB /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		BCD7D7AC21764A2C003238BB /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
 		BCD7D7AF21764DAA003238BB /* SignUpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpVC.swift; sourceTree = "<group>"; };
@@ -456,6 +458,7 @@
 			isa = PBXGroup;
 			children = (
 				BCC456BD218F141300C3250B /* CaverSingleton.swift */,
+				BCC456CE21935C0A00C3250B /* InitialNC.swift */,
 				BCD7D7AC21764A2C003238BB /* LoginVC.swift */,
 				BC6F28F42183845900B64524 /* SignInVC.swift */,
 				BCD7D7AF21764DAA003238BB /* SignUpVC.swift */,
@@ -725,6 +728,7 @@
 				BC474D3B218AF85300CE1043 /* RatingView.swift in Sources */,
 				BCD7D7AD21764A2C003238BB /* LoginVC.swift in Sources */,
 				BC6F290121844C7200B64524 /* HomeDataModel.swift in Sources */,
+				BCC456CF21935C0A00C3250B /* InitialNC.swift in Sources */,
 				BC6F28F72183F7C100B64524 /* LoginModel.swift in Sources */,
 				BC6F28F52183845900B64524 /* SignInVC.swift in Sources */,
 				BC474D48218CAB2C00CE1043 /* MyLectureVO.swift in Sources */,
