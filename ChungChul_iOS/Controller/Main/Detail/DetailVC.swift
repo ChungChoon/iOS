@@ -24,8 +24,6 @@ class DetailVC: UIViewController, NetworkCallback {
     let headerView: HeaderView = {
         let v = HeaderView()
         v.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: 274)
-        //v.backImageView.image = #imageLiteral(resourceName: "1")
-        
         return v
     }()
     
@@ -68,6 +66,7 @@ class DetailVC: UIViewController, NetworkCallback {
     }
     
     fileprivate func tokenCheck() {
+        applyButton.isEnabled = true
         if UserDefaults.standard.string(forKey: "token") == nil {
             applyButton.setTitle("로그인이 필요합니다.", for: .normal)
             applyButton.addTarget(self, action: #selector(loginButtonAction), for: .touchUpInside)

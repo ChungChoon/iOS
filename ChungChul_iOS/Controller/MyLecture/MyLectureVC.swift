@@ -7,21 +7,38 @@
 //
 
 import UIKit
+import SDWebImage
 
-class MyLectureVC: UIViewController {
+class MyLectureVC: UIViewController, NetworkCallback {
 
     @IBOutlet var myLectureTableView: UITableView!
+    
+    var myLectureListDataFromServer: [MyLectureVO]?
+    var ud = UserDefaults.standard
     
     override func viewDidLoad() {
         super.viewDidLoad()
         let nibMyLecture = UINib(nibName: "MyLectureTVCell", bundle: nil)
-        myLectureTableView.delegate = self
-        myLectureTableView.dataSource = self
         myLectureTableView.register(nibMyLecture, forCellReuseIdentifier: "MyLectureTVCell")
-        myLectureTableView.allowsSelection = true
+        
+        let model = MyLectureModel(self)
+        model.callMyLectureList(token: gsno(ud.string(forKey: "token")))
+        print(gsno(ud.string(forKey: "token")))
     }
     
+    func networkResult(resultData: Any, code: String) {
+        if code == "Success To Get Farmer My Lecture"{
+            myLectureListDataFromServer = resultData as? [MyLectureVO]
 
+            myLectureTableView.delegate = self
+            myLectureTableView.dataSource = self
+            myLectureTableView.reloadData()
+        }
+    }
+    
+    func networkFailed() {
+        simpleAlert(title: "네트워크 오류", msg: "인터넷 연결을 확인해주세요.")
+    }
     
 }
 
@@ -35,7 +52,11 @@ extension MyLectureVC: UITableViewDelegate, UITableViewDataSource {
         if section == 0{
             return 1
         } else {
-            return 1
+            if myLectureListDataFromServer == nil{
+                return 1
+            } else {
+                return (myLectureListDataFromServer?.count)!
+            }
         }
     }
     
@@ -45,9 +66,18 @@ extension MyLectureVC: UITableViewDelegate, UITableViewDataSource {
             let cell = myLectureTableView.dequeueReusableCell(withIdentifier: "OnOffLineTVCell", for: indexPath) as! OnOffLineTVCell
             
             return cell
-        } else {
+        } else if indexPath.section == 1 {
             let cell = myLectureTableView.dequeueReusableCell(withIdentifier: "MyLectureTVCell", for: indexPath) as! MyLectureTVCell
+            let index = myLectureListDataFromServer![indexPath.row]
+            
+            cell.lectureImageView.sd_setImage(with: URL(string: gsno(index.farmImg)), placeholderImage: UIImage())
+            cell.lectureTitleLabel.text = gsno(index.title)
+            cell.farmNameLabel.text = gsno(index.farmName)
+            cell.termLabel.text = gsno(index.startDate) + " ~ " + gsno(index.endDate)
+            
             return cell
+        } else {
+            return UITableViewCell()
         }
     }
     
