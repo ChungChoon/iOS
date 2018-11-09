@@ -22,20 +22,26 @@ class MyLectureTVCell: UITableViewCell {
     @IBOutlet var teacherProfileImageView: UIImageView!
     @IBOutlet var farmNameLabel: UILabel!
     @IBOutlet var teacherNameLabel: UILabel!
+    @IBOutlet var includeView: UIView!
     
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        evaluateButton.layer.masksToBounds = true
-        evaluateButton.layer.cornerRadius = 15
-        evaluateButton.layer.borderColor = #colorLiteral(red: 0.388343066, green: 0.5422144532, blue: 0.9160783887, alpha: 1)
-        evaluateButton.layer.borderWidth = 1.0
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+        self.separatorInset = UIEdgeInsets(top: 0, left: UIScreen.main.bounds.size.width, bottom: 0, right: 0)
     }
     
+    override func layoutSubviews() {
+        evaluateButton.layer.masksToBounds = true
+        evaluateButton.layer.borderWidth = 1.0
+        evaluateButton.layer.borderColor = #colorLiteral(red: 1, green: 0.5920490623, blue: 0, alpha: 1)
+        evaluateButton.layer.cornerRadius = 15
+        
+        includeView.layer.masksToBounds = true
+        
+        lectureProgressBar.layer.cornerRadius = 6
+        lectureProgressBar.clipsToBounds = true
+        lectureProgressBar.layer.sublayers![1].cornerRadius = 6
+        lectureProgressBar.subviews[1].clipsToBounds = true
+        
+    }
 }

@@ -40,4 +40,40 @@ class MyLectureModel: NetworkModel {
                 }
         }
     }
+    
+    func evaluateLecture(token: String, lecture_id: Int, content: String) {
+        
+        let URL = "\(baseURL)/lecture/evaluate"
+        let body : [String:Any] = [
+            "lecture_id": lecture_id,
+            "content": content
+        ]
+        
+        Alamofire.request(
+            URL,
+            method: .post,
+            parameters: body,
+            encoding: JSONEncoding.default,
+            headers: ["token": token]
+            ).responseObject{
+                (response:DataResponse<EvaluateModel>) in
+                switch response.result {
+                case .success:
+                    guard let responseMessage = response.result.value else{
+                        self.view.networkFailed()
+                        return
+                    }
+                    if responseMessage.message == "success to evaluate lecture" {
+                        self.view.networkResult(resultData: "Success Sign Up", code: "success to evaluate lecture")
+                    }
+                    else {
+                        self.view.networkResult(resultData: responseMessage.message, code: "error")
+                    }
+                    
+                case .failure(let err):
+                    print(err)
+                    self.view.networkFailed()
+                }
+        }
+    }
 }

@@ -1326,7 +1326,7 @@
                                             <outlet property="titleLabel" destination="p9g-0T-Aqj" id="IfB-fl-7DQ"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="DescriptionTVCell" rowHeight="144" id="HBj-KM-RQM" customClass="DescriptionTVCell" customModule="ChungChul_iOS" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="DescriptionTVCell" rowHeight="144" id="HBj-KM-RQM" customClass="DescriptionTVCell" customModule="ChungChul_iOS" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="256" width="375" height="144"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="HBj-KM-RQM" id="f2L-zQ-iLq">
@@ -1346,7 +1346,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Nh2-d6-YGo">
-                                                    <rect key="frame" x="20.5" y="71" width="334" height="54"/>
+                                                    <rect key="frame" x="20.5" y="50.5" width="334" height="74.5"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="54" id="eWF-Rn-PwR"/>
@@ -1354,6 +1354,17 @@
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.78000000000000003" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <fontDescription key="fontDescription" name="NotoSansCJKkr-Medium" family="Noto Sans CJK KR" pointSize="12"/>
                                                     <textInputTraits key="textInputTraits" autocorrectionType="no"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                            <real key="value" value="3"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                            <color key="value" red="0.87450980392156863" green="0.87450980392156863" blue="0.87450980392156863" alpha="1" colorSpace="calibratedRGB"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                            <real key="value" value="6"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
                                                 </textView>
                                             </subviews>
                                             <constraints>
@@ -1361,7 +1372,7 @@
                                                 <constraint firstItem="cpx-rt-Poc" firstAttribute="leading" secondItem="f2L-zQ-iLq" secondAttribute="leading" constant="20.640000000000001" id="JJP-dp-5aL"/>
                                                 <constraint firstAttribute="bottom" secondItem="Nh2-d6-YGo" secondAttribute="bottom" constant="18.5" id="UiX-Mp-nLd"/>
                                                 <constraint firstItem="bmD-4e-14B" firstAttribute="leading" secondItem="cpx-rt-Poc" secondAttribute="trailing" constant="10" id="X4l-s5-AaB"/>
-                                                <constraint firstItem="Nh2-d6-YGo" firstAttribute="top" secondItem="cpx-rt-Poc" secondAttribute="bottom" constant="30.5" id="bmb-Md-oHR"/>
+                                                <constraint firstItem="Nh2-d6-YGo" firstAttribute="top" secondItem="cpx-rt-Poc" secondAttribute="bottom" constant="10" id="bmb-Md-oHR"/>
                                                 <constraint firstItem="Nh2-d6-YGo" firstAttribute="leading" secondItem="cpx-rt-Poc" secondAttribute="leading" id="tNy-IU-1bX"/>
                                                 <constraint firstItem="bmD-4e-14B" firstAttribute="firstBaseline" secondItem="cpx-rt-Poc" secondAttribute="firstBaseline" id="y6B-c7-WnW"/>
                                                 <constraint firstItem="Nh2-d6-YGo" firstAttribute="centerX" secondItem="f2L-zQ-iLq" secondAttribute="centerX" id="zQU-Ul-aFC"/>

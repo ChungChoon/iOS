@@ -25,6 +25,7 @@
 		BC6A219D21820856007B751B /* CommentTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6A219C21820856007B751B /* CommentTVCell.swift */; };
 		BC6A21A02182C4DB007B751B /* MoreVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6A219F2182C4DB007B751B /* MoreVC.swift */; };
 		BC6A21A221830549007B751B /* TabBarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6A21A121830549007B751B /* TabBarVC.swift */; };
+		BC6B4F982195B082007D9D74 /* EvaluateData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6B4F972195B082007D9D74 /* EvaluateData.swift */; };
 		BC6F28E521833A0200B64524 /* StudentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6F28E421833A0200B64524 /* StudentVC.swift */; };
 		BC6F28E721833A0D00B64524 /* TeacherVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6F28E621833A0D00B64524 /* TeacherVC.swift */; };
 		BC6F28EA218341A500B64524 /* NetworkModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6F28E9218341A500B64524 /* NetworkModel.swift */; };
@@ -116,6 +117,7 @@
 		BC6A219C21820856007B751B /* CommentTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentTVCell.swift; sourceTree = "<group>"; };
 		BC6A219F2182C4DB007B751B /* MoreVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MoreVC.swift; path = ChungChul_iOS/Controller/More/MoreVC.swift; sourceTree = SOURCE_ROOT; };
 		BC6A21A121830549007B751B /* TabBarVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarVC.swift; sourceTree = "<group>"; };
+		BC6B4F972195B082007D9D74 /* EvaluateData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EvaluateData.swift; sourceTree = "<group>"; };
 		BC6F28E421833A0200B64524 /* StudentVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentVC.swift; sourceTree = "<group>"; };
 		BC6F28E621833A0D00B64524 /* TeacherVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeacherVC.swift; sourceTree = "<group>"; };
 		BC6F28E9218341A500B64524 /* NetworkModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkModel.swift; sourceTree = "<group>"; };
@@ -278,6 +280,7 @@
 			children = (
 				BC474D45218CAB0F00CE1043 /* MyLectureData.swift */,
 				BC474D47218CAB2C00CE1043 /* MyLectureVO.swift */,
+				BC6B4F972195B082007D9D74 /* EvaluateData.swift */,
 			);
 			path = MyLecture;
 			sourceTree = "<group>";
@@ -716,6 +719,7 @@
 				BCB9D843217F913300D86908 /* MyLectureVC.swift in Sources */,
 				BC87E00421751C4700B7322E /* MainVC.swift in Sources */,
 				BCB9D840217F64A700D86908 /* TypeListVC.swift in Sources */,
+				BC6B4F982195B082007D9D74 /* EvaluateData.swift in Sources */,
 				BCB9D8502181B69800D86908 /* DetailVC.swift in Sources */,
 				BC6F28EE21834AE500B64524 /* SignUpStudentDataModel.swift in Sources */,
 				BC6F28FB2183F8D900B64524 /* LoginDataVO.swift in Sources */,

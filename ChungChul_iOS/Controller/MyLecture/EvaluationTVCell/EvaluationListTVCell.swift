@@ -31,13 +31,13 @@ class EvaluationListTVCell: UITableViewCell {
         minusButton.layer.cornerRadius = minusButton.frame.width / 2
         minusButton.layer.borderWidth = 1.0
         minusButton.layer.borderColor = #colorLiteral(red: 0.5141925812, green: 0.5142051578, blue: 0.5141984224, alpha: 1)
-        minusButton.addTarget(self, action: #selector(minusButtonAction), for: .touchUpInside)
+        minusButton.addTarget(self, action: #selector(minusButtonAction(_:)), for: .touchUpInside)
         
         plusButton.layer.masksToBounds = true
         plusButton.layer.cornerRadius = plusButton.frame.width / 2
         plusButton.layer.borderWidth = 1.0
         plusButton.layer.borderColor = #colorLiteral(red: 0.5141925812, green: 0.5142051578, blue: 0.5141984224, alpha: 1)
-        plusButton.addTarget(self, action: #selector(plusButtonAction), for: .touchUpInside)
+        plusButton.addTarget(self, action: #selector(plusButtonAction(_:)), for: .touchUpInside)
         
         for index in 0..<5 {
             rateView.ratingViewArray[index].layer.masksToBounds = true
@@ -51,7 +51,7 @@ class EvaluationListTVCell: UITableViewCell {
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        
         if selected {
             titleLabel.textColor = #colorLiteral(red: 0.2941176471, green: 0.4666666667, blue: 0.8705882353, alpha: 1)
             minusButton.titleLabel?.textColor = #colorLiteral(red: 0.2941176471, green: 0.4666666667, blue: 0.8705882353, alpha: 1)
@@ -71,7 +71,7 @@ class EvaluationListTVCell: UITableViewCell {
 
 extension EvaluationListTVCell {
     
-    @objc func plusButtonAction(){
+    @objc func plusButtonAction(_ sender: UIButton){
         if value < 100{
             value += 20
             count += 1
@@ -82,7 +82,7 @@ extension EvaluationListTVCell {
         }
     }
     
-    @objc func minusButtonAction(){
+    @objc func minusButtonAction(_ sender: UIButton){
         if value > 0 {
             value -= 20
             count -= 1
@@ -91,5 +91,6 @@ extension EvaluationListTVCell {
                 rateView.ratingViewArray[i].backgroundColor = #colorLiteral(red: 0.4392156863, green: 0.4392156863, blue: 0.4392156863, alpha: 1)
             }
         }
+
     }
 }

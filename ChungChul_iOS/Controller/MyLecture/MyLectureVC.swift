@@ -15,15 +15,16 @@ class MyLectureVC: UIViewController, NetworkCallback {
     
     var myLectureListDataFromServer: [MyLectureVO]?
     var ud = UserDefaults.standard
+    var lecturePk: Int?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationBarSetting()
         let nibMyLecture = UINib(nibName: "MyLectureTVCell", bundle: nil)
         myLectureTableView.register(nibMyLecture, forCellReuseIdentifier: "MyLectureTVCell")
         
         let model = MyLectureModel(self)
         model.callMyLectureList(token: gsno(ud.string(forKey: "token")))
-        print(gsno(ud.string(forKey: "token")))
     }
     
     func networkResult(resultData: Any, code: String) {
@@ -38,6 +39,14 @@ class MyLectureVC: UIViewController, NetworkCallback {
     
     func networkFailed() {
         simpleAlert(title: "네트워크 오류", msg: "인터넷 연결을 확인해주세요.")
+    }
+    
+    func navigationBarSetting(){
+        self.title = "나의 강의"
+        self.navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.font: UIFont(name: "NotoSansCJKkr-Bold", size: 24)!]
+        self.navigationController?.navigationBar.backgroundColor = UIColor.white
+        self.navigationController?.navigationBar.isTranslucent = false
+        self.navigationController?.navigationBar.shadowImage = UIImage()
     }
     
 }
@@ -69,6 +78,9 @@ extension MyLectureVC: UITableViewDelegate, UITableViewDataSource {
         } else if indexPath.section == 1 {
             let cell = myLectureTableView.dequeueReusableCell(withIdentifier: "MyLectureTVCell", for: indexPath) as! MyLectureTVCell
             let index = myLectureListDataFromServer![indexPath.row]
+            lecturePk = index.lecturePk
+            
+            cell.evaluateButton.addTarget(self, action: #selector(evaluateButtonAction), for: .touchUpInside)
             
             cell.lectureImageView.sd_setImage(with: URL(string: gsno(index.farmImg)), placeholderImage: UIImage())
             cell.lectureTitleLabel.text = gsno(index.title)
@@ -88,8 +100,15 @@ extension MyLectureVC: UITableViewDelegate, UITableViewDataSource {
 //        cell.voteButton.removeFromSuperview()
     }
     
+    
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableView.automaticDimension
     }
     
+    @objc func evaluateButtonAction(){
+        let evaluationVC = self.storyboard?.instantiateViewController(withIdentifier: "EvaluationVC") as! EvaluationVC
+        evaluationVC.lecturePk = lecturePk
+        self.navigationController?.pushViewController(evaluationVC, animated: true)
+    }
 }

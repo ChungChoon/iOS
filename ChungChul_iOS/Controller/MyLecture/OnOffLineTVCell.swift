@@ -19,6 +19,8 @@ class OnOffLineTVCell: UITableViewCell {
         onLineButton.addTarget(self, action: #selector(toggleButtonAction(_:)), for: .touchUpInside)
         offLineButton.addTarget(self, action: #selector(toggleButtonAction(_:)), for: .touchUpInside)
         flagChanging()
+        
+        self.separatorInset = UIEdgeInsets(top: 0, left: UIScreen.main.bounds.size.width, bottom: 0, right: 0)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

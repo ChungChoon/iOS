@@ -8,13 +8,12 @@
 
 import UIKit
 
-class EvaluationVC: UIViewController {
-    
+class EvaluationVC: UIViewController, NetworkCallback {
+
     @IBOutlet var evaluationTableView: UITableView!
     @IBOutlet var doneButton: UIButton!
     
     var colorArray: [UIColor] = [#colorLiteral(red: 0.3176470588, green: 0.8941176471, blue: 0.6705882353, alpha: 1),#colorLiteral(red: 0.1764705882, green: 0.8666666667, blue: 0.7607843137, alpha: 1),#colorLiteral(red: 0.2862745098, green: 0.8431372549, blue: 0.9176470588, alpha: 1),#colorLiteral(red: 0.2392156863, green: 0.7411764706, blue: 0.8901960784, alpha: 1),#colorLiteral(red: 0.3725490196, green: 0.6078431373, blue: 0.8941176471, alpha: 1)]
-    
     let evaluationTitleArray: [String] = [
         "수업준비",
         "수업내용",
@@ -31,14 +30,79 @@ class EvaluationVC: UIViewController {
     "전체적인 만족도에 대해 입력 해주세요"
     ]
     
+    var lecturePk: Int?
+    var content: String?
+    var ud = UserDefaults.standard
+    var evaluationValueArray: [Int] = [0,0,0,0,0]
+    
+    let instance: CaverSingleton = CaverSingleton.sharedInstance
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         evaluationTableView.delegate = self
         evaluationTableView.dataSource = self
+        
+        
+    }
+    
+//    func getEvaluationPointAtKlaytn(){
+//        do {
+//            let caver = instance.caver
+//            let ABI = instance.contractABI
+//            let contractAddress = instance.contractAddress
+//            let passwd = gsno(UserDefaults.standard.string(forKey: "password"))
+//            
+//            // Option Setting
+//            var options = Web3Options.default
+//            options.gasLimit = BigUInt(701431)
+//            options.from = instance.userAddress
+//            
+//            // Parameter Setting
+//            let lectureNumberParameter = [BigUInt(gino(detailData?.lecturePk))] as [AnyObject]
+//            
+//            // Estimated Gas
+//            let estimatedGas = try caver.contract(ABI, at: contractAddress).method("purchaseLecture", parameters: lectureNumberParameter, options: options).estimateGas(options: nil)
+//            options.gasLimit = estimatedGas
+//            
+//            // Transaction Setting
+//            let transactionResult = try caver.contract(ABI, at: contractAddress).method("purchaseLecture", parameters: lectureNumberParameter, options: options)
+//            print(transactionResult.transaction)
+//            
+//            // Transaction Send
+//            let sendingResult = try transactionResult.send(password: passwd)
+//            print(sendingResult.transaction)
+//            
+//            return true
+//        } catch{
+//            print("Transaction Fail!")
+//            print(error.localizedDescription)
+//            return false
+//        }
+//    }
+    
+    func networkResult(resultData: Any, code: String) {
+        
+    }
+    
+    func networkFailed() {
+        simpleAlert(title: "네트워크 오류", msg: "인터넷 연결을 확인해주세요.")
+    }
+    
+    @objc func doneButtonAction(){
+        let token = gsno(ud.string(forKey: "token"))
+        let model = MyLectureModel(self)
+        model.evaluateLecture(token: token, lecture_id: gino(lecturePk), content: gsno(content))
+    }
+    
+    @objc func detectingButtonInCell(_ sender: UIButton){
+        let cell = sender.superview?.superview as! EvaluationListTVCell
+        let indexPath = self.evaluationTableView.indexPath(for: cell)
+        self.evaluationTableView.selectRow(at: indexPath, animated: true, scrollPosition: UITableView.ScrollPosition.none)
+        evaluationValueArray[(indexPath?.row)!] = gino(cell.value)
     }
 }
 
-extension EvaluationVC: UITableViewDelegate, UITableViewDataSource {
+extension EvaluationVC: UITableViewDelegate, UITableViewDataSource, UITextViewDelegate {
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 3
@@ -69,11 +133,14 @@ extension EvaluationVC: UITableViewDelegate, UITableViewDataSource {
             cell.titleLabel.text = evaluationTitleArray[index]
             cell.subjectLabel.text = evaluationSubjectArray[index]
             cell.colorFromVC = colorArray[index]
+            cell.plusButton.addTarget(self, action: #selector(detectingButtonInCell(_:)), for: .touchUpInside)
+            cell.minusButton.addTarget(self, action: #selector(detectingButtonInCell(_:)), for: .touchUpInside)
+            
             return cell
         case 2:
             let cell = evaluationTableView.dequeueReusableCell(withIdentifier: "DescriptionTVCell") as! DescriptionTVCell
             cell.delegate = self as ExpandingCellDelegate
-            
+            cell.descriptionTextView.delegate = self
             return cell
         default:
             return UITableViewCell()
@@ -84,6 +151,17 @@ extension EvaluationVC: UITableViewDelegate, UITableViewDataSource {
         return UITableView.automaticDimension
     }
     
+    func textViewDidEndEditing(_ textView: UITextView) {
+        content = gsno(textView.text)
+    }
+    
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        if (text == "\n") {
+            textView.resignFirstResponder()
+            return false
+        }
+        return true
+    }
 }
 
 extension EvaluationVC: ExpandingCellDelegate {
