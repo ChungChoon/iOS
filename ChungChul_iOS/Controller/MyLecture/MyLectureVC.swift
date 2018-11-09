@@ -74,7 +74,7 @@ extension MyLectureVC: UITableViewDelegate, UITableViewDataSource {
             cell.lectureTitleLabel.text = gsno(index.title)
             cell.farmNameLabel.text = gsno(index.farmName)
             cell.termLabel.text = gsno(index.startDate) + " ~ " + gsno(index.endDate)
-            
+            cell.lectureCountLabel.text = "강의 \(gino(index.attendCnt))/00개 출석완료"
             return cell
         } else {
             return UITableViewCell()
