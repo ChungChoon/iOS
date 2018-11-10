@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import web3swift
+import BigInt
 
 class EvaluationVC: UIViewController, NetworkCallback {
 
@@ -42,56 +44,73 @@ class EvaluationVC: UIViewController, NetworkCallback {
         evaluationTableView.delegate = self
         evaluationTableView.dataSource = self
         
-        
+        doneButton.addTarget(self, action: #selector(doneButtonAction), for: .touchUpInside)
     }
     
-//    func getEvaluationPointAtKlaytn(){
-//        do {
-//            let caver = instance.caver
-//            let ABI = instance.contractABI
-//            let contractAddress = instance.contractAddress
-//            let passwd = gsno(UserDefaults.standard.string(forKey: "password"))
-//            
-//            // Option Setting
-//            var options = Web3Options.default
-//            options.gasLimit = BigUInt(701431)
-//            options.from = instance.userAddress
-//            
-//            // Parameter Setting
-//            let lectureNumberParameter = [BigUInt(gino(detailData?.lecturePk))] as [AnyObject]
-//            
-//            // Estimated Gas
-//            let estimatedGas = try caver.contract(ABI, at: contractAddress).method("purchaseLecture", parameters: lectureNumberParameter, options: options).estimateGas(options: nil)
-//            options.gasLimit = estimatedGas
-//            
-//            // Transaction Setting
-//            let transactionResult = try caver.contract(ABI, at: contractAddress).method("purchaseLecture", parameters: lectureNumberParameter, options: options)
-//            print(transactionResult.transaction)
-//            
-//            // Transaction Send
-//            let sendingResult = try transactionResult.send(password: passwd)
-//            print(sendingResult.transaction)
-//            
-//            return true
-//        } catch{
-//            print("Transaction Fail!")
-//            print(error.localizedDescription)
-//            return false
-//        }
-//    }
+    func evaluateLectureOnKlaytn(){
+        do {
+            let caver = instance.caver
+            let ABI = instance.contractABI
+            let contractAddress = instance.contractAddress
+            let passwd = gsno(UserDefaults.standard.string(forKey: "password"))
+            
+            // Option Setting
+            var options = Web3Options.default
+            options.gasLimit = BigUInt(701431)
+            options.from = instance.userAddress
+            
+            let lectureNumber = BigUInt(gino(lecturePk))
+            let preparationPoint = BigUInt(gino(evaluationValueArray[0]))
+            let contentPoint = BigUInt(gino(evaluationValueArray[1]))
+            let proceedPoint = BigUInt(gino(evaluationValueArray[2]))
+            let communicationPoint = BigUInt(gino(evaluationValueArray[3]))
+            let satisfactionPoint = BigUInt(gino(evaluationValueArray[4]))
+            
+            // Parameter Setting
+            let evaluateParameters = [lectureNumber, preparationPoint, contentPoint, proceedPoint, communicationPoint, satisfactionPoint] as [AnyObject]
+            
+            // Estimated Gas
+            let estimatedGas = try caver.contract(ABI, at: contractAddress).method("evaluateLecture", parameters: evaluateParameters, options: options).estimateGas(options: nil)
+            options.gasLimit = estimatedGas
+            
+            // Transaction Setting
+            let transactionResult = try caver.contract(ABI, at: contractAddress).method("evaluateLecture", parameters: evaluateParameters, options: options)
+
+            // Transaction Send
+            let sendingResult = try transactionResult.send(password: passwd)
+            print(sendingResult.transaction)
+            
+            networkEvaluateLectureToServer()
+        } catch{
+            print("Transaction Fail!")
+            print(error.localizedDescription)
+        }
+    }
     
     func networkResult(resultData: Any, code: String) {
-        
+        if code == "success to evaluate lecture"{
+            //TODO: 강의 평가 완료
+        } else {
+            let msg = resultData as! String
+            simpleAlert(title: msg, msg: "서버 오류, 개발자에게 문의하세요." )
+        }
     }
     
     func networkFailed() {
         simpleAlert(title: "네트워크 오류", msg: "인터넷 연결을 확인해주세요.")
     }
     
-    @objc func doneButtonAction(){
+    fileprivate func networkEvaluateLectureToServer() {
         let token = gsno(ud.string(forKey: "token"))
         let model = MyLectureModel(self)
         model.evaluateLecture(token: token, lecture_id: gino(lecturePk), content: gsno(content))
+        print(token)
+        print(lecturePk)
+        print(content)
+    }
+    
+    @objc func doneButtonAction(){
+        evaluateLectureOnKlaytn()
     }
     
     @objc func detectingButtonInCell(_ sender: UIButton){
@@ -151,7 +170,7 @@ extension EvaluationVC: UITableViewDelegate, UITableViewDataSource, UITextViewDe
         return UITableView.automaticDimension
     }
     
-    func textViewDidEndEditing(_ textView: UITextView) {
+    func textViewDidChange(_ textView: UITextView) {
         content = gsno(textView.text)
     }
     
