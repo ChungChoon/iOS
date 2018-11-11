@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import web3swift
+import BigInt
 
 class PopularLectureTVCell: UITableViewCell {
 
@@ -18,6 +20,8 @@ class PopularLectureTVCell: UITableViewCell {
     let itemSpacing = CGFloat(10)
     let itemHeight = CGFloat(290)
     var itemWidth = CGFloat(0)
+    
+    let instance: CaverSingleton = CaverSingleton.sharedInstance
     
     var popularData : [PopularDataVO]? = nil{
         didSet{
@@ -92,6 +96,18 @@ class PopularLectureTVCell: UITableViewCell {
             sender.setTitle("타입", for: .normal)
         }
     }
+    
+    func getEvaluationAveragePoint(_ lectureNumber: Int?) -> Int?{
+        var value: Int?
+        do {
+            let contractAddress = instance.contractAddress
+            value = try contractAddress.call("calculateEvaluationAveragePoint(uint256)", lectureNumber!).wait().intCount()
+        } catch{
+            print("Get Function Result Fail!")
+            print(error.localizedDescription)
+        }
+        return value
+    }
 
 }
 
@@ -110,9 +126,7 @@ extension PopularLectureTVCell: UICollectionViewDelegate, UICollectionViewDataSo
         cell.backgroundColor = UIColor.yellow
         let index = popularData![indexPath.row]
 
-        
-
-
+        cell.lecturePercentLabel.text = "\(getEvaluationAveragePoint(index.lecturePk!) ?? -10)%"
         cell.lectureTitleLabel.text = index.title
         cell.lectureAddressLabel.text = index.place
         cell.purchaseButton.setTitle("\(index.price!) KLAY", for: .normal)

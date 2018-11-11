@@ -26,11 +26,14 @@ class MoreVC: UIViewController {
     let instance: CaverSingleton = CaverSingleton.sharedInstance
     let ud = UserDefaults.standard
     var userKlay = BigUInt(0)
+    var privateKey: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationBarSetting()
         logoutButton.addTarget(self, action: #selector(logoutButtonAction), for: .touchUpInside)
+        walletAddressCopyButton.addTarget(self, action: #selector(walletAddressCopyButtonAction), for: .touchUpInside)
+        privateKeyCopyButton.addTarget(self, action: #selector(privateKeyCopyButtonAction), for: .touchUpInside)
 
         if ud.string(forKey: "token") == nil {
             makeLoginAlertView()
@@ -69,11 +72,17 @@ class MoreVC: UIViewController {
         
         let caver = instance.caver
         let userAddress = instance.userAddress
+        let keystore = instance.keystoreMangaerInDevice()
         
         do {
             userKlay = try caver.eth.getBalance(address: userAddress)
             walletKlayLabel.text = "\(userKlay.string(unitDecimals: 18))"
             walletAddressLabel.text = "\(userAddress)"
+
+            // Private Key 추출
+            let key = try keystore?.UNSAFE_getPrivateKeyData(password: gsno(ud.string(forKey: "password")), account: userAddress)
+            privateKey = "0x" + gsno(key?.toHexString())
+
         } catch {
             print("Get Klay Balance Fail")
         }
@@ -112,6 +121,16 @@ class MoreVC: UIViewController {
         }
         alertController.addAction(okAction)
         self.present(alertController, animated: true, completion: nil)
+    }
+    
+    @objc func walletAddressCopyButtonAction(){
+        UIPasteboard.general.string = walletAddressLabel.text
+        simpleAlert(title: "지갑 주소 복사", msg: gsno(UIPasteboard.general.string))
+    }
+    
+    @objc func privateKeyCopyButtonAction(){
+        UIPasteboard.general.string = privateKey
+        simpleAlert(title: "개인키 복사", msg: gsno(UIPasteboard.general.string))
     }
 }
 

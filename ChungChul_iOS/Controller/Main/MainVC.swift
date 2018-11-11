@@ -25,7 +25,6 @@ class MainVC: UIViewController, NetworkCallback {
     var onlineData: [OnlineDataVO]?
     
     var detailLectureDataFromServer: LectureDetailData?
-
     var lecturePk : Int = 0
 
     override func viewDidLoad() {
