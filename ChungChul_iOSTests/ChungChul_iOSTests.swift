@@ -20,8 +20,16 @@ class ChungChul_iOSTests: XCTestCase {
     }
 
     func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+        var value: Int?
+        let lectureNumber: Int = 0
+        do {
+            let contractAddress = CaverSingleton.sharedInstance.contractAddress
+            value = try contractAddress.call("calculateEvaluationAveragePoint(uint256)", lectureNumber).wait().intCount()
+            print(value!)
+        } catch{
+            print("Get Function Result Fail!")
+            print(error.localizedDescription)
+        }
     }
 
     func testPerformanceExample() {

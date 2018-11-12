@@ -1,4 +1,16 @@
 # We just released web3swift 2.0 [check it out](https://github.com/BANKEX/web3swift/releases/tag/2.0.0)
+### also check our [Discord Channel](https://discord.gg/3ETv2ST)
+<p align="right">
+<a href="https://brianmacdonald.github.io/Ethonate/address#0x47FC2e245b983A92EB3359F06E31F34B107B6EF6" target="_blank">
+<img src="https://brianmacdonald.github.io/Ethonate/svg/eth-support-blue.svg" alt="Support">
+</a>
+<a href="https://stackoverflow.com/questions/tagged/web3swift" target="_blank">
+<img src="https://img.shields.io/badge/stackoverflow-ask-blue.svg" alt="Stackoverflow">
+</a>
+<a href="https://discord.gg/3ETv2ST" target="_blank">
+<img src="https://img.shields.io/badge/discord-join%20chat-blue.svg" alt="Join Discord">
+</a>
+</p>
 
 ![bkx-foundation-github-swift](https://user-images.githubusercontent.com/3356474/34412791-5b58962c-ebf0-11e7-8460-5592b12e6e9d.png)
 
@@ -12,19 +24,11 @@
 <a target="_blank">
 <img src="https://img.shields.io/badge/Supports-CocoaPods%20%7C%20Carthage%20%7C%20SwiftPM%20-orange.svg?style=flat" alt="Compatible">
 </a>
+<a target="_blank">
+<img src="https://img.shields.io/badge/Supports-Objective%20C-blue.svg?style=flat" alt="Compatible">
+</a>
 </p>
 
-<p align="center">
-<a href="https://brianmacdonald.github.io/Ethonate/address#0x47FC2e245b983A92EB3359F06E31F34B107B6EF6" target="_blank">
-<img src="https://brianmacdonald.github.io/Ethonate/svg/eth-support-blue.svg" alt="Support">
-</a>
-<a href="https://stackoverflow.com/questions/tagged/web3swift" target="_blank">
-<img src="https://img.shields.io/badge/stackoverflow-ask-blue.svg" alt="Stackoverflow">
-</a>
-<a href="https://discord.gg/3ETv2ST" target="_blank">
-<img src="https://img.shields.io/badge/discord-join%20chat-blue.svg" alt="Join Discord">
-</a>
-</p>
 
 # web3swift
 - Swift implementation of [web3.js](https://github.com/ethereum/web3.js/) functionality :zap:
@@ -42,7 +46,7 @@
 
 
 ## Requirements
-Web3swift requires Swift 4.2 and deploys to `macOS 10.10`, `iOS 9`, `watchOS 2` and `tvOS 9` and `linux`. 
+Web3swift requires Swift 4.2 and deploys to `macOS 10.10`, `iOS 9`, `watchOS 2` and `tvOS 9` and `linux`.
 
 Don't forget to set the iOS version in a Podfile, otherwise you get an error if the deployment target is less than the latest SDK.
 
@@ -139,8 +143,8 @@ Here's a few use cases of our library
 ### Initializing Ethereum address
 
 ```bash
-let coldWalletAddress = "0x6394b37Cf80A7358b38068f0CA4760ad49983a1B"
-let constractAddress = "0x45245bc59219eeaaf6cd3f382e078a461ff9de7b"
+let coldWalletAddress: Address = "0x6394b37Cf80A7358b38068f0CA4760ad49983a1B"
+let constractAddress: Address = "0x45245bc59219eeaaf6cd3f382e078a461ff9de7b"
 ```
 Ethereum addresses are checksum checked if they are not lowercased and always length checked
 
@@ -236,4 +240,4 @@ Changes made to this branch will be merged into the [master](https://github.com/
 When using this pod, references to this repo, [BANKEX](https://bankex.com) and [BANKEX Foundation](https://new.bankexfoundation.org/) are appreciated.
 
 ## License
-web3swift is available under the Apache License 2.0 license. See the [LICENSE](https://github.com/BankEx/web3swift/blob/master/LICENSE) file for more info.
+web3swift is available under the Apache License 2.0 license. See the [LICENSE](https://github.com/BankEx/web3swift/blob/master/LICENSE.md) file for more info.

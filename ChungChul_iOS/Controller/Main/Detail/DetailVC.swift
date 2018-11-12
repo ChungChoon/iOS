@@ -21,6 +21,12 @@ class DetailVC: UIViewController, NetworkCallback {
     
     let instance: CaverSingleton = CaverSingleton.sharedInstance
     
+    var evaluationPointText: String = ""
+    var evaluationPointIndex: Int = 0
+    var rateViewIndex: Int?
+    
+    let screenSizeWidth = UIScreen.main.bounds.size.width
+    
     let headerView: HeaderView = {
         let v = HeaderView()
         v.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: 274)
@@ -29,6 +35,8 @@ class DetailVC: UIViewController, NetworkCallback {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        rateViewIndex = getRateViewIndexByEvaluationPoint(evaluationPointIndex)
+        detailTableView.separatorInset = UIEdgeInsets(top: 0, left: screenSizeWidth, bottom: 0, right: 0)
         detailTableView.contentInset = UIEdgeInsets(top: 274, left: 0, bottom: 0, right: 0)
         detailTableView.delegate = self
         detailTableView.dataSource = self
@@ -46,7 +54,6 @@ class DetailVC: UIViewController, NetworkCallback {
             applyButton.removeTarget(self, action: #selector(applyButtonAction), for: .touchUpInside)
             applyButton.setTitle("신청완료", for: .normal)
             applyButton.isEnabled = false
-            print("success!")
         } else {
             let msg = resultData as! String
             simpleAlert(title: "서버 오류", msg: msg)
@@ -56,6 +63,27 @@ class DetailVC: UIViewController, NetworkCallback {
     func networkFailed() {
         simpleAlert(title: "네트워크 오류", msg: "인터넷 연결을 확인해주세요.")
     }
+    
+    func getRateViewIndexByEvaluationPoint(_ evaluationPoint: Int?) -> Int?{
+        if let point = evaluationPoint {
+            if point == 100{
+                return 4
+            } else if point >= 80 && point < 100{
+                return 3
+            } else if point >= 60 && point < 80 {
+                return 2
+            } else if point >= 40 && point < 60 {
+                return 1
+            } else if point >= 20 && point < 40 {
+                return 0
+            } else {
+                return nil
+            }
+        } else {
+            return nil
+        }
+    }
+    
     
     fileprivate func checkAlreadyBuy() {
         if gino(detailData?.checkBuy) == 1{
@@ -151,15 +179,15 @@ extension DetailVC {
     
     func headerViewSetting(){
         view.addSubview(headerView)
-        typeImageViewSetting(headerView.typeButton)
-        typeTextButtonSetting(headerView.typeButton, gino(detailData?.kind))
+        headerView.typeButtonSetting(headerView.typeButton)
+        headerView.typeButtonTextSetting(headerView.typeButton, gino(detailData?.kind))
         headerView.lectureTitleLabel.text = gsno(detailData?.title)
         headerView.teacherNameLabel.text = gsno(detailData?.name)
         headerView.farmNameLabel.text = gsno(detailData?.farmName)
         headerView.backImageView.sd_setImage(with: URL(string: gsno(detailData?.farmImg)), placeholderImage: UIImage())
         headerView.teacherImageView.sd_setImage(with: URL(string: gsno(detailData?.img)), placeholderImage: UIImage(named: "ic_people36"))
         headerView.dismissButton.addTarget(self, action: #selector(dismissButtonAction), for: .touchUpInside)
-
+        
     }
     
     @objc func dismissButtonAction(){
@@ -184,15 +212,22 @@ extension DetailVC: UITableViewDelegate, UITableViewDataSource {
         case 0:
             let cell = detailTableView.dequeueReusableCell(withIdentifier: "InformationTVCell") as! InformationTVCell
             cell.purchaseButton.setTitle("\(gino(detailData?.price)) KLAY", for: .normal)
-            cell.purchaseButton.layer.masksToBounds = true
-            cell.purchaseButton.layer.cornerRadius = 15
-            cell.purchaseButton.layer.borderWidth = 1.0
-            cell.purchaseButton.layer.borderColor = #colorLiteral(red: 0.3616529107, green: 0.554502666, blue: 0.8968388438, alpha: 1)
             
             cell.typeLabel.text = "오프라인"
             cell.termLabel.text = "\(gsno(detailData?.startDate)) ~ \(gsno(detailData?.endDate))"
             cell.placeLabel.text = gsno(detailData?.place)
             cell.costLabel.text = "\(gino(detailData?.price)) KLAY"
+            cell.voteCountLabel.text = "총 \(gino(reviewData?.count))개의 평가"
+            cell.voteRateLabel.text = evaluationPointText
+            
+            if rateViewIndex != nil{
+                for i in 0...gino(rateViewIndex) {
+                    cell.rateView.ratingViewArray[i].backgroundColor = #colorLiteral(red: 0.2941176471, green: 0.4666666667, blue: 0.8705882353, alpha: 1)
+                }
+            } else {
+                cell.rateView.isHidden = true
+            }
+            
             return cell
         case 1:
             let cell = detailTableView.dequeueReusableCell(withIdentifier: "IntroduceTVCell") as! IntroduceTVCell
@@ -206,13 +241,21 @@ extension DetailVC: UITableViewDelegate, UITableViewDataSource {
             let cell = detailTableView.dequeueReusableCell(withIdentifier: "TeacherTVCell") as! TeacherTVCell
             return cell
         case 4:
-            let cell = detailTableView.dequeueReusableCell(withIdentifier: "CommentTVCell") as! CommentTVCell
-            cell.commentCountLabel.text = "\(gino(reviewData?.count))개의 후기가 있습니다!"
-            cell.reviewDataFromServer = reviewData
-            return cell
+            if evaluationPointText != "평가가 없습니다."{
+                let cell = detailTableView.dequeueReusableCell(withIdentifier: "CommentTVCell") as! CommentTVCell
+                cell.commentCountLabel.text = "\(gino(reviewData?.count))개의 후기가 있습니다!"
+                cell.reviewDataFromServer = reviewData
+                cell.rateLabel.text = evaluationPointText
+                for i in 0...gino(rateViewIndex) {
+                    cell.rateView.ratingViewArray[i].backgroundColor = #colorLiteral(red: 0.2941176471, green: 0.4666666667, blue: 0.8705882353, alpha: 1)
+                }
+                
+                return cell
+            } else {
+                return UITableViewCell()
+            }
         default:
-            let cell = UITableViewCell()
-            return cell
+            return UITableViewCell()
         }
     }
     

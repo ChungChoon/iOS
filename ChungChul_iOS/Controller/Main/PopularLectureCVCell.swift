@@ -25,10 +25,7 @@ class PopularLectureCVCell: UICollectionViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        purchaseButton.layer.borderWidth = 1.0
-        purchaseButton.layer.borderColor = #colorLiteral(red: 1, green: 0.6766031981, blue: 0, alpha: 1)
-        purchaseButton.layer.masksToBounds = true
-        purchaseButton.layer.cornerRadius = 15
     }
+    
 }
 

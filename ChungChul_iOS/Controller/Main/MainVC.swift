@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Lottie
 
 extension Notification.Name{
     static let gotoDetail = Notification.Name("gotoDetail")
@@ -25,8 +26,10 @@ class MainVC: UIViewController, NetworkCallback {
     var onlineData: [OnlineDataVO]?
     
     var detailLectureDataFromServer: LectureDetailData?
-    var lecturePk : Int = 0
-
+    var lecturePk: Int = 0
+    var evaluationPointText: String = ""
+    var evaluationPointIndex: Int = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         lectureTableView.tableFooterView = UIView(frame: CGRect.zero)
@@ -41,6 +44,15 @@ class MainVC: UIViewController, NetworkCallback {
         
         NotificationCenter.default.addObserver(self,selector: #selector(gotoDetail(notification:)),name: .gotoDetail,object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(gotoMain(notification:)), name: .gotoMain, object: nil)
+        
+//        let indicatorView = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
+//        UIApplication.shared.keyWindow!.addSubview(indicatorView)
+//        let animationView = LOTAnimationView(name: "indicator")
+//        animationView.frame = CGRect(x: 0, y: 0, width: 300, height: 200)
+//        animationView.center = self.view.center
+//        indicatorView.contentMode = .center
+//        indicatorView.blurEffectView(animationView)
+//        animationView.play()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -64,15 +76,19 @@ class MainVC: UIViewController, NetworkCallback {
             popularData = lectureListDataFromServer?.popular
             offlineData = lectureListDataFromServer?.offline
             onlineData = lectureListDataFromServer?.online
+
+            self.lectureTableView.delegate = self
+            self.lectureTableView.dataSource = self
+            self.lectureTableView.reloadData()
             
-            lectureTableView.delegate = self
-            lectureTableView.dataSource = self
-            lectureTableView.reloadData()
         } else if code == "Success Get Lecture Detail"{
             detailLectureDataFromServer = resultData as? LectureDetailData
+            
             let detailVC = self.storyboard?.instantiateViewController(withIdentifier: "DetailVC") as! DetailVC
             detailVC.detailData = detailLectureDataFromServer?.lectureData
             detailVC.reviewData = detailLectureDataFromServer?.reviewData
+            detailVC.evaluationPointText = evaluationPointText
+            detailVC.evaluationPointIndex = evaluationPointIndex
             
             self.present(detailVC, animated: false, completion: nil)
         } else {
@@ -86,7 +102,9 @@ class MainVC: UIViewController, NetworkCallback {
 
     @objc func gotoDetail(notification: NSNotification){
         lecturePk = gino(notification.userInfo!["lecturePk"] as? Int)
-
+        evaluationPointText = gsno(notification.userInfo!["evaluationPointText"] as? String)
+        evaluationPointIndex = gino(notification.userInfo!["evaluationPointIndex"] as? Int)
+        
         let model = LectureModel(self)
         model.callLectureDetail(lectureId: lecturePk, token: gsno(UserDefaults.standard.string(forKey: "token")))
     }

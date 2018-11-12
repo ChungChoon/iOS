@@ -27,6 +27,10 @@ class MyLectureVC: UIViewController, NetworkCallback {
         model.callMyLectureList(token: gsno(ud.string(forKey: "token")))
     }
     
+    @IBAction func unwindToMyLecture(segue:UIStoryboardSegue) {
+        myLectureTableView.reloadData()
+    }
+    
     func networkResult(resultData: Any, code: String) {
         if code == "Success To Get Farmer My Lecture"{
             myLectureListDataFromServer = resultData as? [MyLectureVO]

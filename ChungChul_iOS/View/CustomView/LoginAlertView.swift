@@ -32,14 +32,7 @@ class LoginAlertView: UIView {
         cancelButton.addTarget(self, action: #selector(cancelButtonAction), for: .touchUpInside)
     }
     
-    fileprivate func blurEffectView(_ view: UIView) {
-        let blurEffect = UIBlurEffect(style: UIBlurEffect.Style.light)
-        let blurEffectView = UIVisualEffectView(effect: blurEffect)
-        blurEffectView.frame = view.bounds
-        blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        self.addSubview(blurEffectView)
-        self.addSubview(view)
-    }
+
     
     @objc func acceptButtonAction(){
         let login = UIStoryboard(name: "Login", bundle: nil)

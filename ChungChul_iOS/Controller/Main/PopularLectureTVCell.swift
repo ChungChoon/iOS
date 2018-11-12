@@ -9,6 +9,7 @@
 import UIKit
 import web3swift
 import BigInt
+import SDWebImage
 
 class PopularLectureTVCell: UITableViewCell {
 
@@ -23,95 +24,50 @@ class PopularLectureTVCell: UITableViewCell {
     
     let instance: CaverSingleton = CaverSingleton.sharedInstance
     
-    var popularData : [PopularDataVO]? = nil{
-        didSet{
-            popularLectureCollectionView.reloadData()
-        }
-    }
-    
-    var dateForm = DateFormatter()
-    
-    var dateFormatter: DateFormatter {
-        get {
-            let f = DateFormatter()
-            f.dateFormat = "yyyy.MM.dd"
-            return f
-        }
-    }
-    
+    var popularData : [PopularDataVO]?
+    var evaluationPointTextArray: [String] = []
     
     override func awakeFromNib() {
         super.awakeFromNib()
         separatorInset = UIEdgeInsets(top: 0, left: UIScreen.main.bounds.width, bottom: 0, right: 0)
         setCollectionViewDataSourceDelegate(dataSourceDelegate: self, forRow: 0)
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1, execute: {
+             self.getEvaluationDataOnKlaytn()
+        })
     }
     
     func setCollectionViewDataSourceDelegate<D: UICollectionViewDelegate & UICollectionViewDataSource> (dataSourceDelegate: D, forRow row: Int) {
         popularLectureCollectionView.delegate = dataSourceDelegate
         popularLectureCollectionView.dataSource = dataSourceDelegate
         popularLectureCollectionView.tag = row
-        
+        collectionViewFlowLayout()
+        popularLectureCollectionView.reloadData()
+    }
+    
+    fileprivate func collectionViewFlowLayout() {
         let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
         itemWidth = self.contentView.bounds.width - collectionMargin * 2.0
-        layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-        layout.itemSize = CGSize(width: itemWidth, height: itemHeight)
-        layout.headerReferenceSize = CGSize(width: collectionMargin, height: 0)
-        layout.footerReferenceSize = CGSize(width: collectionMargin, height: 0)
+        layout.sectionInset = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16)
+        layout.itemSize = CGSize(width: itemWidth, height: self.contentView.bounds.height - 39.5)
         layout.minimumLineSpacing = itemSpacing
         layout.scrollDirection = .horizontal
         popularLectureCollectionView.collectionViewLayout = layout
         popularLectureCollectionView.decelerationRate = UIScrollView.DecelerationRate.fast
-        
-        popularLectureCollectionView.reloadData()
     }
     
-    
-    func typeTextButtonSetting(_ sender: UIButton, _ type: Int) {
-        switch type {
-        case 3:
-            sender.setTitle("금융", for: .normal)
-        case 4:
-            sender.setTitle("법", for: .normal)
-        case 5:
-            sender.setTitle("농지", for: .normal)
-        case 6:
-            sender.setTitle("유통", for: .normal)
-        case 7:
-            sender.setTitle("마케팅", for: .normal)
-        case 8:
-            sender.setTitle("화훼", for: .normal)
-        case 9:
-            sender.setTitle("채소", for: .normal)
-        case 10:
-            sender.setTitle("과일", for: .normal)
-        case 11:
-            sender.setTitle("농기구", for: .normal)
-        default:
-            sender.setTitle("타입", for: .normal)
-        }
+    func getEvaluationDataOnKlaytn(){
+            if popularData != nil{
+                for index in self.popularData!{
+                    evaluationPointTextArray.append(getEvaluationAveragePointText(index.lecturePk!))
+                }
+            }
+        self.popularLectureCollectionView.reloadData()
     }
     
-    func getEvaluationAveragePoint(_ lectureNumber: Int?) -> Int?{
-        var value: Int?
-        do {
-            let contractAddress = instance.contractAddress
-            value = try contractAddress.call("calculateEvaluationAveragePoint(uint256)", lectureNumber!).wait().intCount()
-        } catch{
-            print("Get Function Result Fail!")
-            print(error.localizedDescription)
-        }
-        return value
-    }
-
 }
 
 extension PopularLectureTVCell: UICollectionViewDelegate, UICollectionViewDataSource, UIScrollViewDelegate {
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if popularData != nil {
             self.pageControl.numberOfPages = (popularData?.count)!
@@ -125,22 +81,33 @@ extension PopularLectureTVCell: UICollectionViewDelegate, UICollectionViewDataSo
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PopularLectureCVCell", for: indexPath) as! PopularLectureCVCell
         cell.backgroundColor = UIColor.yellow
         let index = popularData![indexPath.row]
-
-        cell.lecturePercentLabel.text = "\(getEvaluationAveragePoint(index.lecturePk!) ?? -10)%"
+        
+        cell.typeImageButton.typeButtonTextSetting(cell.typeImageButton, index.kind!)
         cell.lectureTitleLabel.text = index.title
         cell.lectureAddressLabel.text = index.place
         cell.purchaseButton.setTitle("\(index.price!) KLAY", for: .normal)
-
         cell.farmNameLabel.text = index.farmName
         cell.teacherNameLabel.text = index.name
-
+        cell.lectureTermLabel.text = index.startDate! + " ~ " + index.endDate!
+        cell.lectureImageView.sd_setImage(with: URL(string: index.img ?? ""), placeholderImage: UIImage(named: "img_popular1"))
+        
+        if evaluationPointTextArray.count != 0{
+            cell.lecturePercentLabel.text = evaluationPointTextArray[indexPath.row]
+        }
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let index = popularData![indexPath.row]
-
-        NotificationCenter.default.post(name: .gotoDetail, object: nil, userInfo: ["lecturePk" : index.lecturePk!])
+        let cell = popularLectureCollectionView.cellForItem(at: indexPath) as! PopularLectureCVCell
+        let evaluationPointIndex = cell.getEvaluationAveragePoint(index.lecturePk!)
+        let evaluationPointText = cell.getEvaluationAveragePointText(index.lecturePk!)
+        
+        NotificationCenter.default.post(name: .gotoDetail, object: nil, userInfo: [
+            "lecturePk" : index.lecturePk!,
+            "evaluationPointText" : evaluationPointText,
+            "evaluationPointIndex": evaluationPointIndex
+            ])
     }
 
     func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {

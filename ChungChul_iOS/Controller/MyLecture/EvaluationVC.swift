@@ -89,7 +89,7 @@ class EvaluationVC: UIViewController, NetworkCallback {
     
     func networkResult(resultData: Any, code: String) {
         if code == "success to evaluate lecture"{
-            //TODO: 강의 평가 완료
+            performSegue(withIdentifier: "unwindToMyLecture", sender: self)
         } else {
             let msg = resultData as! String
             simpleAlert(title: msg, msg: "서버 오류, 개발자에게 문의하세요." )
@@ -104,9 +104,6 @@ class EvaluationVC: UIViewController, NetworkCallback {
         let token = gsno(ud.string(forKey: "token"))
         let model = MyLectureModel(self)
         model.evaluateLecture(token: token, lecture_id: gino(lecturePk), content: gsno(content))
-        print(token)
-        print(lecturePk)
-        print(content)
     }
     
     @objc func doneButtonAction(){

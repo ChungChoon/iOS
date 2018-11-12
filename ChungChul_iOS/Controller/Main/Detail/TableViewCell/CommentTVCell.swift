@@ -12,35 +12,36 @@ import SDWebImage
 class CommentTVCell: UITableViewCell {
 
     @IBOutlet var rateLabel: UILabel!
-    @IBOutlet var rateImageView: UIImageView!
+    @IBOutlet var rateView: RatingView!
     @IBOutlet var commentCountLabel: UILabel!
     @IBOutlet var commentTableView: UITableView!
     
-    var tableViewHeight: CGFloat = 0.0
+    var tableViewHeight: Int = 0
     var reviewDataFromServer: [LectureReviewDataVO]?  = nil{
         didSet{
+            tableViewHeight = (reviewDataFromServer?.count)! * 88
+            commentTableView.heightAnchor.constraint(equalToConstant: CGFloat(tableViewHeight)).isActive = true
             commentTableView.reloadData()
         }
     }
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
+        rateViewUISetting()
         commentTableView.delegate = self
         commentTableView.dataSource = self
         commentTableView.tableFooterView = UIView(frame: CGRect.zero)
         commentTableView.tableHeaderView = UIView(frame: CGRect.zero)
         commentTableView.allowsSelection = false
-//        commentTableView.heightAnchor.constraint(equalToConstant: 10*88).isActive = true
         commentTableView.separatorInset = UIEdgeInsets(top: 0, left: 15.5, bottom: 0, right: 15.5)
     }
     
-    
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+    fileprivate func rateViewUISetting() {
+        for index in 0..<5 {
+            rateView.ratingViewArray[index].layer.masksToBounds = true
+            rateView.ratingViewArray[index].layer.cornerRadius = rateView.frame.height / 2
+            rateView.ratingViewArray[index].backgroundColor = #colorLiteral(red: 0.4392156863, green: 0.4392156863, blue: 0.4392156863, alpha: 1)
+        }
     }
 
 }
@@ -57,8 +58,7 @@ extension CommentTVCell: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = commentTableView.dequeueReusableCell(withIdentifier: "CommentCell", for: indexPath) as! CommentCell
-//        tableViewHeight += cell.frame.size.height
-        
+
         let index = reviewDataFromServer![indexPath.row]
         cell.userNameLabel.text = index.name!
         cell.commentLabel.text = index.content!

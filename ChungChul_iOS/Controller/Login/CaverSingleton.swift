@@ -18,7 +18,7 @@ final class CaverSingleton {
     
     let caver: Web3 = Web3(url: URL(string: "http://localhost:8551")!)!
     var userAddress: Address = Address("0xf694888fC6EEA44F8Cd03E9c5f18af8F61BdEbe8")
-    let contractAddress = Address("0x024796f002397ee8356c3d4fedb45219fd37d8ab")
+    let contractAddress = Address("0x4e4879e7f43c266e2949c5918c0fc64225ed4bad")
     
     func keystoreMangaerInDevice() -> KeystoreManager?{
         let userDir = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]

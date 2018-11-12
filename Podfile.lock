@@ -7,6 +7,7 @@ PODS:
     - SipHash (~> 1.2)
   - CryptoSwift (0.13.0)
   - IQKeyboardManagerSwift (6.2.0)
+  - lottie-ios (2.5.2)
   - ObjectMapper (3.3.0)
   - PromiseKit (6.5.2):
     - PromiseKit/CorePromise (= 6.5.2)
@@ -23,7 +24,7 @@ PODS:
   - secp256k1.swift (0.1.4)
   - SipHash (1.2.2)
   - SwiftyJSON (4.2.0)
-  - web3swift (2.0.1):
+  - web3swift (2.0.4):
     - BigInt (~> 3.1)
     - CryptoSwift (~> 0.12)
     - PromiseKit (~> 6.4)
@@ -34,6 +35,7 @@ DEPENDENCIES:
   - AlamofireObjectMapper
   - BigInt
   - IQKeyboardManagerSwift
+  - lottie-ios
   - ObjectMapper
   - SDWebImage
   - SwiftyJSON
@@ -46,6 +48,7 @@ SPEC REPOS:
     - BigInt
     - CryptoSwift
     - IQKeyboardManagerSwift
+    - lottie-ios
     - ObjectMapper
     - PromiseKit
     - SDWebImage
@@ -59,7 +62,7 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   web3swift:
-    :commit: 803600157a4e63f1ca7504a97127fe9a537c5bd8
+    :commit: 8d9723ad8172d5173429286f04dcd10701849f8f
     :git: https://github.com/bankex/web3swift.git
 
 SPEC CHECKSUMS:
@@ -68,14 +71,15 @@ SPEC CHECKSUMS:
   BigInt: 76b5dfdfa3e2e478d4ffdf161aeede5502e2742f
   CryptoSwift: 16e78bebf567bad1c87b2d58f6547f25b74c31aa
   IQKeyboardManagerSwift: b07ccf9d8cafe993dcd6cb794eb4ba34611a0c4e
+  lottie-ios: 3fef45d3fabe63e3c7c2eb603dd64ddfffc73062
   ObjectMapper: b612bf8c8e99c4dc0bb6013a51f7c27966ed5da9
   PromiseKit: 27c1601bfb73405871b805bcb8cf7e55c4dad3db
   SDWebImage: 624d6e296c69b244bcede364c72ae0430ac14681
   secp256k1.swift: a7e7a214f6db6ce5db32cc6b2b45e5c4dd633634
   SipHash: fad90a4683e420c52ef28063063dbbce248ea6d4
   SwiftyJSON: c4bcba26dd9ec7a027fc8eade48e2c911f229e96
-  web3swift: 617cad1ff9c652f39fa141adc269f174bdc159e7
+  web3swift: 6b554da5ec34fe3569dab78a7a2ad3b8ce4a7b61
 
-PODFILE CHECKSUM: 220c38c225f46c1f820bd4732bc6f56d4c53fb16
+PODFILE CHECKSUM: 667cf4edb5eb723b7e1f0c5fe0685681bf714798
 
 COCOAPODS: 1.5.3
