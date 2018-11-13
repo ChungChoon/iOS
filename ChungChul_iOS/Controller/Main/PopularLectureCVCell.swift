@@ -10,6 +10,7 @@ import UIKit
 
 class PopularLectureCVCell: UICollectionViewCell {
     
+    // UI IBOutlet Variable
     @IBOutlet var typeImageButton: UIButton!
     @IBOutlet var lectureTitleLabel: UILabel!
     @IBOutlet var lectureAddressLabel: UILabel!

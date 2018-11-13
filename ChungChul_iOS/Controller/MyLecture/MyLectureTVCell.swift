@@ -10,6 +10,7 @@ import UIKit
 
 class MyLectureTVCell: UITableViewCell {
     
+    // UI IBOutlet Variable
     @IBOutlet var lectureImageView: UIImageView!
     @IBOutlet var typeButton: UIButton!
     @IBOutlet var lectureTitleLabel: UILabel!
@@ -24,24 +25,39 @@ class MyLectureTVCell: UITableViewCell {
     @IBOutlet var teacherNameLabel: UILabel!
     @IBOutlet var includeView: UIView!
     
+    // Variable
+    let screenFrameSize = UIScreen.main.bounds
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.separatorInset = UIEdgeInsets(top: 0, left: UIScreen.main.bounds.size.width, bottom: 0, right: 0)
+        cellSetting()
     }
     
     override func layoutSubviews() {
+        evaluateButtonUISetting()
+        includeViewUISetting()
+        progressBarUISetting()
+    }
+    
+    fileprivate func cellSetting() {
+        self.separatorInset = UIEdgeInsets(top: 0, left: screenFrameSize.width, bottom: 0, right: 0)
+    }
+    
+    fileprivate func evaluateButtonUISetting() {
         evaluateButton.layer.masksToBounds = true
         evaluateButton.layer.borderWidth = 1.0
         evaluateButton.layer.borderColor = #colorLiteral(red: 1, green: 0.5920490623, blue: 0, alpha: 1)
         evaluateButton.layer.cornerRadius = 15
-        
+    }
+    
+    fileprivate func includeViewUISetting() {
         includeView.layer.masksToBounds = true
-        
+    }
+    
+    fileprivate func progressBarUISetting() {
         lectureProgressBar.layer.cornerRadius = 6
         lectureProgressBar.clipsToBounds = true
         lectureProgressBar.layer.sublayers![1].cornerRadius = 6
         lectureProgressBar.subviews[1].clipsToBounds = true
-        
     }
 }

@@ -11,12 +11,16 @@ import SDWebImage
 
 class CommentTVCell: UITableViewCell {
 
+    // UI IBOutlet Variable
     @IBOutlet var rateLabel: UILabel!
     @IBOutlet var rateView: RatingView!
     @IBOutlet var commentCountLabel: UILabel!
     @IBOutlet var commentTableView: UITableView!
     
+    // Variable
     var tableViewHeight: Int = 0
+    
+    // Data Variable
     var reviewDataFromServer: [LectureReviewDataVO]?  = nil{
         didSet{
             tableViewHeight = (reviewDataFromServer?.count)! * 88
@@ -28,6 +32,10 @@ class CommentTVCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         rateViewUISetting()
+        tableViewSetting()
+    }
+    
+    fileprivate func tableViewSetting() {
         commentTableView.delegate = self
         commentTableView.dataSource = self
         commentTableView.tableFooterView = UIView(frame: CGRect.zero)
@@ -46,7 +54,9 @@ class CommentTVCell: UITableViewCell {
 
 }
 
+//MARK: TableView Delegate and DataSource
 extension CommentTVCell: UITableViewDelegate, UITableViewDataSource {
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if reviewDataFromServer == nil {
             return 2
@@ -55,23 +65,25 @@ extension CommentTVCell: UITableViewDelegate, UITableViewDataSource {
         }
     }
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableView.automaticDimension
+    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
+        return commentCell(indexPath)
+    }
+    
+    fileprivate func commentCell(_ indexPath: IndexPath) -> UITableViewCell {
         let cell = commentTableView.dequeueReusableCell(withIdentifier: "CommentCell", for: indexPath) as! CommentCell
-
         let index = reviewDataFromServer![indexPath.row]
         cell.userNameLabel.text = index.name!
         cell.commentLabel.text = index.content!
         cell.userImageView.sd_setImage(with: URL(string: index.img!), placeholderImage: UIImage(named: "ic_2people_28"))
         return cell
     }
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return UITableView.automaticDimension
-    }
-    
 }
 
+// Review Each Cell
 class CommentCell: UITableViewCell {
     
     @IBOutlet var userImageView: UIImageView!

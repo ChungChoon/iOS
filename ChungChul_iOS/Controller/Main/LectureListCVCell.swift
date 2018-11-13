@@ -10,6 +10,7 @@ import UIKit
 
 class LectureListCVCell: UICollectionViewCell {
 
+    // UI IBOutlet Variable
     @IBOutlet var lectureImageView: UIImageView!
     @IBOutlet var typeImageView: UIImageView!
     @IBOutlet var lectureCountLabel: UILabel!

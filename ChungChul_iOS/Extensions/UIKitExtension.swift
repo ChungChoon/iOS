@@ -20,6 +20,18 @@ extension UITextField {
     }
 }
 
+extension UITextView {
+    
+    func newHeight(withBaseHeight baseHeight: CGFloat) -> CGFloat {
+        let fixedWidth = frame.size.width
+        let newSize = sizeThatFits(CGSize(width: fixedWidth, height: .greatestFiniteMagnitude))
+        var newFrame = frame
+        let height: CGFloat = newSize.height > baseHeight ? newSize.height : baseHeight
+        newFrame.size = CGSize(width: max(newSize.width, fixedWidth), height: height)
+        return newFrame.height
+    }
+}
+
 extension UIView {
     func typeButtonTextSetting(_ sender: UIButton, _ type: Int) {
         switch type {

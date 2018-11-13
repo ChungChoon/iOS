@@ -10,6 +10,7 @@ import UIKit
 
 class EvaluationListTVCell: UITableViewCell {
 
+    // UI IBOutlet Variable
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet var subjectLabel: UILabel!
     @IBOutlet var minusButton: UIButton!
@@ -17,61 +18,34 @@ class EvaluationListTVCell: UITableViewCell {
     @IBOutlet var percentLabel: UILabel!
     @IBOutlet var plusButton: UIButton!
     
+    // Variable
     var value: Int = 0
     var count: Int = 0
     var colorFromVC: UIColor?
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        separatorInset = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16)
-        
-        percentLabel.text = "0%"
-        
-        minusButton.layer.masksToBounds = true
-        minusButton.layer.cornerRadius = minusButton.frame.width / 2
-        minusButton.layer.borderWidth = 1.0
-        minusButton.layer.borderColor = #colorLiteral(red: 0.5141925812, green: 0.5142051578, blue: 0.5141984224, alpha: 1)
-        minusButton.addTarget(self, action: #selector(minusButtonAction(_:)), for: .touchUpInside)
-        
-        plusButton.layer.masksToBounds = true
-        plusButton.layer.cornerRadius = plusButton.frame.width / 2
-        plusButton.layer.borderWidth = 1.0
-        plusButton.layer.borderColor = #colorLiteral(red: 0.5141925812, green: 0.5142051578, blue: 0.5141984224, alpha: 1)
-        plusButton.addTarget(self, action: #selector(plusButtonAction(_:)), for: .touchUpInside)
-        
-        for index in 0..<5 {
-            rateView.ratingViewArray[index].layer.masksToBounds = true
-            rateView.ratingViewArray[index].layer.cornerRadius = 10
-        }
-
+        cellSetting()
+        buttonUISetting(minusButton)
+        buttonUISetting(plusButton)
+        addTargetButton()
+        rateViewSetting()
         invalidateIntrinsicContentSize()
-        
-        
     }
-
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-        
         if selected {
-            titleLabel.textColor = #colorLiteral(red: 0.2941176471, green: 0.4666666667, blue: 0.8705882353, alpha: 1)
-            minusButton.titleLabel?.textColor = #colorLiteral(red: 0.2941176471, green: 0.4666666667, blue: 0.8705882353, alpha: 1)
-            minusButton.layer.borderColor = #colorLiteral(red: 0.2941176471, green: 0.4666666667, blue: 0.8705882353, alpha: 1)
-            plusButton.titleLabel?.textColor = #colorLiteral(red: 0.2941176471, green: 0.4666666667, blue: 0.8705882353, alpha: 1)
-            plusButton.layer.borderColor = #colorLiteral(red: 0.2941176471, green: 0.4666666667, blue: 0.8705882353, alpha: 1)
+            selectedCellSetting(#colorLiteral(red: 0.2941176471, green: 0.4666666667, blue: 0.8705882353, alpha: 1), #colorLiteral(red: 0.2941176471, green: 0.4666666667, blue: 0.8705882353, alpha: 1))
         } else {
-            titleLabel.textColor = #colorLiteral(red: 0.4392156863, green: 0.4392156863, blue: 0.4392156863, alpha: 1)
-            minusButton.titleLabel?.textColor = #colorLiteral(red: 0.4392156863, green: 0.4392156863, blue: 0.4392156863, alpha: 1)
-            minusButton.layer.borderColor = #colorLiteral(red: 0.4392156863, green: 0.4392156863, blue: 0.4392156863, alpha: 1)
-            plusButton.titleLabel?.textColor = #colorLiteral(red: 0.4392156863, green: 0.4392156863, blue: 0.4392156863, alpha: 1)
-            plusButton.layer.borderColor = #colorLiteral(red: 0.4392156863, green: 0.4392156863, blue: 0.4392156863, alpha: 1)
+            selectedCellSetting(#colorLiteral(red: 0.4392156863, green: 0.4392156863, blue: 0.4392156863, alpha: 1), #colorLiteral(red: 0.4392156863, green: 0.4392156863, blue: 0.4392156863, alpha: 1))
         }
     }
-
 }
 
 extension EvaluationListTVCell {
     
-    @objc func plusButtonAction(_ sender: UIButton){
+    @objc func plusButtonAction(){
         if value < 100{
             value += 20
             count += 1
@@ -82,7 +56,7 @@ extension EvaluationListTVCell {
         }
     }
     
-    @objc func minusButtonAction(_ sender: UIButton){
+    @objc func minusButtonAction(){
         if value > 0 {
             value -= 20
             count -= 1
@@ -91,6 +65,36 @@ extension EvaluationListTVCell {
                 rateView.ratingViewArray[i].backgroundColor = #colorLiteral(red: 0.4392156863, green: 0.4392156863, blue: 0.4392156863, alpha: 1)
             }
         }
-
+    }
+    
+    fileprivate func rateViewSetting() {
+        for index in 0..<5 {
+            rateView.ratingViewArray[index].layer.masksToBounds = true
+            rateView.ratingViewArray[index].layer.cornerRadius = 10
+        }
+    }
+    
+    fileprivate func cellSetting() {
+        separatorInset = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16)
+    }
+    
+    fileprivate func buttonUISetting(_ button: UIButton) {
+        button.layer.masksToBounds = true
+        button.layer.cornerRadius = button.frame.width / 2
+        button.layer.borderWidth = 1.0
+        button.layer.borderColor = #colorLiteral(red: 0.5141925812, green: 0.5142051578, blue: 0.5141984224, alpha: 1)
+    }
+    
+    fileprivate func addTargetButton() {
+        plusButton.addTarget(self, action: #selector(plusButtonAction), for: .touchUpInside)
+        minusButton.addTarget(self, action: #selector(minusButtonAction), for: .touchUpInside)
+    }
+    
+    fileprivate func selectedCellSetting(_ color: UIColor, _ cgColor: CGColor) {
+        titleLabel.textColor = color
+        minusButton.titleLabel?.textColor = color
+        minusButton.layer.borderColor = cgColor
+        plusButton.titleLabel?.textColor = color
+        plusButton.layer.borderColor = cgColor
     }
 }

@@ -12,9 +12,11 @@ import BigInt
 
 class EvaluationVC: UIViewController, NetworkCallback {
 
+    // UI IBOutlet Variable
     @IBOutlet var evaluationTableView: UITableView!
     @IBOutlet var doneButton: UIButton!
     
+    // UI Variable
     var colorArray: [UIColor] = [#colorLiteral(red: 0.3176470588, green: 0.8941176471, blue: 0.6705882353, alpha: 1),#colorLiteral(red: 0.1764705882, green: 0.8666666667, blue: 0.7607843137, alpha: 1),#colorLiteral(red: 0.2862745098, green: 0.8431372549, blue: 0.9176470588, alpha: 1),#colorLiteral(red: 0.2392156863, green: 0.7411764706, blue: 0.8901960784, alpha: 1),#colorLiteral(red: 0.3725490196, green: 0.6078431373, blue: 0.8941176471, alpha: 1)]
     let evaluationTitleArray: [String] = [
         "수업준비",
@@ -23,7 +25,6 @@ class EvaluationVC: UIViewController, NetworkCallback {
         "커뮤니케이션",
         "전체적인 만족도"
         ]
-    
     let evaluationSubjectArray: [String] = [
     "강사가 수업준비에 성실하였나요?",
     "수업 내용에 대해 만족하셨나요?",
@@ -32,19 +33,26 @@ class EvaluationVC: UIViewController, NetworkCallback {
     "전체적인 만족도에 대해 입력 해주세요"
     ]
     
+    // Data Variable
     var lecturePk: Int?
     var content: String?
     var ud = UserDefaults.standard
     var evaluationValueArray: [Int] = [0,0,0,0,0]
+    var reviewCount: Int?
     
+    // Klaytn Data Variable
+    var evaluationPoint: Int = 0
+    var rateViewIndex: Int?
+    
+    // Caver Singleton Instance Variable
     let instance: CaverSingleton = CaverSingleton.sharedInstance
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        evaluationTableView.delegate = self
-        evaluationTableView.dataSource = self
-        
-        doneButton.addTarget(self, action: #selector(doneButtonAction), for: .touchUpInside)
+        navigationBarSetting(title: "강의평가", isTranslucent: false)
+        tableViewSetting()
+        addTargetButton()
+        getEvaluationDataOnKlaytn()
     }
     
     func evaluateLectureOnKlaytn(){
@@ -82,7 +90,7 @@ class EvaluationVC: UIViewController, NetworkCallback {
             
             networkEvaluateLectureToServer()
         } catch{
-            print("Transaction Fail!")
+            print("You don't have enough KLAY!")
             print(error.localizedDescription)
         }
     }
@@ -99,12 +107,9 @@ class EvaluationVC: UIViewController, NetworkCallback {
     func networkFailed() {
         simpleAlert(title: "네트워크 오류", msg: "인터넷 연결을 확인해주세요.")
     }
-    
-    fileprivate func networkEvaluateLectureToServer() {
-        let token = gsno(ud.string(forKey: "token"))
-        let model = MyLectureModel(self)
-        model.evaluateLecture(token: token, lecture_id: gino(lecturePk), content: gsno(content))
-    }
+}
+
+extension EvaluationVC {
     
     @objc func doneButtonAction(){
         evaluateLectureOnKlaytn()
@@ -116,9 +121,52 @@ class EvaluationVC: UIViewController, NetworkCallback {
         self.evaluationTableView.selectRow(at: indexPath, animated: true, scrollPosition: UITableView.ScrollPosition.none)
         evaluationValueArray[(indexPath?.row)!] = gino(cell.value)
     }
+    
+    fileprivate func tableViewSetting() {
+        evaluationTableView.delegate = self
+        evaluationTableView.dataSource = self
+    }
+    
+    fileprivate func addTargetButton() {
+        doneButton.addTarget(self, action: #selector(doneButtonAction), for: .touchUpInside)
+    }
+    
+    fileprivate func networkEvaluateLectureToServer() {
+        let token = gsno(ud.string(forKey: "token"))
+        let model = MyLectureModel(self)
+        model.evaluateLecture(token: token, lecture_id: gino(lecturePk), content: gsno(content))
+    }
+    
+    fileprivate func getEvaluationDataOnKlaytn(){
+        let lectureNumber = gino(lecturePk)
+        DispatchQueue.global(qos: .utility).async {
+            self.evaluationPoint = self.view.getEvaluationAveragePoint(lectureNumber)
+            DispatchQueue.main.async {
+                self.rateViewIndex = self.view.getRateViewIndexByEvaluationPoint(self.evaluationPoint)
+                self.evaluationTableView.reloadData()
+            }
+        }
+    }
 }
 
-extension EvaluationVC: UITableViewDelegate, UITableViewDataSource, UITextViewDelegate {
+//MARK: TextView Delegate
+extension EvaluationVC: UITextViewDelegate {
+    
+    func textViewDidChange(_ textView: UITextView) {
+        content = gsno(textView.text)
+    }
+    
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        if (text == "\n") {
+            textView.resignFirstResponder()
+            return false
+        }
+        return true
+    }
+}
+
+//MARK: TableView Delegate and DataSource
+extension EvaluationVC: UITableViewDelegate, UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 3
@@ -134,67 +182,62 @@ extension EvaluationVC: UITableViewDelegate, UITableViewDataSource, UITextViewDe
         }
     }
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableView.automaticDimension
+    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
         switch indexPath.section {
         case 0:
-            let cell = evaluationTableView.dequeueReusableCell(withIdentifier: "TotalEvaluationTVCell") as! TotalEvaluationTVCell
-            
-            //TODO: Get Evaluation Data from Sever
-            
-            return cell
+            return displayEvaluationPointSectionCell()
         case 1:
-            let cell = evaluationTableView.dequeueReusableCell(withIdentifier: "EvaluationListTVCell") as! EvaluationListTVCell
-            let index = indexPath.row
-            cell.titleLabel.text = evaluationTitleArray[index]
-            cell.subjectLabel.text = evaluationSubjectArray[index]
-            cell.colorFromVC = colorArray[index]
-            cell.plusButton.addTarget(self, action: #selector(detectingButtonInCell(_:)), for: .touchUpInside)
-            cell.minusButton.addTarget(self, action: #selector(detectingButtonInCell(_:)), for: .touchUpInside)
-            
-            return cell
+            return displayEvaluationElementListSectionCell(indexPath)
         case 2:
-            let cell = evaluationTableView.dequeueReusableCell(withIdentifier: "DescriptionTVCell") as! DescriptionTVCell
-            cell.delegate = self as ExpandingCellDelegate
-            cell.descriptionTextView.delegate = self
-            return cell
+            return displayDescriptionSectionCell()
         default:
             return UITableViewCell()
         }
     }
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return UITableView.automaticDimension
-    }
-    
-    func textViewDidChange(_ textView: UITextView) {
-        content = gsno(textView.text)
-    }
-    
-    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
-        if (text == "\n") {
-            textView.resignFirstResponder()
-            return false
+    fileprivate func displayEvaluationPointSectionCell() -> UITableViewCell {
+        let cell = evaluationTableView.dequeueReusableCell(withIdentifier: "TotalEvaluationTVCell") as! TotalEvaluationTVCell
+        cell.percentLabel.text = "\(evaluationPoint)"
+        if rateViewIndex != nil{
+            for i in 0...gino(rateViewIndex) {
+                cell.ratingView.ratingViewArray[i].backgroundColor = #colorLiteral(red: 0.2941176471, green: 0.4666666667, blue: 0.8705882353, alpha: 1)
+            }
         }
-        return true
+        return cell
+    }
+    
+    fileprivate func displayEvaluationElementListSectionCell(_ indexPath: IndexPath) -> UITableViewCell {
+        let cell = evaluationTableView.dequeueReusableCell(withIdentifier: "EvaluationListTVCell") as! EvaluationListTVCell
+        let index = indexPath.row
+        cell.titleLabel.text = evaluationTitleArray[index]
+        cell.subjectLabel.text = evaluationSubjectArray[index]
+        cell.colorFromVC = colorArray[index]
+        cell.plusButton.addTarget(self, action: #selector(detectingButtonInCell(_:)), for: .touchUpInside)
+        cell.minusButton.addTarget(self, action: #selector(detectingButtonInCell(_:)), for: .touchUpInside)
+        return cell
+    }
+    
+    fileprivate func displayDescriptionSectionCell() -> UITableViewCell {
+        let cell = evaluationTableView.dequeueReusableCell(withIdentifier: "DescriptionTVCell") as! DescriptionTVCell
+        cell.delegate = self as ExpandingCellDelegate
+        cell.descriptionTextView.delegate = self
+        return cell
     }
 }
 
+//MARK: Expand Description Cell Delegate
 extension EvaluationVC: ExpandingCellDelegate {
     
     func updated(height: CGFloat) {
-        
-        // Disabling animations gives us our desired behaviour
         UIView.setAnimationsEnabled(false)
-        /* These will causes table cell heights to be recaluclated,
-         without reloading the entire cell */
         evaluationTableView.beginUpdates()
         evaluationTableView.endUpdates()
-        // Re-enable animations
         UIView.setAnimationsEnabled(true)
-        
         let indexPath = IndexPath(row: 0, section: 2)
-        
         evaluationTableView.scrollToRow(at: indexPath, at: .bottom, animated: false)
     }
 }

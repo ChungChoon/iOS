@@ -10,31 +10,44 @@ import UIKit
 
 class LectureListCell: UITableViewCell {
 
+    // UI IBOutlet Variable
     @IBOutlet var sectionLabel: UILabel!
     @IBOutlet var lectureListCollectionView: UICollectionView!
     
+    // Data Variable
     var offlineData: [OfflineDataVO]?
     var onlineData: [OnlineDataVO]?
     
+    // Variable
+    let screenFrameSize = UIScreen.main.bounds
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        let nibLectureList = UINib(nibName: "LectureListCVCell", bundle: nil)
-        lectureListCollectionView.register(nibLectureList, forCellWithReuseIdentifier: "LectureListCVCell")
-        separatorInset = UIEdgeInsets(top: 0, left: UIScreen.main.bounds.width, bottom: 0, right: 0)
+        collectionViewSetting()
         setCollectionViewDataSourceDelegate(dataSourceDelegate: self, forRow: 0)
         
     }
 
+    // Set ColletionView Delegate and DataSource by Protocol
     func setCollectionViewDataSourceDelegate<D: UICollectionViewDelegate & UICollectionViewDataSource> (dataSourceDelegate: D, forRow row: Int) {
         lectureListCollectionView.delegate = dataSourceDelegate
         lectureListCollectionView.dataSource = dataSourceDelegate
         lectureListCollectionView.tag = row
-        
         lectureListCollectionView.reloadData()
     }
-    
 }
 
+extension LectureListCell {
+    
+    // CollectionView Setting and XIB Register
+    fileprivate func collectionViewSetting() {
+        let nibLectureList = UINib(nibName: "LectureListCVCell", bundle: nil)
+        lectureListCollectionView.register(nibLectureList, forCellWithReuseIdentifier: "LectureListCVCell")
+        separatorInset = UIEdgeInsets(top: 0, left: screenFrameSize.width, bottom: 0, right: 0)
+    }
+}
+
+//MARK: CollectionView Delegate and DataSource
 extension LectureListCell: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

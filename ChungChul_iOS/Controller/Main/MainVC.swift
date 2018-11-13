@@ -187,31 +187,46 @@ extension MainVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
         switch indexPath.section {
         case 0:
-            let cell = lectureTableView.dequeueReusableCell(withIdentifier: "PopularLectureTVCell", for: indexPath) as! PopularLectureTVCell
-            if popularData != nil {
-                cell.popularData = popularData
-                cell.getEvaluationDataOnKlaytn()
-            }
-            return cell
+            return popularLectureSectionCell(indexPath)
         case 1:
-            let cell = lectureTableView.dequeueReusableCell(withIdentifier: "LectureListCell", for: indexPath) as! LectureListCell
-            if indexPath.row == 0{
-                cell.sectionLabel.text = "오프라인 실습 교육"
-                if offlineData != nil {
-                    cell.offlineData = offlineData
-                }
-            } else {
-                cell.sectionLabel.text = "온라인 실습 교육"
-                if onlineData != nil {
-                    cell.onlineData = onlineData
-                }
-            }
-            return cell
+            return lectureListSectionCell(indexPath)
         default:
             return UITableViewCell()
+        }
+    }
+    
+    fileprivate func popularLectureSectionCell(_ indexPath: IndexPath) -> UITableViewCell {
+        let cell = lectureTableView.dequeueReusableCell(withIdentifier: "PopularLectureTVCell", for: indexPath) as! PopularLectureTVCell
+        if popularData != nil {
+            cell.popularData = popularData
+            cell.getEvaluationDataOnKlaytn()
+        }
+        return cell
+    }
+    
+    fileprivate func lectureListSectionCell(_ indexPath: IndexPath) -> UITableViewCell {
+        let cell = lectureTableView.dequeueReusableCell(withIdentifier: "LectureListCell", for: indexPath) as! LectureListCell
+        if indexPath.row == 0{
+            offlineSectionCell(cell)
+        } else {
+            onlineSectionCell(cell)
+        }
+        return cell
+    }
+    
+    fileprivate func offlineSectionCell(_ cell: LectureListCell) {
+        cell.sectionLabel.text = "오프라인 실습 교육"
+        if offlineData != nil {
+            cell.offlineData = offlineData
+        }
+    }
+    
+    fileprivate func onlineSectionCell(_ cell: LectureListCell) {
+        cell.sectionLabel.text = "온라인 실습 교육"
+        if onlineData != nil {
+            cell.onlineData = onlineData
         }
     }
 }

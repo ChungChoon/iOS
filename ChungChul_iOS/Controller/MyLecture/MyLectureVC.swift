@@ -11,50 +11,90 @@ import SDWebImage
 
 class MyLectureVC: UIViewController, NetworkCallback {
 
+    // UI IBOutlet Variable
     @IBOutlet var myLectureTableView: UITableView!
     
+    // Data Variable
     var myLectureListDataFromServer: [MyLectureVO]?
+    var detailLectureDataFromServer: LectureDetailData?
+    
+    // Variable
     var ud = UserDefaults.standard
     var lecturePk: Int?
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        navigationBarSetting()
-        let nibMyLecture = UINib(nibName: "MyLectureTVCell", bundle: nil)
-        myLectureTableView.register(nibMyLecture, forCellReuseIdentifier: "MyLectureTVCell")
-        
-        let model = MyLectureModel(self)
-        model.callMyLectureList(token: gsno(ud.string(forKey: "token")))
-    }
+    var evaluationPointText: String = ""
+    var evaluationPointIndex: Int = 0
     
     @IBAction func unwindToMyLecture(segue:UIStoryboardSegue) {
         myLectureTableView.reloadData()
     }
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        callMyLectureDataFromServer()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(false)
+        navigationBarSetting(title: "나의 강의", isTranslucent: false)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(false)
+        self.title = " "
+    }
+    
     func networkResult(resultData: Any, code: String) {
         if code == "Success To Get Farmer My Lecture"{
             myLectureListDataFromServer = resultData as? [MyLectureVO]
-
-            myLectureTableView.delegate = self
-            myLectureTableView.dataSource = self
-            myLectureTableView.reloadData()
+            tableViewSetting()
+        } else if code == "Success Get Lecture Detail"{
+            detailLectureDataFromServer = resultData as? LectureDetailData
+            presentDetailVCWithData()
+        } else {
+            simpleAlert(title: "오류", msg: "개발자에게 문의하세요.")
         }
     }
     
     func networkFailed() {
         simpleAlert(title: "네트워크 오류", msg: "인터넷 연결을 확인해주세요.")
     }
-    
-    func navigationBarSetting(){
-        self.title = "나의 강의"
-        self.navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.font: UIFont(name: "NotoSansCJKkr-Bold", size: 24)!]
-        self.navigationController?.navigationBar.backgroundColor = UIColor.white
-        self.navigationController?.navigationBar.isTranslucent = false
-        self.navigationController?.navigationBar.shadowImage = UIImage()
-    }
-    
 }
 
+extension MyLectureVC {
+    
+    // Evaluate Button Action Selector
+    @objc func evaluateButtonAction(){
+        let evaluationVC = self.storyboard?.instantiateViewController(withIdentifier: "EvaluationVC") as! EvaluationVC
+        evaluationVC.lecturePk = lecturePk
+        self.navigationController?.pushViewController(evaluationVC, animated: true)
+    }
+    
+    // Present DetailVC with Data by LecturePk
+    fileprivate func presentDetailVCWithData() {
+        let detailVC = self.storyboard?.instantiateViewController(withIdentifier: "DetailVC") as! DetailVC
+        detailVC.detailData = detailLectureDataFromServer?.lectureData
+        detailVC.reviewData = detailLectureDataFromServer?.reviewData
+        detailVC.evaluationPointText = evaluationPointText
+        detailVC.evaluationPointIndex = evaluationPointIndex
+        self.present(detailVC, animated: false, completion: nil)
+    }
+    
+    // Call My Lecture Data From Server
+    fileprivate func callMyLectureDataFromServer() {
+        let model = MyLectureModel(self)
+        model.callMyLectureList(token: gsno(ud.string(forKey: "token")))
+    }
+    
+    fileprivate func tableViewSetting() {
+        let nibMyLecture = UINib(nibName: "MyLectureTVCell", bundle: nil)
+        myLectureTableView.register(nibMyLecture, forCellReuseIdentifier: "MyLectureTVCell")
+        myLectureTableView.delegate = self
+        myLectureTableView.dataSource = self
+        myLectureTableView.reloadData()
+    }
+}
+
+//MARK: TableView Delegate and DataSource
 extension MyLectureVC: UITableViewDelegate, UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -73,46 +113,54 @@ extension MyLectureVC: UITableViewDelegate, UITableViewDataSource {
         }
     }
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableView.automaticDimension
+    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
         if indexPath.section == 0 {
-            let cell = myLectureTableView.dequeueReusableCell(withIdentifier: "OnOffLineTVCell", for: indexPath) as! OnOffLineTVCell
-            
-            return cell
+            return onofflineToggleButtonSectionCell(indexPath)
         } else if indexPath.section == 1 {
-            let cell = myLectureTableView.dequeueReusableCell(withIdentifier: "MyLectureTVCell", for: indexPath) as! MyLectureTVCell
-            let index = myLectureListDataFromServer![indexPath.row]
-            lecturePk = index.lecturePk
-            
-            cell.evaluateButton.addTarget(self, action: #selector(evaluateButtonAction), for: .touchUpInside)
-            
-            cell.lectureImageView.sd_setImage(with: URL(string: gsno(index.farmImg)), placeholderImage: UIImage())
-            cell.lectureTitleLabel.text = gsno(index.title)
-            cell.farmNameLabel.text = gsno(index.farmName)
-            cell.termLabel.text = gsno(index.startDate) + " ~ " + gsno(index.endDate)
-            cell.lectureCountLabel.text = "강의 \(gino(index.attendCnt))/00개 출석완료"
-            return cell
+            return myLectureListSectionCell(indexPath)
         } else {
             return UITableViewCell()
         }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        let aa = self.storyboard?.instantiateViewController(withIdentifier: "VoteVC") as! VoteVC
-//        self.present(aa, animated: true, completion: nil)
-//        let cell = myLectureTableView.dequeueReusableCell(withIdentifier: "MyLectureTVCell", for: indexPath) as! MyLectureTVCell
-//        cell.voteButton.removeFromSuperview()
+        networkDetailDataFromServer(indexPath)
     }
     
-    
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return UITableView.automaticDimension
+    fileprivate func networkDetailDataFromServer(_ indexPath: IndexPath) {
+        let index = myLectureListDataFromServer![indexPath.row]
+        let lecturePk = gino(index.lecturePk)
+        let token = gsno(UserDefaults.standard.string(forKey: "token"))
+        let model = LectureModel(self)
+        DispatchQueue.global(qos: .utility).async {
+            self.evaluationPointIndex = self.view.getEvaluationAveragePoint(lecturePk)
+            self.evaluationPointText = self.view.getEvaluationAveragePointText(lecturePk)
+            DispatchQueue.main.async {
+                model.callLectureDetail(lectureId: lecturePk, token: token)
+            }
+        }
     }
     
-    @objc func evaluateButtonAction(){
-        let evaluationVC = self.storyboard?.instantiateViewController(withIdentifier: "EvaluationVC") as! EvaluationVC
-        evaluationVC.lecturePk = lecturePk
-        self.navigationController?.pushViewController(evaluationVC, animated: true)
+    fileprivate func onofflineToggleButtonSectionCell(_ indexPath: IndexPath) -> UITableViewCell {
+        let cell = myLectureTableView.dequeueReusableCell(withIdentifier: "OnOffLineTVCell", for: indexPath) as! OnOffLineTVCell
+        return cell
+    }
+    
+    fileprivate func myLectureListSectionCell(_ indexPath: IndexPath) -> UITableViewCell {
+        let cell = myLectureTableView.dequeueReusableCell(withIdentifier: "MyLectureTVCell", for: indexPath) as! MyLectureTVCell
+        let index = myLectureListDataFromServer![indexPath.row]
+        lecturePk = index.lecturePk
+        
+        cell.evaluateButton.addTarget(self, action: #selector(evaluateButtonAction), for: .touchUpInside)
+        cell.lectureImageView.sd_setImage(with: URL(string: gsno(index.farmImg)), placeholderImage: UIImage())
+        cell.lectureTitleLabel.text = gsno(index.title)
+        cell.farmNameLabel.text = gsno(index.farmName)
+        cell.termLabel.text = gsno(index.startDate) + " ~ " + gsno(index.endDate)
+        cell.lectureCountLabel.text = "강의 \(gino(index.attendCnt))/00개 출석완료"
+        return cell
     }
 }

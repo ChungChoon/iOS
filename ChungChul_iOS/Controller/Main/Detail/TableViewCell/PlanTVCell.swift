@@ -10,22 +10,20 @@ import UIKit
 
 class PlanTVCell: UITableViewCell {
     
+    // UI IBOutlet Variable
     @IBOutlet var planTableView: UITableView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        tableViewSetting()
+    }
+
+    fileprivate func tableViewSetting() {
         planTableView.delegate = self
         planTableView.dataSource = self
         planTableView.heightAnchor.constraint(equalToConstant: 10*20).isActive = true
         planTableView.allowsSelection = false
     }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
-
 }
 
 extension PlanTVCell: UITableViewDelegate, UITableViewDataSource {
@@ -44,6 +42,7 @@ extension PlanTVCell: UITableViewDelegate, UITableViewDataSource {
     
 }
 
+// Plan Each Cell
 class PlanCell: UITableViewCell {
     
     @IBOutlet var lineImageView: UIImageView!

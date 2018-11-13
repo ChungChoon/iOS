@@ -10,11 +10,11 @@ import UIKit
 
 class InformationTVCell: UITableViewCell {
     
+    // UI IBOutlet Variable
     @IBOutlet var voteRateLabel: UILabel!
     @IBOutlet var rateView: RatingView!
     @IBOutlet var voteCountLabel: UILabel!
     @IBOutlet var purchaseButton: UIButton!
-    
     @IBOutlet var typeLabel: UILabel!
     @IBOutlet var termLabel: UILabel!
     @IBOutlet var timeLabel: UILabel!
@@ -24,12 +24,6 @@ class InformationTVCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         rateViewUISetting()
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
     
     fileprivate func rateViewUISetting() {
