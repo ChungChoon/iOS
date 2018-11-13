@@ -13,29 +13,32 @@ import SDWebImage
 
 class PopularLectureTVCell: UITableViewCell {
 
+    // UI IBOutlet Variable
     @IBOutlet var sectionLabel: UILabel!
     @IBOutlet var popularLectureCollectionView: UICollectionView!
     @IBOutlet var pageControl: UIPageControl!
     
+    // CollectionView Flow Layout Variable
     let collectionMargin = CGFloat(16)
     let itemSpacing = CGFloat(10)
     let itemHeight = CGFloat(290)
     var itemWidth = CGFloat(0)
+    let screenFrameSize = UIScreen.main.bounds
     
+    // Caver Singleton Instance Variable
     let instance: CaverSingleton = CaverSingleton.sharedInstance
     
+    // Data Variable
     var popularData : [PopularDataVO]?
     var evaluationPointTextArray: [String] = []
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        separatorInset = UIEdgeInsets(top: 0, left: UIScreen.main.bounds.width, bottom: 0, right: 0)
+        separatorInset = UIEdgeInsets(top: 0, left: screenFrameSize.width, bottom: 0, right: 0)
         setCollectionViewDataSourceDelegate(dataSourceDelegate: self, forRow: 0)
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1, execute: {
-             self.getEvaluationDataOnKlaytn()
-        })
     }
     
+    // Set ColletionView Delegate and DataSource by Protocol
     func setCollectionViewDataSourceDelegate<D: UICollectionViewDelegate & UICollectionViewDataSource> (dataSourceDelegate: D, forRow row: Int) {
         popularLectureCollectionView.delegate = dataSourceDelegate
         popularLectureCollectionView.dataSource = dataSourceDelegate
@@ -43,7 +46,11 @@ class PopularLectureTVCell: UITableViewCell {
         collectionViewFlowLayout()
         popularLectureCollectionView.reloadData()
     }
+}
+
+extension PopularLectureTVCell {
     
+    // CollectionView Flow Layout Setting
     fileprivate func collectionViewFlowLayout() {
         let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
         itemWidth = self.contentView.bounds.width - collectionMargin * 2.0
@@ -55,18 +62,27 @@ class PopularLectureTVCell: UITableViewCell {
         popularLectureCollectionView.decelerationRate = UIScrollView.DecelerationRate.fast
     }
     
-    func getEvaluationDataOnKlaytn(){
-            if popularData != nil{
+    // Get Evaluation Point Data From Klaytn
+    public func getEvaluationDataOnKlaytn(){
+        DispatchQueue.global().async {
+            print("Start Downloading on Klaytn")
+            if self.popularData != nil{
                 for index in self.popularData!{
-                    evaluationPointTextArray.append(getEvaluationAveragePointText(index.lecturePk!))
+                    let resultText = self.getEvaluationAveragePointText(index.lecturePk!)
+                    self.evaluationPointTextArray.append(resultText)
                 }
             }
-        self.popularLectureCollectionView.reloadData()
+            DispatchQueue.main.async {
+                print("Finish Downloading on Klaytn")
+                self.popularLectureCollectionView.reloadData()
+                NotificationCenter.default.post(name: .finishDownloadKlaytnData, object: nil)
+            }
+        }
     }
-    
 }
 
-extension PopularLectureTVCell: UICollectionViewDelegate, UICollectionViewDataSource, UIScrollViewDelegate {
+//MARK: CollectionView Delegate and DataSource
+extension PopularLectureTVCell: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if popularData != nil {
@@ -107,11 +123,14 @@ extension PopularLectureTVCell: UICollectionViewDelegate, UICollectionViewDataSo
             "lecturePk" : index.lecturePk!,
             "evaluationPointText" : evaluationPointText,
             "evaluationPointIndex": evaluationPointIndex
-            ])
+        ])
     }
+}
 
+//MARK: ScrollView Delegate
+extension PopularLectureTVCell: UIScrollViewDelegate {
+    
     func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
-        
         let pageWidth = Float(itemWidth + itemSpacing)
         let targetXContentOffset = Float(targetContentOffset.pointee.x)
         let contentWidth = Float(popularLectureCollectionView.contentSize.width  )
@@ -128,7 +147,6 @@ extension PopularLectureTVCell: UICollectionViewDelegate, UICollectionViewDataSo
                 newPage = ceil(contentWidth / pageWidth) - 1.0
             }
         }
-        
         self.pageControl.currentPage = Int(newPage)
         let point = CGPoint (x: CGFloat(newPage * pageWidth), y: targetContentOffset.pointee.y)
         targetContentOffset.pointee = point

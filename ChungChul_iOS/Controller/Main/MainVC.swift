@@ -12,47 +12,37 @@ import Lottie
 extension Notification.Name{
     static let gotoDetail = Notification.Name("gotoDetail")
     static let gotoMain = Notification.Name("gotoMain")
+    static let finishDownloadKlaytnData = Notification.Name("finishDownloadKlaytnData")
 }
 
 class MainVC: UIViewController, NetworkCallback {
     
+    // UI IBOutlet variable
     @IBOutlet var lectureTableView: UITableView!
-    
     var titleTapGestureRecognizer: UITapGestureRecognizer!
+    let animationView = LOTAnimationView(name: "loading")
+    let indicatorView = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
     
+    // Data variable
     var lectureListDataFromServer: HomeDataModel?
     var popularData: [PopularDataVO]?
     var offlineData: [OfflineDataVO]?
     var onlineData: [OnlineDataVO]?
-    
     var detailLectureDataFromServer: LectureDetailData?
+    
+    // Variable
     var lecturePk: Int = 0
     var evaluationPointText: String = ""
     var evaluationPointIndex: Int = 0
     
+    //MARK: View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        lectureTableView.tableFooterView = UIView(frame: CGRect.zero)
-        lectureTableView.tableHeaderView = UIView(frame: CGRect.zero)
-        let model = LectureModel(self)
-        model.callLectureList(token: gsno(UserDefaults.standard.string(forKey: "token")))
-
-        lectureTableView.allowsSelection = false
-        let nibLectureList = UINib(nibName: "LectureListCell", bundle: nil)
-        lectureTableView.register(nibLectureList, forCellReuseIdentifier: "LectureListCell")
-        navigationBarSetting()
-        
-        NotificationCenter.default.addObserver(self,selector: #selector(gotoDetail(notification:)),name: .gotoDetail,object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(gotoMain(notification:)), name: .gotoMain, object: nil)
-        
-//        let indicatorView = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
-//        UIApplication.shared.keyWindow!.addSubview(indicatorView)
-//        let animationView = LOTAnimationView(name: "indicator")
-//        animationView.frame = CGRect(x: 0, y: 0, width: 300, height: 200)
-//        animationView.center = self.view.center
-//        indicatorView.contentMode = .center
-//        indicatorView.blurEffectView(animationView)
-//        animationView.play()
+        callHomeDataFromServer()
+        navigationBarSetting(title: "강의 목록", isTranslucent: false)
+        tableViewSetting()
+        addObserverNotification()
+        indicatorViewSetting()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -61,25 +51,22 @@ class MainVC: UIViewController, NetworkCallback {
         self.navigationController?.navigationBar.addGestureRecognizer(titleTapGestureRecognizer)
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(true)
-    }
-    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(true)
         self.navigationController?.navigationBar.removeGestureRecognizer(titleTapGestureRecognizer)
     }
     
+    //MARK: Networking Result From Server Function
     func networkResult(resultData: Any, code: String) {
         if code == "Success To Get Information"{
             lectureListDataFromServer = resultData as? HomeDataModel
             popularData = lectureListDataFromServer?.popular
             offlineData = lectureListDataFromServer?.offline
             onlineData = lectureListDataFromServer?.online
-
-            self.lectureTableView.delegate = self
-            self.lectureTableView.dataSource = self
-            self.lectureTableView.reloadData()
+            
+            lectureTableView.delegate = self
+            lectureTableView.dataSource = self
+            lectureTableView.reloadData()
             
         } else if code == "Success Get Lecture Detail"{
             detailLectureDataFromServer = resultData as? LectureDetailData
@@ -89,8 +76,8 @@ class MainVC: UIViewController, NetworkCallback {
             detailVC.reviewData = detailLectureDataFromServer?.reviewData
             detailVC.evaluationPointText = evaluationPointText
             detailVC.evaluationPointIndex = evaluationPointIndex
-            
             self.present(detailVC, animated: false, completion: nil)
+            
         } else {
             simpleAlert(title: "오류", msg: "개발자에게 문의하세요.")
         }
@@ -100,6 +87,7 @@ class MainVC: UIViewController, NetworkCallback {
         simpleAlert(title: "네트워크 오류", msg: "인터넷 연결을 확인하세요.")
     }
 
+    //MARK: Notification Function
     @objc func gotoDetail(notification: NSNotification){
         lecturePk = gino(notification.userInfo!["lecturePk"] as? Int)
         evaluationPointText = gsno(notification.userInfo!["evaluationPointText"] as? String)
@@ -112,25 +100,62 @@ class MainVC: UIViewController, NetworkCallback {
     @objc func gotoMain(notification: NSNotification){
 
     }
+    
+    @objc func finishDownloadKlaytnData(notification: NSNotification){
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            self.animationView.stop()
+            self.indicatorView.removeFromSuperview()
+        }
+    }
 }
 
 extension MainVC {
+    
+    // Navigation Title TapGesture Action Selector
     @objc func titleTapAction(_ theObject: AnyObject) {
         let typeListVC = self.storyboard?.instantiateViewController(withIdentifier: "TypeListVC") as! TypeListVC
         typeListVC.delegate = self
         self.present(typeListVC, animated: true, completion: nil)
     }
     
-    func navigationBarSetting(){
-        self.title = "실습 교육 전체"
-        self.navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.font: UIFont(name: "NotoSansCJKkr-Bold", size: 24)!]
-        self.navigationController?.navigationBar.backgroundColor = UIColor.white
-        self.navigationController?.navigationBar.isTranslucent = false
-        self.navigationController?.navigationBar.shadowImage = UIImage()
+    // Call Home Lecture Data From Server Function
+    fileprivate func callHomeDataFromServer() {
+        let model = LectureModel(self)
+        model.callLectureList(token: gsno(UserDefaults.standard.string(forKey: "token")))
+    }
+    
+    // Indicator View Setting Because of Downloading Klaytn Data
+    fileprivate func indicatorViewSetting() {
+        UIApplication.shared.keyWindow!.addSubview(indicatorView)
+        indicatorView.contentMode = .scaleAspectFill
+        indicatorView.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.5)
+        animationView.frame = CGRect(x: 0, y: 0, width: 100, height: 100)
+        animationView.center = indicatorView.center
+        animationView.loopAnimation = true
+        indicatorView.addSubview(animationView)
+        animationView.play()
+    }
+    
+    // TableView Setting and XIB Register
+    fileprivate func tableViewSetting() {
+        lectureTableView.tableFooterView = UIView(frame: CGRect.zero)
+        lectureTableView.tableHeaderView = UIView(frame: CGRect.zero)
+        lectureTableView.allowsSelection = false
+        let nibLectureList = UINib(nibName: "LectureListCell", bundle: nil)
+        lectureTableView.register(nibLectureList, forCellReuseIdentifier: "LectureListCell")
+    }
+    
+    // Add Observer Notification
+    fileprivate func addObserverNotification() {
+        NotificationCenter.default.addObserver(self,selector: #selector(gotoDetail(notification:)),name: .gotoDetail,object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(gotoMain(notification:)), name: .gotoMain, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(finishDownloadKlaytnData(notification:)), name: .finishDownloadKlaytnData, object: nil)
     }
 }
 
+//MARK: TypeListVC Delegate
 extension MainVC: TypeSaveDelegate {
+    
     func updateType(_ typeList: [String]) {
         print(typeList)
         var titleText = ""
@@ -140,9 +165,9 @@ extension MainVC: TypeSaveDelegate {
         }
         self.title = titleText
     }
-    
 }
 
+//MARK: TableView Delegate and DataSource
 extension MainVC: UITableViewDelegate, UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -157,6 +182,10 @@ extension MainVC: UITableViewDelegate, UITableViewDataSource {
         }
     }
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableView.automaticDimension
+    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         switch indexPath.section {
@@ -164,6 +193,7 @@ extension MainVC: UITableViewDelegate, UITableViewDataSource {
             let cell = lectureTableView.dequeueReusableCell(withIdentifier: "PopularLectureTVCell", for: indexPath) as! PopularLectureTVCell
             if popularData != nil {
                 cell.popularData = popularData
+                cell.getEvaluationDataOnKlaytn()
             }
             return cell
         case 1:
@@ -184,9 +214,4 @@ extension MainVC: UITableViewDelegate, UITableViewDataSource {
             return UITableViewCell()
         }
     }
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return UITableView.automaticDimension
-    }
-    
 }

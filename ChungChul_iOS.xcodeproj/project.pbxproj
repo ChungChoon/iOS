@@ -21,6 +21,7 @@
 		BC4D4D7321996A3900573450 /* KlaytnExtention.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC4D4D7221996A3900573450 /* KlaytnExtention.swift */; };
 		BC4D4D762199F6DB00573450 /* success.json in Resources */ = {isa = PBXBuildFile; fileRef = BC4D4D742199F6DA00573450 /* success.json */; };
 		BC4D4D772199F6DB00573450 /* indicator.json in Resources */ = {isa = PBXBuildFile; fileRef = BC4D4D752199F6DB00573450 /* indicator.json */; };
+		BC64BADF219AA1E3009E73EB /* loading.json in Resources */ = {isa = PBXBuildFile; fileRef = BC64BADE219AA1E2009E73EB /* loading.json */; };
 		BC6A21952182081D007B751B /* InformationTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6A21942182081D007B751B /* InformationTVCell.swift */; };
 		BC6A21972182082C007B751B /* IntroduceTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6A21962182082C007B751B /* IntroduceTVCell.swift */; };
 		BC6A219921820838007B751B /* PlanTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6A219821820838007B751B /* PlanTVCell.swift */; };
@@ -61,7 +62,7 @@
 		BCB9D831217E47D700D86908 /* NotoSansCJKkr-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = BCB9D82A217E47D700D86908 /* NotoSansCJKkr-Black.otf */; };
 		BCB9D834217F05AD00D86908 /* PopularLectureTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCB9D833217F05AD00D86908 /* PopularLectureTVCell.swift */; };
 		BCB9D836217F05CB00D86908 /* PopularLectureCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCB9D835217F05CB00D86908 /* PopularLectureCVCell.swift */; };
-		BCB9D838217F310900D86908 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCB9D837217F310900D86908 /* Extension.swift */; };
+		BCB9D838217F310900D86908 /* UIKitExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCB9D837217F310900D86908 /* UIKitExtension.swift */; };
 		BCB9D83D217F528500D86908 /* LectureListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCB9D83B217F528500D86908 /* LectureListCell.swift */; };
 		BCB9D83E217F528500D86908 /* LectureListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCB9D83C217F528500D86908 /* LectureListCell.xib */; };
 		BCB9D840217F64A700D86908 /* TypeListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCB9D83F217F64A700D86908 /* TypeListVC.swift */; };
@@ -82,6 +83,8 @@
 		BCC456CD219336FA00C3250B /* LoginAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCC456CC219336FA00C3250B /* LoginAlertView.swift */; };
 		BCC456CF21935C0A00C3250B /* InitialNC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCC456CE21935C0A00C3250B /* InitialNC.swift */; };
 		BCC456D2219429E500C3250B /* MyLectureModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCC456D1219429E500C3250B /* MyLectureModel.swift */; };
+		BCCF8E43219AF32B00B59A90 /* infinite_rainbow.json in Resources */ = {isa = PBXBuildFile; fileRef = BCCF8E42219AF32A00B59A90 /* infinite_rainbow.json */; };
+		BCCF8E46219AF96500B59A90 /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCCF8E45219AF96500B59A90 /* UIViewControllerExtension.swift */; };
 		BCD7D7AA21764878003238BB /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BCD7D7A921764878003238BB /* Login.storyboard */; };
 		BCD7D7AD21764A2C003238BB /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD7D7AC21764A2C003238BB /* LoginVC.swift */; };
 		BCD7D7B021764DAA003238BB /* SignUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD7D7AF21764DAA003238BB /* SignUpVC.swift */; };
@@ -116,6 +119,7 @@
 		BC4D4D7221996A3900573450 /* KlaytnExtention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KlaytnExtention.swift; sourceTree = "<group>"; };
 		BC4D4D742199F6DA00573450 /* success.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = success.json; sourceTree = "<group>"; };
 		BC4D4D752199F6DB00573450 /* indicator.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = indicator.json; sourceTree = "<group>"; };
+		BC64BADE219AA1E2009E73EB /* loading.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = loading.json; sourceTree = "<group>"; };
 		BC6A21942182081D007B751B /* InformationTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationTVCell.swift; sourceTree = "<group>"; };
 		BC6A21962182082C007B751B /* IntroduceTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroduceTVCell.swift; sourceTree = "<group>"; };
 		BC6A219821820838007B751B /* PlanTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanTVCell.swift; sourceTree = "<group>"; };
@@ -160,7 +164,7 @@
 		BCB9D82A217E47D700D86908 /* NotoSansCJKkr-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansCJKkr-Black.otf"; sourceTree = "<group>"; };
 		BCB9D833217F05AD00D86908 /* PopularLectureTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularLectureTVCell.swift; sourceTree = "<group>"; };
 		BCB9D835217F05CB00D86908 /* PopularLectureCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularLectureCVCell.swift; sourceTree = "<group>"; };
-		BCB9D837217F310900D86908 /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
+		BCB9D837217F310900D86908 /* UIKitExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIKitExtension.swift; sourceTree = "<group>"; };
 		BCB9D83B217F528500D86908 /* LectureListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LectureListCell.swift; sourceTree = "<group>"; };
 		BCB9D83C217F528500D86908 /* LectureListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LectureListCell.xib; sourceTree = "<group>"; };
 		BCB9D83F217F64A700D86908 /* TypeListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeListVC.swift; sourceTree = "<group>"; };
@@ -181,6 +185,8 @@
 		BCC456CC219336FA00C3250B /* LoginAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginAlertView.swift; sourceTree = "<group>"; };
 		BCC456CE21935C0A00C3250B /* InitialNC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialNC.swift; sourceTree = "<group>"; };
 		BCC456D1219429E500C3250B /* MyLectureModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyLectureModel.swift; sourceTree = "<group>"; };
+		BCCF8E42219AF32A00B59A90 /* infinite_rainbow.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = infinite_rainbow.json; sourceTree = "<group>"; };
+		BCCF8E45219AF96500B59A90 /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
 		BCD7D7A921764878003238BB /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		BCD7D7AC21764A2C003238BB /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
 		BCD7D7AF21764DAA003238BB /* SignUpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpVC.swift; sourceTree = "<group>"; };
@@ -294,6 +300,8 @@
 		BC4D4D782199F6E300573450 /* Lottie */ = {
 			isa = PBXGroup;
 			children = (
+				BCCF8E42219AF32A00B59A90 /* infinite_rainbow.json */,
+				BC64BADE219AA1E2009E73EB /* loading.json */,
 				BC4D4D752199F6DB00573450 /* indicator.json */,
 				BC4D4D742199F6DA00573450 /* success.json */,
 			);
@@ -364,14 +372,12 @@
 		BC87E00021751C4700B7322E /* ChungChul_iOS */ = {
 			isa = PBXGroup;
 			children = (
-				BC4D4D782199F6E300573450 /* Lottie */,
-				BCB9D832217E47DB00D86908 /* Font */,
 				BC87E00121751C4700B7322E /* AppDelegate.swift */,
-				BCB9D837217F310900D86908 /* Extension.swift */,
-				BC13316F218ECBF700D346B4 /* UIViewExtension.swift */,
-				BC4D4D7221996A3900573450 /* KlaytnExtention.swift */,
 				BC87E00B21751C4900B7322E /* Assets.xcassets */,
 				BC87E01021751C4900B7322E /* Info.plist */,
+				BC4D4D782199F6E300573450 /* Lottie */,
+				BCB9D832217E47DB00D86908 /* Font */,
+				BCCF8E44219AF92500B59A90 /* Extensions */,
 				BC6F28E82183419000B64524 /* Network */,
 				BCD7D7A62176481F003238BB /* Model */,
 				BCD7D7A721764826003238BB /* View */,
@@ -449,6 +455,17 @@
 				BCC456D1219429E500C3250B /* MyLectureModel.swift */,
 			);
 			path = MyLecture;
+			sourceTree = "<group>";
+		};
+		BCCF8E44219AF92500B59A90 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				BCB9D837217F310900D86908 /* UIKitExtension.swift */,
+				BC13316F218ECBF700D346B4 /* UIViewExtension.swift */,
+				BCCF8E45219AF96500B59A90 /* UIViewControllerExtension.swift */,
+				BC4D4D7221996A3900573450 /* KlaytnExtention.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		BCD7D7A62176481F003238BB /* Model */ = {
@@ -611,7 +628,9 @@
 				BC87E00F21751C4900B7322E /* LaunchScreen.storyboard in Resources */,
 				BC4D4D762199F6DB00573450 /* success.json in Resources */,
 				BC87E00C21751C4900B7322E /* Assets.xcassets in Resources */,
+				BCCF8E43219AF32B00B59A90 /* infinite_rainbow.json in Resources */,
 				BC4D4D772199F6DB00573450 /* indicator.json in Resources */,
+				BC64BADF219AA1E3009E73EB /* loading.json in Resources */,
 				BCB9D82F217E47D700D86908 /* NotoSansCJKkr-Light.otf in Resources */,
 				BCB9D82E217E47D700D86908 /* NotoSansCJKkr-DemiLight.otf in Resources */,
 				BC87E00721751C4700B7322E /* Main.storyboard in Resources */,
@@ -762,6 +781,7 @@
 				BC6F290321844CA000B64524 /* PopularDataVO.swift in Sources */,
 				BCC456BE218F141300C3250B /* CaverSingleton.swift in Sources */,
 				BC6F28EA218341A500B64524 /* NetworkModel.swift in Sources */,
+				BCCF8E46219AF96500B59A90 /* UIViewControllerExtension.swift in Sources */,
 				BC6F290721844CC900B64524 /* OnlineDataVO.swift in Sources */,
 				BC474D3B218AF85300CE1043 /* RatingView.swift in Sources */,
 				BCD7D7AD21764A2C003238BB /* LoginVC.swift in Sources */,
@@ -774,7 +794,7 @@
 				BCD7D7B021764DAA003238BB /* SignUpVC.swift in Sources */,
 				BC474D3E218AFA6200CE1043 /* TotalEvaluationTVCell.swift in Sources */,
 				BC87E00A21751C4700B7322E /* ChungChul_iOS.xcdatamodeld in Sources */,
-				BCB9D838217F310900D86908 /* Extension.swift in Sources */,
+				BCB9D838217F310900D86908 /* UIKitExtension.swift in Sources */,
 				BCC456C621918BD400C3250B /* LectureDetailDataVO.swift in Sources */,
 				BC6A219921820838007B751B /* PlanTVCell.swift in Sources */,
 				BC6F28F1218353EE00B64524 /* JoinModel.swift in Sources */,

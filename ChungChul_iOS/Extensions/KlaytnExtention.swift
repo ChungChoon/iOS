@@ -38,8 +38,7 @@ extension UIView {
             let contractAddress = CaverSingleton.sharedInstance.contractAddress
             value = try contractAddress.call("calculateEvaluationAveragePoint(uint256)", lectureNumber!).wait().intCount()
         } catch{
-            print("Get Function Result Fail!")
-            print(error.localizedDescription)
+            print("No Evaluation Point")
         }
         if value != nil{
             return "\(value!)%"
@@ -54,8 +53,7 @@ extension UIView {
             let contractAddress = CaverSingleton.sharedInstance.contractAddress
             value = try contractAddress.call("calculateEvaluationAveragePoint(uint256)", lectureNumber!).wait().intCount()
         } catch{
-            print("Get Function Result Fail!")
-            print(error.localizedDescription)
+            print("No Evaluation Point")
         }
         if value != nil{
             return value!

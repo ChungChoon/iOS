@@ -9,10 +9,13 @@
 import UIKit
 
 class TabBarVC: UITabBarController {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        tabBarIconSetting()
+    }
+    
+    fileprivate func tabBarIconSetting() {
         let tabBar = self.tabBar
         let lectureListImage = UIImage(named:"ic_lecture_blue")?.withRenderingMode(.alwaysOriginal)
         let myLectureImage = UIImage(named: "ic_mylist_blue")?.withRenderingMode(.alwaysOriginal)
@@ -22,5 +25,4 @@ class TabBarVC: UITabBarController {
         (tabBar.items![1] ).selectedImage = myLectureImage
         (tabBar.items![2] ).selectedImage = moreImage
     }
-
 }
