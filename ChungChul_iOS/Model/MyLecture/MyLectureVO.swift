@@ -29,6 +29,7 @@ class MyLectureVO: Mappable {
     var limitNum: Int?
     var price: Int?
     var apply: Int?
+    var state: Int?
     
     required init?(map: Map) {}
     
@@ -52,6 +53,7 @@ class MyLectureVO: Mappable {
         limitNum <- map["limit_num"]
         price <- map["price"]
         apply <- map["apply"]
+        state <- map["state"]
     }
     
 }

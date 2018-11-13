@@ -494,10 +494,10 @@
 		BCD7D7A82176482E003238BB /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				BC6A219E2182C4B3007B751B /* More */,
 				BCD7D7AB21764A17003238BB /* Login */,
 				BCD7D7AE21764A3A003238BB /* Main */,
 				BCB9D841217F911700D86908 /* MyLecture */,
+				BC6A219E2182C4B3007B751B /* More */,
 			);
 			path = Controller;
 			sourceTree = "<group>";

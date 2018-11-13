@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Lottie
 
 extension UIViewController {
     
@@ -16,6 +17,18 @@ extension UIViewController {
         self.navigationController?.navigationBar.backgroundColor = UIColor.white
         self.navigationController?.navigationBar.isTranslucent = isTranslucent
         self.navigationController?.navigationBar.shadowImage = UIImage()
+    }
+    
+    // Indicator View Setting Because of Downloading Klaytn Data
+    func indicatorViewSetting(_ indicatorView: UIView, _ animationView: LOTAnimationView) {
+        UIApplication.shared.keyWindow!.addSubview(indicatorView)
+        indicatorView.contentMode = .scaleAspectFill
+        indicatorView.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.5)
+        animationView.frame = CGRect(x: 0, y: 0, width: 100, height: 100)
+        animationView.center = indicatorView.center
+        animationView.loopAnimation = true
+        indicatorView.addSubview(animationView)
+        animationView.play()
     }
 }
 

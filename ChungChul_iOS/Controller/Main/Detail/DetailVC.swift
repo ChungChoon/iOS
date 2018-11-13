@@ -93,10 +93,13 @@ extension DetailVC {
     
     // Present Purchasing Success AlertView when Transaction Success
     fileprivate func presentSuccessPurchasingAlertView() {
-        let alertController = UIAlertController(title: "신청 완료", message: "수강료가 결제되었습니다.", preferredStyle: .alert)
+        let alertController = UIAlertController(title: "수강 신청 완료", message: "KLAY가 결제되었습니다.", preferredStyle: .alert)
         let okAction = UIAlertAction(title: "확인", style: UIAlertAction.Style.default) {
             UIAlertAction in
-            self.dismiss(animated: true, completion: nil)
+            self.dismiss(animated: false, completion: {
+                let tabBarVC = self.storyboard?.instantiateViewController(withIdentifier: "TabBarVC") as! TabBarVC
+                UIApplication.shared.keyWindow?.rootViewController = tabBarVC
+            })
         }
         alertController.addAction(okAction)
         self.present(alertController, animated: true, completion: nil)

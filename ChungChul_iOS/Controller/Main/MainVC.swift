@@ -42,7 +42,7 @@ class MainVC: UIViewController, NetworkCallback {
         navigationBarSetting(title: "강의 목록", isTranslucent: false)
         tableViewSetting()
         addObserverNotification()
-        indicatorViewSetting()
+        indicatorViewSetting(indicatorView, animationView)
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -122,18 +122,6 @@ extension MainVC {
     fileprivate func callHomeDataFromServer() {
         let model = LectureModel(self)
         model.callLectureList(token: gsno(UserDefaults.standard.string(forKey: "token")))
-    }
-    
-    // Indicator View Setting Because of Downloading Klaytn Data
-    fileprivate func indicatorViewSetting() {
-        UIApplication.shared.keyWindow!.addSubview(indicatorView)
-        indicatorView.contentMode = .scaleAspectFill
-        indicatorView.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.5)
-        animationView.frame = CGRect(x: 0, y: 0, width: 100, height: 100)
-        animationView.center = indicatorView.center
-        animationView.loopAnimation = true
-        indicatorView.addSubview(animationView)
-        animationView.play()
     }
     
     // TableView Setting and XIB Register

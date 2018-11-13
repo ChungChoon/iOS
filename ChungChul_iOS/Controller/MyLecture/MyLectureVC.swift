@@ -25,6 +25,7 @@ class MyLectureVC: UIViewController, NetworkCallback {
     var evaluationPointIndex: Int = 0
     
     @IBAction func unwindToMyLecture(segue:UIStoryboardSegue) {
+        callMyLectureDataFromServer()
         myLectureTableView.reloadData()
     }
     
@@ -38,14 +39,10 @@ class MyLectureVC: UIViewController, NetworkCallback {
         navigationBarSetting(title: "나의 강의", isTranslucent: false)
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(false)
-        self.title = " "
-    }
-    
     func networkResult(resultData: Any, code: String) {
         if code == "Success To Get Farmer My Lecture"{
             myLectureListDataFromServer = resultData as? [MyLectureVO]
+            myLectureListDataFromServer = myLectureListDataFromServer?.reversed()
             tableViewSetting()
         } else if code == "Success Get Lecture Detail"{
             detailLectureDataFromServer = resultData as? LectureDetailData
@@ -155,12 +152,17 @@ extension MyLectureVC: UITableViewDelegate, UITableViewDataSource {
         let index = myLectureListDataFromServer![indexPath.row]
         lecturePk = index.lecturePk
         
-        cell.evaluateButton.addTarget(self, action: #selector(evaluateButtonAction), for: .touchUpInside)
         cell.lectureImageView.sd_setImage(with: URL(string: gsno(index.farmImg)), placeholderImage: UIImage())
         cell.lectureTitleLabel.text = gsno(index.title)
         cell.farmNameLabel.text = gsno(index.farmName)
         cell.termLabel.text = gsno(index.startDate) + " ~ " + gsno(index.endDate)
         cell.lectureCountLabel.text = "강의 \(gino(index.attendCnt))/00개 출석완료"
+        if gino(index.state) == 1{
+            cell.evaluateButton.isHidden = true
+        } else {
+            cell.evaluateButton.isHidden = false
+            cell.evaluateButton.addTarget(self, action: #selector(evaluateButtonAction), for: .touchUpInside)
+        }
         return cell
     }
 }
