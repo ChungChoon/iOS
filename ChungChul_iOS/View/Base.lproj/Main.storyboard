@@ -1083,7 +1083,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="osD-hz-ZLv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4384.8000000000002" y="-646.77661169415296"/>
+            <point key="canvasLocation" x="4388" y="-172"/>
         </scene>
         <!--강의 목록-->
         <scene sceneID="QaQ-5U-3Cb">

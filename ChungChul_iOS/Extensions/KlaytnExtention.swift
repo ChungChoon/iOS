@@ -8,11 +8,10 @@
 
 import UIKit
 import web3swift
-import BigInt
-
 
 extension UIView {
     
+    //MARK: Get Evaluation Average Point to String at the Klaytn
     func getEvaluationAveragePointText(_ lectureNumber: Int?) -> String{
         var value: Int?
         do {
@@ -28,6 +27,7 @@ extension UIView {
         }
     }
     
+    //MARK: Get Evaluation Average Point to Int at the Klaytn
     func getEvaluationAveragePoint(_ lectureNumber: Int?) -> Int{
         var value: Int?
         do {
@@ -43,6 +43,7 @@ extension UIView {
         }
     }
     
+    //MARK: Use Evaluation Average Point to get RateView Index
     func getRateViewIndexByEvaluationPoint(_ evaluationPoint: Int?) -> Int?{
         if let point = evaluationPoint {
             if point == 100{

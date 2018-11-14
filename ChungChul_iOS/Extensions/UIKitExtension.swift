@@ -22,6 +22,7 @@ extension UITextField {
 
 extension UITextView {
     
+    //MARK: TextView Expanding Height
     func newHeight(withBaseHeight baseHeight: CGFloat) -> CGFloat {
         let fixedWidth = frame.size.width
         let newSize = sizeThatFits(CGSize(width: fixedWidth, height: .greatestFiniteMagnitude))
@@ -33,6 +34,8 @@ extension UITextView {
 }
 
 extension UIView {
+    
+    //MARK: Type Button Setting by type number
     func typeButtonTextSetting(_ sender: UIButton, _ type: Int) {
         switch type {
         case 3:
@@ -58,6 +61,7 @@ extension UIView {
         }
     }
     
+    //MARK: Type Button UI Setting
     func typeButtonSetting(_ button: UIButton){
         button.layer.masksToBounds = true
         button.layer.cornerRadius = 10
@@ -67,6 +71,7 @@ extension UIView {
         button.setTitleColor(#colorLiteral(red: 0.3176470588, green: 0.4509803922, blue: 0.8941176471, alpha: 1), for: .normal)
     }
     
+    //MARK: Blur Effect at the Login View
     func blurEffectView(_ view: UIView) {
         let blurEffect = UIBlurEffect(style: UIBlurEffect.Style.light)
         let blurEffectView = UIVisualEffectView(effect: blurEffect)

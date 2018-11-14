@@ -8,7 +8,7 @@
 
 import ObjectMapper
 
-class SignUpStudentDataModel: Mappable {
+class SignUpStudentData: Mappable {
 
     var message : String?
     var user_mail: String?

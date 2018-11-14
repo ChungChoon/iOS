@@ -11,6 +11,7 @@ import Lottie
 
 extension UIViewController {
     
+    //MARK: Navigation Bar Setting
     func navigationBarSetting(title: String, isTranslucent: Bool){
         self.title = title
         self.navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.font: UIFont(name: "NotoSansCJKkr-Bold", size: 24)!]
@@ -19,7 +20,7 @@ extension UIViewController {
         self.navigationController?.navigationBar.shadowImage = UIImage()
     }
     
-    // Indicator View Setting Because of Downloading Klaytn Data
+    //MARK: Indicator View Setting Because of Downloading Klaytn Data
     func indicatorViewSetting(_ indicatorView: UIView, _ animationView: LOTAnimationView) {
         UIApplication.shared.keyWindow!.addSubview(indicatorView)
         indicatorView.contentMode = .scaleAspectFill
@@ -43,6 +44,7 @@ extension UIViewController : UITextFieldDelegate, UIScrollViewDelegate{
         return (true)
     }
     
+    //MARK: Optional Binding for String
     func gsno(_ data: String?) -> String {
         guard let str = data else {
             return ""
@@ -50,6 +52,7 @@ extension UIViewController : UITextFieldDelegate, UIScrollViewDelegate{
         return str
     }
     
+    //MARK: Optional Binding for Int
     func gino(_ data: Int?) -> Int {
         guard let num = data else {
             return 0
@@ -57,6 +60,7 @@ extension UIViewController : UITextFieldDelegate, UIScrollViewDelegate{
         return num
     }
     
+    //MARK: Simple Alert Controller with Title and Message
     func simpleAlert(title: String, msg: String) {
         let alert = UIAlertController(title: title, message: msg, preferredStyle: .alert)
         let okAction = UIAlertAction(title: "확인", style: .default)

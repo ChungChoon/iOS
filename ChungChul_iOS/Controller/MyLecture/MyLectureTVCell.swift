@@ -26,7 +26,7 @@ class MyLectureTVCell: UITableViewCell {
     @IBOutlet var includeView: UIView!
     
     // Variable
-    let screenFrameSize = UIScreen.main.bounds
+    let screenFrameSize = UIScreen.main.bounds.size
     
     override func awakeFromNib() {
         super.awakeFromNib()

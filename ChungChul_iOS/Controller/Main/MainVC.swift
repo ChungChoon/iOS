@@ -38,15 +38,15 @@ class MainVC: UIViewController, NetworkCallback {
     //MARK: View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        callHomeDataFromServer()
         navigationBarSetting(title: "강의 목록", isTranslucent: false)
         tableViewSetting()
         addObserverNotification()
-        indicatorViewSetting(indicatorView, animationView)
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
+        callHomeDataFromServer()
+        indicatorViewSetting(indicatorView, animationView)
         titleTapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(titleTapAction(_:)))
         self.navigationController?.navigationBar.addGestureRecognizer(titleTapGestureRecognizer)
     }

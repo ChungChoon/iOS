@@ -20,22 +20,18 @@ class MyLectureVC: UIViewController, NetworkCallback {
     
     // Variable
     var ud = UserDefaults.standard
-    var lecturePk: Int?
     var evaluationPointText: String = ""
     var evaluationPointIndex: Int = 0
     
-    @IBAction func unwindToMyLecture(segue:UIStoryboardSegue) {
-        callMyLectureDataFromServer()
-        myLectureTableView.reloadData()
-    }
+    @IBAction func unwindToMyLecture(segue:UIStoryboardSegue) {}
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        callMyLectureDataFromServer()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(false)
+        callMyLectureDataFromServer()
         navigationBarSetting(title: "나의 강의", isTranslucent: false)
     }
     
@@ -60,9 +56,9 @@ class MyLectureVC: UIViewController, NetworkCallback {
 extension MyLectureVC {
     
     // Evaluate Button Action Selector
-    @objc func evaluateButtonAction(){
+    @objc func evaluateButtonAction(_ sender: UIButton){
         let evaluationVC = self.storyboard?.instantiateViewController(withIdentifier: "EvaluationVC") as! EvaluationVC
-        evaluationVC.lecturePk = lecturePk
+        evaluationVC.lecturePk = sender.tag
         self.navigationController?.pushViewController(evaluationVC, animated: true)
     }
     
@@ -85,6 +81,8 @@ extension MyLectureVC {
     fileprivate func tableViewSetting() {
         let nibMyLecture = UINib(nibName: "MyLectureTVCell", bundle: nil)
         myLectureTableView.register(nibMyLecture, forCellReuseIdentifier: "MyLectureTVCell")
+        myLectureTableView.tableFooterView = UIView(frame: CGRect.zero)
+        myLectureTableView.tableHeaderView = UIView(frame: CGRect.zero)
         myLectureTableView.delegate = self
         myLectureTableView.dataSource = self
         myLectureTableView.reloadData()
@@ -150,8 +148,7 @@ extension MyLectureVC: UITableViewDelegate, UITableViewDataSource {
     fileprivate func myLectureListSectionCell(_ indexPath: IndexPath) -> UITableViewCell {
         let cell = myLectureTableView.dequeueReusableCell(withIdentifier: "MyLectureTVCell", for: indexPath) as! MyLectureTVCell
         let index = myLectureListDataFromServer![indexPath.row]
-        lecturePk = index.lecturePk
-        
+        cell.evaluateButton.tag = gino(index.lecturePk)
         cell.lectureImageView.sd_setImage(with: URL(string: gsno(index.farmImg)), placeholderImage: UIImage())
         cell.lectureTitleLabel.text = gsno(index.title)
         cell.farmNameLabel.text = gsno(index.farmName)

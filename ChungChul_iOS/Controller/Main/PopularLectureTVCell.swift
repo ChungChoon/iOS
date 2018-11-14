@@ -66,6 +66,7 @@ extension PopularLectureTVCell {
     public func getEvaluationDataOnKlaytn(){
         DispatchQueue.global().async {
             print("Start Downloading on Klaytn")
+            self.evaluationPointTextArray.removeAll()
             if self.popularData != nil{
                 for index in self.popularData!{
                     let resultText = self.getEvaluationAveragePointText(index.lecturePk!)

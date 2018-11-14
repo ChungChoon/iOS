@@ -13,7 +13,6 @@ class LoginModel: NetworkModel {
     
     func loginModel(email: String, password: String) {
         
-        let ud = UserDefaults.standard
         let URL = "\(baseURL)/user/signin"
         let body : [String:String] = [
             "mail": email,
@@ -36,17 +35,7 @@ class LoginModel: NetworkModel {
                     }
                     if responseMessage.message == "Success To Sign In" {
                         if let token = responseMessage.token, let data = responseMessage.data{
-                            ud.setValue(token, forKey: "token")
-                            ud.setValue(data[0].name, forKey: "name")
-                            ud.setValue(data[0].mail, forKey: "mail")
-                            ud.setValue(data[0].img, forKey: "img")
-                            ud.setValue(data[0].wallet, forKey: "wallet")
-                            ud.setValue(data[0].flag, forKey: "flag")
-                            ud.setValue(data[0].birth, forKey: "birth")
-                            ud.setValue(data[0].hp, forKey: "hp")
-                            ud.setValue(data[0].sex, forKey: "sex")
-                            ud.synchronize()
-                            print(token)
+                            self.userDefaultSetting(token, data)
                         }
                         self.view.networkResult(resultData: "Login Success", code: "Success To Sign In")
                     }
@@ -59,7 +48,6 @@ class LoginModel: NetworkModel {
                     else if responseMessage.message == "Fail To Sign In"{
                         self.view.networkResult(resultData: "아이디 또는 패스워드를 확인해주세요.", code: "Fail To Sign In")
                     }
-                    
                 case .failure(let err):
                     print(err)
                     self.view.networkFailed()
@@ -67,4 +55,14 @@ class LoginModel: NetworkModel {
         }
     }
     
+    func userDefaultSetting(_ token: String, _ data: [LoginDataVO]) {
+        let ud = UserDefaults.standard
+        ud.setValue(token, forKey: "token")
+        ud.setValue(data[0].name, forKey: "name")
+        ud.setValue(data[0].mail, forKey: "mail")
+        ud.setValue(data[0].img, forKey: "img")
+        ud.setValue(data[0].wallet, forKey: "wallet")
+        ud.setValue(data[0].flag, forKey: "flag")
+        ud.synchronize()
+    }
 }

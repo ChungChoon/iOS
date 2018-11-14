@@ -106,5 +106,4 @@ class LectureModel: NetworkModel {
                 }
         }
     }
-    
 }

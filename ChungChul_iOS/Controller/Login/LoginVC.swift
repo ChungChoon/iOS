@@ -11,22 +11,34 @@ import web3swift
 
 class LoginVC: UIViewController {
 
+    // UI IBOutlet Variable
     @IBOutlet var loginbutton: UIButton!
     @IBOutlet var joinButton: UIButton!
     
+    @IBAction func unwindToLogin(segue:UIStoryboardSegue) { }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationBarSetting()
-        loginbutton.addTarget(self, action: #selector(loginButtonAction), for: .touchUpInside)
-        joinButton.addTarget(self, action: #selector(joinButtonAction), for: .touchUpInside)
+        addTargetButton()
     }
-    @IBAction func unwindToLogin(segue:UIStoryboardSegue) { }
-
 }
 
 extension LoginVC {
     
-    func navigationBarSetting(){
+    // Login Button Action Selector
+    @objc func loginButtonAction() {
+        guard let loginVC = self.storyboard?.instantiateViewController(withIdentifier: "SignInVC") else { return }
+        self.navigationController?.pushViewController(loginVC, animated: true)
+    }
+    
+    // Join Button Action Selector
+    @objc func joinButtonAction() {
+        guard let joinVC = self.storyboard?.instantiateViewController(withIdentifier: "SignUpVC") else { return }
+        self.navigationController?.pushViewController(joinVC, animated: true)
+    }
+    
+    fileprivate func navigationBarSetting(){
         self.navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.font: UIFont(name: "NotoSansCJKkr-Bold", size: 24)!]
         self.navigationController?.navigationBar.backgroundColor = UIColor.clear
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
@@ -37,14 +49,9 @@ extension LoginVC {
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: UIBarButtonItem.Style.plain, target: nil, action: nil)
     }
     
-    @objc func loginButtonAction() {
-        guard let loginVC = self.storyboard?.instantiateViewController(withIdentifier: "SignInVC") else { return }
-        self.navigationController?.pushViewController(loginVC, animated: true)
-    }
-    
-    @objc func joinButtonAction() {
-        guard let joinVC = self.storyboard?.instantiateViewController(withIdentifier: "SignUpVC") else { return }
-        self.navigationController?.pushViewController(joinVC, animated: true)
+    fileprivate func addTargetButton() {
+        loginbutton.addTarget(self, action: #selector(loginButtonAction), for: .touchUpInside)
+        joinButton.addTarget(self, action: #selector(joinButtonAction), for: .touchUpInside)
     }
     
 }

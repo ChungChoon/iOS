@@ -62,7 +62,7 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   web3swift:
-    :commit: 8d9723ad8172d5173429286f04dcd10701849f8f
+    :commit: 4ccfa6366e55a651775254e3a0a55bf17c67b462
     :git: https://github.com/bankex/web3swift.git
 
 SPEC CHECKSUMS:
@@ -80,6 +80,6 @@ SPEC CHECKSUMS:
   SwiftyJSON: c4bcba26dd9ec7a027fc8eade48e2c911f229e96
   web3swift: 6b554da5ec34fe3569dab78a7a2ad3b8ce4a7b61
 
-PODFILE CHECKSUM: 667cf4edb5eb723b7e1f0c5fe0685681bf714798
+PODFILE CHECKSUM: d580927de42dc054dd604be7a2900f9abd2f691b
 
 COCOAPODS: 1.5.3

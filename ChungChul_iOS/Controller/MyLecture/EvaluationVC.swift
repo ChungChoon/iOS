@@ -56,7 +56,6 @@ class EvaluationVC: UIViewController, NetworkCallback {
     }
     
     func evaluateLectureOnKlaytn(){
-        do {
             let caver = instance.caver
             let ABI = instance.contractABI
             let contractAddress = instance.contractAddress
@@ -76,23 +75,28 @@ class EvaluationVC: UIViewController, NetworkCallback {
             
             // Parameter Setting
             let evaluateParameters = [lectureNumber, preparationPoint, contentPoint, proceedPoint, communicationPoint, satisfactionPoint] as [AnyObject]
-            
-            // Estimated Gas
-            let estimatedGas = try caver.contract(ABI, at: contractAddress).method("evaluateLecture", parameters: evaluateParameters, options: options).estimateGas(options: nil)
-            options.gasLimit = estimatedGas
-            
-            // Transaction Setting
-            let transactionResult = try caver.contract(ABI, at: contractAddress).method("evaluateLecture", parameters: evaluateParameters, options: options)
+            print(evaluateParameters)
 
-            // Transaction Send
-            let sendingResult = try transactionResult.send(password: passwd)
-            print(sendingResult.transaction)
-            
-            networkEvaluateLectureToServer()
-        } catch{
-            print("You don't have enough KLAY!")
-            print(error.localizedDescription)
-        }
+            DispatchQueue.global(qos: .utility).async {
+                do{
+                    // Estimated Gas
+                    let estimatedGas = try caver.contract(ABI, at: contractAddress).method("evaluateLecture", parameters: evaluateParameters, options: options).estimateGas(options: nil)
+                    options.gasLimit = estimatedGas
+                    print(estimatedGas)
+                    // Transaction Setting
+                    let transactionResult = try caver.contract(ABI, at: contractAddress).method("evaluateLecture", parameters: evaluateParameters, options: options)
+                    print(transactionResult.transaction)
+                    // Transaction Send
+                    let sendingResult = try transactionResult.send(password: passwd)
+                    print(sendingResult.transaction)
+                    DispatchQueue.main.async {
+                        self.networkEvaluateLectureToServer()
+                    }
+                } catch{
+                    print("You don't have enough KLAY!")
+                    print(error.localizedDescription)
+                }
+            }
     }
     
     func networkResult(resultData: Any, code: String) {

@@ -8,7 +8,7 @@
 
 import ObjectMapper
 
-class DuplicateEmailDataModel: Mappable {
+class DuplicateEmailData: Mappable {
     
     var message : String?
 

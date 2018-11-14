@@ -6,6 +6,7 @@
 //  Copyright © 2018 Park Sung Joon. All rights reserved.
 //
 
+//MARK: API Server Network URL Setting
 class NetworkModel {
     
     var view : NetworkCallback

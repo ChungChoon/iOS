@@ -6,9 +6,8 @@
 //  Copyright © 2018 Park Sung Joon. All rights reserved.
 //
 
+//MARK: Protocol for receiving responses from Server
 protocol NetworkCallback {
-    
     func networkResult(resultData:Any, code:String)
     func networkFailed()
-    
 }
