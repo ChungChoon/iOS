@@ -173,6 +173,7 @@ Smart Contract의 calculateEvaluationAveragePoint를 호출하는 test case 입�
 ### Evaluate Lecture
 
 강의를 평가하는 Transaction test case 입니다.
+* 블록에 기록된것이 보장된 후 Server와 통신하기 위해 global queue 안에서 결과를 받고 Main Thread에서 통신하였습니다.
 
 ```
     func testEvaluateLecture(){
