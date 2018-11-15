@@ -78,11 +78,10 @@ final class CaverSingleton {
 
 ### calculateEvaluationAveragePoint(uint256)
 
-Smart Contract의 calculateEvaluationAveragePoint를 호출하는 Unit Test 입니다.
-iOS GCD 클래스의 Global Queue를 이용해 호출하므로 UI를 처리하는 Main Thread에서 호출되지 않도록 했습니다.
-Klaytn에서 메소드를 Call하는것 자체가 모바일 환경에서는 큰 액션이라고 판단되어 QOS를 Utility로 설정하여 호출하였습니다.
+Smart Contract의 calculateEvaluationAveragePoint를 호출하는 test case 입니다.
 
-
+* iOS GCD 클래스의 Global Queue를 이용하여 UI를 처리하는 Main Thread에서 호출되지 않도록 했습니다.
+* 0.005 seconds로 단일 강의 평가점수 호출은 빠르나 실제 강의 목록에서 스크롤 시 점수를 Klaytn에서 Call할 때 UI Delay가 발생되어 최초 로딩 시 한번에 호출하였습니다.
 
 ```
     func testCalculateEvaluationAveragePoint() {
@@ -105,6 +104,7 @@ Klaytn에서 메소드를 Call하는것 자체가 모바일 환경에서는 큰 
 
 ### GetKlayBalances
 
+보유 KLAY와 private key를 불러오는 test case 입니다.
 
 ```
     func testGetKlayBalances(){
@@ -128,5 +128,94 @@ Klaytn에서 메소드를 Call하는것 자체가 모바일 환경에서는 큰 
     // Test Case '-[ChungChul_iOSTests.ChungChul_iOSTests testGetKlayBalances]' passed (0.224 seconds).
 ```
 
-###
+### Purchase Lecture
 
+강의를 신청(구매)하는 Transaction test case 입니다.
+
+```
+    func testPurchaseLecture(){
+        let instance = CaverSingleton.sharedInstance
+        let caver = instance.caver
+        let ABI = instance.contractABI
+        let contractAddress = instance.contractAddress
+        let passwd = "비밀번호"
+        let lecturePrice = 10
+        let lectureNumber = BigUInt(0)
+        DispatchQueue.global(qos: .utility).async {
+            do {
+                // Option Setting
+                var options = Web3Options.default
+                options.value = Web3.Utils.parseToBigUInt("\(lecturePrice)", units: .eth)
+                options.gasLimit = BigUInt(701431)
+                options.from = CaverSingleton.sharedInstance.userAddress
+                
+                // Parameter Setting
+                let lectureNumberParameter = [lectureNumber] as [AnyObject]
+                
+                // Estimated Gas
+                let estimatedGas = try caver.contract(ABI, at: contractAddress).method("purchaseLecture", parameters: lectureNumberParameter, options: options).estimateGas(options: nil)
+                options.gasLimit = estimatedGas
+                
+                // Transaction Setting
+                let transactionResult = try caver.contract(ABI, at: contractAddress).method("purchaseLecture", parameters: lectureNumberParameter, options: options)
+                
+                // Transaction Send
+                let sendingResult = try transactionResult.send(password: passwd)
+                print(sendingResult.transaction)
+            } catch{
+                print("You don't have enough KLAY!")
+                print(error.localizedDescription)
+            }
+        }
+    }
+```
+
+### Evaluate Lecture
+
+강의를 평가하는 Transaction test case 입니다.
+
+```
+    func testEvaluateLecture(){
+        let instance = CaverSingleton.sharedInstance
+        let caver = instance.caver
+        let ABI = instance.contractABI
+        let contractAddress = instance.contractAddress
+        let passwd = "비밀번호"
+        
+        // Option Setting
+        var options = Web3Options.default
+        options.gasLimit = BigUInt(701431)
+        options.from = instance.userAddress
+        
+        let lectureNumber = BigUInt(0)
+        let preparationPoint = BigUInt(100)
+        let contentPoint = BigUInt(80)
+        let proceedPoint = BigUInt(34)
+        let communicationPoint = BigUInt(77)
+        let satisfactionPoint = BigUInt(99)
+        
+        // Parameter Setting
+        let evaluateParameters = [lectureNumber, preparationPoint, contentPoint, proceedPoint, communicationPoint, satisfactionPoint] as [AnyObject]
+        
+        DispatchQueue.global(qos: .utility).async {
+            do{
+                // Estimated Gas
+                let estimatedGas = try caver.contract(ABI, at: contractAddress).method("evaluateLecture", parameters: evaluateParameters, options: options).estimateGas(options: nil)
+                options.gasLimit = estimatedGas
+
+                // Transaction Setting
+                let transactionResult = try caver.contract(ABI, at: contractAddress).method("evaluateLecture", parameters: evaluateParameters, options: options)
+
+                // Transaction Send
+                let sendingResult = try transactionResult.send(password: passwd)
+                print(sendingResult.transaction)
+                DispatchQueue.main.async {
+                    // Request Network Logic to Server
+                }
+            } catch{
+                print("You don't have enough KLAY!")
+                print(error.localizedDescription)
+            }
+        }
+    }
+```

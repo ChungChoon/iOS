@@ -52,9 +52,10 @@ class ChungChul_iOSTests: XCTestCase {
     }
     
     func testPurchaseLecture(){
-        let caver = CaverSingleton.sharedInstance.caver
-        let ABI = CaverSingleton.sharedInstance.contractABI
-        let contractAddress = CaverSingleton.sharedInstance.contractAddress
+        let instance = CaverSingleton.sharedInstance
+        let caver = instance.caver
+        let ABI = instance.contractABI
+        let contractAddress = instance.contractAddress
         let passwd = "doa01092"
         let lecturePrice = 10
         let lectureNumber = BigUInt(0)
@@ -79,6 +80,50 @@ class ChungChul_iOSTests: XCTestCase {
                 // Transaction Send
                 let sendingResult = try transactionResult.send(password: passwd)
                 print(sendingResult.transaction)
+            } catch{
+                print("You don't have enough KLAY!")
+                print(error.localizedDescription)
+            }
+        }
+    }
+    
+    func testEvaluateLecture(){
+        let instance = CaverSingleton.sharedInstance
+        let caver = instance.caver
+        let ABI = instance.contractABI
+        let contractAddress = instance.contractAddress
+        let passwd = "doa01092"
+        
+        // Option Setting
+        var options = Web3Options.default
+        options.gasLimit = BigUInt(701431)
+        options.from = instance.userAddress
+        
+        let lectureNumber = BigUInt(0)
+        let preparationPoint = BigUInt(100)
+        let contentPoint = BigUInt(80)
+        let proceedPoint = BigUInt(34)
+        let communicationPoint = BigUInt(77)
+        let satisfactionPoint = BigUInt(99)
+        
+        // Parameter Setting
+        let evaluateParameters = [lectureNumber, preparationPoint, contentPoint, proceedPoint, communicationPoint, satisfactionPoint] as [AnyObject]
+        
+        DispatchQueue.global(qos: .utility).async {
+            do{
+                // Estimated Gas
+                let estimatedGas = try caver.contract(ABI, at: contractAddress).method("evaluateLecture", parameters: evaluateParameters, options: options).estimateGas(options: nil)
+                options.gasLimit = estimatedGas
+                print(estimatedGas)
+                // Transaction Setting
+                let transactionResult = try caver.contract(ABI, at: contractAddress).method("evaluateLecture", parameters: evaluateParameters, options: options)
+
+                // Transaction Send
+                let sendingResult = try transactionResult.send(password: passwd)
+                print(sendingResult.transaction)
+                DispatchQueue.main.async {
+                    // Request Network Logic to Server
+                }
             } catch{
                 print("You don't have enough KLAY!")
                 print(error.localizedDescription)
