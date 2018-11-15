@@ -19,7 +19,7 @@ class ChungChul_iOSTests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
-    func testExample() {
+    func testCalculateEvaluationAveragePoint() {
         var value: Int?
         let lectureNumber: Int = 0
         do {
@@ -38,5 +38,4 @@ class ChungChul_iOSTests: XCTestCase {
             // Put the code you want to measure the time of here.
         }
     }
-
 }

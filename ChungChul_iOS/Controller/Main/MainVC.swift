@@ -11,7 +11,6 @@ import Lottie
 
 extension Notification.Name{
     static let gotoDetail = Notification.Name("gotoDetail")
-    static let gotoMain = Notification.Name("gotoMain")
     static let finishDownloadKlaytnData = Notification.Name("finishDownloadKlaytnData")
 }
 
@@ -97,10 +96,6 @@ class MainVC: UIViewController, NetworkCallback {
         model.callLectureDetail(lectureId: lecturePk, token: gsno(UserDefaults.standard.string(forKey: "token")))
     }
     
-    @objc func gotoMain(notification: NSNotification){
-
-    }
-    
     @objc func finishDownloadKlaytnData(notification: NSNotification){
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
             self.animationView.stop()
@@ -136,7 +131,6 @@ extension MainVC {
     // Add Observer Notification
     fileprivate func addObserverNotification() {
         NotificationCenter.default.addObserver(self,selector: #selector(gotoDetail(notification:)),name: .gotoDetail,object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(gotoMain(notification:)), name: .gotoMain, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(finishDownloadKlaytnData(notification:)), name: .finishDownloadKlaytnData, object: nil)
     }
 }

@@ -11,7 +11,7 @@ import web3swift
 import BigInt
 import Lottie
 
-class MoreVC: UIViewController {
+class MoreVC: UIViewController, NetworkCallback {
     
     // UI IBOutlet Variable
     @IBOutlet var profileImageView: UIImageView!
@@ -24,12 +24,16 @@ class MoreVC: UIViewController {
     @IBOutlet var privateKeyLabel: UILabel!
     @IBOutlet var walletAddressCopyButton: UIButton!
     @IBOutlet var privateKeyCopyButton: UIButton!
+    @IBOutlet var paymentDetailTableView: UITableView!
     
     let animationView = LOTAnimationView(name: "loading")
     let indicatorView = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
     
     // Caver Singleton Instance Variable
     let instance: CaverSingleton = CaverSingleton.sharedInstance
+    
+    // Data Variable
+    var myLectureListDataFromServer: [MyLectureVO]?
     
     // Variable
     let ud = UserDefaults.standard
@@ -40,8 +44,21 @@ class MoreVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationBarSetting(title: "더보기", isTranslucent: false)
+        callPaymentDetailDataFromServer()
         addTargetButton()
         checkToken()
+        tableViewSetting()
+    }
+    
+    func networkResult(resultData: Any, code: String) {
+        if code == "Success To Get Farmer My Lecture"{
+            myLectureListDataFromServer = resultData as? [MyLectureVO]
+            paymentDetailTableView.reloadData()
+        }
+    }
+    
+    func networkFailed() {
+        simpleAlert(title: "네트워크 오류", msg: "인터넷 연결을 확인해주세요.")
     }
     
     // Get Klay Balances
@@ -97,6 +114,20 @@ extension MoreVC {
         self.present(alertController, animated: true, completion: nil)
     }
     
+    fileprivate func callPaymentDetailDataFromServer() {
+        let token = gsno(ud.string(forKey: "token"))
+        let model = MyLectureModel(self)
+        model.callMyLectureList(token: token)
+    }
+    
+    fileprivate func tableViewSetting() {
+        paymentDetailTableView.delegate = self
+        paymentDetailTableView.dataSource = self
+        paymentDetailTableView.allowsSelection = false
+        paymentDetailTableView.tableFooterView = UIView(frame: CGRect.zero)
+        paymentDetailTableView.tableHeaderView = UIView(frame: CGRect.zero)
+    }
+    
     // Login Alert View Setting
     fileprivate func makeLoginAlertView() {
         let loginAlertView = LoginAlertView(frame: UIApplication.shared.keyWindow!.frame)
@@ -148,5 +179,30 @@ extension MoreVC {
             self.animationView.stop()
             self.indicatorView.removeFromSuperview()
         }
+    }
+}
+
+extension MoreVC: UITableViewDelegate, UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if myLectureListDataFromServer == nil{
+            return 1
+        } else {
+            return (myLectureListDataFromServer?.count)!
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        return setPaymentDetailCell(indexPath)
+    }
+    
+    fileprivate func setPaymentDetailCell(_ indexPath: IndexPath) -> UITableViewCell{
+        let cell = paymentDetailTableView.dequeueReusableCell(withIdentifier: "PaymentDetailTVCell") as! PaymentDetailTVCell
+        let index = myLectureListDataFromServer![indexPath.row]
+        cell.lectureNumberButton.setTitle("\(gino(index.lecturePk))", for: .normal)
+        cell.lectureTitleLabel.text = gsno(index.title)
+        //        cell.lecturePaymentDateLabel.text =
+        cell.paidKlayLabel.text = "- " + "\(gino(index.price))" + "KLAY"
+        return cell
     }
 }

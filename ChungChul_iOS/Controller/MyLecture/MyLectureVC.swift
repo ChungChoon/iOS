@@ -38,7 +38,6 @@ class MyLectureVC: UIViewController, NetworkCallback {
     func networkResult(resultData: Any, code: String) {
         if code == "Success To Get Farmer My Lecture"{
             myLectureListDataFromServer = resultData as? [MyLectureVO]
-            myLectureListDataFromServer = myLectureListDataFromServer?.reversed()
             tableViewSetting()
         } else if code == "Success Get Lecture Detail"{
             detailLectureDataFromServer = resultData as? LectureDetailData

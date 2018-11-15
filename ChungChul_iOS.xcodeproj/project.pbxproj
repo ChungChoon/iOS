@@ -84,9 +84,14 @@
 		BCC456D2219429E500C3250B /* MyLectureModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCC456D1219429E500C3250B /* MyLectureModel.swift */; };
 		BCCF8E43219AF32B00B59A90 /* infinite_rainbow.json in Resources */ = {isa = PBXBuildFile; fileRef = BCCF8E42219AF32A00B59A90 /* infinite_rainbow.json */; };
 		BCCF8E46219AF96500B59A90 /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCCF8E45219AF96500B59A90 /* UIViewControllerExtension.swift */; };
+		BCCF8E4A219D743800B59A90 /* PaymentDetailTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCCF8E49219D743800B59A90 /* PaymentDetailTVCell.swift */; };
 		BCD7D7AA21764878003238BB /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BCD7D7A921764878003238BB /* Login.storyboard */; };
 		BCD7D7AD21764A2C003238BB /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD7D7AC21764A2C003238BB /* LoginVC.swift */; };
 		BCD7D7B021764DAA003238BB /* SignUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD7D7AF21764DAA003238BB /* SignUpVC.swift */; };
+		BCF1EA35219D89E500AE266F /* MyLecture.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BCF1EA34219D89E500AE266F /* MyLecture.storyboard */; };
+		BCF1EA37219D89F100AE266F /* More.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BCF1EA36219D89F100AE266F /* More.storyboard */; };
+		BCF1EA39219D8A7700AE266F /* MyLectureInitialNC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCF1EA38219D8A7700AE266F /* MyLectureInitialNC.swift */; };
+		BCF1EA3B219D8ACD00AE266F /* MoreInitialNC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCF1EA3A219D8ACD00AE266F /* MoreInitialNC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -185,9 +190,14 @@
 		BCC456D1219429E500C3250B /* MyLectureModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyLectureModel.swift; sourceTree = "<group>"; };
 		BCCF8E42219AF32A00B59A90 /* infinite_rainbow.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = infinite_rainbow.json; sourceTree = "<group>"; };
 		BCCF8E45219AF96500B59A90 /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
+		BCCF8E49219D743800B59A90 /* PaymentDetailTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentDetailTVCell.swift; sourceTree = "<group>"; };
 		BCD7D7A921764878003238BB /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		BCD7D7AC21764A2C003238BB /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
 		BCD7D7AF21764DAA003238BB /* SignUpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpVC.swift; sourceTree = "<group>"; };
+		BCF1EA34219D89E500AE266F /* MyLecture.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MyLecture.storyboard; sourceTree = "<group>"; };
+		BCF1EA36219D89F100AE266F /* More.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = More.storyboard; sourceTree = "<group>"; };
+		BCF1EA38219D8A7700AE266F /* MyLectureInitialNC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyLectureInitialNC.swift; sourceTree = "<group>"; };
+		BCF1EA3A219D8ACD00AE266F /* MoreInitialNC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreInitialNC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -322,6 +332,8 @@
 			isa = PBXGroup;
 			children = (
 				BC6A219F2182C4DB007B751B /* MoreVC.swift */,
+				BCCF8E49219D743800B59A90 /* PaymentDetailTVCell.swift */,
+				BCF1EA3A219D8ACD00AE266F /* MoreInitialNC.swift */,
 			);
 			path = More;
 			sourceTree = "<group>";
@@ -411,6 +423,7 @@
 		BCB9D841217F911700D86908 /* MyLecture */ = {
 			isa = PBXGroup;
 			children = (
+				BCF1EA38219D8A7700AE266F /* MyLectureInitialNC.swift */,
 				BCB9D842217F913300D86908 /* MyLectureVC.swift */,
 				BCB9D848217FA14400D86908 /* OnOffLineTVCell.swift */,
 				BCB9D844217F91FB00D86908 /* MyLectureTVCell.swift */,
@@ -491,6 +504,8 @@
 				BC87E00D21751C4900B7322E /* LaunchScreen.storyboard */,
 				BCD7D7A921764878003238BB /* Login.storyboard */,
 				BC87E00521751C4700B7322E /* Main.storyboard */,
+				BCF1EA34219D89E500AE266F /* MyLecture.storyboard */,
+				BCF1EA36219D89F100AE266F /* More.storyboard */,
 				BC474D43218B727400CE1043 /* XIB */,
 				BC474D44218B728600CE1043 /* CustomView */,
 			);
@@ -627,9 +642,11 @@
 				BCB9D84D21815C2E00D86908 /* LectureListCVCell.xib in Resources */,
 				BCB9D831217E47D700D86908 /* NotoSansCJKkr-Black.otf in Resources */,
 				BCB9D82C217E47D700D86908 /* NotoSansCJKkr-Medium.otf in Resources */,
+				BCF1EA35219D89E500AE266F /* MyLecture.storyboard in Resources */,
 				BCB9D8522181D81000D86908 /* HeaderView.xib in Resources */,
 				BCB9D83E217F528500D86908 /* LectureListCell.xib in Resources */,
 				BCB9D82B217E47D700D86908 /* NotoSansCJKkr-Regular.otf in Resources */,
+				BCF1EA37219D89F100AE266F /* More.storyboard in Resources */,
 				BC87E00F21751C4900B7322E /* LaunchScreen.storyboard in Resources */,
 				BC4D4D762199F6DB00573450 /* success.json in Resources */,
 				BC87E00C21751C4900B7322E /* Assets.xcassets in Resources */,
@@ -767,6 +784,7 @@
 				BCB9D840217F64A700D86908 /* TypeListVC.swift in Sources */,
 				BC6B4F982195B082007D9D74 /* EvaluateData.swift in Sources */,
 				BCB9D8502181B69800D86908 /* DetailVC.swift in Sources */,
+				BCF1EA39219D8A7700AE266F /* MyLectureInitialNC.swift in Sources */,
 				BC6F28EE21834AE500B64524 /* SignUpStudentData.swift in Sources */,
 				BC6F28FB2183F8D900B64524 /* LoginDataVO.swift in Sources */,
 				BCB9D83D217F528500D86908 /* LectureListCell.swift in Sources */,
@@ -775,6 +793,7 @@
 				BC6A21972182082C007B751B /* IntroduceTVCell.swift in Sources */,
 				BC474D37218AD21600CE1043 /* EvaluationVC.swift in Sources */,
 				BC6F28FD218410EC00B64524 /* LectureModel.swift in Sources */,
+				BCF1EA3B219D8ACD00AE266F /* MoreInitialNC.swift in Sources */,
 				BC87E00221751C4700B7322E /* AppDelegate.swift in Sources */,
 				BCB9D836217F05CB00D86908 /* PopularLectureCVCell.swift in Sources */,
 				BCC456D2219429E500C3250B /* MyLectureModel.swift in Sources */,
@@ -782,6 +801,7 @@
 				BC6F28F321835AA500B64524 /* DuplicateEmailData.swift in Sources */,
 				BCC456C421918B9600C3250B /* LectureDetailData.swift in Sources */,
 				BCC456CD219336FA00C3250B /* LoginAlertView.swift in Sources */,
+				BCCF8E4A219D743800B59A90 /* PaymentDetailTVCell.swift in Sources */,
 				BC6F28F92183F88800B64524 /* LoginDataModel.swift in Sources */,
 				BC6F290321844CA000B64524 /* PopularDataVO.swift in Sources */,
 				BCC456BE218F141300C3250B /* CaverSingleton.swift in Sources */,
