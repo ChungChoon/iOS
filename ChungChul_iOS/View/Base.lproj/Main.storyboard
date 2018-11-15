@@ -286,7 +286,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1799" y="641"/>
+            <point key="canvasLocation" x="2788" y="641"/>
         </scene>
         <!--Type ListVC-->
         <scene sceneID="00D-j2-WCm">
@@ -596,7 +596,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jIB-IH-hi5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2545" y="641"/>
+            <point key="canvasLocation" x="3535" y="641"/>
         </scene>
         <!--DetailVC-->
         <scene sceneID="Q41-1K-kYR">
@@ -787,7 +787,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="강좌 소개" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eyf-xP-7Cc">
-                                                    <rect key="frame" x="20" y="20.5" width="55.5" height="21"/>
+                                                    <rect key="frame" x="20" y="20.5" width="335" height="21"/>
                                                     <fontDescription key="fontDescription" name="NotoSansCJKkr-Medium" family="Noto Sans CJK KR" pointSize="14"/>
                                                     <color key="textColor" red="0.29411764705882354" green="0.46666666666666667" blue="0.87058823529411766" alpha="0.78000000000000003" colorSpace="custom" customColorSpace="displayP3"/>
                                                     <nil key="highlightedColor"/>
@@ -814,6 +814,7 @@
                                             <constraints>
                                                 <constraint firstItem="dLN-ve-Oh5" firstAttribute="centerX" secondItem="d2V-1m-OzU" secondAttribute="centerX" id="COg-El-zR0"/>
                                                 <constraint firstAttribute="bottom" secondItem="dLN-ve-Oh5" secondAttribute="bottom" constant="20" id="XBo-zO-4aE"/>
+                                                <constraint firstItem="eyf-xP-7Cc" firstAttribute="centerX" secondItem="d2V-1m-OzU" secondAttribute="centerX" id="XLF-0W-4bj"/>
                                                 <constraint firstItem="eyf-xP-7Cc" firstAttribute="leading" secondItem="d2V-1m-OzU" secondAttribute="leading" constant="20" id="ZfH-pi-Aep"/>
                                                 <constraint firstItem="eyf-xP-7Cc" firstAttribute="top" secondItem="d2V-1m-OzU" secondAttribute="top" constant="20.5" id="a8i-aH-Oaf"/>
                                                 <constraint firstItem="dLN-ve-Oh5" firstAttribute="top" secondItem="eyf-xP-7Cc" secondAttribute="bottom" constant="10.5" id="kac-Ju-8Im"/>
@@ -825,56 +826,56 @@
                                             <outlet property="titleLabel" destination="jjl-Qk-p83" id="7TQ-3h-Uhd"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="PlanTVCell" rowHeight="114" id="iiV-GB-CpL" customClass="PlanTVCell" customModule="ChungChul_iOS" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="453" width="375" height="114"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="PlanTVCell" rowHeight="143" id="iiV-GB-CpL" customClass="PlanTVCell" customModule="ChungChul_iOS" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="453" width="375" height="143"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="iiV-GB-CpL" id="eMU-dK-llB">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="113.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="142.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="강의 계획" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R5Q-c2-wv4">
-                                                    <rect key="frame" x="20" y="20" width="55.5" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="커리큘럼" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R5Q-c2-wv4">
+                                                    <rect key="frame" x="20" y="20" width="52" height="21"/>
                                                     <fontDescription key="fontDescription" name="NotoSansCJKkr-Medium" family="Noto Sans CJK KR" pointSize="14"/>
                                                     <color key="textColor" red="0.29411764709999999" green="0.46666666670000001" blue="0.87058823529999996" alpha="0.78000000000000003" colorSpace="custom" customColorSpace="displayP3"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="20" estimatedRowHeight="-1" sectionHeaderHeight="1" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="SKm-sP-19l">
-                                                    <rect key="frame" x="0.0" y="61" width="375" height="32"/>
+                                                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="49" estimatedRowHeight="-1" sectionHeaderHeight="1" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="SKm-sP-19l">
+                                                    <rect key="frame" x="0.0" y="61" width="375" height="61"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <prototypes>
-                                                        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="PlanCell" rowHeight="20" id="a3m-3M-db0" customClass="PlanCell" customModule="ChungChul_iOS" customModuleProvider="target">
-                                                            <rect key="frame" x="0.0" y="1" width="375" height="20"/>
+                                                        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="PlanCell" rowHeight="49" id="a3m-3M-db0" customClass="PlanCell" customModule="ChungChul_iOS" customModuleProvider="target">
+                                                            <rect key="frame" x="0.0" y="1" width="375" height="49"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="a3m-3M-db0" id="1wE-lD-wea">
-                                                                <rect key="frame" x="0.0" y="0.0" width="375" height="19.5"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="375" height="48.5"/>
                                                                 <autoresizingMask key="autoresizingMask"/>
                                                                 <subviews>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="01. 강의 목록" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="os6-86-St6">
-                                                                        <rect key="frame" x="45.5" y="0.0" width="284" height="19.5"/>
-                                                                        <fontDescription key="fontDescription" name="NotoSansCJKkr-Medium" family="Noto Sans CJK KR" pointSize="14"/>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="커리큘럼 내용" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XMh-24-zjk">
+                                                                        <rect key="frame" x="20" y="23" width="335" height="18"/>
+                                                                        <fontDescription key="fontDescription" name="NotoSansCJKkr-Medium" family="Noto Sans CJK KR" pointSize="12"/>
+                                                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.69999999999999996" colorSpace="custom" customColorSpace="displayP3"/>
+                                                                        <nil key="highlightedColor"/>
+                                                                    </label>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1주차 - 제목" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="os6-86-St6">
+                                                                        <rect key="frame" x="20" y="0.0" width="335" height="21"/>
+                                                                        <fontDescription key="fontDescription" name="NotoSansCJKkr-Bold" family="Noto Sans CJK KR" pointSize="14"/>
                                                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.78000000000000003" colorSpace="custom" customColorSpace="displayP3"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
-                                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="onU-80-kO0">
-                                                                        <rect key="frame" x="20" y="0.0" width="19.5" height="19.5"/>
-                                                                        <constraints>
-                                                                            <constraint firstAttribute="width" secondItem="onU-80-kO0" secondAttribute="height" multiplier="1:1" id="Fqk-rm-asa"/>
-                                                                        </constraints>
-                                                                    </imageView>
                                                                 </subviews>
                                                                 <constraints>
-                                                                    <constraint firstItem="os6-86-St6" firstAttribute="leading" secondItem="onU-80-kO0" secondAttribute="trailing" constant="6" id="0cO-0y-L0z"/>
-                                                                    <constraint firstItem="onU-80-kO0" firstAttribute="top" secondItem="1wE-lD-wea" secondAttribute="top" id="MKE-KT-4Bc"/>
-                                                                    <constraint firstItem="os6-86-St6" firstAttribute="top" secondItem="1wE-lD-wea" secondAttribute="top" id="RlG-JK-CLi"/>
-                                                                    <constraint firstItem="onU-80-kO0" firstAttribute="leading" secondItem="1wE-lD-wea" secondAttribute="leading" constant="20" id="cvg-vY-4cc"/>
-                                                                    <constraint firstAttribute="bottom" secondItem="os6-86-St6" secondAttribute="bottom" id="hit-82-DzN"/>
-                                                                    <constraint firstAttribute="bottom" secondItem="onU-80-kO0" secondAttribute="bottom" id="jI8-bk-rnG"/>
-                                                                    <constraint firstItem="os6-86-St6" firstAttribute="centerX" secondItem="1wE-lD-wea" secondAttribute="centerX" id="zwc-8t-uTr"/>
+                                                                    <constraint firstItem="os6-86-St6" firstAttribute="centerX" secondItem="1wE-lD-wea" secondAttribute="centerX" id="2F4-WA-GnZ"/>
+                                                                    <constraint firstItem="XMh-24-zjk" firstAttribute="top" secondItem="os6-86-St6" secondAttribute="bottom" constant="2" id="4zL-0Y-5SP"/>
+                                                                    <constraint firstItem="XMh-24-zjk" firstAttribute="leading" secondItem="os6-86-St6" secondAttribute="leading" id="7eO-Wu-mG0"/>
+                                                                    <constraint firstItem="os6-86-St6" firstAttribute="leading" secondItem="1wE-lD-wea" secondAttribute="leading" constant="20" id="Iw8-cT-W5Y"/>
+                                                                    <constraint firstAttribute="bottom" secondItem="XMh-24-zjk" secondAttribute="bottom" constant="7.5" id="ZVa-yN-cfO"/>
+                                                                    <constraint firstItem="XMh-24-zjk" firstAttribute="centerX" secondItem="1wE-lD-wea" secondAttribute="centerX" id="vSt-ZE-OUn"/>
+                                                                    <constraint firstItem="os6-86-St6" firstAttribute="top" secondItem="1wE-lD-wea" secondAttribute="top" id="y0P-Rt-n6D"/>
                                                                 </constraints>
                                                             </tableViewCellContentView>
                                                             <connections>
-                                                                <outlet property="lineImageView" destination="onU-80-kO0" id="nE5-O7-dtd"/>
-                                                                <outlet property="planLabel" destination="os6-86-St6" id="3EV-vi-fDv"/>
+                                                                <outlet property="curriculumContentLabel" destination="XMh-24-zjk" id="buh-Qy-ahE"/>
+                                                                <outlet property="curriculumTitleLabel" destination="os6-86-St6" id="AGR-wd-8Xg"/>
                                                             </connections>
                                                         </tableViewCell>
                                                     </prototypes>
@@ -894,7 +895,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="TeacherTVCell" rowHeight="123" id="EjB-1h-Ttc" customClass="TeacherTVCell" customModule="ChungChul_iOS" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="567" width="375" height="123"/>
+                                        <rect key="frame" x="0.0" y="596" width="375" height="123"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="EjB-1h-Ttc" id="XoX-fS-2Ds">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="122.5"/>
@@ -927,7 +928,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="CommentTVCell" rowHeight="223" id="EMQ-BQ-8tH" customClass="CommentTVCell" customModule="ChungChul_iOS" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="690" width="375" height="223"/>
+                                        <rect key="frame" x="0.0" y="719" width="375" height="223"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="EMQ-BQ-8tH" id="FkX-LE-1bD">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="222.5"/>
@@ -954,9 +955,6 @@
                                                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="1" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="tQy-lv-TK1">
                                                     <rect key="frame" x="0.0" y="116" width="375" height="88"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="88" id="7VY-zd-0ap"/>
-                                                    </constraints>
                                                     <prototypes>
                                                         <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CommentCell" rowHeight="88" id="e4X-Sb-kt5" customClass="CommentCell" customModule="ChungChul_iOS" customModuleProvider="target">
                                                             <rect key="frame" x="0.0" y="1" width="375" height="88"/>
@@ -965,24 +963,23 @@
                                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="87.5"/>
                                                                 <autoresizingMask key="autoresizingMask"/>
                                                                 <subviews>
-                                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="tLo-y9-Foq">
+                                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_2people_28" translatesAutoresizingMaskIntoConstraints="NO" id="tLo-y9-Foq">
                                                                         <rect key="frame" x="20" y="11.5" width="28" height="28"/>
                                                                         <constraints>
-                                                                            <constraint firstAttribute="width" secondItem="tLo-y9-Foq" secondAttribute="height" multiplier="1:1" id="2FW-v7-66x"/>
-                                                                            <constraint firstAttribute="height" constant="28" id="QDd-e3-8dg"/>
+                                                                            <constraint firstAttribute="width" secondItem="tLo-y9-Foq" secondAttribute="height" multiplier="1:1" id="6yh-az-5s1"/>
                                                                         </constraints>
                                                                     </imageView>
-                                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Z74-Q4-Cuc">
-                                                                        <rect key="frame" x="62" y="10.5" width="251" height="30"/>
+                                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="Z74-Q4-Cuc">
+                                                                        <rect key="frame" x="62" y="10.5" width="303" height="30"/>
                                                                         <subviews>
                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="박성준 학생" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iIz-pl-F11">
-                                                                                <rect key="frame" x="0.0" y="0.0" width="251" height="15"/>
+                                                                                <rect key="frame" x="0.0" y="0.0" width="49" height="15"/>
                                                                                 <fontDescription key="fontDescription" name="NotoSansCJKkr-Medium" family="Noto Sans CJK KR" pointSize="10"/>
                                                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.78000000000000003" colorSpace="calibratedRGB"/>
                                                                                 <nil key="highlightedColor"/>
                                                                             </label>
                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2018.7.15 작성" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VEd-ND-1Jp">
-                                                                                <rect key="frame" x="0.0" y="15" width="251" height="15"/>
+                                                                                <rect key="frame" x="0.0" y="15" width="67" height="15"/>
                                                                                 <fontDescription key="fontDescription" name="NotoSansCJKkr-Medium" family="Noto Sans CJK KR" pointSize="10"/>
                                                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.57999999999999996" colorSpace="calibratedRGB"/>
                                                                                 <nil key="highlightedColor"/>
@@ -990,22 +987,22 @@
                                                                         </subviews>
                                                                     </stackView>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="선생님 너무 잘 알려주셔서 즐거웠습니다 어쩌고저쩌고 감사합니다 !" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vdx-Xp-6TV">
-                                                                        <rect key="frame" x="20" y="49.5" width="335" height="30"/>
+                                                                        <rect key="frame" x="20" y="64.5" width="335" height="15"/>
                                                                         <fontDescription key="fontDescription" name="NotoSansCJKkr-Medium" family="Noto Sans CJK KR" pointSize="10"/>
                                                                         <color key="textColor" red="0.4392156862745098" green="0.4392156862745098" blue="0.4392156862745098" alpha="1" colorSpace="calibratedRGB"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
                                                                 </subviews>
                                                                 <constraints>
-                                                                    <constraint firstItem="tLo-y9-Foq" firstAttribute="leading" secondItem="Wc5-Xn-2uK" secondAttribute="leading" constant="20" id="2is-BS-dkS"/>
-                                                                    <constraint firstItem="Z74-Q4-Cuc" firstAttribute="centerY" secondItem="tLo-y9-Foq" secondAttribute="centerY" id="5on-eL-fcp"/>
-                                                                    <constraint firstItem="vdx-Xp-6TV" firstAttribute="leading" secondItem="tLo-y9-Foq" secondAttribute="leading" id="Aef-Nd-mFI"/>
+                                                                    <constraint firstItem="tLo-y9-Foq" firstAttribute="top" secondItem="Wc5-Xn-2uK" secondAttribute="top" constant="11.5" id="82Y-ya-Dey"/>
                                                                     <constraint firstItem="vdx-Xp-6TV" firstAttribute="centerX" secondItem="Wc5-Xn-2uK" secondAttribute="centerX" id="BcV-Ln-Nxt"/>
-                                                                    <constraint firstItem="Z74-Q4-Cuc" firstAttribute="centerX" secondItem="Wc5-Xn-2uK" secondAttribute="centerX" id="OWk-7p-aCT"/>
-                                                                    <constraint firstItem="vdx-Xp-6TV" firstAttribute="top" secondItem="tLo-y9-Foq" secondAttribute="bottom" constant="10.19" id="cOG-M6-9py"/>
+                                                                    <constraint firstItem="tLo-y9-Foq" firstAttribute="leading" secondItem="Wc5-Xn-2uK" secondAttribute="leading" constant="20" id="Lgf-ei-UQY"/>
+                                                                    <constraint firstItem="Z74-Q4-Cuc" firstAttribute="centerY" secondItem="tLo-y9-Foq" secondAttribute="centerY" id="MBO-rT-uWK"/>
+                                                                    <constraint firstItem="Z74-Q4-Cuc" firstAttribute="leading" secondItem="tLo-y9-Foq" secondAttribute="trailing" constant="14.19" id="NsB-C7-ySM"/>
+                                                                    <constraint firstItem="vdx-Xp-6TV" firstAttribute="leading" secondItem="tLo-y9-Foq" secondAttribute="leading" id="a1T-a1-XDh"/>
+                                                                    <constraint firstItem="vdx-Xp-6TV" firstAttribute="top" secondItem="tLo-y9-Foq" secondAttribute="bottom" constant="25" id="apz-HK-RJa"/>
                                                                     <constraint firstAttribute="bottom" secondItem="vdx-Xp-6TV" secondAttribute="bottom" constant="8.1899999999999995" id="f53-eT-43q"/>
-                                                                    <constraint firstItem="Z74-Q4-Cuc" firstAttribute="leading" secondItem="tLo-y9-Foq" secondAttribute="trailing" constant="14.19" id="nwW-Zw-Ti7"/>
-                                                                    <constraint firstItem="tLo-y9-Foq" firstAttribute="top" secondItem="Wc5-Xn-2uK" secondAttribute="top" constant="11.5" id="vRS-H8-ad3"/>
+                                                                    <constraint firstAttribute="trailing" secondItem="Z74-Q4-Cuc" secondAttribute="trailing" constant="10" id="nE7-GL-2rR"/>
                                                                 </constraints>
                                                             </tableViewCellContentView>
                                                             <connections>
@@ -1083,7 +1080,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="osD-hz-ZLv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3249" y="836"/>
+            <point key="canvasLocation" x="4237.6000000000004" y="835.68215892053979"/>
         </scene>
         <!--강의 목록-->
         <scene sceneID="QaQ-5U-3Cb">
@@ -1102,7 +1099,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="l9O-MY-dQB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1001" y="641"/>
+            <point key="canvasLocation" x="1991" y="641"/>
         </scene>
         <!--Tab BarVC-->
         <scene sceneID="gEd-wF-SVB">
@@ -1146,6 +1143,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="ic_2people_28" width="28" height="28"/>
         <image name="ic_lecture_blue" width="48" height="48"/>
         <image name="ic_lecture_grey" width="48" height="48"/>
         <image name="ic_people36" width="36" height="36"/>

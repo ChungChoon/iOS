@@ -46,8 +46,8 @@ class JoinModel : NetworkModel{
         }
     }
     
-    
-    func joinStudentModel(mail: String, passwd: String, name: String, sex: Int, hp: String, birth: String, private_key: String, wallet: String) {
+    //MARK: Request Join Student to Server
+    func joinStudentModel(mail: String, passwd: String, name: String, sex: Int, hp: String, birth: String, key: String, wallet: String) {
         
         let URL = "\(baseURL)/user/signup"
         let body : [String:Any] = [
@@ -57,7 +57,7 @@ class JoinModel : NetworkModel{
             "sex": sex,
             "hp": hp,
             "birth": birth,
-            "private_key": private_key,
+            "key": key,
             "wallet": wallet
         ]
         

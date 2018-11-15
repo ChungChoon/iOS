@@ -28,10 +28,12 @@ class OfflineDataVO: Mappable {
     var limitNum: Int?
     var price: Int?
     var apply: Int?
+    var curriculumCount: Int?
     
     required init?(map: Map) {}
     
     func mapping(map: Map) {
+        curriculumCount <- map["curri_count"]
         userPk <- map["user_pk"]
         name <- map["name"]
         img <- map["img"]

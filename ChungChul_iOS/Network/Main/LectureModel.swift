@@ -11,6 +11,7 @@ import AlamofireObjectMapper
 
 class LectureModel: NetworkModel {
     
+    //MARK: Request Main Lecture List to Server
     func callLectureList(token: String) {
         
         let URL = "\(baseURL)/home"
@@ -22,7 +23,7 @@ class LectureModel: NetworkModel {
             encoding: JSONEncoding.default,
             headers: ["token":token]
             ).responseObject{
-                (response:DataResponse<HomeDataModel>) in
+                (response:DataResponse<HomeData>) in
                 switch response.result {
                 case .success:
                     guard let responseData = response.result.value else{
@@ -41,6 +42,7 @@ class LectureModel: NetworkModel {
         }
     }
     
+    //MARK: Request Lecture Detail to Server
     func callLectureDetail(lectureId: Int, token: String) {
         
         let URL = "\(baseURL)/lecture/\(lectureId)"
@@ -71,6 +73,7 @@ class LectureModel: NetworkModel {
         }
     }
     
+    //MARK: Request Purchase Lectrue when Transcation successed
     func purchaseLectureModel(token: String, lecture_id: Int, price: Int) {
         
         let URL = "\(baseURL)/lecture/apply"
@@ -87,7 +90,7 @@ class LectureModel: NetworkModel {
             encoding: JSONEncoding.default,
             headers: ["token": token]
             ).responseObject{
-                (response:DataResponse<HomeDataModel>) in
+                (response:DataResponse<HomeData>) in
                 switch response.result {
                 case .success:
                     guard let responseData = response.result.value else{

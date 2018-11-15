@@ -25,7 +25,7 @@ class LectureDetailDataVO: Mappable {
     var endDate: String?
     var regDate: String?
     var place: String?
-    var curriculum: String?
+    var curriculumCount: Int?
     var intro: String?
     var limitNum: String?
     var price: Int?
@@ -49,7 +49,7 @@ class LectureDetailDataVO: Mappable {
         endDate <- map["end_date"]
         regDate <- map["reg_date"]
         place <- map["place"]
-        curriculum <- map["curriculum"]
+        curriculumCount <- map["curri_count"]
         intro <- map["intro"]
         limitNum <- map["limit_num"]
         price <- map["price"]

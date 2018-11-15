@@ -13,7 +13,7 @@ final class CaverSingleton {
     static let sharedInstance: CaverSingleton = CaverSingleton()
     
     private init(){
-        Web3.default = .init(provider: Web3HttpProvider.init(URL(string: "http://localhost:8551")!)!)
+        Web3.default = .init(provider: Web3HttpProvider.init(URL(string: "http://192.168.0.33:8551")!)!)
         guard let setupUserAddress = CaverSingleton.user.address else {
             fatalError("Error - you must call setup before accessing CaverSingleton.sharedInstance")
         }
@@ -30,7 +30,7 @@ final class CaverSingleton {
         CaverSingleton.user.address = userAddress
     }
     
-    let caver: Web3 = Web3(url: URL(string: "http://localhost:8551")!)!
+    let caver: Web3 = Web3(url: URL(string: "http://192.168.0.33:8551")!)!
     let contractAddress = Address("0x96a277b958988d9b4207dda53067fbd787b0e2db")
     let userAddress: Address
     

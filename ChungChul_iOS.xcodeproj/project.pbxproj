@@ -38,10 +38,10 @@
 		BC6F28F321835AA500B64524 /* DuplicateEmailData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6F28F221835AA500B64524 /* DuplicateEmailData.swift */; };
 		BC6F28F52183845900B64524 /* SignInVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6F28F42183845900B64524 /* SignInVC.swift */; };
 		BC6F28F72183F7C100B64524 /* LoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6F28F62183F7C100B64524 /* LoginModel.swift */; };
-		BC6F28F92183F88800B64524 /* LoginDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6F28F82183F88800B64524 /* LoginDataModel.swift */; };
+		BC6F28F92183F88800B64524 /* LoginData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6F28F82183F88800B64524 /* LoginData.swift */; };
 		BC6F28FB2183F8D900B64524 /* LoginDataVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6F28FA2183F8D900B64524 /* LoginDataVO.swift */; };
 		BC6F28FD218410EC00B64524 /* LectureModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6F28FC218410EC00B64524 /* LectureModel.swift */; };
-		BC6F290121844C7200B64524 /* HomeDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6F290021844C7200B64524 /* HomeDataModel.swift */; };
+		BC6F290121844C7200B64524 /* HomeData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6F290021844C7200B64524 /* HomeData.swift */; };
 		BC6F290321844CA000B64524 /* PopularDataVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6F290221844CA000B64524 /* PopularDataVO.swift */; };
 		BC6F290521844CB900B64524 /* OfflineDataVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6F290421844CB900B64524 /* OfflineDataVO.swift */; };
 		BC6F290721844CC900B64524 /* OnlineDataVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6F290621844CC900B64524 /* OnlineDataVO.swift */; };
@@ -92,6 +92,7 @@
 		BCF1EA37219D89F100AE266F /* More.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BCF1EA36219D89F100AE266F /* More.storyboard */; };
 		BCF1EA39219D8A7700AE266F /* MyLectureInitialNC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCF1EA38219D8A7700AE266F /* MyLectureInitialNC.swift */; };
 		BCF1EA3B219D8ACD00AE266F /* MoreInitialNC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCF1EA3A219D8ACD00AE266F /* MoreInitialNC.swift */; };
+		BCF1EA3D219DAFBD00AE266F /* LectureCurriculumDataVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCF1EA3C219DAFBD00AE266F /* LectureCurriculumDataVO.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -140,10 +141,10 @@
 		BC6F28F221835AA500B64524 /* DuplicateEmailData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DuplicateEmailData.swift; sourceTree = "<group>"; };
 		BC6F28F42183845900B64524 /* SignInVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInVC.swift; sourceTree = "<group>"; };
 		BC6F28F62183F7C100B64524 /* LoginModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginModel.swift; sourceTree = "<group>"; };
-		BC6F28F82183F88800B64524 /* LoginDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginDataModel.swift; sourceTree = "<group>"; };
+		BC6F28F82183F88800B64524 /* LoginData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginData.swift; sourceTree = "<group>"; };
 		BC6F28FA2183F8D900B64524 /* LoginDataVO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginDataVO.swift; sourceTree = "<group>"; };
 		BC6F28FC218410EC00B64524 /* LectureModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LectureModel.swift; sourceTree = "<group>"; };
-		BC6F290021844C7200B64524 /* HomeDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeDataModel.swift; sourceTree = "<group>"; };
+		BC6F290021844C7200B64524 /* HomeData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeData.swift; sourceTree = "<group>"; };
 		BC6F290221844CA000B64524 /* PopularDataVO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularDataVO.swift; sourceTree = "<group>"; };
 		BC6F290421844CB900B64524 /* OfflineDataVO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfflineDataVO.swift; sourceTree = "<group>"; };
 		BC6F290621844CC900B64524 /* OnlineDataVO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnlineDataVO.swift; sourceTree = "<group>"; };
@@ -198,6 +199,7 @@
 		BCF1EA36219D89F100AE266F /* More.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = More.storyboard; sourceTree = "<group>"; };
 		BCF1EA38219D8A7700AE266F /* MyLectureInitialNC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyLectureInitialNC.swift; sourceTree = "<group>"; };
 		BCF1EA3A219D8ACD00AE266F /* MoreInitialNC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreInitialNC.swift; sourceTree = "<group>"; };
+		BCF1EA3C219DAFBD00AE266F /* LectureCurriculumDataVO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LectureCurriculumDataVO.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -278,7 +280,7 @@
 			children = (
 				BC6F28ED21834AE500B64524 /* SignUpStudentData.swift */,
 				BC6F28F221835AA500B64524 /* DuplicateEmailData.swift */,
-				BC6F28F82183F88800B64524 /* LoginDataModel.swift */,
+				BC6F28F82183F88800B64524 /* LoginData.swift */,
 				BC6F28FA2183F8D900B64524 /* LoginDataVO.swift */,
 			);
 			path = Login;
@@ -287,7 +289,7 @@
 		BC474D4A218CAB5600CE1043 /* Main */ = {
 			isa = PBXGroup;
 			children = (
-				BC6F290021844C7200B64524 /* HomeDataModel.swift */,
+				BC6F290021844C7200B64524 /* HomeData.swift */,
 				BC6F290221844CA000B64524 /* PopularDataVO.swift */,
 				BC6F290421844CB900B64524 /* OfflineDataVO.swift */,
 				BC6F290621844CC900B64524 /* OnlineDataVO.swift */,
@@ -331,9 +333,9 @@
 		BC6A219E2182C4B3007B751B /* More */ = {
 			isa = PBXGroup;
 			children = (
+				BCF1EA3A219D8ACD00AE266F /* MoreInitialNC.swift */,
 				BC6A219F2182C4DB007B751B /* MoreVC.swift */,
 				BCCF8E49219D743800B59A90 /* PaymentDetailTVCell.swift */,
-				BCF1EA3A219D8ACD00AE266F /* MoreInitialNC.swift */,
 			);
 			path = More;
 			sourceTree = "<group>";
@@ -456,6 +458,7 @@
 				BCC456C321918B9600C3250B /* LectureDetailData.swift */,
 				BCC456C521918BD400C3250B /* LectureDetailDataVO.swift */,
 				BCC456C721919A7400C3250B /* LectureReviewDataVO.swift */,
+				BCF1EA3C219DAFBD00AE266F /* LectureCurriculumDataVO.swift */,
 			);
 			path = Detail;
 			sourceTree = "<group>";
@@ -802,7 +805,7 @@
 				BCC456C421918B9600C3250B /* LectureDetailData.swift in Sources */,
 				BCC456CD219336FA00C3250B /* LoginAlertView.swift in Sources */,
 				BCCF8E4A219D743800B59A90 /* PaymentDetailTVCell.swift in Sources */,
-				BC6F28F92183F88800B64524 /* LoginDataModel.swift in Sources */,
+				BC6F28F92183F88800B64524 /* LoginData.swift in Sources */,
 				BC6F290321844CA000B64524 /* PopularDataVO.swift in Sources */,
 				BCC456BE218F141300C3250B /* CaverSingleton.swift in Sources */,
 				BC6F28EA218341A500B64524 /* NetworkModel.swift in Sources */,
@@ -810,7 +813,7 @@
 				BC6F290721844CC900B64524 /* OnlineDataVO.swift in Sources */,
 				BC474D3B218AF85300CE1043 /* RatingView.swift in Sources */,
 				BCD7D7AD21764A2C003238BB /* LoginVC.swift in Sources */,
-				BC6F290121844C7200B64524 /* HomeDataModel.swift in Sources */,
+				BC6F290121844C7200B64524 /* HomeData.swift in Sources */,
 				BCC456CF21935C0A00C3250B /* InitialNC.swift in Sources */,
 				BC6F28F72183F7C100B64524 /* LoginModel.swift in Sources */,
 				BC6F28F52183845900B64524 /* SignInVC.swift in Sources */,
@@ -818,6 +821,7 @@
 				BC6F290521844CB900B64524 /* OfflineDataVO.swift in Sources */,
 				BCD7D7B021764DAA003238BB /* SignUpVC.swift in Sources */,
 				BC474D3E218AFA6200CE1043 /* TotalEvaluationTVCell.swift in Sources */,
+				BCF1EA3D219DAFBD00AE266F /* LectureCurriculumDataVO.swift in Sources */,
 				BC87E00A21751C4700B7322E /* ChungChul_iOS.xcdatamodeld in Sources */,
 				BCB9D838217F310900D86908 /* UIKitExtension.swift in Sources */,
 				BCC456C621918BD400C3250B /* LectureDetailDataVO.swift in Sources */,

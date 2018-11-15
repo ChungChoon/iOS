@@ -11,6 +11,7 @@ import AlamofireObjectMapper
 
 class LoginModel: NetworkModel {
     
+    //MARK: Request Login to Server
     func loginModel(email: String, password: String) {
         
         let URL = "\(baseURL)/user/signin"
@@ -26,7 +27,7 @@ class LoginModel: NetworkModel {
             encoding: JSONEncoding.default,
             headers: nil
             ).responseObject{
-                (response:DataResponse<LoginDataModel>) in
+                (response:DataResponse<LoginData>) in
                 switch response.result {
                 case .success:
                     guard let responseMessage = response.result.value else{
@@ -55,6 +56,7 @@ class LoginModel: NetworkModel {
         }
     }
     
+    //MARK: Set User Default when user logined
     func userDefaultSetting(_ token: String, _ data: [LoginDataVO]) {
         let ud = UserDefaults.standard
         ud.setValue(token, forKey: "token")
@@ -62,7 +64,6 @@ class LoginModel: NetworkModel {
         ud.setValue(data[0].mail, forKey: "mail")
         ud.setValue(data[0].img, forKey: "img")
         ud.setValue(data[0].wallet, forKey: "wallet")
-        ud.setValue(data[0].flag, forKey: "flag")
         ud.synchronize()
     }
 }

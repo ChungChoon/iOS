@@ -107,6 +107,7 @@ extension PopularLectureTVCell: UICollectionViewDelegate, UICollectionViewDataSo
         cell.teacherNameLabel.text = index.name
         cell.lectureTermLabel.text = index.startDate! + " ~ " + index.endDate!
         cell.lectureImageView.sd_setImage(with: URL(string: index.img ?? ""), placeholderImage: UIImage(named: "img_popular1"))
+        cell.lectureNumberOfTimeLabel.text = "총 \(index.curriculumCount!)회"
         
         if evaluationPointTextArray.count != 0{
             cell.lecturePercentLabel.text = evaluationPointTextArray[indexPath.row]

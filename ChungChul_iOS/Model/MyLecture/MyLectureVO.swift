@@ -24,16 +24,18 @@ class MyLectureVO: Mappable {
     var endDate: String?
     var regDate: String?
     var place: String?
-    var curriculum: String?
+    var curriculumCount: Int?
     var intro: String?
     var limitNum: Int?
     var price: Int?
     var apply: Int?
     var state: Int?
+    var applyTime: String?
     
     required init?(map: Map) {}
     
     func mapping(map: Map) {
+        curriculumCount <- map["curri_count"]
         attendCnt <- map["attend_cnt"]
         userPk <- map["user_pk"]
         name <- map["name"]
@@ -48,12 +50,12 @@ class MyLectureVO: Mappable {
         endDate <- map["end_date"]
         regDate <- map["reg_date"]
         place <- map["place"]
-        curriculum <- map["curriculum"]
         intro <- map["intro"]
         limitNum <- map["limit_num"]
         price <- map["price"]
         apply <- map["apply"]
         state <- map["state"]
+        applyTime <- map["apply_time"]
     }
     
 }

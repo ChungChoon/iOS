@@ -13,6 +13,7 @@ class LectureDetailData: Mappable {
     var message: String?
     var lectureData: LectureDetailDataVO?
     var reviewData: [LectureReviewDataVO]?
+    var curriculumData: [LectureCurriculumDataVO]?
     
     required init?(map: Map) {}
     
@@ -20,6 +21,7 @@ class LectureDetailData: Mappable {
         message <- map["message"]
         lectureData <- map["lecture_data"]
         reviewData <- map["review_data"]
+        curriculumData <- map["curriculum_data"]
     }
     
 }

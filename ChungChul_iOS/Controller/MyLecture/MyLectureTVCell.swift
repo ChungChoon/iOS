@@ -24,6 +24,8 @@ class MyLectureTVCell: UITableViewCell {
     @IBOutlet var farmNameLabel: UILabel!
     @IBOutlet var teacherNameLabel: UILabel!
     @IBOutlet var includeView: UIView!
+    @IBOutlet var lectureTotalCountLabel: UILabel!
+    
     
     // Variable
     let screenFrameSize = UIScreen.main.bounds.size

@@ -12,6 +12,7 @@ import Lottie
 extension Notification.Name{
     static let gotoDetail = Notification.Name("gotoDetail")
     static let finishDownloadKlaytnData = Notification.Name("finishDownloadKlaytnData")
+    static let myLectureFlagNoti = Notification.Name("myLectureFlagNoti")
 }
 
 class MainVC: UIViewController, NetworkCallback {
@@ -23,7 +24,7 @@ class MainVC: UIViewController, NetworkCallback {
     let indicatorView = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
     
     // Data variable
-    var lectureListDataFromServer: HomeDataModel?
+    var lectureListDataFromServer: HomeData?
     var popularData: [PopularDataVO]?
     var offlineData: [OfflineDataVO]?
     var onlineData: [OnlineDataVO]?
@@ -58,7 +59,7 @@ class MainVC: UIViewController, NetworkCallback {
     //MARK: Networking Result From Server Function
     func networkResult(resultData: Any, code: String) {
         if code == "Success To Get Information"{
-            lectureListDataFromServer = resultData as? HomeDataModel
+            lectureListDataFromServer = resultData as? HomeData
             popularData = lectureListDataFromServer?.popular
             offlineData = lectureListDataFromServer?.offline
             onlineData = lectureListDataFromServer?.online
@@ -73,6 +74,7 @@ class MainVC: UIViewController, NetworkCallback {
             let detailVC = self.storyboard?.instantiateViewController(withIdentifier: "DetailVC") as! DetailVC
             detailVC.detailData = detailLectureDataFromServer?.lectureData
             detailVC.reviewData = detailLectureDataFromServer?.reviewData
+            detailVC.curriculumData = detailLectureDataFromServer?.curriculumData
             detailVC.evaluationPointText = evaluationPointText
             detailVC.evaluationPointIndex = evaluationPointIndex
             self.present(detailVC, animated: false, completion: nil)

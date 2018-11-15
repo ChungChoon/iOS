@@ -208,6 +208,7 @@
                 <outlet property="lectureImageView" destination="MGl-za-3QH" id="fTo-AO-v2w"/>
                 <outlet property="lectureProgressBar" destination="bsB-Wc-3IM" id="a9P-hm-a4V"/>
                 <outlet property="lectureTitleLabel" destination="buH-ob-DBP" id="Iwn-w7-EHl"/>
+                <outlet property="lectureTotalCountLabel" destination="8Fa-X0-4zF" id="AzU-bi-iUT"/>
                 <outlet property="teacherNameLabel" destination="Yil-k3-tl2" id="YWh-Ky-oK1"/>
                 <outlet property="teacherProfileImageView" destination="dvm-Lu-948" id="hNY-Nu-bYU"/>
                 <outlet property="termLabel" destination="ksJ-Sc-aUH" id="T8E-5O-ome"/>

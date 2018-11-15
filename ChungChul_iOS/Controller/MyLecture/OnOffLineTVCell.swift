@@ -49,6 +49,7 @@ extension OnOffLineTVCell {
     }
     
     fileprivate func flagChanging(){
+        NotificationCenter.default.post(name: .myLectureFlagNoti, object: nil, userInfo: ["flag": flag])
         if flag == 0{
             onLineButton.setTitleColor(#colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.89), for: .normal)
             offLineButton.setTitleColor(#colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.38), for: .normal)

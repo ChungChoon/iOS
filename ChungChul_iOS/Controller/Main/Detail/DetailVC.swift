@@ -20,6 +20,7 @@ class DetailVC: UIViewController, NetworkCallback {
     // Data Variable
     var detailData: LectureDetailDataVO?
     var reviewData: [LectureReviewDataVO]?
+    var curriculumData: [LectureCurriculumDataVO]?
     
     // Caver Singleton Instance Variable
     let instance: CaverSingleton = CaverSingleton.sharedInstance
@@ -113,7 +114,7 @@ extension DetailVC {
         headerView.lectureTitleLabel.text = gsno(detailData?.title)
         headerView.teacherNameLabel.text = gsno(detailData?.name)
         headerView.farmNameLabel.text = gsno(detailData?.farmName)
-        headerView.backImageView.sd_setImage(with: URL(string: gsno(detailData?.farmImg)), placeholderImage: UIImage())
+        headerView.backImageView.sd_setImage(with: URL(string: gsno(detailData?.farmImg)), placeholderImage: UIImage(named: "img_detail"))
         headerView.teacherImageView.sd_setImage(with: URL(string: gsno(detailData?.img)), placeholderImage: UIImage(named: "ic_people36"))
         headerView.dismissButton.addTarget(self, action: #selector(dismissButtonAction), for: .touchUpInside)
         
@@ -175,7 +176,6 @@ extension DetailVC {
             
             // Transaction Setting
             let transactionResult = try caver.contract(ABI, at: contractAddress).method("purchaseLecture", parameters: lectureNumberParameter, options: options)
-            print(transactionResult.transaction)
             
             // Transaction Send
             let sendingResult = try transactionResult.send(password: passwd)
@@ -259,6 +259,7 @@ extension DetailVC: UITableViewDelegate, UITableViewDataSource {
     
     fileprivate func planSectionCell() -> UITableViewCell {
         let cell = detailTableView.dequeueReusableCell(withIdentifier: "PlanTVCell") as! PlanTVCell
+        cell.curriculumDataFromServer = curriculumData
         return cell
     }
     

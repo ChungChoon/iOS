@@ -44,16 +44,19 @@ class MoreVC: UIViewController, NetworkCallback {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationBarSetting(title: "더보기", isTranslucent: false)
-        callPaymentDetailDataFromServer()
         addTargetButton()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        callPaymentDetailDataFromServer()
         checkToken()
-        tableViewSetting()
     }
     
     func networkResult(resultData: Any, code: String) {
         if code == "Success To Get Farmer My Lecture"{
             myLectureListDataFromServer = resultData as? [MyLectureVO]
-            paymentDetailTableView.reloadData()
+            tableViewSetting()
         }
     }
     
@@ -175,7 +178,7 @@ extension MoreVC {
     }
     
     fileprivate func finishDownloadingDataFromKlaytn(){
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+        DispatchQueue.main.asyncAfter(deadline: .now()) {
             self.animationView.stop()
             self.indicatorView.removeFromSuperview()
         }
@@ -186,7 +189,7 @@ extension MoreVC: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if myLectureListDataFromServer == nil{
-            return 1
+            return 0
         } else {
             return (myLectureListDataFromServer?.count)!
         }
@@ -198,11 +201,13 @@ extension MoreVC: UITableViewDelegate, UITableViewDataSource {
     
     fileprivate func setPaymentDetailCell(_ indexPath: IndexPath) -> UITableViewCell{
         let cell = paymentDetailTableView.dequeueReusableCell(withIdentifier: "PaymentDetailTVCell") as! PaymentDetailTVCell
-        let index = myLectureListDataFromServer![indexPath.row]
-        cell.lectureNumberButton.setTitle("\(gino(index.lecturePk))", for: .normal)
-        cell.lectureTitleLabel.text = gsno(index.title)
-        //        cell.lecturePaymentDateLabel.text =
-        cell.paidKlayLabel.text = "- " + "\(gino(index.price))" + "KLAY"
+        if myLectureListDataFromServer != nil{
+            let index = myLectureListDataFromServer![indexPath.row]
+            cell.lectureNumberButton.setTitle("\(gino(index.lecturePk))", for: .normal)
+            cell.lectureTitleLabel.text = gsno(index.title)
+            cell.lecturePaymentDateLabel.text = gsno(index.applyTime) + " 결제"
+            cell.paidKlayLabel.text = "- " + "\(gino(index.price))" + "KLAY"
+        }
         return cell
     }
 }

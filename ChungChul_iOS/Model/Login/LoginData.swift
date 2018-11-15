@@ -1,5 +1,5 @@
 //
-//  HomeDataModel.swift
+//  LoginDataModel.swift
 //  ChungChul_iOS
 //
 //  Created by ParkSungJoon on 27/10/2018.
@@ -8,20 +8,18 @@
 
 import ObjectMapper
 
-class HomeDataModel: Mappable {
+class LoginData: Mappable {
     
     var message: String?
-    var popular: [PopularDataVO]?
-    var offline: [OfflineDataVO]?
-    var online: [OnlineDataVO]?
+    var token: String?
+    var data: [LoginDataVO]?
     
     required init?(map: Map) {}
     
     func mapping(map: Map) {
         message <- map["message"]
-        popular <- map["popular"]
-        offline <- map["offline"]
-        online <- map["online"]
+        token <- map["token"]
+        data <- map["data"]
     }
     
 }

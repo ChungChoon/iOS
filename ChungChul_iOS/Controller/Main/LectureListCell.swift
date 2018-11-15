@@ -67,12 +67,16 @@ extension LectureListCell: UICollectionViewDelegate, UICollectionViewDataSource 
             cell.lectureTermLabel.text = index.startDate! + " ~ " + index.endDate!
             cell.lectureCostLabel.text = "\(index.price!) KLAY"
             cell.lectureAddressLabel.text = index.place!
+            cell.lectureCountLabel.text = "총 \(index.curriculumCount!)회"
+            cell.typeButton.typeButtonTextSetting(cell.typeButton, index.kind!)
         } else {
             let index = onlineData![indexPath.row]
             cell.lectureTitleLabel.text = index.title!
             cell.lectureTermLabel.text = index.startDate! + " ~ " + index.endDate!
             cell.lectureCostLabel.text = "\(index.price!) KLAY"
             cell.lectureAddressLabel.text = index.place!
+            cell.lectureCountLabel.text = "총 \(index.curriculumCount!)회"
+            cell.typeButton.typeButtonTextSetting(cell.typeButton, index.kind!)
         }
         return cell
     }

@@ -11,13 +11,15 @@ import ObjectMapper
 class MyLectureData: Mappable {
     
     var message: String?
-    var data: [MyLectureVO]?
+    var onlineData: [MyLectureVO]?
+    var offlineData: [MyLectureVO]?
     
     required init?(map: Map) {}
     
     func mapping(map: Map) {
         message <- map["message"]
-        data <- map["data"]
+        onlineData <- map["online_data"]
+        offlineData <- map["offline_data"]
     }
     
 }

@@ -21,6 +21,7 @@ class SignInVC: UIViewController, NetworkCallback {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setTextFieldDelegate()
         borderTextField()
         addTargetButton()
     }
@@ -55,6 +56,15 @@ class SignInVC: UIViewController, NetworkCallback {
     func networkFailed() {
         simpleAlert(title: "네트워크 오류", msg: "인터넷 연결을 확인하세요.")
     }
+    
+    override func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField == emailTextField {
+            passwordTextField.becomeFirstResponder()
+        } else if textField == passwordTextField {
+            textField.resignFirstResponder()
+        }
+        return true
+    }
 }
 
 extension SignInVC {
@@ -63,6 +73,11 @@ extension SignInVC {
     @objc func doneButtonAction(){
         let model = LoginModel(self)
         model.loginModel(email: gsno(emailTextField.text), password: gsno(passwordTextField.text))
+    }
+    
+    fileprivate func setTextFieldDelegate(){
+        emailTextField.delegate = self
+        passwordTextField.delegate = self
     }
     
     // Check if a keystore file exists locally on the device

@@ -11,6 +11,7 @@ import AlamofireObjectMapper
 
 class MyLectureModel: NetworkModel {
     
+    //MARK: Request My Lecture List to Server
     func callMyLectureList(token: String) {
         
         let URL = "\(baseURL)/student"
@@ -30,7 +31,7 @@ class MyLectureModel: NetworkModel {
                         return
                     }
                     if responseData.message == "Success To Get Farmer My Lecture" {
-                        self.view.networkResult(resultData: responseData.data, code: "Success To Get Farmer My Lecture")
+                        self.view.networkResult(resultData: responseData, code: "Success To Get Farmer My Lecture")
                     }
                     
                     
@@ -41,6 +42,7 @@ class MyLectureModel: NetworkModel {
         }
     }
     
+    //MARK: Request Evaluate Lecture when Transaction successed
     func evaluateLecture(token: String, lecture_id: Int, content: String) {
         
         let URL = "\(baseURL)/lecture/evaluate"
