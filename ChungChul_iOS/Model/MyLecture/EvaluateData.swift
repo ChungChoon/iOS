@@ -8,7 +8,7 @@
 
 import ObjectMapper
 
-class EvaluateModel: Mappable {
+class EvaluateData: Mappable {
     
     var message: String?
     

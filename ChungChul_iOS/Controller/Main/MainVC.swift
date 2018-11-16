@@ -19,7 +19,6 @@ class MainVC: UIViewController, NetworkCallback {
     
     // UI IBOutlet variable
     @IBOutlet var lectureTableView: UITableView!
-    var titleTapGestureRecognizer: UITapGestureRecognizer!
     let animationView = LOTAnimationView(name: "loading")
     let indicatorView = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
     
@@ -47,13 +46,6 @@ class MainVC: UIViewController, NetworkCallback {
         super.viewWillAppear(true)
         callHomeDataFromServer()
         indicatorViewSetting(indicatorView, animationView)
-        titleTapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(titleTapAction(_:)))
-        self.navigationController?.navigationBar.addGestureRecognizer(titleTapGestureRecognizer)
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(true)
-        self.navigationController?.navigationBar.removeGestureRecognizer(titleTapGestureRecognizer)
     }
     
     //MARK: Networking Result From Server Function
@@ -108,13 +100,6 @@ class MainVC: UIViewController, NetworkCallback {
 
 extension MainVC {
     
-    // Navigation Title TapGesture Action Selector
-    @objc func titleTapAction(_ theObject: AnyObject) {
-        let typeListVC = self.storyboard?.instantiateViewController(withIdentifier: "TypeListVC") as! TypeListVC
-        typeListVC.delegate = self
-        self.present(typeListVC, animated: true, completion: nil)
-    }
-    
     // Call Home Lecture Data From Server Function
     fileprivate func callHomeDataFromServer() {
         let model = LectureModel(self)
@@ -134,20 +119,6 @@ extension MainVC {
     fileprivate func addObserverNotification() {
         NotificationCenter.default.addObserver(self,selector: #selector(gotoDetail(notification:)),name: .gotoDetail,object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(finishDownloadKlaytnData(notification:)), name: .finishDownloadKlaytnData, object: nil)
-    }
-}
-
-//MARK: TypeListVC Delegate
-extension MainVC: TypeSaveDelegate {
-    
-    func updateType(_ typeList: [String]) {
-        print(typeList)
-        var titleText = ""
-        
-        for type in typeList {
-            titleText += type + " "
-        }
-        self.title = titleText
     }
 }
 

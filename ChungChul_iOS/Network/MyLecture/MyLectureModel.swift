@@ -58,7 +58,7 @@ class MyLectureModel: NetworkModel {
             encoding: JSONEncoding.default,
             headers: ["token": token]
             ).responseObject{
-                (response:DataResponse<EvaluateModel>) in
+                (response:DataResponse<EvaluateData>) in
                 switch response.result {
                 case .success:
                     guard let responseMessage = response.result.value else{

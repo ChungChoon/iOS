@@ -1,6 +1,7 @@
-# # 청출어람
+# # 청출어람 iOS 애플리케이션
 
 블록체인 기반의 온/오프라인 귀농교육 애플리케이션
+
 
 ## # Languages, libraries and tools used
 
@@ -25,11 +26,16 @@
 	* [SDWebImage](https://github.com/SDWebImage/SDWebImage)
 	* [lottie-ios](https://github.com/airbnb/lottie-ios)
 
-## # 아키텍처
+
+## # Architecture
 
 기본적으로 MVC (Model-View-Controller) 패턴을 사용합니다.
 * View Controller를 재사용 할 수 없는 문제를 XIB를 이용해 CustomView 또는 Cell을 만들어 해결하였습니다.
 * 재사용 가능한 모든 function은 Extension을 사용해 쉽게 유지보수가 가능하고, 기능 추가가 쉽도록 만들었습니다. 
+
+### UML
+***
+![UML](./img/UML.png)
 
 
 ## # Singleton
@@ -44,7 +50,7 @@
 * private init()을 사용해 외부에서 값을 변경할 수 없기 때문에 thread-safe한 Singleton임을 보장합니다.
 * keystoreMangaerInDevice()를 이용해 App Sandbox내에 생성된 Keystore 폴더를 호출하여 caver 객체에 바인딩 합니다. (Transaction, Sign을 바인딩한 Keystore에서 찾아 로컬에서 수행되기 때문)
 
-```
+```swift
 import web3swift
 
 final class CaverSingleton {
@@ -52,7 +58,7 @@ final class CaverSingleton {
     static let sharedInstance: CaverSingleton = CaverSingleton()
     
     private init(){
-        Web3.default = .init(provider: Web3HttpProvider.init(URL(string: "http://192.168.0.33:8551")!)!)
+        Web3.default = .init(provider: Web3HttpProvider.init(URL(string: "http://FullNodeIP:port")!)!)
         guard let setupUserAddress = CaverSingleton.user.address else {
             fatalError("Error - you must call setup before accessing CaverSingleton.sharedInstance")
         }
@@ -69,8 +75,8 @@ final class CaverSingleton {
         CaverSingleton.user.address = userAddress
     }
     
-    let caver: Web3 = Web3(url: URL(string: "http://192.168.0.33:8551")!)!
-    let contractAddress = Address("0x96a277b958988d9b4207dda53067fbd787b0e2db")
+    let caver: Web3 = Web3(url: URL(string: "http://FullNodeIP:port")!)!
+    let contractAddress = Address("0x96a277b958988d9b4207dda53067fbd787b0e2db") // Deployed Contract Address
     let userAddress: Address
     
     func keystoreMangaerInDevice() -> KeystoreManager?{
@@ -80,11 +86,13 @@ final class CaverSingleton {
         return keystoreManager
     }
 
-    let contractABI = "생략"
+    let contractABI = "SKIP"
 }
 ```
 
 ## # Unit Test
+
+테스트용 Contract를 배포하여 Unit Test를 진행하였습니다. 
 
 ### Setup
 
