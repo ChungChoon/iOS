@@ -4,7 +4,7 @@
 
 ## # Demo
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/qUO296d3E00" frameborder="0" gesture="media" allowfullscreen=""></iframe>
+[![Video Label](http://img.youtube.com/vi/qUO296d3E00/0.jpg)](https://youtu.be/qUO296d3E00?t=0s) Video Label
 
 
 ## # Languages, libraries and tools used
