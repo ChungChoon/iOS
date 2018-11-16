@@ -4,7 +4,7 @@
 
 ## # Demo
 
-{% include demo.html id="qUO296d3E00" %}  
+* [데모영상 유튜브 링크](https://youtu.be/qUO296d3E00)
 
 ## # Languages, libraries and tools used
 
