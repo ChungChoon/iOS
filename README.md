@@ -2,6 +2,9 @@
 
 블록체인 기반의 온/오프라인 귀농교육 애플리케이션
 
+## # Demo
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/qUO296d3E00" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 ## # Languages, libraries and tools used
 
@@ -89,6 +92,28 @@ final class CaverSingleton {
     let contractABI = "SKIP"
 }
 ```
+## # Create Keystore
+
+EthereumKeystoreV3 aes-128-ctr로 암호화된 Keystore 파일을 iOS FileManager를 사용해 생성하여 App Sandbox내에 Document에 저장, 로컬 Keystore를 만들었습니다.
+
+```swift
+        do{
+            // Create Keystore File in Local Device
+            let userDir = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
+            var keystore: EthereumKeystoreV3?
+            keystore = try EthereumKeystoreV3(password: passwd, aesMode: "aes-128-ctr")
+            let keydata = try JSONEncoder().encode(keystore!.keystoreParams)
+            FileManager.default.createFile(atPath: userDir + "/keystore"+"/\(mail).json", contents: keydata, attributes: nil)
+            let wallet = gsno(keystore?.getAddress()?.address)
+            let keyDataToString = gsno(String(data: keydata, encoding: .utf8))
+            
+            // Request Logic to Server
+        } catch {
+            print(error.localizedDescription)
+            simpleAlert(title: "회원가입 오류", msg: "개발자에게 문의하세요.")
+        }
+```
+
 
 ## # Unit Test
 
