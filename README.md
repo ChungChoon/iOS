@@ -53,7 +53,7 @@
 * Instance 생성전에 CaverSingleton.setUserAddress(userAddress)를 선언함으로써 로그인 한 사용자의 Wallet Address를 Setup 합니다.
 * private init()을 사용해 외부에서 값을 변경할 수 없기 때문에 thread-safe한 Singleton임을 보장합니다.
 * keystoreMangaerInDevice()를 이용해 App Sandbox내에 생성된 Keystore 폴더를 호출하여 caver 객체에 바인딩 합니다. (Transaction, Sign을 바인딩한 Keystore에서 찾아 로컬에서 수행되기 때문)
-
+* 로컬에서 Klaytn을 attach 하고 [CaverSingleton.swift](https://github.com/ChungChoon/iOS/blob/master/ChungChul_iOS/Controller/Singleton/CaverSingleton.swift)에서 caver URL을 해당 풀노드 IP로 바꾼뒤 빌드합니다. (동일 네트워크 IPv4)
 ```swift
 import web3swift
 
