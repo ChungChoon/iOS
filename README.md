@@ -90,21 +90,21 @@ final class CaverSingleton {
 
 Singleton을 사용했기 때문에 단위 테스트 시 userAddress를 Setup 해주어야 합니다.
 
-```
+```swift
     override func setUp() {
         CaverSingleton.setUserAddress(Address("0xf694888fc6eea44f8cd03e9c5f18af8f61bdebe8"))
     }
 ```
 
 ### Calculate Evaluation Average Point
-
+***
 Smart Contract의 calculateEvaluationAveragePoint를 호출하는 test case 입니다.
----
+
 * iOS GCD 클래스의 Global Queue를 이용하여 UI를 처리하는 Main Thread에서 호출되지 않도록 했습니다.
 * 단일 강의 평가점수 호출은 빠르나 실제 강의 목록에서 여러 강의의 점수를 불러오는 경우 UI Delay되는 현상이 발생하여 최초 로딩 시 한번에 호출하였습니다.
 * [KlaytnExtenion.swift](https://github.com/ChungChoon/iOS/blob/master/ChungChul_iOS/Extensions/KlaytnExtention.swift)를 만들어 UIView에 extension 시켜 function을 활용하였습니다.
 
-```
+```swift
     func testCalculateEvaluationAveragePoint() {
         var value: Int?
         let lectureNumber: Int = 0
@@ -124,10 +124,10 @@ Smart Contract의 calculateEvaluationAveragePoint를 호출하는 test case 입�
 ```
 
 ### Get Klay Balances
----
+***
 보유 KLAY와 private key를 불러오는 test case 입니다.
 
-```
+```swift
     func testGetKlayBalances(){
         let caver = CaverSingleton.sharedInstance.caver
         let userAddress = CaverSingleton.sharedInstance.userAddress
@@ -150,10 +150,10 @@ Smart Contract의 calculateEvaluationAveragePoint를 호출하는 test case 입�
 ```
 
 ### Purchase Lecture
----
+***
 강의를 신청(구매)하는 Transaction test case 입니다.
 
-```
+```swift
     func testPurchaseLecture(){
         let instance = CaverSingleton.sharedInstance
         let caver = instance.caver
@@ -192,11 +192,11 @@ Smart Contract의 calculateEvaluationAveragePoint를 호출하는 test case 입�
 ```
 
 ### Evaluate Lecture
----
+***
 강의를 평가하는 Transaction test case 입니다.
 * 블록에 기록된것이 보장된 후 Server와 통신하기 위해 global queue 안에서 결과를 받고 Main Thread에서 통신하였습니다.
 
-```
+```swift
     func testEvaluateLecture(){
         let instance = CaverSingleton.sharedInstance
         let caver = instance.caver
