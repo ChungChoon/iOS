@@ -40,16 +40,16 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="인기 강의" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wHg-tq-kFQ">
-                                                    <rect key="frame" x="17" y="8" width="341" height="21"/>
+                                                    <rect key="frame" x="17" y="8" width="341" height="21.5"/>
                                                     <fontDescription key="fontDescription" name="NotoSansCJKkr-Medium" family="Noto Sans CJK KR" pointSize="14"/>
                                                     <color key="textColor" red="0.29411764705882354" green="0.46666666666666667" blue="0.87058823529411766" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Jrd-be-lxG">
-                                                    <rect key="frame" x="0.0" y="39" width="375" height="290.5"/>
+                                                    <rect key="frame" x="0.0" y="39.5" width="375" height="290"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="290.5" id="tWE-e0-7s9"/>
+                                                        <constraint firstAttribute="width" secondItem="Jrd-be-lxG" secondAttribute="height" multiplier="75:58" id="UXH-jU-tjv"/>
                                                     </constraints>
                                                     <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Sgj-rV-fQj">
                                                         <size key="itemSize" width="343" height="290"/>
@@ -59,7 +59,7 @@
                                                     </collectionViewFlowLayout>
                                                     <cells>
                                                         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="PopularLectureCVCell" id="IsH-vh-LoL" customClass="PopularLectureCVCell" customModule="ChungChul_iOS" customModuleProvider="target">
-                                                            <rect key="frame" x="16" y="0.5" width="343" height="290"/>
+                                                            <rect key="frame" x="16" y="0.0" width="343" height="290"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                                                 <rect key="frame" x="0.0" y="0.0" width="343" height="290"/>
@@ -68,9 +68,6 @@
                                                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="img_popular1" translatesAutoresizingMaskIntoConstraints="NO" id="s4N-Pw-HBB">
                                                                         <rect key="frame" x="0.0" y="0.0" width="343" height="217"/>
                                                                         <color key="backgroundColor" red="1" green="0.61568627450000002" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                                        <constraints>
-                                                                            <constraint firstAttribute="width" secondItem="s4N-Pw-HBB" secondAttribute="height" multiplier="49:31" id="PFa-Tl-sJv"/>
-                                                                        </constraints>
                                                                     </imageView>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="총 8회" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yTa-H2-vxf">
                                                                         <rect key="frame" x="296.5" y="12" width="31.5" height="18"/>
@@ -184,10 +181,10 @@
                                                                             <constraint firstItem="QdP-ae-ktN" firstAttribute="centerX" secondItem="8zK-lD-cMu" secondAttribute="centerX" id="Bnk-SW-zbF"/>
                                                                             <constraint firstItem="5lC-18-in8" firstAttribute="centerY" secondItem="8zK-lD-cMu" secondAttribute="centerY" id="Po1-Bk-H5g"/>
                                                                             <constraint firstItem="QdP-ae-ktN" firstAttribute="leading" secondItem="2aa-Bo-paY" secondAttribute="trailing" constant="9" id="SYi-To-3kW"/>
-                                                                            <constraint firstAttribute="width" secondItem="8zK-lD-cMu" secondAttribute="height" multiplier="343:73" id="Tgg-KP-sDW"/>
                                                                             <constraint firstItem="2aa-Bo-paY" firstAttribute="top" secondItem="8zK-lD-cMu" secondAttribute="top" constant="19" id="Y6D-N8-qgB"/>
                                                                             <constraint firstItem="2aa-Bo-paY" firstAttribute="leading" secondItem="8zK-lD-cMu" secondAttribute="leading" constant="11" id="b9l-3R-XcW"/>
                                                                             <constraint firstItem="QdP-ae-ktN" firstAttribute="bottom" secondItem="2aa-Bo-paY" secondAttribute="bottom" id="f5H-Hi-U5P"/>
+                                                                            <constraint firstAttribute="height" constant="73" id="s3k-kz-L92"/>
                                                                             <constraint firstItem="2aa-Bo-paY" firstAttribute="centerY" secondItem="8zK-lD-cMu" secondAttribute="centerY" id="tRf-sb-9cv"/>
                                                                         </constraints>
                                                                     </view>
@@ -206,6 +203,7 @@
                                                                 <constraint firstItem="2Xm-Br-hVR" firstAttribute="centerX" secondItem="IsH-vh-LoL" secondAttribute="centerX" id="Qbg-O9-aTw"/>
                                                                 <constraint firstItem="BaA-WL-xa7" firstAttribute="centerX" secondItem="IsH-vh-LoL" secondAttribute="centerX" id="Rxg-UU-Hft"/>
                                                                 <constraint firstItem="2Xm-Br-hVR" firstAttribute="leading" secondItem="BFz-oP-bU2" secondAttribute="leading" id="Sr0-N4-j0n"/>
+                                                                <constraint firstItem="8zK-lD-cMu" firstAttribute="top" relation="lessThanOrEqual" secondItem="BaA-WL-xa7" secondAttribute="bottom" constant="105" id="X3A-ru-upc"/>
                                                                 <constraint firstItem="BaA-WL-xa7" firstAttribute="top" secondItem="2Xm-Br-hVR" secondAttribute="bottom" constant="10" id="XPd-cZ-WRw"/>
                                                                 <constraint firstItem="yTa-H2-vxf" firstAttribute="top" secondItem="IsH-vh-LoL" secondAttribute="top" constant="12" id="YvD-PD-aVW"/>
                                                                 <constraint firstItem="8zK-lD-cMu" firstAttribute="top" secondItem="s4N-Pw-HBB" secondAttribute="bottom" id="h5q-Hm-U0K"/>

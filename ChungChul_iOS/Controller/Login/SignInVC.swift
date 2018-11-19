@@ -53,7 +53,7 @@ class SignInVC: UIViewController, NetworkCallback {
             }
         } else if code == "Fail To Sign In" {
             animationView.stop()
-            animationView.removeFromSuperview()
+            indicatorView.removeFromSuperview()
             let msg = resultData as! String
             simpleAlert(title: "로그인 오류", msg: msg)
         }
@@ -94,6 +94,8 @@ extension SignInVC {
             FileManager.default.createFile(atPath: userDir + "/keystore"+"/\(mail).json", contents: keystoreData, attributes: nil)
             successToLogin()
         } else {
+            animationView.stop()
+            indicatorView.removeFromSuperview()
             simpleAlert(title: "키체인 오류", msg: "가입한 계정과 현재 iCloud 계정이 일치하지 않습니다.")
         }
     }

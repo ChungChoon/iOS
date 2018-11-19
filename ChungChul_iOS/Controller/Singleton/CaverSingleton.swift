@@ -10,27 +10,34 @@ import web3swift
 
 final class CaverSingleton {
     
-    static let sharedInstance: CaverSingleton = CaverSingleton()
+    static let sharedInstance: CaverSingleton = {
+        let instance = CaverSingleton()
+        if let fullNodeIP = URL(string: "http://192.168.35.11:8551"){
+            Web3.default = Web3(url: fullNodeIP)!
+            instance.caver = Web3.default
+        }
+        return instance
+    }()
+    
+    var caver : Web3 = Web3.default
     
     private init(){
-        Web3.default = .init(provider: Web3HttpProvider.init(URL(string: "http://1c86e5bc.ngrok.io")!)!)
-        guard let setupUserAddress = CaverSingleton.user.address else {
+        guard let setupUserWalletAddress = CaverSingleton.user.walletAddress else {
             fatalError("Error - you must call setup before accessing CaverSingleton.sharedInstance")
         }
-        userAddress = setupUserAddress
+        userAddress = setupUserWalletAddress
     }
     
     private class User {
-        var address: Address?
+        var walletAddress: Address?
     }
     
     private static let user = User()
     
     class func setUserAddress(_ userAddress: Address){
-        CaverSingleton.user.address = userAddress
+        CaverSingleton.user.walletAddress = userAddress
     }
     
-    let caver: Web3 = Web3(url: URL(string: "http://1c86e5bc.ngrok.io")!)!
     let contractAddress = Address("0x96a277b958988d9b4207dda53067fbd787b0e2db")
     let userAddress: Address
     

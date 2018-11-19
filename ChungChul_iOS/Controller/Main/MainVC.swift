@@ -91,7 +91,7 @@ class MainVC: UIViewController, NetworkCallback {
     }
     
     @objc func finishDownloadKlaytnData(notification: NSNotification){
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+        DispatchQueue.main.async {
             self.animationView.stop()
             self.indicatorView.removeFromSuperview()
         }

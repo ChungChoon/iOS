@@ -21,7 +21,7 @@ class PopularLectureTVCell: UITableViewCell {
     // CollectionView Flow Layout Variable
     let collectionMargin = CGFloat(16)
     let itemSpacing = CGFloat(10)
-    let itemHeight = CGFloat(290)
+    var itemHeight = CGFloat(290)
     var itemWidth = CGFloat(0)
     let screenFrameSize = UIScreen.main.bounds
     
@@ -54,8 +54,9 @@ extension PopularLectureTVCell {
     fileprivate func collectionViewFlowLayout() {
         let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
         itemWidth = self.contentView.bounds.width - collectionMargin * 2.0
+        itemHeight = popularLectureCollectionView.contentSize.height
         layout.sectionInset = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16)
-        layout.itemSize = CGSize(width: itemWidth, height: self.contentView.bounds.height - 39.5)
+        layout.itemSize = CGSize(width: itemWidth, height: itemHeight)
         layout.minimumLineSpacing = itemSpacing
         layout.scrollDirection = .horizontal
         popularLectureCollectionView.collectionViewLayout = layout
@@ -84,6 +85,7 @@ extension PopularLectureTVCell {
 
 //MARK: CollectionView Delegate and DataSource
 extension PopularLectureTVCell: UICollectionViewDelegate, UICollectionViewDataSource {
+    
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if popularData != nil {

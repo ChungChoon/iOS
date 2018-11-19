@@ -52,35 +52,45 @@
 * Instance 생성전에 CaverSingleton.setUserAddress(userAddress)를 선언함으로써 로그인 한 사용자의 Wallet Address를 Setup 합니다.
 * private init()을 사용해 외부에서 값을 변경할 수 없기 때문에 thread-safe한 Singleton임을 보장합니다.
 * keystoreMangaerInDevice()를 이용해 App Sandbox내에 생성된 Keystore 폴더를 호출하여 caver 객체에 바인딩 합니다. (Transaction, Sign을 바인딩한 Keystore에서 찾아 로컬에서 수행되기 때문)
-* Server에서 ngrox을 사용하여 풀노드를 호스팅하고 있습니다.
+* Server에서 ngrox을 사용하여 풀노드를 호스팅 할 예정입니다. (현재는 풀노드의 IPv4 주소 활용)
+* Web3.defalut를 initializing 해준뒤 다시 caver 변수에 바인딩 하지 않으면 getBalance를 호출하지 못하는 이슈가 발생했습니다.
+    * caver라는 변수를 사용하고 싶으면 Web3.default를 한번 거치고 다시 바인딩하여 사용해야 합니다.
+    * or Web3.default.eth.getBalance()
 
 ```swift
 import web3swift
 
 final class CaverSingleton {
     
-    static let sharedInstance: CaverSingleton = CaverSingleton()
+    static let sharedInstance: CaverSingleton = {
+        let instance = CaverSingleton()
+        if let fullNodeIP = URL(string: "http://fullNodeIP:port"){
+            Web3.default = Web3(url: fullNodeIP)! // Web3.default는 기본적으로 127.0.0.1:8545를 바라보고 있습니다.
+            instance.caver = Web3.default
+        }
+        return instance
+    }()
+    
+    var caver : Web3 = Web3.default
     
     private init(){
-        Web3.default = .init(provider: Web3HttpProvider.init(URL(string: "http://FullNodeIP:port")!)!)
-        guard let setupUserAddress = CaverSingleton.user.address else {
+        guard let setupUserWalletAddress = CaverSingleton.user.walletAddress else {
             fatalError("Error - you must call setup before accessing CaverSingleton.sharedInstance")
         }
-        userAddress = setupUserAddress
+        userAddress = setupUserWalletAddress
     }
     
     private class User {
-        var address: Address?
+        var walletAddress: Address?
     }
     
     private static let user = User()
     
     class func setUserAddress(_ userAddress: Address){
-        CaverSingleton.user.address = userAddress
+        CaverSingleton.user.walletAddress = userAddress
     }
     
-    let caver: Web3 = Web3(url: URL(string: "http://FullNodeIP:port")!)!
-    let contractAddress = Address("0x96a277b958988d9b4207dda53067fbd787b0e2db") // Deployed Contract Address
+    let contractAddress = Address("0x96a277b958988d9b4207dda53067fbd787b0e2db")
     let userAddress: Address
     
     func keystoreMangaerInDevice() -> KeystoreManager?{

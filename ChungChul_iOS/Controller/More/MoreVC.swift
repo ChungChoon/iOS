@@ -71,6 +71,7 @@ class MoreVC: UIViewController, NetworkCallback {
         let keystore = instance.keystoreMangaerInDevice()
         DispatchQueue.global(qos: .utility).async {
             do{
+                print(caver)
                 self.userKlay = try caver.eth.getBalance(address: userAddress)
                 self.key = try keystore?.UNSAFE_getPrivateKeyData(password: self.gsno(self.ud.string(forKey: "password")), account: userAddress)
             }catch{
