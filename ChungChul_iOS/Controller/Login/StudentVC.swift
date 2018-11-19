@@ -246,11 +246,15 @@ extension StudentVC {
             let keydata = try JSONEncoder().encode(keystore!.keystoreParams)
             FileManager.default.createFile(atPath: userDir + "/keystore"+"/\(mail).json", contents: keydata, attributes: nil)
             let wallet = gsno(keystore?.getAddress()?.address)
-            let keyDataToString = gsno(String(data: keydata, encoding: .utf8))
-            
-            // Request Join by student
-            let model = JoinModel(self)
-            model.joinStudentModel(mail: mail, passwd: passwd, name: name, sex: sex, hp: hp, birth: birth, key: keyDataToString, wallet: wallet)
+
+            // Save Keystore Data at the Keychain
+            if Keychain.save(key: mail, keystoreData: keydata) == true {
+                // Request Join by student
+                let model = JoinModel(self)
+                model.joinStudentModel(mail: mail, passwd: passwd, name: name, sex: sex, hp: hp, birth: birth, wallet: wallet)
+            } else {
+                simpleAlert(title: "키체인 오류", msg: "설정(Setting) -> 암호 및 계정 -> iCloud -> 키체인을 켜주세요.")
+            }
         } catch {
             print(error.localizedDescription)
             simpleAlert(title: "회원가입 오류", msg: "개발자에게 문의하세요.")

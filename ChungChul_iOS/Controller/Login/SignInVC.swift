@@ -8,6 +8,7 @@
 
 import UIKit
 import web3swift
+import Lottie
 
 class SignInVC: UIViewController, NetworkCallback {
     
@@ -15,6 +16,9 @@ class SignInVC: UIViewController, NetworkCallback {
     @IBOutlet var emailTextField: UITextField!
     @IBOutlet var passwordTextField: UITextField!
     @IBOutlet var doneButton: UIButton!
+    
+    let animationView = LOTAnimationView(name: "loading")
+    let indicatorView = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
     
     // Variable
     let ud = UserDefaults.standard
@@ -45,9 +49,11 @@ class SignInVC: UIViewController, NetworkCallback {
             if isExistKeystoreFile(path) {
                 successToLogin()
             } else {
-                simpleAlert(title: "지갑 오류", msg: "아이폰 내부에 지갑이 존재하지 않습니다!")
+                loadKeystoreDataFromKeychain(mail)
             }
         } else if code == "Fail To Sign In" {
+            animationView.stop()
+            animationView.removeFromSuperview()
             let msg = resultData as! String
             simpleAlert(title: "로그인 오류", msg: msg)
         }
@@ -71,6 +77,7 @@ extension SignInVC {
     
     // Done Button Action Selector
     @objc func doneButtonAction(){
+        indicatorViewSetting(indicatorView, animationView)
         let model = LoginModel(self)
         model.loginModel(email: gsno(emailTextField.text), password: gsno(passwordTextField.text))
     }
@@ -78,6 +85,17 @@ extension SignInVC {
     fileprivate func setTextFieldDelegate(){
         emailTextField.delegate = self
         passwordTextField.delegate = self
+    }
+    
+    // If there are no keystore file locally, load keystore data from iCloud Keychain and create keystore file locally
+    fileprivate func loadKeystoreDataFromKeychain(_ mail: String) {
+        if let keystoreData = Keychain.load(key: mail) {
+            let userDir = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
+            FileManager.default.createFile(atPath: userDir + "/keystore"+"/\(mail).json", contents: keystoreData, attributes: nil)
+            successToLogin()
+        } else {
+            simpleAlert(title: "키체인 오류", msg: "가입한 계정과 현재 iCloud 계정이 일치하지 않습니다.")
+        }
     }
     
     // Check if a keystore file exists locally on the device
@@ -100,6 +118,8 @@ extension SignInVC {
         DispatchQueue.global(qos: .utility).async {
             self.callCaverSingleton()
             DispatchQueue.main.async {
+                self.animationView.stop()
+                self.animationView.removeFromSuperview()
                 UserDefaults.standard.setValue(self.gsno(self.passwordTextField.text), forKey: "password")
                 let main = UIStoryboard(name: "Main", bundle: nil)
                 let tabBarVC = main.instantiateViewController(withIdentifier: "TabBarVC") as! TabBarVC

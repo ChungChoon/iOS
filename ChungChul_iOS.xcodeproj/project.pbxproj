@@ -10,6 +10,7 @@
 		709E18E3F890A1E90BB6B5B1 /* Pods_ChungChul_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E11251E557BA8035A3186A2 /* Pods_ChungChul_iOS.framework */; };
 		79845B9F0C21FF5D26EA8C56 /* Pods_ChungChul_iOSTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39F17AA51548F522AF78F77D /* Pods_ChungChul_iOSTests.framework */; };
 		BC133170218ECBF700D346B4 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC13316F218ECBF700D346B4 /* UIViewExtension.swift */; };
+		BC2BB29421A2C47D000E143A /* Keychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC2BB29321A2C47D000E143A /* Keychain.swift */; };
 		BC474D37218AD21600CE1043 /* EvaluationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC474D36218AD21600CE1043 /* EvaluationVC.swift */; };
 		BC474D39218AF70400CE1043 /* RatingXIB.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC474D38218AF70400CE1043 /* RatingXIB.xib */; };
 		BC474D3B218AF85300CE1043 /* RatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC474D3A218AF85300CE1043 /* RatingView.swift */; };
@@ -112,6 +113,8 @@
 		8E11251E557BA8035A3186A2 /* Pods_ChungChul_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ChungChul_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AEFA295204D5F357C42AEEB1 /* Pods-ChungChul_iOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChungChul_iOSTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ChungChul_iOSTests/Pods-ChungChul_iOSTests.release.xcconfig"; sourceTree = "<group>"; };
 		BC13316F218ECBF700D346B4 /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
+		BC2BB29221A2C40F000E143A /* ChungChul_iOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ChungChul_iOS.entitlements; sourceTree = "<group>"; };
+		BC2BB29321A2C47D000E143A /* Keychain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keychain.swift; sourceTree = "<group>"; };
 		BC474D36218AD21600CE1043 /* EvaluationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EvaluationVC.swift; sourceTree = "<group>"; };
 		BC474D38218AF70400CE1043 /* RatingXIB.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RatingXIB.xib; sourceTree = "<group>"; };
 		BC474D3A218AF85300CE1043 /* RatingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingView.swift; sourceTree = "<group>"; };
@@ -382,6 +385,7 @@
 		BC87E00021751C4700B7322E /* ChungChul_iOS */ = {
 			isa = PBXGroup;
 			children = (
+				BC2BB29221A2C40F000E143A /* ChungChul_iOS.entitlements */,
 				BC87E00121751C4700B7322E /* AppDelegate.swift */,
 				BC87E00B21751C4900B7322E /* Assets.xcassets */,
 				BC87E01021751C4900B7322E /* Info.plist */,
@@ -484,6 +488,7 @@
 			isa = PBXGroup;
 			children = (
 				BCC456BD218F141300C3250B /* CaverSingleton.swift */,
+				BC2BB29321A2C47D000E143A /* Keychain.swift */,
 			);
 			path = Singleton;
 			sourceTree = "<group>";
@@ -604,6 +609,11 @@
 				TargetAttributes = {
 					BC87DFFD21751C4700B7322E = {
 						CreatedOnToolsVersion = 10.0;
+						SystemCapabilities = {
+							com.apple.Keychain = {
+								enabled = 1;
+							};
+						};
 					};
 					BC87E01421751C4900B7322E = {
 						CreatedOnToolsVersion = 10.0;
@@ -797,6 +807,7 @@
 				BCB9D836217F05CB00D86908 /* PopularLectureCVCell.swift in Sources */,
 				BCC456D2219429E500C3250B /* MyLectureModel.swift in Sources */,
 				BC474D46218CAB0F00CE1043 /* MyLectureData.swift in Sources */,
+				BC2BB29421A2C47D000E143A /* Keychain.swift in Sources */,
 				BC6F28F321835AA500B64524 /* DuplicateEmailData.swift in Sources */,
 				BCC456C421918B9600C3250B /* LectureDetailData.swift in Sources */,
 				BCC456CD219336FA00C3250B /* LoginAlertView.swift in Sources */,
@@ -989,6 +1000,7 @@
 			baseConfigurationReference = 24BB8CE8160F7AC5824DD252 /* Pods-ChungChul_iOS.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = ChungChul_iOS/ChungChul_iOS.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 86PPC52X64;
 				INFOPLIST_FILE = ChungChul_iOS/Info.plist;
@@ -1008,6 +1020,7 @@
 			baseConfigurationReference = 583F9579DFABFDEBCF01B3E5 /* Pods-ChungChul_iOS.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = ChungChul_iOS/ChungChul_iOS.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 86PPC52X64;
 				INFOPLIST_FILE = ChungChul_iOS/Info.plist;
