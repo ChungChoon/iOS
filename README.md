@@ -52,7 +52,7 @@
 * Instance 생성전에 CaverSingleton.setUserAddress(userAddress)를 선언함으로써 로그인 한 사용자의 Wallet Address를 Setup 합니다.
 * private init()을 사용해 외부에서 값을 변경할 수 없기 때문에 thread-safe한 Singleton임을 보장합니다.
 * keystoreMangaerInDevice()를 이용해 App Sandbox내에 생성된 Keystore 폴더를 호출하여 caver 객체에 바인딩 합니다. (Transaction, Sign을 바인딩한 Keystore에서 찾아 로컬에서 수행되기 때문)
-* 시뮬레이터로 빌드 시 [CaverSingleton.swift](https://github.com/ChungChoon/iOS/blob/master/ChungChul_iOS/Controller/Singleton/CaverSingleton.swift)  파일에서 URL을 localhost로 변경해야하며, 디바이스 빌드 시 풀노드 네트워크 IPv4 주소를 입력하면 됩니다.
+* Server에서 ngrox을 사용하여 풀노드를 호스팅하고 있습니다.
 
 ```swift
 import web3swift
@@ -108,11 +108,36 @@ EthereumKeystoreV3 aes-128-ctr로 암호화된 Keystore 파일을 iOS FileManage
             let wallet = gsno(keystore?.getAddress()?.address)
             let keyDataToString = gsno(String(data: keydata, encoding: .utf8))
             
-            // Request Logic to Server
+            // Save Keystore Data at the Keychain
+            if Keychain.save(key: mail, keystoreData: keydata) == true {
+                // Request Join to Server
+            } else {
+                simpleAlert(title: "키체인 오류", msg: "설정(Setting) -> 암호 및 계정 -> iCloud -> 키체인을 켜주세요.")
+            }
         } catch {
             print(error.localizedDescription)
             simpleAlert(title: "회원가입 오류", msg: "개발자에게 문의하세요.")
         }
+```
+
+## # Manage Keystore using Keychain
+
+[Keychain.swift](https://github.com/ChungChoon/iOS/blob/master/ChungChul_iOS/Controller/Singleton/Keychain.swift)
+
+* iCloud의 Keychain을 활용하여 Server에서 Keystore 파일을 관리하는 것이 아닌, 유저의 iCloud 계정에서 Keystore 파일을 관리합니다.
+* 유저의 Device가 변경되더라도, 같은 iCloud 계정이라면 로그인 시도 시, Keystore 파일을 Keychain에서 불러와 다시 로컬 디바이스에 Keystore 파일을 생성합니다.
+
+```swift
+    // If there are no keystore file locally, load keystore data from iCloud Keychain and create keystore file locally
+    fileprivate func loadKeystoreDataFromKeychain(_ mail: String) {
+        if let keystoreData = Keychain.load(key: mail) {
+            let userDir = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
+            FileManager.default.createFile(atPath: userDir + "/keystore"+"/\(mail).json", contents: keystoreData, attributes: nil)
+            successToLogin()
+        } else {
+            simpleAlert(title: "키체인 오류", msg: "가입한 계정과 현재 iCloud 계정이 일치하지 않습니다.")
+        }
+    }
 ```
 
 
