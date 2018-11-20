@@ -1,5 +1,5 @@
 //
-//  KeystoreSingleton.swift
+//  CaverSingleton.swift
 //  ChungChul_iOS
 //
 //  Created by ParkSungJoon on 04/11/2018.
@@ -12,7 +12,7 @@ final class CaverSingleton {
     
     static let sharedInstance: CaverSingleton = {
         let instance = CaverSingleton()
-        if let fullNodeIP = URL(string: "http://192.168.35.11:8551"){
+        if let fullNodeIP = URL(string: "http://5d7b917b.ngrok.io"){
             Web3.default = Web3(url: fullNodeIP)!
             instance.caver = Web3.default
         }
@@ -38,7 +38,7 @@ final class CaverSingleton {
         CaverSingleton.user.walletAddress = userAddress
     }
     
-    let contractAddress = Address("0x96a277b958988d9b4207dda53067fbd787b0e2db")
+    let contractAddress = Address("0xfa05a3cc1c985b92a58d466ef336287d0a139891")
     let userAddress: Address
     
     func keystoreMangaerInDevice() -> KeystoreManager?{

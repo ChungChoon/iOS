@@ -33,7 +33,7 @@ class MoreVC: UIViewController, NetworkCallback {
     let instance: CaverSingleton = CaverSingleton.sharedInstance
     
     // Data Variable
-    var myLectureListDataFromServer: [MyLectureVO]?
+    var paymentListDataFromServer: [PaymentVO]?
     
     // Variable
     let ud = UserDefaults.standard
@@ -54,8 +54,8 @@ class MoreVC: UIViewController, NetworkCallback {
     }
     
     func networkResult(resultData: Any, code: String) {
-        if code == "Success To Get Farmer My Lecture"{
-            myLectureListDataFromServer = resultData as? [MyLectureVO]
+        if code == "Success To Get My Buy List"{
+            paymentListDataFromServer = resultData as? [PaymentVO]
             tableViewSetting()
         }
     }
@@ -120,8 +120,8 @@ extension MoreVC {
     
     fileprivate func callPaymentDetailDataFromServer() {
         let token = gsno(ud.string(forKey: "token"))
-        let model = MyLectureModel(self)
-        model.callMyLectureList(token: token)
+        let model = PaymentModel(self)
+        model.callMyPaymentDetailList(token: token)
     }
     
     fileprivate func tableViewSetting() {
@@ -189,10 +189,10 @@ extension MoreVC {
 extension MoreVC: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if myLectureListDataFromServer == nil{
+        if paymentListDataFromServer == nil{
             return 0
         } else {
-            return (myLectureListDataFromServer?.count)!
+            return (paymentListDataFromServer?.count)!
         }
     }
     
@@ -202,8 +202,8 @@ extension MoreVC: UITableViewDelegate, UITableViewDataSource {
     
     fileprivate func setPaymentDetailCell(_ indexPath: IndexPath) -> UITableViewCell{
         let cell = paymentDetailTableView.dequeueReusableCell(withIdentifier: "PaymentDetailTVCell") as! PaymentDetailTVCell
-        if myLectureListDataFromServer != nil{
-            let index = myLectureListDataFromServer![indexPath.row]
+        if paymentListDataFromServer != nil{
+            let index = paymentListDataFromServer![indexPath.row]
             cell.lectureNumberButton.setTitle("\(gino(index.lecturePk))", for: .normal)
             cell.lectureTitleLabel.text = gsno(index.title)
             cell.lecturePaymentDateLabel.text = gsno(index.applyTime) + " 결제"

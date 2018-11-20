@@ -31,6 +31,7 @@ class StudentVC: UIViewController, NetworkCallback {
     var genderArray = ["남자", "여자"]
     var sex = 1
     let ud = UserDefaults.standard
+    var wallet = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,7 +57,8 @@ class StudentVC: UIViewController, NetworkCallback {
     func networkResult(resultData: Any, code: String) {
         // Login Network Response
         if code == "Success To Sign Up" {
-            performSegue(withIdentifier: "unwindToLogin", sender: self)
+            let model = FaucetModel(self)
+            model.faucetModel(addr: wallet)
         } else if code == "Null Value" {
             simpleAlert(title: "회원가입 오류", msg: "오류가 났다!")
         } else if code == "Internal Server Error" {
@@ -70,6 +72,12 @@ class StudentVC: UIViewController, NetworkCallback {
         } else if code == "available" {
             duplicateEmailLabel.isHidden = true
             duplicateEmailLabel.text = ""
+        }
+        
+        if code == "Faucet Success"{
+            performSegue(withIdentifier: "unwindToLogin", sender: self)
+        } else if code == "Faucet Fail"{
+            simpleAlert(title: "Faucet Fail", msg: "KLAY 지급에 실패했습니다.")
         }
     }
     
@@ -245,7 +253,7 @@ extension StudentVC {
             keystore = try EthereumKeystoreV3(password: passwd, aesMode: "aes-128-ctr")
             let keydata = try JSONEncoder().encode(keystore!.keystoreParams)
             FileManager.default.createFile(atPath: userDir + "/keystore"+"/\(mail).json", contents: keydata, attributes: nil)
-            let wallet = gsno(keystore?.getAddress()?.address)
+            wallet = gsno(keystore?.getAddress()?.address)
 
             // Save Keystore Data at the Keychain
             if Keychain.save(key: mail, keystoreData: keydata) == true {

@@ -184,7 +184,7 @@ extension MyLectureVC: UITableViewDelegate, UITableViewDataSource {
                 }
             }
         } else {
-            let index = onlineDataList![indexPath.row]
+            let index = offlineDataList![indexPath.row]
             let lecturePk = gino(index.lecturePk)
             let token = gsno(UserDefaults.standard.string(forKey: "token"))
             let model = LectureModel(self)

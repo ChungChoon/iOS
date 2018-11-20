@@ -11,6 +11,10 @@
 		79845B9F0C21FF5D26EA8C56 /* Pods_ChungChul_iOSTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39F17AA51548F522AF78F77D /* Pods_ChungChul_iOSTests.framework */; };
 		BC133170218ECBF700D346B4 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC13316F218ECBF700D346B4 /* UIViewExtension.swift */; };
 		BC2BB29421A2C47D000E143A /* Keychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC2BB29321A2C47D000E143A /* Keychain.swift */; };
+		BC2BB29921A42CB5000E143A /* FaucetModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC2BB29821A42CB5000E143A /* FaucetModel.swift */; };
+		BC2BB29C21A49CA0000E143A /* PaymentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC2BB29B21A49CA0000E143A /* PaymentModel.swift */; };
+		BC2BB29F21A49CEC000E143A /* PaymentData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC2BB29E21A49CEC000E143A /* PaymentData.swift */; };
+		BC2BB2A121A49D07000E143A /* PaymentVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC2BB2A021A49D07000E143A /* PaymentVO.swift */; };
 		BC474D37218AD21600CE1043 /* EvaluationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC474D36218AD21600CE1043 /* EvaluationVC.swift */; };
 		BC474D39218AF70400CE1043 /* RatingXIB.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC474D38218AF70400CE1043 /* RatingXIB.xib */; };
 		BC474D3B218AF85300CE1043 /* RatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC474D3A218AF85300CE1043 /* RatingView.swift */; };
@@ -115,6 +119,10 @@
 		BC13316F218ECBF700D346B4 /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 		BC2BB29221A2C40F000E143A /* ChungChul_iOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ChungChul_iOS.entitlements; sourceTree = "<group>"; };
 		BC2BB29321A2C47D000E143A /* Keychain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keychain.swift; sourceTree = "<group>"; };
+		BC2BB29821A42CB5000E143A /* FaucetModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaucetModel.swift; sourceTree = "<group>"; };
+		BC2BB29B21A49CA0000E143A /* PaymentModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentModel.swift; sourceTree = "<group>"; };
+		BC2BB29E21A49CEC000E143A /* PaymentData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentData.swift; sourceTree = "<group>"; };
+		BC2BB2A021A49D07000E143A /* PaymentVO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentVO.swift; sourceTree = "<group>"; };
 		BC474D36218AD21600CE1043 /* EvaluationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EvaluationVC.swift; sourceTree = "<group>"; };
 		BC474D38218AF70400CE1043 /* RatingXIB.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RatingXIB.xib; sourceTree = "<group>"; };
 		BC474D3A218AF85300CE1043 /* RatingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingView.swift; sourceTree = "<group>"; };
@@ -243,6 +251,23 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		BC2BB29A21A49C85000E143A /* More */ = {
+			isa = PBXGroup;
+			children = (
+				BC2BB29B21A49CA0000E143A /* PaymentModel.swift */,
+			);
+			path = More;
+			sourceTree = "<group>";
+		};
+		BC2BB29D21A49CD7000E143A /* More */ = {
+			isa = PBXGroup;
+			children = (
+				BC2BB29E21A49CEC000E143A /* PaymentData.swift */,
+				BC2BB2A021A49D07000E143A /* PaymentVO.swift */,
+			);
+			path = More;
+			sourceTree = "<group>";
+		};
 		BC474D3C218AFA3300CE1043 /* EvaluationTVCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -349,6 +374,7 @@
 				BC6F28EF218353DA00B64524 /* Login */,
 				BCC456BF2190AD4400C3250B /* Main */,
 				BCC456D0219429CB00C3250B /* MyLecture */,
+				BC2BB29A21A49C85000E143A /* More */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -358,6 +384,7 @@
 			children = (
 				BC6F28F0218353EE00B64524 /* JoinModel.swift */,
 				BC6F28F62183F7C100B64524 /* LoginModel.swift */,
+				BC2BB29821A42CB5000E143A /* FaucetModel.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -500,6 +527,7 @@
 				BC474D4A218CAB5600CE1043 /* Main */,
 				BCC456C221918B6E00C3250B /* Detail */,
 				BC474D4B218CAB6E00CE1043 /* MyLecture */,
+				BC2BB29D21A49CD7000E143A /* More */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -818,10 +846,12 @@
 				BC6F28EA218341A500B64524 /* NetworkModel.swift in Sources */,
 				BCCF8E46219AF96500B59A90 /* UIViewControllerExtension.swift in Sources */,
 				BC6F290721844CC900B64524 /* OnlineDataVO.swift in Sources */,
+				BC2BB29C21A49CA0000E143A /* PaymentModel.swift in Sources */,
 				BC474D3B218AF85300CE1043 /* RatingView.swift in Sources */,
 				BCD7D7AD21764A2C003238BB /* LoginVC.swift in Sources */,
 				BC6F290121844C7200B64524 /* HomeData.swift in Sources */,
 				BCC456CF21935C0A00C3250B /* InitialNC.swift in Sources */,
+				BC2BB2A121A49D07000E143A /* PaymentVO.swift in Sources */,
 				BC6F28F72183F7C100B64524 /* LoginModel.swift in Sources */,
 				BC6F28F52183845900B64524 /* SignInVC.swift in Sources */,
 				BC474D48218CAB2C00CE1043 /* MyLectureVO.swift in Sources */,
@@ -833,8 +863,10 @@
 				BCB9D838217F310900D86908 /* UIKitExtension.swift in Sources */,
 				BCC456C621918BD400C3250B /* LectureDetailDataVO.swift in Sources */,
 				BC6A219921820838007B751B /* PlanTVCell.swift in Sources */,
+				BC2BB29F21A49CEC000E143A /* PaymentData.swift in Sources */,
 				BC6F28F1218353EE00B64524 /* JoinModel.swift in Sources */,
 				BC6A21A221830549007B751B /* TabBarVC.swift in Sources */,
+				BC2BB29921A42CB5000E143A /* FaucetModel.swift in Sources */,
 				BC6A21952182081D007B751B /* InformationTVCell.swift in Sources */,
 				BCB9D8542181D9DA00D86908 /* HeaderView.swift in Sources */,
 				BC474D40218B722D00CE1043 /* EvaluationListTVCell.swift in Sources */,

@@ -169,14 +169,15 @@ extension DetailVC {
             
             // Parameter Setting
             let lectureNumberParameter = [lectureNumber] as [AnyObject]
-            
+            print(lectureNumber)
+            print(lecturePrice)
             // Estimated Gas
             let estimatedGas = try caver.contract(ABI, at: contractAddress).method("purchaseLecture", parameters: lectureNumberParameter, options: options).estimateGas(options: nil)
             options.gasLimit = estimatedGas
-            
+
             // Transaction Setting
             let transactionResult = try caver.contract(ABI, at: contractAddress).method("purchaseLecture", parameters: lectureNumberParameter, options: options)
-            
+
             // Transaction Send
             let sendingResult = try transactionResult.send(password: passwd)
             print(sendingResult.transaction)
