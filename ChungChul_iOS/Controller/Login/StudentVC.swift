@@ -8,6 +8,7 @@
 
 import UIKit
 import web3swift
+import Lottie
 
 class StudentVC: UIViewController, NetworkCallback {
 
@@ -22,6 +23,9 @@ class StudentVC: UIViewController, NetworkCallback {
     @IBOutlet var phoneNumberLabel: UITextField!
     @IBOutlet var doneButton: UIButton!
     @IBOutlet var genderTextField: UITextField!
+    
+    let animationView = LOTAnimationView(name: "loading")
+    let indicatorView = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
     
     // PickerView Variable
     let genderPickerView = UIPickerView()
@@ -60,8 +64,12 @@ class StudentVC: UIViewController, NetworkCallback {
             let model = FaucetModel(self)
             model.faucetModel(addr: wallet)
         } else if code == "Null Value" {
+            animationView.stop()
+            indicatorView.removeFromSuperview()
             simpleAlert(title: "회원가입 오류", msg: "오류가 났다!")
         } else if code == "Internal Server Error" {
+            animationView.stop()
+            indicatorView.removeFromSuperview()
             simpleAlert(title: "회원가입 오류", msg: "오류가 났다!")
         }
         
@@ -75,14 +83,20 @@ class StudentVC: UIViewController, NetworkCallback {
         }
         
         if code == "Faucet Success"{
+            animationView.stop()
+            indicatorView.removeFromSuperview()
             performSegue(withIdentifier: "unwindToLogin", sender: self)
         } else if code == "Faucet Fail"{
+            animationView.stop()
+            indicatorView.removeFromSuperview()
             simpleAlert(title: "Faucet Fail", msg: "KLAY 지급에 실패했습니다.")
         }
     }
     
     func networkFailed() {
         simpleAlert(title: "네트워크 오류", msg: "인터넷 연결을 확인해주세요.")
+        animationView.stop()
+        indicatorView.removeFromSuperview()
     }
     
     @IBAction func birthPickerEditing(_ sender: UITextField) {
@@ -98,6 +112,7 @@ class StudentVC: UIViewController, NetworkCallback {
 extension StudentVC {
     
     @objc func doneButtonAction() {
+        indicatorViewSetting(indicatorView, animationView)
         let mail = gsno(emailTextField.text)
         let passwd = gsno(confirmTextField.text)
         let name = gsno(nameLabel.text)

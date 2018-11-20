@@ -9,12 +9,16 @@
 import UIKit
 import web3swift
 import BigInt
+import Lottie
 
 class EvaluationVC: UIViewController, NetworkCallback {
 
     // UI IBOutlet Variable
     @IBOutlet var evaluationTableView: UITableView!
     @IBOutlet var doneButton: UIButton!
+    
+    let animationView = LOTAnimationView(name: "loading")
+    let indicatorView = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
     
     // UI Variable
     var colorArray: [UIColor] = [#colorLiteral(red: 0.3176470588, green: 0.8941176471, blue: 0.6705882353, alpha: 1),#colorLiteral(red: 0.1764705882, green: 0.8666666667, blue: 0.7607843137, alpha: 1),#colorLiteral(red: 0.2862745098, green: 0.8431372549, blue: 0.9176470588, alpha: 1),#colorLiteral(red: 0.2392156863, green: 0.7411764706, blue: 0.8901960784, alpha: 1),#colorLiteral(red: 0.3725490196, green: 0.6078431373, blue: 0.8941176471, alpha: 1)]
@@ -101,8 +105,12 @@ class EvaluationVC: UIViewController, NetworkCallback {
     
     func networkResult(resultData: Any, code: String) {
         if code == "success to evaluate lecture"{
+            animationView.stop()
+            indicatorView.removeFromSuperview()
             performSegue(withIdentifier: "unwindToMyLecture", sender: self)
         } else {
+            animationView.stop()
+            indicatorView.removeFromSuperview()
             let msg = resultData as! String
             simpleAlert(title: msg, msg: "서버 오류, 개발자에게 문의하세요." )
         }
@@ -116,6 +124,7 @@ class EvaluationVC: UIViewController, NetworkCallback {
 extension EvaluationVC {
     
     @objc func doneButtonAction(){
+        indicatorViewSetting(indicatorView, animationView)
         evaluateLectureOnKlaytn()
     }
     

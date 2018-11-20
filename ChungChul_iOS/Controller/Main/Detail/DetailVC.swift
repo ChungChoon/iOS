@@ -10,12 +10,16 @@ import UIKit
 import web3swift
 import BigInt
 import SDWebImage
+import Lottie
 
 class DetailVC: UIViewController, NetworkCallback {
 
     // UI IBOutlet Variable
     @IBOutlet var detailTableView: UITableView!
     @IBOutlet var applyButton: UIButton!
+    
+    let animationView = LOTAnimationView(name: "loading")
+    let indicatorView = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
     
     // Data Variable
     var detailData: LectureDetailDataVO?
@@ -52,9 +56,13 @@ class DetailVC: UIViewController, NetworkCallback {
             applyButton.removeTarget(self, action: #selector(applyButtonAction), for: .touchUpInside)
             applyButton.setTitle("신청완료", for: .normal)
             applyButton.isEnabled = false
+            animationView.stop()
+            indicatorView.removeFromSuperview()
         } else {
             let msg = resultData as! String
             simpleAlert(title: "서버 오류", msg: msg)
+            animationView.stop()
+            indicatorView.removeFromSuperview()
         }
     }
     
@@ -82,12 +90,16 @@ extension DetailVC {
         let lectureId = gino(detailData?.lecturePk)
         let price = gino(detailData?.price)
         
+        indicatorViewSetting(indicatorView, animationView)
+        
         if isPurchasingLectureTransaction() { // Transaction 성공 시
             presentSuccessPurchasingAlertView()
             let model = LectureModel(self)
             model.purchaseLectureModel(token: token, lecture_id: lectureId, price: price)
             
         } else { // Transaction 실패 시
+            animationView.stop()
+            indicatorView.removeFromSuperview()
             simpleAlert(title: "구매 실패", msg: "KLAY가 부족합니다!")
         }
     }
