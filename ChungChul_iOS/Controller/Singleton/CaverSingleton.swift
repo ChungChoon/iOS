@@ -12,7 +12,7 @@ final class CaverSingleton {
     
     static let sharedInstance: CaverSingleton = {
         let instance = CaverSingleton()
-        if let fullNodeIP = URL(string: "http://5d7b917b.ngrok.io"){
+        if let fullNodeIP = URL(string: "http://4fa31e09.ngrok.io"){
             Web3.default = Web3(url: fullNodeIP)!
             instance.caver = Web3.default
         }
